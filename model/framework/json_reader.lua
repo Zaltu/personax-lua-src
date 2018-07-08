@@ -1,7 +1,7 @@
-local json = {}
+local json = require("json")
 
 function json.read(datapath)
-	local json = require('cjson')
+	local json = require('json')
 	local file = io.open(datapath.file)
 	if not file then
 		error("This file does not exist.")
@@ -16,7 +16,7 @@ function json.read(datapath)
 end
 
 function json.write(data)
-	local json = require('cjson')
+	local json = require('json')
 	local file = io.open(data.path, 'w')
 	if not file then
 		error("Can't write to "..data.path)

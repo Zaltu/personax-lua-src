@@ -1,7 +1,7 @@
+local json = require ('json_reader')
 local shop = {}
 
 local function _load(shopinquestion)
-	local json = require ('json_reader')
 	shop.menu=json.read({file='shopmenus.json'})
 end
 
@@ -22,8 +22,7 @@ end
 
 function shop.refresh()
 	local state = require('state')
-	local cjson = require('cjson')
-	state.update = cjson.encode({key="shop.show.menutree", menus=genmenus()})
+	state.update = json.encode({key="shop.show.menutree", menus=genmenus()})
 end
 
 function shop.processinput()

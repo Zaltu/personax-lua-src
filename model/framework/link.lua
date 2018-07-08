@@ -77,13 +77,13 @@ end
 function link.refresh()--Send update to graphic view
 	local state = require('state')
 	if state.cut.open then
-		local cjson = require('cjson')
+		local json = require('json')
 		print("\nAction:\n"..state.cut.open[1].text.."\n")--For testing only.
-		state.update = cjson.encode(state.cut.open.show)
+		state.update = json.encode(state.cut.open.show)
 	end
 end
 
-local function setShowType()
+local function setShowType(state)
 	if state.cut.open[1].points then state.cut.open.show=showSpeak() elseif state.cut.open[1].place then state.cut.open.show=showCam() elseif state.cut.open[1].animation then state.cut.open.show=showMove() end
 end
 
@@ -96,7 +96,7 @@ function link.processinput()
 		state.context.index=nil
 	end
 	state.cut.open = state.cut.cutscene.items[state.cut.open[state.cut.index]+1]
-	setShowType()
+	setShowType(state)
 	link.refresh()
 	if state.cut.open[1].place or state.cut.open[1].animation then link.processinput() end
 end
@@ -105,7 +105,7 @@ function link.loadcontext(sociallink)
 	local state = require('state')
 	state.context=link
 	_load(sociallink.arcana)
-	setShowType()
+	setShowType(state)
 	link.refresh()
 end
 

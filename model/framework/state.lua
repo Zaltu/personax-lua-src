@@ -1,3 +1,4 @@
+local json = require('json_reader')
 local state = {}
 
 local function jsonparsestate(table)
@@ -29,7 +30,6 @@ end
 function state.event(event)
 	if state.locked then state.eventcallerror="State is locked" return end
 	state.lock()
-	local json = require('cjson')
 	local map = json.decode(event)
 	for key, value in pairs(map) do state.context[key]=value end
 	state.context.processinput()

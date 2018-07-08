@@ -1,5 +1,5 @@
 function read()
-	local json = require('cjson')
+	local json = require('json')
 	local file = io.open('spells.json')
 	if not file then
 		error("This file does not exist.")
