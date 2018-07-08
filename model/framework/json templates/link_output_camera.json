@@ -1,0 +1,14 @@
+{
+	"key":"link.show.move",
+	"place":<id of the location to be shown>,
+	"cameraPosition":(<x>, <y and>, <z that are the camera's position>),
+	"lookAt":(<x>, <y and>, <z that the camera looks at>)
+}
+
+/*
+ * If the place is different than the current location, the new location will need to be
+ * loaded in. That distinction is left up to the graphic view to do.
+ *
+ * There's an issue concerning load order for positioning assets in the "new place" before
+ * showing the camera. I'm working on a solution.
+*/

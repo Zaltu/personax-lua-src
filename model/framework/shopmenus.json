@@ -1,0 +1,12 @@
+{
+	"trainer":[
+				{"Buy Gear":{
+							"Headgear":"print('Getting Headgear')",
+							"Armour":"print('Getting Headgear')",
+							"Shoes":"print('Getting Headgear')"
+				}},
+				{"Sell Gear":"local state = require('state') local gear = {} for key, value in pairs(state.mc.gear) do gear[#gear]={name=key, price=value.price} end return gear"},
+				{"Talk to Chaos":"local link = require('link') link.loadcontext({trainershop.json})"},
+				{"Quit":"local state = require('state') state.changestate('Overworld', {})"}
+	]
+}

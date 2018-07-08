@@ -1,0 +1,23 @@
+{
+	"key":"shop.nav.menu",
+	"index":<index selected at within current list (0-n)>
+	"back":true
+}
+/*
+ * Only possible user inputs are "select" and back while in a Shop.
+ *
+ * ONLY "INDEX" XOR "BACK". NEVER BOTH. If both are given, index is assumed.
+ * Possibilities are ultimately:
+*/
+
+{
+	"key":"shop.nav.menu",
+	"index":<index selected at within current list (0-n)>
+}
+/*
+ * or
+*/
+{
+	"key":"shop.nav.menu",
+	"back":true
+}

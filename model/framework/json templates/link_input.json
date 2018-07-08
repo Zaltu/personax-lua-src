@@ -1,0 +1,8 @@
+{
+	"key":"link.action",
+	"index":<index selected (0-n)>
+}
+/*
+ * Only possible user input is "select" during a Social Link. Use cannot go back or open 
+ * the menu and any input other than key bound to "select" should be ignored.
+*/

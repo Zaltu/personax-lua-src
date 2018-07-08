@@ -1,0 +1,14 @@
+{
+	"key":"link.show.move",
+	"subject":<id of the asset that needs to be moved>,
+	"animation":<id of the animation to play>,
+	"destination":(<x and>, <y coordinates that the asset should move to>)
+}
+
+/*
+ * You can always assume that is the subject has not been loaded in, the animation and
+ * destination are a bit moot. You can just place them directly at the destination if you want.
+ *
+ * Note that speed of movement is not bound here. I hope to have speed bound to the
+ * animation, but don't know enough about animations to really say.
+*/

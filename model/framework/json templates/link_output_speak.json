@@ -1,0 +1,19 @@
+{
+	"key":"link.show.speak",
+	"text":"text of this speak action as a string",
+	"speaker_emote":<id of character emotion file to display (so you know which sprite to load, eg: "sprite_aigis_happy")>,
+	"options":
+		[
+			0:<first option>,
+			.
+			.
+			.
+			"n":<last option>
+		]
+}
+
+/*
+ * If options exist only if they are selectable choices. The index of the choice in options
+ * is what the link context expects upon call to state.event. If there are no options, any
+ * select event should be passed with index 0.
+*/
