@@ -1,8 +1,10 @@
 local json = require("json")
 
-function json.read(datapath)
+local DEFAULT_RES_DIR = "../data/"--{root} needed for non-relative path
+
+function json.read(datapath, uniqueDirPath)
 	local json = require('json')
-	local file = io.open(datapath.file)
+	local file = io.open((uniqueDirPath or DEFAULT_RES_DIR)..datapath.file)
 	if not file then
 		error("This file does not exist.")
 	end
@@ -15,9 +17,9 @@ function json.read(datapath)
 	return decoded
 end
 
-function json.write(data)
+function json.write(data, uniqueDirPath)
 	local json = require('json')
-	local file = io.open(data.path, 'w')
+	local file = io.open((uniqueDirPath or DEFAULT_RES_DIR)..data.path, 'w')
 	if not file then
 		error("Can't write to "..data.path)
 	end
@@ -27,6 +29,3 @@ function json.write(data)
 end
 
 return json
-	
---print(get({file='data.json', path='test'}))
---print(write({data={some='Some', random='Random', text='Text'}, path='afile.json'}))
