@@ -1,6 +1,7 @@
 local json = require("json")
 
-local DEFAULT_RES_DIR = "../data/"--{root} needed for non-relative path
+local lfs = require("lfs")--LuaFileSystem
+local DEFAULT_RES_DIR = lfs.currentdir().."/../data/"--{root} needed for non-relative path
 
 function json.read(datapath, uniqueDirPath)
 	local json = require('json')
@@ -19,6 +20,7 @@ end
 
 function json.write(data, uniqueDirPath)
 	local json = require('json')
+	print((uniqueDirPath or DEFAULT_RES_DIR)..data.path)
 	local file = io.open((uniqueDirPath or DEFAULT_RES_DIR)..data.path, 'w')
 	if not file then
 		error("Can't write to "..data.path)
