@@ -2,7 +2,6 @@
 local battle = {}
 
 local function target(who)
-	local state = require('state')
 	if state.battle.party[state.battle.participants[state.battle.open]] then
 		state.battle.target=1
 		return--USER NEEDS TO MAKE A CHOICE
@@ -37,7 +36,6 @@ function resolveresistances(element, target)
 end
 
 local function loadpersona(persona)
-	local state = require('state')
 	for i=1, #persona.spellDeck do
 		persona.spellDeck[i]=state.battle.spells[persona.spellDeck[i]]
 	end
@@ -46,13 +44,11 @@ end
 
 local function loadpersonas()
 	local json = require('json_reader')
-	local state = require('state')
 	state.battle.spells=json.read({file='spells.json'})
 	for i=1, #state.battle.participants do loadpersona(state.battle.participants[i].persona) print("\n") end
 end
 
 local function turn()
-	local state = require('state')
 	if state.battle.party[state.battle.participants[state.battle.open].name] then
 		print(state.battle.participants[state.battle.open].name.." used Myriad Arrows!")
 		state.battle.open=state.battle.open+1
@@ -71,7 +67,6 @@ local function turn()
 end
 
 local function detorder()
-	local state = require('state')
 	local done=false
 	while not done do
 		done=true
@@ -89,7 +84,6 @@ local function detorder()
 end
 
 local function _load(inst)
-	local state = require('state')
 	state.battle={}
 	state.battle.party={}
 	state.battle.ene={}
@@ -104,12 +98,11 @@ end
 
 
 function battle.refresh(update)
-	local state = require('state')
-	state.update={'None'}
+	local json = require("json_reader")
+	state.update=json.encode({'None'})
 end
 
 function battle.processinput(input)
-	local state = require('state')
 	if input=='select' then
 		turn()
 	end
@@ -117,8 +110,6 @@ end
 
 function battle.loadcontext(inst)
 	math.randomseed(os.clock()*100000000000)
-	local state = require('state')
-	state.context=battle
 	_load(inst)
 	battle.refresh()
 end

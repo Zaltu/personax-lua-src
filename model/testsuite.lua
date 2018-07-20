@@ -1,7 +1,7 @@
 --These are tests written to confirm the proper functionality of the logic model. Run in command line
 --to view comprehensive analysis of what the model is providing.
 --All calls to the model should respect the formats shown here.
-local state = require('state')
+require('state')
 local json = require('json_reader')
 local pprint = function (value) local inspect = require("inspect") print(inspect(value)) end
 
@@ -50,7 +50,9 @@ function battle()
 	state.input('select')
 
 	state.savestate(nil)
+end
 
+function link_legacy()
 	state.changecontext('link', {arcana='Aeon', level='1', angle='0'})
 
 	state.input('select')

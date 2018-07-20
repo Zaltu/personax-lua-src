@@ -2,7 +2,6 @@ local link = {}
 
 local function _load(arcana)
 	local json = require ('json_reader')
-	local state = require('state')
 	local level = state.slglobal[arcana].level
 	local angle = state.slglobal[arcana].angle
 	local link = json.read({file=arcana..'_link.json'})
@@ -37,7 +36,6 @@ local function _load(arcana)
 end
 
 local function showSpeak()
-	local state = require('state')
 	local choices = {}
 	if #state.cut.open > 2 then
 		for i=2, #state.cut.open do choices[#choices+1]=state.cut.cutscene.items[i][1].text end --Won't show anything for physical action based choices
@@ -52,7 +50,6 @@ local function showSpeak()
 end
 
 local function showMove()
-	local state = require('state')
 	return {
 		key="link.show.move",
 		subject=state.cut.open[1].subject,
@@ -64,7 +61,6 @@ end
 --local function showInfo() end Ignore Info actions. These should never show up in the game
 
 local function showCam()
-	local state = require('state')
 	if state.cut.open[1].place=="Loading" then if not state.isloading then state.loading(true) else state.isloading(false) end end
 	return {
 		key="link.show.camera",
@@ -75,7 +71,6 @@ local function showCam()
 end
 
 function link.refresh()--Send update to graphic view
-	local state = require('state')
 	if state.cut.open then
 		local json = require('json')
 		print("\nAction:\n"..state.cut.open[1].text.."\n")--For testing only.
@@ -88,7 +83,6 @@ local function setShowType(state)
 end
 
 function link.processinput()
-	local state = require('state')
 	state.cut.index=2
 	if state.context.index then
 		print("Processing input in context: Social Link")
@@ -102,8 +96,6 @@ function link.processinput()
 end
 
 function link.loadcontext(sociallink)
-	local state = require('state')
-	state.context=link
 	_load(sociallink.arcana)
 	setShowType(state)
 	link.refresh()

@@ -1,9 +1,0 @@
-{
-	"trainer":{
-		"top":{0:"exit", 1:"Buy Gear", 2:"Sell Gear", 3:"Talk", 4:"Exit Shop"},
-		"Buy Gear":{0:"top", 1:"Headgear", 2:"Armour", 3:"Shoes"},
-		"Sell Gear":{0:"top", 1:"Unimplemented"},
-		"Talk":{0:"top", 1:"Inline CS"},
-		"Exit Shop":{0:"exit"}
-	}
-}

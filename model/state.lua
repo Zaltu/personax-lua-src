@@ -1,7 +1,17 @@
 local json = require('json_reader')
-local state = {}
+_G.state = {}
 
 state.flags = {}
+state.Version = "0.0.0.0.1"
+state.cut = nil
+state.day = 1
+state.slglobal = require("data/slglobal")
+state.mc = {}
+state.availablechars = {[0]=state.mc}
+state.party = {[0]=state.mc}
+state.place = nil
+state.save = 0
+state.context = nil
 
 local function jsonparsestate(table)
 	local save = {}
@@ -59,8 +69,16 @@ end
 function state.changecontext(newc, params)
 	state.loading(true)
 	state.inline=nil
-	local context = require(newc)
-	context.loadcontext(params)--Do not forget to cal state.loading(false) once loading context is complete
+	state.context = require(newc)
+	state.context.loadcontext(params)
+	state.loading(false)
+end
+
+function state.loadenv(env)
+	local envreq = require(env)
+	for flag, action in pairs(envreq) do
+		if state.flags[flag] then action() end
+	end
 end
 
 function state.loading(start)
@@ -72,8 +90,6 @@ end
 --Having two functions is a bit redundant but idgaf
 function state.lock() state.locked=true end
 function state.unlock()	state.locked=false end
-
-return state
 
 --This file defines all global variables that are callable from the controller or that need
 --to be cached for further use. The following are all know values that can be contextually
