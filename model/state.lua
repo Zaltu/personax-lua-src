@@ -1,6 +1,8 @@
 local json = require('json_reader')
 local state = {}
 
+state.flags = {}
+
 local function jsonparsestate(table)
 	local save = {}
 	for key, value in pairs(table) do
@@ -13,7 +15,8 @@ end
 function state.loadstate(savefile)
 	local json = require('json_reader')
 	if savefile then savefile="PXS"..savefile..".json" else savefile='state.json' end
-	gamestate = json.read({file=savefile})
+	loadedstate = json.read({file=savefile})
+	for key, value in pairs(loadedstate) do state[key]=value end
 end
 
 function state.savestate(savefile)
@@ -25,6 +28,10 @@ end
 
 function state.evolve(key, value)
 	state[key] = value
+end
+
+function state.flag(f)
+	state.flags[#state.flags] = f
 end
 
 function state.event(event)

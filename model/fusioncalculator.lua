@@ -43,7 +43,7 @@ function fuse(together, allpersonas)
 end
 
 
-testps = {Pixie={name='Pixie', arcana='Lovers', level=10}, Io={name='Io', arcana='Lovers', level=1}, Cybele={name='Cybele', arcana='Lovers', level=64},Orpheus={name='Orpehus', arcana='Fool', level=1}, JackFrost={name='Jack Frost', arcana='Magician', level=8}, Angel={name='Angel', arcana='Justice', level=4}}
+testps = {Pixie={name='Pixie', arcana='Lovers', level=10}, Io={name='Io', arcana='Lovers', level=1}, Cybele={name='Cybele', arcana='Lovers', level=64},Orpheus={name='Orpheus', arcana='Fool', level=1}, JackFrost={name='Jack Frost', arcana='Magician', level=8}, Angel={name='Angel', arcana='Justice', level=4}}
 fusing = {testps.Orpheus, testps.Angel}
 print(#fusing .. 'way')
 result = fuse(fusing, testps)

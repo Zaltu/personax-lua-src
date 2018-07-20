@@ -12,10 +12,17 @@ function setState()
 	state.savestate(nil)
 end
 
+
 function shop()
-	json.read({file="shopmenus.json"})
 	state.changecontext('shop', 'trainer')
-	state.event(json.encode({key="shop.nav.menu", index=0}))
+	-- Select Buy Item
+	state.event(json.encode({shopindex=1}))
+	-- Select Back
+	state.event(json.encode({shopindex=0}))
+	-- Select Sell Item
+	state.event(json.encode({shopindex=2}))
+	-- Select Back
+	state.event(json.encode({shopindex=0}))
 end
 
 function link()
@@ -66,8 +73,8 @@ function test(feature)
 	--pprint(state.context)
 	for key, value in pairs(state.context) do print(key, value) end
 	print("\nRefresh")
-	--pprint(json.decode(state.update))
-	for key, value in pairs(json.decode(state.update)) do print(key, value) end
+	pprint(json.decode(state.update))
+	--for key, value in pairs(json.decode(state.update)) do print(key, value) end
 	--print(#state.update.options.." options")
 end
 
