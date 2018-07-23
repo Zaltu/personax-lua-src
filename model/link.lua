@@ -4,7 +4,7 @@ local function _load(arcana)
 	local json = require ('json_reader')
 	local level = state.slglobal[arcana].level
 	local angle = state.slglobal[arcana].angle
-	local link = json.read({file=arcana..'_link.json'})
+	local link = require("data/"..arcana.."_link")
 	local angleladder = {angle=nil}
 	local ladderdown = nil
 	local ladderup = nil
@@ -89,6 +89,9 @@ function link.processinput()
 		state.cut.index = state.context.index+2
 		state.context.index=nil
 	end
+	local inspect = require("inspect")
+	print(inspect(state.cut.open))
+	print(state.cut.index)
 	state.cut.open = state.cut.cutscene.items[state.cut.open[state.cut.index]+1]
 	setShowType(state)
 	link.refresh()

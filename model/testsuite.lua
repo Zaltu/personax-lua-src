@@ -82,4 +82,4 @@ end
 
 --test(battle)
 --test(link)
-test(shop)
+test(link)
