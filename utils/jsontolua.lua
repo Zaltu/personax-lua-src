@@ -1,5 +1,3 @@
-local json = require("json_reader")
-
 local converter = {}
 
 local jsonstr
@@ -8,7 +6,14 @@ local luastr
 local processed_keystrs = {}
 
 function read(filepath)
-	jsonstr = json.read({file=filepath})
+	local json = require('json')
+	local file = io.open(filepath)
+	if not file then
+		error("This file does not exist: "..filepath)
+	end
+	local todecode = file:read "*a"
+	file:close()
+	jsonstr = json.decode(todecode)
 end
 
 function write(filepath)
@@ -48,18 +53,22 @@ local function convert(tab, keystr)
 			luastr = luastr..keystr.."["..ty(key)..key..ty(key).."] = [["..value.."]]\n"
 		elseif type(value) == type(42) then
 			luastr = luastr..keystr.."["..ty(key)..key..ty(key).."] = "..value.."\n"
+		elseif type(value) == type(true) then
+			if value then insert="true" else insert="false" end
+			luastr = luastr..keystr.."["..ty(key)..key..ty(key).."] = "..insert.."\n"
 		else
 			luastr = luastr.."--unsupported type for:   "..value.."\n"
 		end
 	end
 end
 
-function converter.convert(file)
-	read(file)
+function converter.convert(inpath, outpath)
+	read(inpath)
 	fileprep()
 	convert()
 	filefinish()
-	write(string.gsub(file, ".json", ".lua"))
+	write(outpath)
+	processed_keystrs = {}
 end
 
 return converter
