@@ -1,20 +1,9 @@
 local converter = {}
 
-local jsonstr
 local luastr
 
 local processed_keystrs = {}
 
-function read(filepath)
-	local json = require('json')
-	local file = io.open(filepath)
-	if not file then
-		error("This file does not exist: "..filepath)
-	end
-	local todecode = file:read "*a"
-	file:close()
-	jsonstr = json.decode(todecode)
-end
 
 function write(filepath)
 	local file = io.open(filepath, 'w')
@@ -44,7 +33,7 @@ local function convert(tab, keystr)
 		luastr = luastr..keystr.." = {}\n"
 		processed_keystrs[keystr] = true
 	end
-	for key, value in pairs(tab or jsonstr) do
+	for key, value in pairs(tab) do
 		if type(value) == type({}) then
 			convert(value, keystr.."["..ty(key)..key..ty(key).."]")
 		elseif type(value) == type(function () end) then
@@ -62,16 +51,7 @@ local function convert(tab, keystr)
 	end
 end
 
-function converter.convertFile(inpath, outpath)
-	read(inpath)
-	fileprep()
-	convert()
-	filefinish()
-	write(outpath)
-	processed_keystrs = {}
-end
-
-function converter.convertTable(table, outpath)
+function converter.convert(table, outpath)
 	fileprep()
 	convert(table)
 	filefinish()

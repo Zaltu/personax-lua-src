@@ -1,0 +1,17 @@
+A Day represents the various available time period within a single day. They are all orgianized as a lua table-list of timeslots.
+The available timeslots are defined in the "daystates.lua" file. They are:
+  - Early Morning
+  - Morning
+  - Lunchtime
+  - Afternoon
+  - After School
+  - Evening
+  - Late Night
+  - Daytime
+Daytime is a semantically unique case as it represents the whole day outside of the Morning/Afternoon breakdown. It should only really be used on days with no school.
+
+The daystate does not affect the particulars of the context change event of passing time, only the generic, mostly graphic and flag-related differences between each state. The entry in the Day table-list itself defines what context to load following the entry into that time period.
+This means that each time period of each Day MUST match one of the following situations. If not, a crash will occur:
+ - Be empty. This will cause the day to be skipped
+ - Call a cutscene or other event that ends with time moving forward (defined in the actions=<context> key)
+ - Have a envorinment context specified in the start=<env> key

@@ -1,0 +1,29 @@
+local entity = {}
+entity = {}
+entity["date"] = {}
+entity["date"]["day"] = 1
+entity["date"]["time"] = 0
+entity["save"] = 0
+--a function: unlock
+entity["party"] = {}
+entity["party"][0] = {}
+--a function: lock
+--a function: loading
+--a function: loadenv
+entity["availablechars"] = {}
+entity["availablechars"][0] = {}
+entity["mc"] = {}
+entity["mc"]["name"] = [[Chaos]]
+--a function: event
+--a function: evolve
+entity["flags"] = {}
+entity["Version"] = [[0.0.0.0.5]]
+--a function: savestate
+--a function: changecontext
+entity["slglobal"] = {}
+entity["slglobal"]["Aeon"] = {}
+entity["slglobal"]["Aeon"]["angle"] = 0
+entity["slglobal"]["Aeon"]["level"] = 1
+--a function: loadstate
+--a function: flag
+return entity

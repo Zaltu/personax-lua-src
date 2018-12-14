@@ -4,13 +4,12 @@ local current
 
 
 local function _load(shopinquestion)
-	shop.menu = require("data/"..shopinquestion)
+	shop.menu = require("data/shops"..shopinquestion)
 end
 
 
 function shop.refresh()
-	local json = require("json_reader")
-	state.update = json.encode(current)
+	state.update = current
 end
 
 

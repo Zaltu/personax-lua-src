@@ -4,7 +4,7 @@ local function _load(arcana)
 	local json = require ('json_reader')
 	local level = state.slglobal[arcana].level
 	local angle = state.slglobal[arcana].angle
-	local link = require("data/"..arcana.."_link")
+	local link = require("data/links/"..arcana.."_link")
 	local angleladder = {angle=nil}
 	local ladderdown = nil
 	local ladderup = nil

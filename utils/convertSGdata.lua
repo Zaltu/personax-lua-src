@@ -15,7 +15,7 @@ end
 local function convertlist(files, inpath, outpath)
 	for index, file in pairs(files) do
 		print("Converting "..file)
-		conv.convert(inpath..file, outpath..string.gsub(file, ".json", ".lua"))
+		conv.convertFile(inpath..file, outpath..string.gsub(file, ".json", ".lua"))
 	end
 end
 

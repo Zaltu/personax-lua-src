@@ -26,6 +26,7 @@ function shop()
 end
 
 function link()
+	state.changecontext("calendar")
 	state.changecontext('link', {arcana='Aeon'})
 
 	state.event(json.encode({key="link.action", index=0}))
@@ -34,6 +35,8 @@ function link()
 	state.event(json.encode({key="link.action", index=0}))
 	state.event(json.encode({key="link.action", index=0}))
 	state.event(json.encode({key="link.action", index=1}))
+
+	state.changecontext("calendar")
 end
 
 function battle()
@@ -52,18 +55,13 @@ function battle()
 	state.savestate(nil)
 end
 
-function link_legacy()
-	state.changecontext('link', {arcana='Aeon', level='1', angle='0'})
-
-	state.input('select')
-	state.input('select')
-	state.input('select')
-	state.input('select')
-	state.input('select')
-	state.input('up')
-	state.input('select')
-	state.input('select')
+function dayChange()
+	state.changecontext("calendar")
+	pprint(state.update)
+	state.changecontext("calendar", 42)
+	state.savestate()
 end
+
 
 function test(feature)
 	setState()
@@ -75,11 +73,11 @@ function test(feature)
 	--pprint(state.context)
 	for key, value in pairs(state.context) do print(key, value) end
 	print("\nRefresh")
-	pprint(json.decode(state.update))
+	pprint(state.update)
 	--for key, value in pairs(json.decode(state.update)) do print(key, value) end
 	--print(#state.update.options.." options")
 end
 
 --test(battle)
 --test(link)
-test(link)
+--test(dayChange)
