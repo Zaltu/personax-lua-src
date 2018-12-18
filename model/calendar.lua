@@ -15,11 +15,12 @@ function calendar.passTime()
 	end
 	--Inform UI
 	state.update = {"It is now "..calendar.now.state.name}
-	--state.changecontext(calendar.now.start)
+	state.loadenv("data/envs/"..calendar.now.env)
+	state.changecontext(calendar.now.context)
 end
 
 function calendar.passDay()
-	state.day = state.day + 1
+	state.date.day = state.date.day + 1
 	--Inform UI
 	calendar.time = 0
 	calendar.day = require("data/days/day_"..state.date.day)
@@ -28,8 +29,8 @@ end
 
 function calendar.loadcontext(hardset)
 	state.lock()
-	if not hardset then calendar.passTime() return end
-	state.day = hardset - 1
+	if not hardset then calendar.passTime() state.unlock() return end
+	state.date.day = hardset - 1
 	calendar.passDay()
 	state.unlock()
 end

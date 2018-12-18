@@ -1,7 +1,6 @@
 local link = {}
 
 local function _load(arcana)
-	local json = require ('json_reader')
 	local level = state.slglobal[arcana].level
 	local angle = state.slglobal[arcana].angle
 	local link = require("data/links/"..arcana.."_link")
@@ -72,9 +71,8 @@ end
 
 function link.refresh()--Send update to graphic view
 	if state.cut.open then
-		local json = require('json')
 		print("\nAction:\n"..state.cut.open[1].text.."\n")--For testing only.
-		state.update = json.encode(state.cut.open.show)
+		state.update = state.cut.open.show
 	end
 end
 
@@ -90,8 +88,6 @@ function link.processinput()
 		state.context.index=nil
 	end
 	local inspect = require("inspect")
-	print(inspect(state.cut.open))
-	print(state.cut.index)
 	state.cut.open = state.cut.cutscene.items[state.cut.open[state.cut.index]+1]
 	setShowType(state)
 	link.refresh()

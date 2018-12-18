@@ -11,7 +11,7 @@ state.slglobal = require("data/slglobal")
 state.mc = {}
 state.availablechars = {[0]=state.mc}
 state.party = {[0]=state.mc}
-state.place = nil
+state.env = nil
 state.save = 0
 state.context = nil
 
@@ -50,27 +50,27 @@ end
 
 --There is no state.lock here as we assume that any call to changecontext will be effected
 --through a state.event processinput call
-function state.changecontext(newc, params)
-	state.loading(true)
+function state.changecontext(newc, ...)
+	state.loading(true, newc)
 	state.inline=nil
 	state.context = require(newc)
-	state.context.loadcontext(params)
-	state.loading(false)
+	state.context.loadcontext(...)
+	state.loading(false, newc)
 end
 
 
 function state.loadenv(env)
-	local envreq = require(env)
-	for flag, action in pairs(envreq) do
+	state.env = require(env)
+	for flag, action in pairs(state.env) do
 		if state.flags[flag] then action() end
 	end
 end
 
 
-function state.loading(start)
-	if not start then state.isloading=true print("Loading complete") return end--Loading complete
+function state.loading(start, contextname)
+	if not start then state.isloading=true print("Loading "..contextname.." complete") return end--Loading complete
 	state.isloading=nil
-	print("Loading...")--Send loading request to graphics
+	print("Loading "..contextname.."...")--Send loading request to graphics
 end
 
 
@@ -99,7 +99,7 @@ function state.unlock()	state.locked=false end
 --Current Existing contexts:
 --link: Any cutscene (Social Link, Story or Event)
 --shop: any kind of shop in the game
---date/time change
+--calendar: date/time change
 
 --Possible contexts:
 --link: Any cutscene (Social Link, Story or Event)

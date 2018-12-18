@@ -14,4 +14,4 @@ The daystate does not affect the particulars of the context change event of pass
 This means that each time period of each Day MUST match one of the following situations. If not, a crash will occur:
  - Be empty. This will cause the day to be skipped
  - Call a cutscene or other event that ends with time moving forward (defined in the actions=<context> key)
- - Have a envorinment context specified in the start=<env> key
+ - Have a environment and context specified in the env=<env>/context=<context> keys

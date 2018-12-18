@@ -23,7 +23,7 @@ end
 local function ai(shadow)
 	local spelli = 0
 	repeat
-		spelli = math.random(1, 8)
+		spelli = math.random(8)
 	until
 		shadow.persona.spellDeck[spelli] and not shadow.persona.spellDeck[spelli].passive
 	target('One Enemy')
@@ -43,8 +43,7 @@ local function loadpersona(persona)
 end
 
 local function loadpersonas()
-	local json = require('json_reader')
-	state.battle.spells=json.read({file='spells.json'})
+	state.battle.spells=require("data/spells")
 	for i=1, #state.battle.participants do loadpersona(state.battle.participants[i].persona) print("\n") end
 end
 
@@ -109,7 +108,7 @@ function battle.processinput(input)
 end
 
 function battle.loadcontext(inst)
-	math.randomseed(os.clock()*100000000000)
+	math.randomseed(os.time())
 	_load(inst)
 	battle.refresh()
 end
