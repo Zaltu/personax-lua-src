@@ -1,3 +1,4 @@
+_G.json = require('json_reader')
 local luawriter = require('luawriter')
 _G.state = {}
 
@@ -22,6 +23,7 @@ function state.loadstate(savefile)
 	for key, value in pairs(loadedstate) do state[key]=value end
 end
 
+
 function state.savestate(savefile)
 	if savefile then savefile="PXS"..savefile..".json" state.evolve('save', savefile) else savefile='data/savestate.lua' end
 	luawriter.convert(state, savefile)
@@ -39,12 +41,13 @@ end
 
 
 function state.event(event)
-	if state.locked then state.eventcallerror="State is locked" return end
+	if state.locked==true then state.eventcallerror="State is locked" return "State is locked" end
 	state.lock()
 	local map = json.decode(event)
 	for key, value in pairs(map) do state.context[key]=value end
 	state.context.processinput()
 	state.unlock()
+	return "Event Process Successfully"
 end
 
 

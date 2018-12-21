@@ -6,13 +6,13 @@ local function _load(shopinquestion)
 end
 
 function shop.refresh()
-	state.update = current
+	state.update = json.encode(current)
 end
 
 function shop.processinput()
 	current = shop.menu[current[state.context.shopindex]]
 	--Handle exit nodes
-	if type(current) == "function" then current(shop.location) return end
+	if type(current) == "function" then current() return end
 	shop.refresh()
 end
 

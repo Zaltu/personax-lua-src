@@ -30,6 +30,7 @@ end
 function calendar.loadcontext(hardset)
 	state.lock()
 	if not hardset then calendar.passTime() state.unlock() return end
+	print(hardset)
 	state.date.day = hardset - 1
 	calendar.passDay()
 	state.unlock()
