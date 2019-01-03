@@ -47,7 +47,7 @@ function state.event(event)
 	for key, value in pairs(map) do state.context[key]=value end
 	state.context.processinput()
 	state.unlock()
-	return "Event Process Successfully"
+	return "0"
 end
 
 
