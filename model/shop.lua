@@ -16,9 +16,8 @@ function shop.processinput()
 	shop.refresh()
 end
 
-function shop.loadcontext(shopinquestion, location)
+function shop.loadcontext(shopinquestion)
 	_load(shopinquestion)
-	shop.location = location
 	current = shop.menu.top
 	shop.refresh()
 end

@@ -9,14 +9,14 @@ extern "C"{
 }
 using namespace std;
 
-void static setStateContext(lua_State *L, const char *context, vector<char> *params){
+void static setStateContext(lua_State *L, const char *context, vector<const char*> params){
     lua_getfield(L, -1, "changecontext");
     lua_pushstring(L, context);
     int i;
-    for (i=0; i < params->size(); ++i){
+    for (i=0; i < params.size(); ++i){
         lua_pushstring(L, params[i]);
     }
-    lua_pcall(L, params->size()+1, 1, 0);
+    lua_pcall(L, params.size()+1, 1, 0);
     std::cout << "C++: Switched to " << context << std::endl;
     lua_pop(L, 1);
 }
@@ -51,10 +51,11 @@ int main() {
     luaL_loadfile(L, "state.lua") || lua_pcall(L, 0, 0, 0);
     lua_getglobal(L, "state");
     const char *context0 = "calendar";
-    vector<char> *empty = new vector<char>();
+    vector<const char*> empty;
     setStateContext(L, context0, empty);
     const char *context1 = "shop";
-    setStateContextShop(L, context1);
+    vector<const char*> shopcontext = {"trainer"};
+    setStateContext(L, context1, shopcontext);
     getUpdate(L);
     const char *event0 = "{'shopindex':1}";
     sendStateEvent(L, event0);

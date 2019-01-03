@@ -7,7 +7,7 @@
             "taskName": "buildEventProcessor",
             "type": "shell",
             "command": "g++",
-            "args": ["-o", "processEvent.exe", "-I /usr/include", "model/processEvent.cpp", "-llua", "-ldl"],
+            "args": ["-std=c++11", "-o", "processEvent.exe", "-I /usr/include/luajit-2.0", "model/processEvent.cpp", "-llua", "-ldl"],
             "group": {
                 "kind": "build",
                 "isDefault": true
