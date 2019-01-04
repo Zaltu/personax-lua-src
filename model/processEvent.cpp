@@ -2,12 +2,15 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
+#include <json.hpp>
 extern "C"{
     #include <lua.h>
     #include <lauxlib.h>
     #include <lualib.h>
 }
 using namespace std;
+// for convenience
+using json = nlohmann::json;
 
 const char* LUA_LOCAL_PREP = "package.path = package.path..';./model/?.lua' require('state')";
 
@@ -33,10 +36,11 @@ static void sendStateEvent(lua_State *L, const char *event){
     lua_pop(L, 1);
 }
 
-static void getUpdate(lua_State *L){
+static string getUpdate(lua_State *L){
     lua_getfield(L, -1, "update");
-    cout << "Current state.update: " << lua_tostring(L, -1) << endl;
+    const char* update = lua_tostring(L, -1);
     lua_pop(L, 1);
+    return update;
 }
 
 static lua_State* prepLuaState(){
@@ -47,6 +51,10 @@ static lua_State* prepLuaState(){
     lua_getglobal(L, "state");
     // End Lua State Requirements
     return L;
+}
+
+static void runSocialLink(lua_State *L){
+    getUpdate(L);
 }
 
 int main() {
@@ -61,19 +69,19 @@ int main() {
     vector<const char*> shopcontext = {"trainer"};
     setStateContext(L, context1, shopcontext);
 
-    getUpdate(L);
+    cout << "Current state.update: " << getUpdate(L) << endl;
 
     const char *event0 = "{'shopindex':1}";
     sendStateEvent(L, event0);
-    getUpdate(L);
+    cout << "Current state.update: " << getUpdate(L) << endl;
 
     const char *event1 = "{'shopindex':0}";
     sendStateEvent(L, event1);
-    getUpdate(L);
+    cout << "Current state.update: " << getUpdate(L) << endl;
 
     const char *event2 = "{'shopindex':0}";
     sendStateEvent(L, event2);
-    getUpdate(L);
+    cout << "Current state.update: " << getUpdate(L) << endl;
 
     lua_close(L);
 }
