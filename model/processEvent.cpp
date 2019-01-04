@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <iostream>
-#include <typeinfo> 
 #include <vector>
 #include <string.h>
 extern "C"{
@@ -10,7 +9,9 @@ extern "C"{
 }
 using namespace std;
 
-void static setStateContext(lua_State *L, const char *context, vector<const char*> params){
+const char* LUA_LOCAL_PREP = "package.path = package.path..';./model/?.lua' require('state')";
+
+static void setStateContext(lua_State *L, const char *context, vector<const char*> params){
     lua_getfield(L, -1, "changecontext");
     lua_pushstring(L, context);
     int i;
@@ -21,7 +22,7 @@ void static setStateContext(lua_State *L, const char *context, vector<const char
     cout << "C++: Switched to " << context << endl;
 }
 
-void static sendStateEvent(lua_State *L, const char *event){
+static void sendStateEvent(lua_State *L, const char *event){
     lua_getfield(L, -1, "event");
     lua_pushstring(L, event);
     lua_pcall(L, 1, 1, 0);
@@ -32,36 +33,47 @@ void static sendStateEvent(lua_State *L, const char *event){
     lua_pop(L, 1);
 }
 
-void static getUpdate(lua_State *L){
+static void getUpdate(lua_State *L){
     lua_getfield(L, -1, "update");
     cout << "Current state.update: " << lua_tostring(L, -1) << endl;
     lua_pop(L, 1);
 }
 
-int main() {
+static lua_State* prepLuaState(){
     // Begin Lua State Requirements
     lua_State *L = lua_open();
     luaL_openlibs(L);
-    luaL_loadfile(L, "state.lua") || lua_pcall(L, 0, 0, 0);
+    luaL_dostring(L, LUA_LOCAL_PREP);
     lua_getglobal(L, "state");
     // End Lua State Requirements
+    return L;
+}
+
+int main() {
+    lua_State *L = prepLuaState();
 
     // Testsuite
     const char *context0 = "calendar";
     vector<const char*> empty;
     setStateContext(L, context0, empty);
+
     const char *context1 = "shop";
     vector<const char*> shopcontext = {"trainer"};
     setStateContext(L, context1, shopcontext);
+
     getUpdate(L);
+
     const char *event0 = "{'shopindex':1}";
     sendStateEvent(L, event0);
     getUpdate(L);
+
     const char *event1 = "{'shopindex':0}";
     sendStateEvent(L, event1);
     getUpdate(L);
+
     const char *event2 = "{'shopindex':0}";
     sendStateEvent(L, event2);
     getUpdate(L);
+
     lua_close(L);
 }
