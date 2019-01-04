@@ -1,7 +1,7 @@
 local freeroam = {}
 
 function freeroam.refresh()
-	state.update = "USER FREE-ROAM"
+	state.update = json.encode({key="USER FREE ROAM"})
 end
 
 function freeroam.processinput()

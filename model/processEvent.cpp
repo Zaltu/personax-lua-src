@@ -36,9 +36,9 @@ static void sendStateEvent(lua_State *L, const char *event){
     lua_pop(L, 1);
 }
 
-static string getUpdate(lua_State *L){
+static json getUpdate(lua_State *L){
     lua_getfield(L, -1, "update");
-    const char* update = lua_tostring(L, -1);
+    json update = json::parse(lua_tostring(L, -1));
     lua_pop(L, 1);
     return update;
 }
