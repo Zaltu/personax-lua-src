@@ -29,7 +29,7 @@ function shop()
 end
 
 function link()
-	state.changecontext('link', {arcana='Aeon'})
+	state.changecontext('link', 'Aeon')
 
 	state.event(json.encode({key="link.action", index=0}))
 	state.event(json.encode({key="link.action", index=0}))

@@ -37,7 +37,7 @@ end
 local function showSpeak()
 	local choices = {}
 	if #state.cut.open > 2 then
-		for i=2, #state.cut.open do choices[#choices+1]=state.cut.cutscene.items[i][1].text end --Won't show anything for physical action based choices
+		for i=3, #state.cut.open do choices[#choices+1]=state.cut.cutscene.items[state.cut.open[i]][1].text end --Won't show anything for physical action based choices
 	end
 	return {
 		key="link.show.speak",
@@ -70,9 +70,16 @@ local function showCam()
 end
 
 function link.refresh()--Send update to graphic view
-	if state.cut.open then
-		print("\nAction:\n"..state.cut.open[1].text.."\n")--For testing only.
-		state.update = state.cut.open.show
+	if state.cut.open.show then
+		--print("\nAction:\n"..state.cut.open[1].text.."\n")--For testing only.
+		state.update = json.encode(state.cut.open.show)
+	elseif state.cut.open[1].text then--For testing only
+		state.update = json.encode({
+			key="link.show.info",
+			text=state.cut.open[1].text,
+		})
+	else
+		state.changecontext("calendar")
 	end
 end
 
@@ -83,19 +90,16 @@ end
 function link.processinput()
 	state.cut.index=2
 	if state.context.index then
-		print("Processing input in context: Social Link")
 		state.cut.index = state.context.index+2
 		state.context.index=nil
 	end
-	local inspect = require("inspect")
 	state.cut.open = state.cut.cutscene.items[state.cut.open[state.cut.index]+1]
 	setShowType(state)
 	link.refresh()
-	if state.cut.open[1].place or state.cut.open[1].animation then link.processinput() end
 end
 
-function link.loadcontext(sociallink)
-	_load(sociallink.arcana)
+function link.loadcontext(arcana)
+	_load(arcana)
 	setShowType(state)
 	link.refresh()
 end

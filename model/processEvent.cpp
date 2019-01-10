@@ -13,6 +13,17 @@ using namespace std;
 using json = nlohmann::json;
 
 const char* LUA_LOCAL_PREP = "package.path = package.path..';./model/?.lua' require('state')";
+enum class SL_KEYS {
+    speak,
+    info,
+    move
+};
+map<string, SL_KEYS> SL_MAP_ENUM = {
+        {"link.show.speak", SL_KEYS::speak},
+        {"link.show.info", SL_KEYS::info},
+        {"link.show.move", SL_KEYS::move}
+};
+
 
 static void setStateContext(lua_State *L, const char *context, vector<const char*> params){
     lua_getfield(L, -1, "changecontext");
@@ -53,20 +64,58 @@ static lua_State* prepLuaState(){
     return L;
 }
 
+static int waitForChoice(vector<string> choices){
+    int i;
+    for (i=0; i<choices.size(); ++i){
+        cout << i << ":  " << choices[i] << endl;
+    }
+    int ichoice;
+    cin >> ichoice;
+    return ichoice;
+}
+
+static void waitForInput(){
+    cin.ignore();
+}
+
 static void runSocialLink(lua_State *L){
-    getUpdate(L);
+    const char *slContext = "link";
+    vector<const char*> slcParams = {"Aeon"};
+    setStateContext(L, slContext, slcParams);
+    int i;
+    for (i=0; i<10; ++i){
+        json update = getUpdate(L);
+        int index = 0;
+        switch (SL_MAP_ENUM[update["key"]]){
+            case SL_KEYS::speak: cout << update["text"] << endl;
+                                 if (update["options"].size() > 0){
+                                    index = waitForChoice(update["options"]);
+                                 }
+                                 else{
+                                    waitForInput();
+                                 };
+                                 break;
+            default: cout << update["text"] << endl;
+        }
+        json event = {
+            {"key", "link.action"},
+            {"index", index}
+        };
+        const char *cevent = event.dump().c_str();
+        sendStateEvent(L, cevent);
+    }
 }
 
 int main() {
     lua_State *L = prepLuaState();
-
-    // Testsuite
+    runSocialLink(L);
+    /*// Testsuite
     const char *context0 = "calendar";
     vector<const char*> empty;
     setStateContext(L, context0, empty);
 
-    const char *context1 = "shop";
-    vector<const char*> shopcontext = {"trainer"};
+    const char *context1 = "link";
+    vector<const char*> shopcontext = {"Aeon"};
     setStateContext(L, context1, shopcontext);
 
     cout << "Current state.update: " << getUpdate(L) << endl;
@@ -82,6 +131,6 @@ int main() {
     const char *event2 = "{'shopindex':0}";
     sendStateEvent(L, event2);
     cout << "Current state.update: " << getUpdate(L) << endl;
-
+    */
     lua_close(L);
 }
