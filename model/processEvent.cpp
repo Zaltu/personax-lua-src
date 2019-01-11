@@ -14,11 +14,13 @@ using json = nlohmann::json;
 
 const char* LUA_LOCAL_PREP = "package.path = package.path..';./model/?.lua' require('state')";
 enum class SL_KEYS {
-    speak,
-    info,
-    move
+    speak=0,
+    info=1,
+    move=2,
+    ERROR=3
 };
 map<string, SL_KEYS> SL_MAP_ENUM = {
+        {"USER FREE ROAM", SL_KEYS::ERROR},
         {"link.show.speak", SL_KEYS::speak},
         {"link.show.info", SL_KEYS::info},
         {"link.show.move", SL_KEYS::move}
@@ -82,9 +84,9 @@ static void runSocialLink(lua_State *L){
     const char *slContext = "link";
     vector<const char*> slcParams = {"Aeon"};
     setStateContext(L, slContext, slcParams);
-    int i;
-    for (i=0; i<10; ++i){
-        json update = getUpdate(L);
+    json update;
+    do{
+        update = getUpdate(L);
         int index = 0;
         switch (SL_MAP_ENUM[update["key"]]){
             case SL_KEYS::speak: cout << update["text"] << endl;
@@ -95,7 +97,8 @@ static void runSocialLink(lua_State *L){
                                     waitForInput();
                                  };
                                  break;
-            default: cout << update["text"] << endl;
+            case SL_KEYS::info: cout << update["text"] << endl;
+                                break;
         }
         json event = {
             {"key", "link.action"},
@@ -104,6 +107,7 @@ static void runSocialLink(lua_State *L){
         const char *cevent = event.dump().c_str();
         sendStateEvent(L, cevent);
     }
+    while(update["key"] != "USER FREE ROAM");//THIS WON'T EXIST IN REAL CODE ANYWAY
 }
 
 int main() {

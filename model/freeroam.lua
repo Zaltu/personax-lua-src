@@ -5,6 +5,8 @@ function freeroam.refresh()
 end
 
 function freeroam.processinput()
+	print("Ignore input, user in free-roam")
+	freeroam.refresh()
 end
 
 function freeroam.loadcontext()

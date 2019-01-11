@@ -37,7 +37,11 @@ end
 local function showSpeak()
 	local choices = {}
 	if #state.cut.open > 2 then
-		for i=3, #state.cut.open do choices[#choices+1]=state.cut.cutscene.items[state.cut.open[i]][1].text end --Won't show anything for physical action based choices
+		for i=2, #state.cut.open do
+			choices[#choices+1]=state.cut.cutscene.items[state.cut.open[i]+1][1].text
+			--Get the item at the NON-LUA index specified in the current action's nexts from the cutscene's registry
+			--And append that item's text to the possible choices in the dialog box
+		end --Won't show anything for physical action based choices
 	end
 	return {
 		key="link.show.speak",
@@ -78,13 +82,17 @@ function link.refresh()--Send update to graphic view
 			key="link.show.info",
 			text=state.cut.open[1].text,
 		})
-	else
-		state.changecontext("calendar")
 	end
 end
 
 local function setShowType(state)
-	if state.cut.open[1].points then state.cut.open.show=showSpeak() elseif state.cut.open[1].place then state.cut.open.show=showCam() elseif state.cut.open[1].animation then state.cut.open.show=showMove() end
+	if state.cut.open[1].points then
+		state.cut.open.show=showSpeak()
+	elseif state.cut.open[1].place then
+		state.cut.open.show=showCam()
+	elseif state.cut.open[1].animation then
+		state.cut.open.show=showMove()
+	end
 end
 
 function link.processinput()
@@ -93,8 +101,13 @@ function link.processinput()
 		state.cut.index = state.context.index+2
 		state.context.index=nil
 	end
-	state.cut.open = state.cut.cutscene.items[state.cut.open[state.cut.index]+1]
-	setShowType(state)
+	if state.cut.open[state.cut.index] then
+		state.cut.open = state.cut.cutscene.items[state.cut.open[state.cut.index]+1]
+		setShowType(state)
+	else-- SL Cutscene over
+		state.changecontext("calendar")
+		return
+	end
 	link.refresh()
 end
 
