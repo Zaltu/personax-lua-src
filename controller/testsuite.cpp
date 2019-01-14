@@ -3,16 +3,17 @@
 #include <vector>
 #include <string.h>
 #include <json.hpp>
+#include "setupState.cpp"
+#include "processEvent.cpp"
 extern "C"{
     #include <lua.h>
     #include <lauxlib.h>
     #include <lualib.h>
 }
 using namespace std;
-// for convenience
+
 using json = nlohmann::json;
 
-const char* LUA_LOCAL_PREP = "package.path = package.path..';./model/?.lua' require('state')";
 enum class SL_KEYS {
     speak=0,
     info=1,
@@ -38,41 +39,13 @@ static void setStateContext(lua_State *L, const char *context, vector<const char
     cout << "C++: Switched to " << context << endl;
 }
 
-static void sendStateEvent(lua_State *L, const char *event){
-    lua_getfield(L, -1, "event");
-    lua_pushstring(L, event);
-    lua_pcall(L, 1, 1, 0);
-    string returncode = lua_tostring(L, -1);
-    if (returncode != "0"){
-        cout << returncode << endl;
-    }
-    lua_pop(L, 1);
-}
-
-static json getUpdate(lua_State *L){
-    lua_getfield(L, -1, "update");
-    json update = json::parse(lua_tostring(L, -1));
-    lua_pop(L, 1);
-    return update;
-}
-
-static lua_State* prepLuaState(){
-    // Begin Lua State Requirements
-    lua_State *L = lua_open();
-    luaL_openlibs(L);
-    luaL_dostring(L, LUA_LOCAL_PREP);
-    lua_getglobal(L, "state");
-    // End Lua State Requirements
-    return L;
-}
 
 static void runSocialLink(lua_State *L){
     const char *slContext = "link";
     vector<const char*> slcParams = {"Aeon"};
     setStateContext(L, slContext, slcParams);
-    json update;
+    json update = getUpdate(L);
     do{
-        update = getUpdate(L);
         int index = 0;
         cout << update["text"] << endl;
         if (SL_MAP_ENUM[update["key"]] == SL_KEYS::speak){
@@ -92,7 +65,7 @@ static void runSocialLink(lua_State *L){
             {"index", index}
         };
         const char *cevent = event.dump().c_str();
-        sendStateEvent(L, cevent);
+        update = sendStateEvent(L, cevent);
     }
     while(update["key"] != "USER FREE ROAM");//THIS WON'T EXIST IN REAL CODE ANYWAY
 }
