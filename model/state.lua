@@ -10,22 +10,22 @@ state.date.day = 1
 state.date.time = 0
 state.slglobal = require("data/slglobal")
 state.mc = {}
-state.availablechars = {[0]=state.mc}
-state.party = {[0]=state.mc}
+state.availablechars = {state.mc}
+state.party = {state.mc}
 state.env = nil
 state.save = 0
 state.context = nil
 
 
 function state.loadstate(savefile)
-	if savefile then savefile="PXS"..savefile..".lua" else savefile='savestate.lua' end
+	if savefile then savefile="PXS"..savefile..".lua" else savefile='data/saves/savestate.lua' end
 	loadedstate = require(savefile)
 	for key, value in pairs(loadedstate) do state[key]=value end
 end
 
 
 function state.savestate(savefile)
-	if savefile then savefile="PXS"..savefile..".json" state.evolve('save', savefile) else savefile='data/savestate.lua' end
+	if savefile then savefile="PXS"..savefile..".json" state.evolve('save', savefile) else savefile='data/saves/savestate.lua' end
 	luawriter.convert(state, savefile)
 end
 
@@ -103,12 +103,15 @@ function state.unlock()	state.locked=false end
 --link: Any cutscene (Social Link, Story or Event)
 --shop: any kind of shop in the game
 --calendar: date/time change
+--freeroam
+--dungeon
 
 --Possible contexts:
---link: Any cutscene (Social Link, Story or Event)
---overworld: Overworld (Separated into ENVs)
+--link: Social Link
+--inline: any other cutscene
+--freeroam: Overworld (Separated into ENVs)
 --dungeon: Dungeon
 --battle: Battle
 --velvet: Velvet Room
 --shop: any kind of shop in the game
---date/time change
+--calendar: date/time change

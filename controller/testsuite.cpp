@@ -14,19 +14,6 @@ using namespace std;
 
 using json = nlohmann::json;
 
-enum class SL_KEYS {
-    speak=0,
-    info=1,
-    move=2,
-    ERROR=3
-};
-map<string, SL_KEYS> SL_MAP_ENUM = {
-        {"USER FREE ROAM", SL_KEYS::ERROR},
-        {"link.show.speak", SL_KEYS::speak},
-        {"link.show.info", SL_KEYS::info},
-        {"link.show.move", SL_KEYS::move}
-};
-
 
 static void setStateContext(lua_State *L, const char *context, vector<const char*> params){
     lua_getfield(L, -1, "changecontext");
@@ -47,8 +34,8 @@ static void runSocialLink(lua_State *L){
     json update = getUpdate(L);
     do{
         int index = 0;
-        cout << update["text"] << endl;
-        if (SL_MAP_ENUM[update["key"]] == SL_KEYS::speak){
+        if (string(update["key"]).rfind("link", 0) == 0){
+            cout << update["text"] << endl;
             if (update["options"].size() > 0){
                 int i;
                 for (i=0; i<update["options"].size(); ++i){

@@ -61,7 +61,7 @@ local function showMove()
 	}
 end
 
---local function showInfo() end Ignore Info actions. These should never show up in the game
+--local function showInfo() end-- Ignore Info actions. These should never show up in the game
 
 local function showCam()
 	if state.cut.open[1].place=="Loading" then if not state.isloading then state.loading(true) else state.isloading(false) end end
@@ -75,7 +75,6 @@ end
 
 function link.refresh()--Send update to graphic view
 	if state.cut.open.show then
-		--print("\nAction:\n"..state.cut.open[1].text.."\n")--For testing only.
 		state.update = json.encode(state.cut.open.show)
 	elseif state.cut.open[1].text then--For testing only
 		state.update = json.encode({
@@ -85,7 +84,7 @@ function link.refresh()--Send update to graphic view
 	end
 end
 
-local function setShowType(state)
+local function setShowType()
 	if state.cut.open[1].points then
 		state.cut.open.show=showSpeak()
 	elseif state.cut.open[1].place then
@@ -103,7 +102,7 @@ function link.processinput()
 	end
 	if state.cut.open[state.cut.index] then
 		state.cut.open = state.cut.cutscene.items[state.cut.open[state.cut.index]+1]
-		setShowType(state)
+		setShowType()
 	else-- SL Cutscene over
 		state.changecontext("calendar")
 		return
@@ -113,7 +112,7 @@ end
 
 function link.loadcontext(arcana)
 	_load(arcana)
-	setShowType(state)
+	setShowType()
 	link.refresh()
 end
 

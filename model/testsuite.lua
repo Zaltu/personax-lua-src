@@ -7,8 +7,7 @@ local pprint = function (value) local inspect = require("inspect") print(inspect
 
 function setState()
 	state.evolve('Version', '0.0.0.0.5')
-	state.evolve('mc', {['name']='Chaos'})
-	state.evolve('slglobal', {['Aeon']={level=1, angle=0}})
+	state.evolve('mc', {name='Chaos'})
 	state.evolve('date', {day=1, time=0})
 	state.savestate(nil)
 end

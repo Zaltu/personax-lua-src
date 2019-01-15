@@ -87,13 +87,13 @@ On top of these contexts, there are a couple other important functionality scrip
 The text data of the game is found under the model as well, since only the model accesses it. The `model/data/` directory is organized as such:
 - *data/days/*: All ~365 days to be played. More documentation on their definition within.
 - *data/envs/*: Definitions of flags and other that are associated with each "env", corresponding more or less to a UE level
+- *data/inline/*: Defines all non-Social Link cutscenes
 - *data/links/*: Definitions of all Social Links. One file per link for now.
 - *data/pers/*: Definitions of all Personas (spoilers, shadows are Personas)
 - *data/shops/*: Definition of each shop's options tree.
 - *data/saves/*: Save files go here
-- *data/fusion_combos.lua*: Different possible Persona fusion arcana combinations
-- *data/spells.lua*: Definition of each spell in the game (currently utterly broken)
 
+The other files found directly in the *data/* directory represent various constants generally used by contexts. These are ones that don't particularly deserve a full folder to themselves, ie can be contained in a single file.
 
 # Requirements
 This program was run and tested with the following utilities:

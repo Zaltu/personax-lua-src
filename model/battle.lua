@@ -1,53 +1,7 @@
---LEGACY/TEST PROOF OF CONCEPT
 local battle = {}
 
-local function target(who)
-	if state.battle.party[state.battle.participants[state.battle.open]] then
-		state.battle.target=1
-		return--USER NEEDS TO MAKE A CHOICE
-	end
-	if who=='One Enemy' then
-		repeat
-			state.battle.target=math.random(1, #state.battle.participants)
-		until
-			state.battle.party[state.battle.participants[state.battle.target].name]
-	else
-		repeat
-			state.battle.target=math.random(1, #state.battle.participants)
-		until
-			state.battle.ene[state.battle.participants[state.battle.target].name]
-	end
-	print("Shadow is targeting "..state.battle.participants[state.battle.target].name)
-end
 
-local function ai(shadow)
-	local spelli = 0
-	repeat
-		spelli = math.random(8)
-	until
-		shadow.persona.spellDeck[spelli] and not shadow.persona.spellDeck[spelli].passive
-	target('One Enemy')
-	print("Shadow used "..shadow.persona.spellDeck[spelli].name..", but nothing happened!")
-	--dofile(shadow.persona.spelldeck[spelli])
-end
-
-
-function resolveresistances(element, target)
-end
-
-local function loadpersona(persona)
-	for i=1, #persona.spellDeck do
-		persona.spellDeck[i]=state.battle.spells[persona.spellDeck[i]]
-	end
-	for key, value in pairs(persona.spellDeck) do print(key, value.name) end
-end
-
-local function loadpersonas()
-	state.battle.spells=require("data/spells")
-	for i=1, #state.battle.participants do loadpersona(state.battle.participants[i].persona) print("\n") end
-end
-
-local function turn()
+local function turnAI()
 	if state.battle.party[state.battle.participants[state.battle.open].name] then
 		print(state.battle.participants[state.battle.open].name.." used Myriad Arrows!")
 		state.battle.open=state.battle.open+1
@@ -65,12 +19,26 @@ local function turn()
 	state.unlock()
 end
 
+
+--In dungeon 1, first half:
+--1 = [{small small small}] (same weaknesses)
+--2 = [{big}]
+--3 = [{small small}] (different weaknesses)
+--In dungeon 1, second half with levels ++:
+--4 = [{small small small}] (same weaknesses)
+--5 = [{big}]
+--6 = [{small small}] (different weaknesses)
+--etc...
+--Property of the dungeon imo, should be in the dungeon env config
+local function spawnenemies()
+end
+
 local function detorder()
 	local done=false
 	while not done do
 		done=true
-		for i=1, #state.battle.participants-1 do
-			if tonumber(state.battle.participants[i].persona.stats[2])<tonumber(state.battle.participants[i+1].persona.stats[2]) then
+		for i=1, #state.battle.participants do
+			if tonumber(state.battle.participants[i].persona.stats[3])<tonumber(state.battle.participants[i+1].persona.stats[3]) then
 				temp=state.battle.participants[i]
 				state.battle.participants[i]=state.battle.participants[i+1]
 				state.battle.participants[i+1]=temp
@@ -78,39 +46,43 @@ local function detorder()
 			end
 		end
 	end
-	state.battle.open = 1
-	for i=1, #state.battle.participants do print(state.battle.participants[i].persona.name, state.battle.participants[i].persona.agi) end
 end
 
-local function _load(inst)
-	state.battle={}
-	state.battle.party={}
-	state.battle.ene={}
-	state.battle.participants = {}
-	for i=1, #inst.party do state.battle.party[inst.party[i].name]=true state.battle.participants[#state.battle.participants+1]=inst.party[i] end
-	for i=1, #inst.ene do state.battle.ene[inst.ene[i].name]=true state.battle.participants[#state.battle.participants+1]=inst.ene[i] end
+local function _load(powerlevel)
+	state.battle = {powerlevel=powerlevel}
+	state.battle.enemies = {}
+	state.battle.participants = state.party
+    spawnenemies()
+    state.battle.open = 1
 	detorder()
-	loadpersonas()
-	print("\nBattle Start!\n")
-	if state.battle.ene[state.battle.participants[state.battle.open].name] then turn() end
 end
-
 
 function battle.refresh(update)
-	local json = require("json_reader")
 	state.update=json.encode({'None'})
 end
 
 function battle.processinput(input)
-	if input=='select' then
-		turn()
-	end
+    turnAI()
 end
 
-function battle.loadcontext(inst)
+function battle.loadcontext(powerlevel)
 	math.randomseed(os.time())
-	_load(inst)
+	_load(powerlevel)
 	battle.refresh()
 end
 
 return battle
+
+
+--[[
+- battle setup
+- user turn
+- select spell (UE) (menu menu)
+- send spell selection
+- parse spell
+- if targeted, request target
+- else activate
+- ene turn
+- auto-select spell/target
+- activate spell
+]]
