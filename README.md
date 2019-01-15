@@ -7,10 +7,8 @@ The first step upon loading into a save file is to initialize the lua state. To 
 The global state variable (GSV) occupies index 0 of the shared C/Lua stack. Since all operations pass through this variable, it should never be removed or displaced.
 
 The PX C++ API offers two built-in ways of interacting with the Lua stack.
-*getUpdate*
-- Returns the C++ JSON object of the state.update table.
-*sendStateEvent*
-- Send an event to the PX Lua API, in the form recognizable by the current context (see Lua section below).
+- *getUpdate*: Returns the C++ JSON object of the state.update table.
+- *sendStateEvent*: Send an event to the PX Lua API, in the form recognizable by the current context (see Lua section below).
 
 These functions are balanced, meaning they will always leave the stack in the state it started, making them safe to use. It is possible to interact with the stack in other ways, but due to the difficulty in tracing potential segfaults and the general unstability of the shared stack, it is highly recommended not to do so.
 
@@ -40,7 +38,7 @@ Currently, none. This is a WIP pre-alpha alpha early access and there are no gra
 
 ## Lua
 ### Initialize Game State
-The entirety of the Lua code is built around the gobdal state variable (GSV). It contains all information required to identify the current state of the game on load. The bulk of the GSV callable code is stored as a global variable initialized when resolving the state.lua file. The functionality exposed in the GSV are:
+The entirety of the Lua code is built around the gobdal state variable (GSV). It contains all information required to identify the current state of the game on load. The bulk of the GSV callable code is stored as a global variable initialized when resolving the state.lua file. The functionality exposed in the GSV is:
 - loadstate: load a save file
 - savestate: save the game
 - event: process a given event
@@ -53,7 +51,7 @@ The entirety of the Lua code is built around the gobdal state variable (GSV). It
 
 It should also be noted that there exists another global variable set in state.lua, that being the Lua JSON utility. Since state.update is designed to be a dumps'd JSON and since each context must be able to set it, it is convenient to have access to it anywhere.
 
-### Processing Events
+### Lua Responsibility - Processing Events
 Following what the philosophy explained in the C++ section, the Lua code is designed to functionally work off a single event being fired. It is then processed internally and state.update is set. The exposed functionality changecontext and loadenv, while seemingly useful, are not to be used by anything other than the Lua event processing.
 
 To note: the GSV *blocks all input* while processing an event. It *does not* store inputs. Mashing a on something will not cause multiple events to be fired. The function will be terminated prematurely. This is expected behavior.
@@ -61,6 +59,40 @@ To note: the GSV *blocks all input* while processing an event. It *does not* sto
 ### Lua Responsibility - Context Switching
 Contexts are the major game logic subdivisions in the codebase. The context determines what the user is intended to be doing during the time it is active. Since significant user inputs are mapped to events, there must be a context set at all times while inputs are enabled.
 To this end, context changes are only possible through Lua code that was called by a process event, with one semi-exception (we'll get to that later). Since the state is locked upon receiving an event, this ensures that state.update will not get corrupted by an asynchroneous call. To my understanding, the program would very likely crash from segfault anyway should two events attempt to alter the shared stack, so this is for the best technically as well.
+
+### Available Contexts
+The contexts that are available by default are symbolically fixed. That meaning that you could in theory add more contexts, but since they themselves are responsible for *switching* contexts, any added contexts cannot be reached unless an existing context is changed to switch to it. The defined, available contexts are:
+- freeroam
+- link (Social Link)
+- shop
+- calendar (special case)
+- battle
+- dungeon
+- inline (in-line text handling)
+- velvet (special shop)
+
+### Lua Data Files
+While JSON is a useful tool to pass recognizable data through the shared stack, it it not particularly efficient. Based on some tests run (see some of the info in zaltu/luawriter), requiring a Lua file is up to over 10,000 times faster to load than parsing JSON. Obviously, this is somewhat expected, but it is still a remarkable difference.
+
+Because of this, all the game's "text" data files (stats, text, etc...) are stored as importable Lua files that return a Lua table containing the information. The Lua context can then use this information to generate the appropriate JSON for the shared stack.
+
+### Lua Folder Structure
+Lua files represent the "model" of the game from a classic MVC standpoint. As such, they are under the top-level "model" folder. Directly within the model folder are the main important modules. For the organization of this program, that basically comes down to *all contexts*. Normally, each context is represented by a single file, as many are not overly complex from a game state management point of view. In some cases, like the battle context, there are many things that need to be handled however, and keeping them all in a single file, while possible, would be annoying as all hell. In such situations, the extra file(s) are stored under `model/util/<context>/`, for example `model/util/battle/`.
+
+On top of these contexts, there are a couple other important functionality scripts that exist within the top level:
+- state: The "main" file of the GSV. While technically not a context, manages everything and lives on the highest level.
+- json_reader: Lua JSON module. As previously stated, this is also actually a global variable loaded when resolving state.lua.
+- luawriter: Utility to write a Lua table to an importable Lua file. Mainly used for saving games and may move.
+
+The text data of the game is found under the model as well, since only the model accesses it. The `model/data/` directory is organized as such:
+- *data/days/*: All ~365 days to be played. More documentation on their definition within.
+- *data/envs/*: Definitions of flags and other that are associated with each "env", corresponding more or less to a UE level
+- *data/links/*: Definitions of all Social Links. One file per link for now.
+- *data/pers/*: Definitions of all Personas (spoilers, shadows are Personas)
+- *data/shops/*: Definition of each shop's options tree.
+- *data/saves/*: Save files go here
+- *data/fusion_combos.lua*: Different possible Persona fusion arcana combinations
+- *data/spells.lua*: Definition of each spell in the game (currently utterly broken)
 
 
 # Requirements
