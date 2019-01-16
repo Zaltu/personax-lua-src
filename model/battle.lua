@@ -1,14 +1,36 @@
 local battle = {}
 
 
+local function target(who)
+	if state.party[state.battle.participants[state.battle.open]] then
+		state.battle.target=1
+		return--USER NEEDS TO MAKE A CHOICE
+	end
+	state.battle.target=math.random(1, #state.battle.participants)
+	print("Shadow is targeting "..state.battle.participants[state.battle.target].name)
+end
+
+local function ai(shadow)
+	local spelli = 0
+	repeat
+		spelli = math.random(8)
+	until
+		shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli]
+	target('One Enemy')
+	ins = require('inspect')
+	print(ins(shadow.persona.spellDeck[spelli]))
+	print("Shadow used "..shadow.persona.spellDeck[spelli]..", but nothing happened!")
+	--dofile(shadow.persona.spelldeck[spelli])
+end
+
 local function turnAI()
-	if state.battle.party[state.battle.participants[state.battle.open].name] then
+	if state.party[state.battle.participants[state.battle.open].name] then
 		print(state.battle.participants[state.battle.open].name.." used Myriad Arrows!")
 		state.battle.open=state.battle.open+1
 		if state.battle.open>#state.battle.participants then state.battle.open=1 end
 		print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 	end
-	while state.battle.party[state.battle.participants[state.battle.open].name]==nil do
+	while not state.party[state.battle.participants[state.battle.open].name] do
 		state.lock()
 		ai(state.battle.participants[state.battle.open])
 		state.battle.open=state.battle.open+1
@@ -31,13 +53,15 @@ end
 --etc...
 --Property of the dungeon imo, should be in the dungeon env config
 local function spawnenemies()
+	-- Get a random set of enemies from the powerleveled list in the current dungeon env
+	state.battle.enemies = state.env.enemies[state.battle.powerlevel][math.random(1, #state.env.enemies[state.battle.powerlevel])]
 end
 
 local function detorder()
 	local done=false
 	while not done do
 		done=true
-		for i=1, #state.battle.participants do
+		for i=1, #state.battle.participants-1 do
 			if tonumber(state.battle.participants[i].persona.stats[3])<tonumber(state.battle.participants[i+1].persona.stats[3]) then
 				temp=state.battle.participants[i]
 				state.battle.participants[i]=state.battle.participants[i+1]
@@ -50,11 +74,14 @@ end
 
 local function _load(powerlevel)
 	state.battle = {powerlevel=powerlevel}
-	state.battle.enemies = {}
-	state.battle.participants = state.party
-    spawnenemies()
-    state.battle.open = 1
+	spawnenemies()
+	state.battle.participants = {}--state.party
+	--Load enemy persona files
+	for i, shadow in pairs(state.battle.enemies) do
+		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow), name=shadow}
+	end
 	detorder()
+	state.battle.open=1
 end
 
 function battle.refresh(update)
@@ -68,6 +95,7 @@ end
 function battle.loadcontext(powerlevel)
 	math.randomseed(os.time())
 	_load(powerlevel)
+	turnAI()
 	battle.refresh()
 end
 

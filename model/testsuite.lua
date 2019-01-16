@@ -14,7 +14,7 @@ end
 
 
 function shop()
-	state.changecontext('shop', 'trainer', 'data/envs/home')
+	state.changecontext('shop', 'trainer', 'home')
 	-- Select Buy Item
 	state.event(json.encode({shopindex=1}))
 	-- Select Back
@@ -41,13 +41,18 @@ function link()
 end
 
 function battle()
+	state.loadenv("barbariccia")
+	state.changecontext('battle', 1)
+end
+
+function battlepoc()
 	--LEGACY/PROOF OF CONCEPT
 	--Based on receiving individual inputs
 	shadowep=require("data/pers/Seraph")
 	aigis=require("data/pers/Cherub")
 	mc=require("data/pers/Dominion")
 
-	state.changecontext('battle', {['party']={{['name']='Aigis', ['persona']=aigis}, {['name']='MC', ['persona']=mc}}, ['ene']={{['name']='Shadow', ['persona']=shadowep}}})
+	state.changecontext('battlepoc', {['party']={{['name']='Aigis', ['persona']=aigis}, {['name']='MC', ['persona']=mc}}, ['ene']={{['name']='Shadow', ['persona']=shadowep}}})
 
 	state.context.processinput('select')
 	state.context.processinput('select')
@@ -76,7 +81,7 @@ function test(feature)
 	pprint(state.update)
 end
 
---test(battle)
-test(link)
+test(battle)
+--test(link)
 --test(dayChange)
 --test(shop)

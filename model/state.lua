@@ -63,7 +63,7 @@ end
 
 
 function state.loadenv(env)
-	state.env = require(env)
+	state.env = require("data/envs/"..env)
 	for flag, action in pairs(state.env) do
 		if state.flags[flag] then action() end
 	end

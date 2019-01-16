@@ -15,7 +15,7 @@ function calendar.passTime()
 	end
 	--Inform UI
 	state.update = {"It is now "..calendar.now.state.name}
-	state.loadenv("data/envs/"..calendar.now.env)
+	state.loadenv(calendar.now.env)
 	state.changecontext(calendar.now.context)
 end
 
