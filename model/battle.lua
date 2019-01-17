@@ -17,8 +17,8 @@ local function ai(shadow)
 	until
 		shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli]
 	target('One Enemy')
-	ins = require('inspect')
-	print(ins(shadow.persona.spellDeck[spelli]))
+	--ins = require('inspect')
+	--print(ins(shadow.persona.spellDeck[spelli]))
 	print("Shadow used "..shadow.persona.spellDeck[spelli]..", but nothing happened!")
 	--dofile(shadow.persona.spelldeck[spelli])
 end
@@ -31,6 +31,9 @@ local function turnAI()
 		print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 	end
 	while not state.party[state.battle.participants[state.battle.open].name] do
+		ins = require('inspect')
+		print(ins(state.party))
+		print(state.battle.participants[state.battle.open].name)
 		state.lock()
 		ai(state.battle.participants[state.battle.open])
 		state.battle.open=state.battle.open+1
@@ -57,7 +60,7 @@ local function spawnenemies()
 	state.battle.enemies = state.env.enemies[state.battle.powerlevel][math.random(1, #state.env.enemies[state.battle.powerlevel])]
 end
 
-local function detorder()
+local function determineorder()
 	local done=false
 	while not done do
 		done=true
@@ -75,12 +78,16 @@ end
 local function _load(powerlevel)
 	state.battle = {powerlevel=powerlevel}
 	spawnenemies()
-	state.battle.participants = {}--state.party
+	state.battle.participants = {}
+	--Load party persona files
+	for i, person in pairs(state.party) do
+		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..person.persona), name=person.firstname}
+	end
 	--Load enemy persona files
 	for i, shadow in pairs(state.battle.enemies) do
 		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow), name=shadow}
 	end
-	detorder()
+	determineorder()
 	state.battle.open=1
 end
 

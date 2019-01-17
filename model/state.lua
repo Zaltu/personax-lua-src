@@ -9,9 +9,9 @@ state.date = {}
 state.date.day = 1
 state.date.time = 0
 state.slglobal = require("data/slglobal")
-state.mc = {}
-state.availablechars = {state.mc}
-state.party = {state.mc}
+state.mc = {firstname="Minato", lastname="Arisatou", persona="Seraph"}
+state.availablechars = {[state.mc.firstname]=state.mc}
+state.party = {[state.mc.firstname]=state.mc}
 state.env = nil
 state.save = 0
 state.context = nil
@@ -54,19 +54,19 @@ end
 --There is no state.lock here as we assume that any call to changecontext will be effected
 --through a state.event processinput call
 function state.changecontext(newc, ...)
-	state.loading(true, newc)
 	state.inline=nil
 	state.context = require(newc)
 	state.context.loadcontext(...)
-	state.loading(false, newc)
 end
 
 
 function state.loadenv(env)
+	state.loading(true, env)
 	state.env = require("data/envs/"..env)
 	for flag, action in pairs(state.env) do
 		if state.flags[flag] then action() end
 	end
+	state.loading(false, env)
 end
 
 

@@ -4,8 +4,12 @@ function dungeon.refresh()
 	state.update = json.encode({key="USER FREE ROAM"})
 end
 
-function dungeon.processinput()
-	print("Ignore input, user in free-roam")
+function dungeon.processinput(powerlevel)
+	if powerlevel then
+		--Battle start
+		state.changecontext("battle", powerlevel)
+		return
+	end
 	freeroam.refresh()
 end
 
