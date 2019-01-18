@@ -15,3 +15,5 @@ This means that each time period of each Day MUST match one of the following sit
  - Be empty. This will cause the day to be skipped
  - Call a cutscene or other event that ends with time moving forward (defined in the actions=<context> key)
  - Have a environment and context specified in the env=<env>/context=<context> keys
+
+For the loading UI, a day must also contain a "date" property. This will indicate the date to display when changing to this date.

@@ -1,13 +1,26 @@
 local battle = {}
+require('util/battle/battlecost')
+require('util/battle/battleattack')
 
+--Taken from util battlecost
+function battle.cost(costtype, pcost) cost(costtype, pcost) end
+
+--We assume at the moment of attack that a target has already been established or isn't needed
+--Taken from util battleattack
+function battle.attack(numericalvalue, targetattribute, numericaltype, numberofhits)
+	attack(numericalvalue, targetattribute, numericaltype, numberofhits)
+end
 
 local function target(who)
 	if state.party[state.battle.participants[state.battle.open]] then
 		state.battle.target=1
 		return--USER NEEDS TO MAKE A CHOICE
 	end
-	state.battle.target=math.random(1, #state.battle.participants)
-	print("Shadow is targeting "..state.battle.participants[state.battle.target].name)
+	repeat
+		state.battle.target=math.random(1, #state.battle.participants)
+	until
+		state.party[state.battle.participants[state.battle.target].name]
+	print(state.battle.participants[state.battle.open].name.." is targeting "..state.battle.participants[state.battle.target].name)
 end
 
 local function ai(shadow)
@@ -17,10 +30,11 @@ local function ai(shadow)
 	until
 		shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli]
 	target('One Enemy')
-	--ins = require('inspect')
-	--print(ins(shadow.persona.spellDeck[spelli]))
-	print("Shadow used "..shadow.persona.spellDeck[spelli]..", but nothing happened!")
-	--dofile(shadow.persona.spelldeck[spelli])
+	--Acquire spell
+	spell = require("data/spells/"..shadow.persona.spellDeck[spelli])
+	--Tree powers activate
+	spell.activate()
+	print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
 end
 
 local function turnAI()
@@ -31,9 +45,6 @@ local function turnAI()
 		print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 	end
 	while not state.party[state.battle.participants[state.battle.open].name] do
-		ins = require('inspect')
-		print(ins(state.party))
-		print(state.battle.participants[state.battle.open].name)
 		state.lock()
 		ai(state.battle.participants[state.battle.open])
 		state.battle.open=state.battle.open+1
@@ -81,11 +92,11 @@ local function _load(powerlevel)
 	state.battle.participants = {}
 	--Load party persona files
 	for i, person in pairs(state.party) do
-		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..person.persona), name=person.firstname}
+		state.battle.participants[#state.battle.participants+1] = person
 	end
 	--Load enemy persona files
 	for i, shadow in pairs(state.battle.enemies) do
-		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow), name=shadow}
+		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow.name), name=shadow.name, hp=shadow.hp, sp=shadow.sp}
 	end
 	determineorder()
 	state.battle.open=1

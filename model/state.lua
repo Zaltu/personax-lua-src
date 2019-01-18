@@ -2,16 +2,18 @@ _G.json = require('json_reader')
 local luawriter = require('luawriter')
 _G.state = {}
 
+--Many imports are dofile'd throughout all of state.
+--Probably mostly unnecessary, but better safe than sorry
 state.flags = {}
 state.Version = "0.0.0.0.1"
 state.cut = nil
 state.date = {}
 state.date.day = 1
 state.date.time = 0
-state.slglobal = require("data/slglobal")
-state.mc = {firstname="Minato", lastname="Arisatou", persona="Seraph"}
-state.availablechars = {[state.mc.firstname]=state.mc}
-state.party = {[state.mc.firstname]=state.mc}
+state.slglobal = dofile("data/slglobal.lua")
+state.mc = dofile("data/chars/mc.lua")
+state.availablechars = {[state.mc.name]=state.mc}
+state.party = {[state.mc.name]=state.mc}
 state.env = nil
 state.save = 0
 state.context = nil
@@ -19,7 +21,7 @@ state.context = nil
 
 function state.loadstate(savefile)
 	if savefile then savefile="PXS"..savefile..".lua" else savefile='data/saves/savestate.lua' end
-	loadedstate = require(savefile)
+	loadedstate = dofile(savefile)
 	for key, value in pairs(loadedstate) do state[key]=value end
 end
 

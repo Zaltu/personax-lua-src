@@ -14,23 +14,24 @@ function calendar.passTime()
 		return calendar.now.actions()
 	end
 	--Inform UI
-	state.update = {"It is now "..calendar.now.state.name}
+	print("It is now "..calendar.now.state.name)
 	state.loadenv(calendar.now.env)
 	state.changecontext(calendar.now.context)
 end
 
 function calendar.passDay()
 	state.date.day = state.date.day + 1
-	--Inform UI
 	calendar.time = 0
 	calendar.day = require("data/days/day_"..state.date.day)
+	--Inform UI
+	print("The date is now "..state.day.date[1].." "..state.day.date[2])
 	state.changecontext("calendar")
 end
 
 function calendar.loadcontext(hardset)
 	state.lock()
 	if not hardset then calendar.passTime() state.unlock() return end
-	print(hardset)
+	--We increment state.date.day later...
 	state.date.day = hardset - 1
 	calendar.passDay()
 	state.unlock()
@@ -39,7 +40,7 @@ end
 return calendar
 
 
---Caldendar contexts are somewhat unique in that they can call other contexts during their context load
+--Calendar contexts are somewhat unique in that they can call other contexts during their context load
 --This is intended to have as result that the "sub"-context is loaded while the UI is showing the calendar
 --context load screen.
 --

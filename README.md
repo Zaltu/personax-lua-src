@@ -76,6 +76,18 @@ While JSON is a useful tool to pass recognizable data through the shared stack, 
 
 Because of this, all the game's "text" data files (stats, text, etc...) are stored as importable Lua files that return a Lua table containing the information. The Lua context can then use this information to generate the appropriate JSON for the shared stack.
 
+This has rather *critical* implementation structure implications. While requiring Lua files is significantly faster and in many cases easier to organize, *requiring a Lua file is an import not an instantiation*! In my humble opinion, classes are a bitch to handle in Lua and are not especially suited as a program structure to representing individually each a single object. As such, each file is only ever *imported* as a fixed table.
+
+Information reguarding the `require` implementation can be found in the Lua documentation, but the gist of it is that each table returned will be sent to the global `package.loaded[<module>]` table. When a file is subsequently re-required, it will simply reference that table if it already exists. This means that each and every require is completely static to it's own scope. Requiring the same file twice within the same scope will invariably result in two references to the same table.
+
+In general, we really really don't care. Each file imported very much more so represents an object than a class and incredibly few situations would see you importing duplicates of the same file. On top of that, due to the nature of each file, it is oftentimes perfectly acceptable to have multiple references to the same file should exist in the same scope for simplicity. Therefore it is important to be aware not to directly edit the contents of an imported table.
+
+That being said, there are times when we *want* to import and edit a file, generally to then save it as a separate entity (when the MC levels up a Persona, for example). Again, since we are working with the concept of a "game state", we won't be saving those changes out to individual files, but to our more general "state" freeze, which are our save files. Still, we need a way to deep copy the table returned in the simplest, most direct form. Lua does not offer such functionality in it's standard library. While there are a number of relatively simple snippets and modules designed to have the same effect, it was decided instead to use a small workaround that invalidates the issue.
+
+The Lua `dofile` function compiles the code of the specified filepath and executes it immediately, returning the value returned by the file. This means that the value is *not* stored in the `package.loaded` table and is a completely unique data structure, no matter how many times you execute it. We can therefore safely assume that any tables imported using this method will get garbage collected once the scope ends.
+
+Not taking these points into account can and will lead to very bizarre, inconsistent and difficult to pinpoint bugs as the consequences are highly dependent on the specific runtime Lua state. Be vigilent.
+
 ### Lua Folder Structure
 Lua files represent the "model" of the game from a classic MVC standpoint. As such, they are under the top-level "model" folder. Directly within the model folder are the main important modules. For the organization of this program, that basically comes down to *all contexts*. Normally, each context is represented by a single file, as many are not overly complex from a game state management point of view. In some cases, like the battle context, there are many things that need to be handled however, and keeping them all in a single file, while possible, would be annoying as all hell. In such situations, the extra file(s) are stored under `model/util/<context>/`, for example `model/util/battle/`.
 
@@ -85,13 +97,15 @@ On top of these contexts, there are a couple other important functionality scrip
 - luawriter: Utility to write a Lua table to an importable Lua file. Mainly used for saving games and may move.
 
 The text data of the game is found under the model as well, since only the model accesses it. The `model/data/` directory is organized as such:
+- *data/chars/*: (Main) Characters and their stats.
 - *data/days/*: All ~365 days to be played. More documentation on their definition within.
-- *data/envs/*: Definitions of flags and other that are associated with each "env", corresponding more or less to a UE level
-- *data/inline/*: Defines all non-Social Link cutscenes
+- *data/envs/*: Definitions of flags and other that are associated with each "env", corresponding more or less to a UE level.
+- *data/inline/*: Defines all non-Social Link cutscenes.
 - *data/links/*: Definitions of all Social Links. One file per link for now.
-- *data/pers/*: Definitions of all Personas (spoilers, shadows are Personas)
+- *data/pers/*: Definitions of all Personas (spoilers, shadows are Personas).
+- *data/saves/*: Save files go here.
 - *data/shops/*: Definition of each shop's options tree.
-- *data/saves/*: Save files go here
+- *data/spells/*: Spell implementations.
 
 The other files found directly in the *data/* directory represent various constants generally used by contexts. These are ones that don't particularly deserve a full folder to themselves, ie can be contained in a single file.
 

@@ -1,6 +1,9 @@
 --These are tests written to confirm the proper functionality of the logic model. Run in command line
 --to view comprehensive analysis of what the model is providing.
 --All calls to the model should respect the formats shown here.
+
+--Set ./modal/ to the lua path for testing
+package.path = package.path..";./model/?.lua"
 require('state')
 local json = require('json_reader')
 local pprint = function (value) local inspect = require("inspect") print(inspect(value)) end
@@ -77,6 +80,9 @@ function test(feature)
 	print("\nContext")
 	--pprint(state.context)
 	for key, value in pairs(state.context) do print(key, value) end
+	print("\nBattle")
+	ins = require('inspect')
+	print(ins(state.battle))
 	print("\nRefresh")
 	pprint(state.update)
 end
