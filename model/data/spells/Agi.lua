@@ -1,14 +1,15 @@
 local spell = {}
-
 spell = {}
 spell["numericaltype"] = [[Absolute Value]]
 spell["element"] = [[Fire]]
 spell["cost"] = 3
 spell["desc"] = [[Small fire damage to one foe]]
 spell["numberofhits"] = 1
+--a function: conditional
 spell["hitchance"] = 95
 spell["target"] = [[One Enemy]]
 spell["passive"] = false
+--a function: statuschance
 spell["name"] = [[Agi]]
 spell["status"] = [[None]]
 spell["targetattribute"] = [[HP]]
