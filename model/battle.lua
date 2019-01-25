@@ -7,8 +7,8 @@ function battle.cost(costtype, pcost) cost(costtype, pcost) end
 
 --We assume at the moment of attack that a target has already been established or isn't needed
 --Taken from util battleattack
-function battle.attack(numericalvalue, targetattribute, numericaltype, numberofhits)
-	attack(numericalvalue, targetattribute, numericaltype, numberofhits)
+function battle.attack(spell, target, caster)
+	attack(spell, target, caster)
 end
 
 local function target(who)
@@ -32,9 +32,9 @@ local function ai(shadow)
 	target('One Enemy')
 	--Acquire spell
 	spell = require("data/spells/"..shadow.persona.spellDeck[spelli])
+	print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
 	--Tree powers activate
 	spell.activate()
-	print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
 end
 
 local function turnAI()

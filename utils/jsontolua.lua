@@ -154,7 +154,7 @@ function converter.convertSpell(table, outpath)
 	if type(table.numericalvalue)=='number' and type(table.cost)=='number' then
 		luastr=luastr.."\nfunction spell.activate()\n"
 		luastr=luastr.."    state.context.cost(spell.costtype, spell.cost)\n"
-		luastr=luastr.."    state.context.attack(spell.numericalvalue, spell.targetattribute, spell.numericaltype, spell.numberofhits)\n"
+		luastr=luastr.."    state.context.attack(spell, state.battle.participants[state.battle.target], state.battle.participants[state.battle.open])\n"
 		luastr=luastr.."end\n\n"
 	end
 	filefinish()
