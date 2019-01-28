@@ -3,7 +3,7 @@
 --All calls to the model should respect the formats shown here.
 
 --Set ./modal/ to the lua path for testing
-package.path = package.path..";./model/?.lua"
+package.path = package.path..";./model/?.lua;"
 require('state')
 local json = require('json_reader')
 local pprint = function (value) local inspect = require("inspect") print(inspect(value)) end

@@ -1,3 +1,4 @@
+_G.DATAPATH = "model/data/"
 _G.json = require('json_reader')
 local luawriter = require('luawriter')
 _G.state = {}
@@ -5,13 +6,13 @@ _G.state = {}
 --Many imports are dofile'd throughout all of state.
 --Probably mostly unnecessary, but better safe than sorry
 state.flags = {}
-state.Version = "0.0.0.0.1"
+state.Version = "0.0.0.0.2"
 state.cut = nil
 state.date = {}
 state.date.day = 1
 state.date.time = 0
-state.slglobal = dofile("data/slglobal.lua")
-state.mc = dofile("data/chars/mc.lua")
+state.slglobal = dofile(DATAPATH.."slglobal.lua")
+state.mc = dofile(DATAPATH.."chars/mc.lua")
 state.availablechars = {[state.mc.name]=state.mc}
 state.party = {[state.mc.name]=state.mc}
 state.env = nil
@@ -20,14 +21,14 @@ state.context = nil
 
 
 function state.loadstate(savefile)
-	if savefile then savefile="PXS"..savefile..".lua" else savefile='data/saves/savestate.lua' end
+	if savefile then savefile="PXS"..savefile..".lua" else savefile='model/data/saves/savestate.lua' end
 	loadedstate = dofile(savefile)
 	for key, value in pairs(loadedstate) do state[key]=value end
 end
 
 
 function state.savestate(savefile)
-	if savefile then savefile="PXS"..savefile..".json" state.evolve('save', savefile) else savefile='data/saves/savestate.lua' end
+	if savefile then savefile="PXS"..savefile..".json" state.evolve('save', savefile) else savefile='model/data/saves/savestate.lua' end
 	luawriter.convert(state, savefile)
 end
 
@@ -56,7 +57,7 @@ end
 --There is no state.lock here as we assume that any call to changecontext will be effected
 --through a state.event processinput call
 function state.changecontext(newc, ...)
-	state.inline=nil
+	state.update = {}
 	state.context = require(newc)
 	state.context.loadcontext(...)
 end

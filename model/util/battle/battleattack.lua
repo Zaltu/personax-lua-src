@@ -37,8 +37,8 @@ local function damageValue(spell, target, caster)
         attackup = caster.persona.stats[2]
     end
     alteration = attackup - resistance
-    print("Alteration value: "..alteration)
-    print("Random value: "..randomfactor)
+    --print("Alteration value: "..alteration)
+    --print("Random value: "..randomfactor)
     damage = spell.numericalvalue + randomfactor + spell.numericalvalue * alteration / 100
     return damage * parseResistance(spell.element, target)
 end
@@ -46,7 +46,8 @@ end
 
 local function damageHP(spell, target, caster)
     damagetakentotal = damageValue(spell, target, caster)*spell.numberofhits
-    print(caster.name.." hits "..target.name.." for "..damagetakentotal.." damage!")
+    --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." damage!")
+    table.insert(state.update, {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType=spell.targetattribute})
     if damagenumbertype == "Absolute Value" then
         target.hp = target.hp-damagetakentotal
     else
@@ -57,7 +58,8 @@ end
 
 local function damageSP(spell, target, caster)
     spdamagetakentotal = damagetaken*spell.numberofhits
-    print(caster.name.." hits "..target.name.." for "..damagetakentotal.." SP damage!")
+    --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." SP damage!")
+    table.insert(state.update, {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType=spell.targetattribute})
     if damagenumbertype == "Absolute Value" then
         target.sp = target.sp-damagetakentotal
     else
@@ -71,6 +73,6 @@ function attack(spell, target, caster)
     if hitchance(spell, target) then
         targeter[spell.targetattribute](spell, target, caster)
     else
-        print("The attack missed!")
+        table.insert(state.update, {target=target.name, caster=caster.name, miss=true})
     end
 end

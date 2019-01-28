@@ -1,4 +1,3 @@
-
 # Program Structure
 ## C++
 ### Initialize Lua State
@@ -95,6 +94,7 @@ On top of these contexts, there are a couple other important functionality scrip
 - state: The "main" file of the GSV. While technically not a context, manages everything and lives on the highest level.
 - json_reader: Lua JSON module. As previously stated, this is also actually a global variable loaded when resolving state.lua.
 - luawriter: Utility to write a Lua table to an importable Lua file. Mainly used for saving games and may move.
+- testsuite: Testing utility for Lua code. Not built.
 
 The text data of the game is found under the model as well, since only the model accesses it. The `model/data/` directory is organized as such:
 - *data/chars/*: (Main) Characters and their stats.
@@ -109,6 +109,15 @@ The text data of the game is found under the model as well, since only the model
 
 The other files found directly in the *data/* directory represent various constants generally used by contexts. These are ones that don't particularly deserve a full folder to themselves, ie can be contained in a single file.
 
+### Notes on Relative and Absolute File Paths
+The relative import paths set by each Lua `require` call are handled and parsed by the Lua interpreter. There is little to no reason to set absolute paths in those cases as they are long and generally unreadable.
+
+Unfortunately, `dofile` does not chare the same utility that `require` does for reasons that are beyond me. It will only accept absolute paths, or "absolute" relative paths (those being paths relative to the *process's* working directory). We must therefore rely on aquiring the absolute path to the `model/` directory  on runtime by getting the absolute path of state, since it is guarenteed to be `require`d. Unfortunately, Lua does not have this built in and C++, being it's usual shitty self, has no consistent way of doing so in the standard library. Seriously wtf is Python actually so good.
+
+Anyway, luckily UE has a function to exposed the path to the executable (`BaseDir`) which can be used for official builds. When compiling the testsuites however, there are rules to be followed because of this:
+- C++: `./processEvent.exe` where `processEvent.exe` is in the same directory as `model/`
+- Lua: `lua model/testsuite.lua` where `testsuite.lua` is in the same directory as `state.lua`
+
 # Requirements
 This program was run and tested with the following utilities:
 - LuaJIT 2.0.4
@@ -121,3 +130,4 @@ C++
 Lua Rocks
 - luajson 1.3.4
 - inspect 3.1.1
+- luafilesystem 1.7.0

@@ -8,7 +8,7 @@ local processed_keystrs = {}
 function write(filepath)
 	local file = io.open(filepath, 'w')
 	if not file then
-		error("Can't write to "..data.path)
+		error("Can't write to "..filepath)
 	end
 	file:write(luastr)
 	file:close()

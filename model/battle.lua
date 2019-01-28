@@ -11,17 +11,6 @@ function battle.attack(spell, target, caster)
 	attack(spell, target, caster)
 end
 
-local function target(who)
-	if state.party[state.battle.participants[state.battle.open]] then
-		state.battle.target=1
-		return--USER NEEDS TO MAKE A CHOICE
-	end
-	repeat
-		state.battle.target=math.random(1, #state.battle.participants)
-	until
-		state.party[state.battle.participants[state.battle.target].name]
-	print(state.battle.participants[state.battle.open].name.." is targeting "..state.battle.participants[state.battle.target].name)
-end
 
 local function ai(shadow)
 	local spelli = 0
@@ -29,30 +18,30 @@ local function ai(shadow)
 		spelli = math.random(8)
 	until
 		shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli]
-	target('One Enemy')
+
+	repeat
+		state.battle.target=math.random(1, #state.battle.participants)
+	until
+		state.party[state.battle.participants[state.battle.target].name]
+	
 	--Acquire spell
 	spell = require("data/spells/"..shadow.persona.spellDeck[spelli])
-	print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
+	--print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
 	--Tree powers activate
 	spell.activate()
 end
 
-local function turnAI()
-	if state.party[state.battle.participants[state.battle.open].name] then
-		print(state.battle.participants[state.battle.open].name.." used Myriad Arrows!")
-		state.battle.open=state.battle.open+1
-		if state.battle.open>#state.battle.participants then state.battle.open=1 end
-		print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
-	end
+local function turn(spellindex)
 	while not state.party[state.battle.participants[state.battle.open].name] do
-		state.lock()
 		ai(state.battle.participants[state.battle.open])
 		state.battle.open=state.battle.open+1
 		if state.battle.open>#state.battle.participants then state.battle.open=1 end
-		battle.refresh()
-		print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
+		--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 	end
-	state.unlock()
+	print(state.battle.participants[state.battle.open].name.." used Myriad Arrows!")
+	state.battle.open=state.battle.open+1
+	if state.battle.open>#state.battle.participants then state.battle.open=1 end
+	--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 end
 
 
@@ -103,17 +92,17 @@ local function _load(powerlevel)
 end
 
 function battle.refresh(update)
-	state.update=json.encode({'None'})
+	state.update=json.encode(state.update)
 end
 
-function battle.processinput(input)
-    turnAI()
+function battle.processinput(spellindex)
+    turn(spellindex)
 end
 
 function battle.loadcontext(powerlevel)
 	math.randomseed(os.time())
 	_load(powerlevel)
-	turnAI()
+	turn()
 	battle.refresh()
 end
 
