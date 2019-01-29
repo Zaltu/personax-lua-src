@@ -50,7 +50,7 @@ static void runSocialLink(lua_State *L){
 
 
 static void runBattle(lua_State *L){
-    //Set ENV
+    // Set ENV
     lua_getfield(L, -1, "loadenv");
     lua_pushstring(L, "barbariccia");
     lua_pcall(L, 1, 0, 0);
@@ -62,10 +62,56 @@ static void runBattle(lua_State *L){
     lua_pcall(L, 2, 0, 0);
     // Get update
     json update = getUpdate(L);
-    cout << update << endl;
-    for(int i=0; i < update.size(); ++i){
-        cout << update[i]["caster"] << " dealt " << update[i]["damage"] << " to " << update[i]["target"] << "'s " << update[i]["dmgType"] << "!" << endl;
+    int openindex;
+    while(update["participants"][0]["hp"] > 0){
+        // Adjust open index from Lua to anything else
+        openindex = update["open"];
+        openindex -= 1;
+        // Print full update
+        for(int i=0; i < update["turns"].size(); ++i){
+            if (update["turns"][i]["miss"] != nullptr){
+                cout << update["turns"][i]["caster"] << " attacked " << update["turns"][i]["target"] << " but missed!" << endl;
+            }
+            else{
+                cout << update["turns"][i]["caster"] << " dealt " << update["turns"][i]["damage"] << " to " << update["turns"][i]["target"] << "'s " << update["turns"][i]["dmgType"] << "!" << endl;
+            }
+        }
+        cout << update["participants"][openindex]["name"] << " has " << update["participants"][openindex]["hp"] << " HP " << endl;
+        cout << endl;
+        cout << "Choose what spell " << update["participants"][openindex]["name"] << " should use:" << endl;
+        int spellindex;
+        for (int i=0; i<update["participants"][openindex]["persona"]["spellDeck"].size(); ++i){
+            if(update["participants"][openindex]["persona"]["spellDeck"][i] != ""){
+                cout << i+1 << ":  " << update["participants"][openindex]["persona"]["spellDeck"][i] << endl;
+            }
+        };
+        cin >> spellindex;
+
+        cout << endl;
+        cout << "Choose which enemy " << update["participants"][openindex]["name"] << " should attack:" << endl;
+        int targetindex;
+        for (int i=0; i<update["ienemy"].size(); ++i){
+            int enemyindex = update["ienemy"][i];
+            cout << enemyindex << ":  " << update["participants"][enemyindex-1]["name"] << endl;
+        };
+        cin >> targetindex;
+
+        json event = {
+            {"key", "battle.userinput"},
+            {"spellindex", spellindex},
+            {"targetindex", targetindex}
+        };
+        const char *cevent = event.dump().c_str();
+        update = sendStateEvent(L, cevent);
     }
+    openindex = update["open"];
+    for(int i=0; i < update["turns"].size(); ++i){
+        cout << update["turns"][i]["caster"] << " dealt " << update["turns"][i]["damage"] << " to " << update["turns"][i]["target"] << "'s " << update["turns"][i]["dmgType"] << "!" << endl;
+    }
+    cout << update["participants"][openindex]["name"] << " has " << update["participants"][openindex]["hp"] << " HP " << endl;
+    cout << "He is dead" << endl;
+    cout << "RIP" << endl;
+    cout << update << endl;
 }
 
 int main() {

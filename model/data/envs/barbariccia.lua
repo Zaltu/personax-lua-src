@@ -2,6 +2,16 @@
 local bar = {}
 
 bar.name="Barbariccia"
+
+--In dungeon 1, first half:
+--1 = [{small small small}] (same weaknesses)
+--2 = [{big}]
+--3 = [{small small}] (different weaknesses)
+--In dungeon 1, second half with levels ++:
+--4 = [{small small small}] (same weaknesses)
+--5 = [{big}]
+--6 = [{small small}] (different weaknesses)
+--etc...
 bar.enemies = {
     [1]={
         {

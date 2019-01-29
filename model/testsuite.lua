@@ -46,22 +46,8 @@ end
 function battle()
 	state.loadenv("barbariccia")
 	state.changecontext('battle', 1)
-end
 
-function battlepoc()
-	--LEGACY/PROOF OF CONCEPT
-	--Based on receiving individual inputs
-	shadowep=require("data/pers/Seraph")
-	aigis=require("data/pers/Cherub")
-	mc=require("data/pers/Dominion")
-
-	state.changecontext('battlepoc', {['party']={{['name']='Aigis', ['persona']=aigis}, {['name']='MC', ['persona']=mc}}, ['ene']={{['name']='Shadow', ['persona']=shadowep}}})
-
-	state.context.processinput('select')
-	state.context.processinput('select')
-	state.context.processinput('select')
-
-	state.savestate(nil)
+	state.event(json.encode({key="battle.userinput", targetindex=2, spellindex=1}))
 end
 
 function dayChange()
@@ -81,8 +67,7 @@ function test(feature)
 	--pprint(state.context)
 	for key, value in pairs(state.context) do print(key, value) end
 	print("\nBattle")
-	ins = require('inspect')
-	print(ins(state.battle))
+	pprint(state.battle)
 	print("\nRefresh")
 	pprint(state.update)
 end

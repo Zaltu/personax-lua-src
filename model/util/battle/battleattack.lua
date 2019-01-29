@@ -47,8 +47,8 @@ end
 local function damageHP(spell, target, caster)
     damagetakentotal = damageValue(spell, target, caster)*spell.numberofhits
     --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." damage!")
-    table.insert(state.update, {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType=spell.targetattribute})
-    if damagenumbertype == "Absolute Value" then
+    table.insert(state.battle.turns, {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType=spell.targetattribute})
+    if spell.numericaltype == "Absolute Value" then
         target.hp = target.hp-damagetakentotal
     else
         target.hp = target.hp-target.hp*damagetakentotal/100
@@ -59,8 +59,8 @@ end
 local function damageSP(spell, target, caster)
     spdamagetakentotal = damagetaken*spell.numberofhits
     --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." SP damage!")
-    table.insert(state.update, {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType=spell.targetattribute})
-    if damagenumbertype == "Absolute Value" then
+    table.insert(state.battle.turns, {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType=spell.targetattribute})
+    if spell.numericaltype == "Absolute Value" then
         target.sp = target.sp-damagetakentotal
     else
         target.sp = target.sp-target.sp*damagetakentotal/100
@@ -73,6 +73,6 @@ function attack(spell, target, caster)
     if hitchance(spell, target) then
         targeter[spell.targetattribute](spell, target, caster)
     else
-        table.insert(state.update, {target=target.name, caster=caster.name, miss=true})
+        table.insert(state.battle.turns, {target=target.name, caster=caster.name, miss=true})
     end
 end

@@ -11,6 +11,13 @@ function battle.attack(spell, target, caster)
 	attack(spell, target, caster)
 end
 
+local function spellitout(participant, spellindex)
+	--Acquire spell
+	spell = require("data/spells/"..participant.persona.spellDeck[spellindex])
+	--print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
+	--Tree powers activate
+	spell.activate()
+end
 
 local function ai(shadow)
 	local spelli = 0
@@ -24,37 +31,28 @@ local function ai(shadow)
 	until
 		state.party[state.battle.participants[state.battle.target].name]
 	
-	--Acquire spell
-	spell = require("data/spells/"..shadow.persona.spellDeck[spelli])
-	--print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
-	--Tree powers activate
-	spell.activate()
+	spellitout(shadow, spelli)
 end
 
-local function turn(spellindex)
+local function turn(input)
+	state.battle.turns = {}
+	if state.context.key == "battle.userinput" then
+		state.context.key = "battle.ai"
+		--print("Processing user input")
+		state.battle.target = state.context.targetindex
+		spellitout(state.battle.participants[state.battle.open], state.context.spellindex)
+		state.battle.open=state.battle.open+1
+		if state.battle.open>#state.battle.participants then state.battle.open=1 end
+	end
 	while not state.party[state.battle.participants[state.battle.open].name] do
 		ai(state.battle.participants[state.battle.open])
 		state.battle.open=state.battle.open+1
 		if state.battle.open>#state.battle.participants then state.battle.open=1 end
 		--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 	end
-	print(state.battle.participants[state.battle.open].name.." used Myriad Arrows!")
-	state.battle.open=state.battle.open+1
-	if state.battle.open>#state.battle.participants then state.battle.open=1 end
 	--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 end
 
-
---In dungeon 1, first half:
---1 = [{small small small}] (same weaknesses)
---2 = [{big}]
---3 = [{small small}] (different weaknesses)
---In dungeon 1, second half with levels ++:
---4 = [{small small small}] (same weaknesses)
---5 = [{big}]
---6 = [{small small}] (different weaknesses)
---etc...
---Property of the dungeon imo, should be in the dungeon env config
 local function spawnenemies()
 	-- Get a random set of enemies from the powerleveled list in the current dungeon env
 	state.battle.enemies = state.env.enemies[state.battle.powerlevel][math.random(1, #state.env.enemies[state.battle.powerlevel])]
@@ -71,6 +69,15 @@ local function determineorder()
 				state.battle.participants[i+1]=temp
 				done=false
 			end
+		end
+	end
+	state.battle.iparty = {}
+	state.battle.ienemy = {}
+	for index, participant in pairs(state.battle.participants) do
+		if state.party[participant.name] then
+			table.insert(state.battle.iparty, index)
+		else
+			table.insert(state.battle.ienemy, index)
 		end
 	end
 end
@@ -92,11 +99,14 @@ local function _load(powerlevel)
 end
 
 function battle.refresh(update)
-	state.update=json.encode(state.update)
+	state.update=json.encode(state.battle)
 end
 
-function battle.processinput(spellindex)
-    turn(spellindex)
+
+function battle.processinput()
+	--Input in {spellindex=X, targetindex=Y} form
+    turn()
+	battle.refresh()
 end
 
 function battle.loadcontext(powerlevel)
