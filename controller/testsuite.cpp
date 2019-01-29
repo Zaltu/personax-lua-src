@@ -108,8 +108,8 @@ static void runBattle(lua_State *L){
     for(int i=0; i < update["turns"].size(); ++i){
         cout << update["turns"][i]["caster"] << " dealt " << update["turns"][i]["damage"] << " to " << update["turns"][i]["target"] << "'s " << update["turns"][i]["dmgType"] << "!" << endl;
     }
-    cout << update["participants"][openindex]["name"] << " has " << update["participants"][openindex]["hp"] << " HP " << endl;
-    cout << "He is dead" << endl;
+    cout << "All of your party members have succumbed." << endl;
+    cout << "You is dead" << endl;
     cout << "RIP" << endl;
     cout << update << endl;
 }

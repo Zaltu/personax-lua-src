@@ -15,7 +15,6 @@ local function processEliminations()
 	for index, participant in pairs(state.battle.participants) do
 		if participant.hp < 0 then
 			if state.party[participant.name] then
-				print("Removing "..participant.name.." from party")
 				table.remove(state.battle.participants, index)
 				for i, partyindex in pairs(state.battle.iparty) do
 					if partyindex == index then
