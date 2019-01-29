@@ -11,12 +11,36 @@ function battle.attack(spell, target, caster)
 	attack(spell, target, caster)
 end
 
+local function processEliminations()
+	for index, participant in pairs(state.battle.participants) do
+		if participant.hp < 0 then
+			if state.party[participant.name] then
+				print("Removing "..participant.name.." from party")
+				table.remove(state.battle.participants, index)
+				for i, partyindex in pairs(state.battle.iparty) do
+					if partyindex == index then
+						table.remove(state.battle.iparty, i)
+					end
+				end
+			else
+				table.remove(state.battle.participants, index)
+				for i, enemyindex in pairs(state.battle.ienemy) do
+					if enemyindex == index then
+						table.remove(state.battle.ienemy, i)
+					end
+				end
+			end
+		end
+	end
+end
+
 local function spellitout(participant, spellindex)
 	--Acquire spell
 	spell = require("data/spells/"..participant.persona.spellDeck[spellindex])
 	--print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
 	--Tree powers activate
 	spell.activate()
+	processEliminations()
 end
 
 local function ai(shadow)
@@ -44,7 +68,8 @@ local function turn(input)
 		state.battle.open=state.battle.open+1
 		if state.battle.open>#state.battle.participants then state.battle.open=1 end
 	end
-	while not state.party[state.battle.participants[state.battle.open].name] do
+	--While it is neither the player's turn nor the whole party died, parse the AI
+	while not state.battle.iparty[state.battle.open] and #state.battle.iparty > 0 do
 		ai(state.battle.participants[state.battle.open])
 		state.battle.open=state.battle.open+1
 		if state.battle.open>#state.battle.participants then state.battle.open=1 end

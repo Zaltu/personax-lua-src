@@ -63,7 +63,7 @@ static void runBattle(lua_State *L){
     // Get update
     json update = getUpdate(L);
     int openindex;
-    while(update["participants"][0]["hp"] > 0){
+    while(update["iparty"].size() > 0){
         // Adjust open index from Lua to anything else
         openindex = update["open"];
         openindex -= 1;
