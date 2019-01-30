@@ -7,22 +7,30 @@ function battle.cost(costtype, pcost) cost(costtype, pcost) end
 
 --We assume at the moment of attack that a target has already been established or isn't needed
 --Taken from util battleattack
-function battle.attack(spell, target, caster)
-	attack(spell, target, caster)
+function battle.attack(spell, target, caster) attack(spell, target, caster) end
+
+local function next()
+	repeat
+		state.battle.open = state.battle.open + 1
+		if state.battle.open>#state.battle.participants then state.battle.open=1 end
+	until 
+		state.battle.participants[state.battle.open]
 end
 
 local function processEliminations()
 	for index, participant in pairs(state.battle.participants) do
 		if participant.hp < 0 then
 			if state.party[participant.name] then
-				table.remove(state.battle.participants, index)
+				print("Removing "..state.battle.participants[index].name)
+				state.battle.participants[index]=nil
 				for i, partyindex in pairs(state.battle.iparty) do
 					if partyindex == index then
 						table.remove(state.battle.iparty, i)
 					end
 				end
 			else
-				table.remove(state.battle.participants, index)
+				print("Removing "..state.battle.participants[index].name)
+				state.battle.participants[index]=nil
 				for i, enemyindex in pairs(state.battle.ienemy) do
 					if enemyindex == index then
 						table.remove(state.battle.ienemy, i)
@@ -49,29 +57,26 @@ local function ai(shadow)
 	until
 		shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli]
 
-	repeat
-		state.battle.target=math.random(1, #state.battle.participants)
-	until
-		state.party[state.battle.participants[state.battle.target].name]
-	
+	state.battle.target=state.battle.iparty[math.random(1, #state.battle.iparty)]
+
 	spellitout(shadow, spelli)
 end
 
 local function turn(input)
 	state.battle.turns = {}
 	if state.context.key == "battle.userinput" then
-		state.context.key = "battle.ai"
 		--print("Processing user input")
 		state.battle.target = state.context.targetindex
 		spellitout(state.battle.participants[state.battle.open], state.context.spellindex)
-		state.battle.open=state.battle.open+1
-		if state.battle.open>#state.battle.participants then state.battle.open=1 end
+		next()
 	end
+	--While it is not guarenteed that it is an AI's turn, we know that Lua will not process
+	--a player turn until next input, which wil reset the key
+	state.context.key = "battle.ai"
 	--While it is neither the player's turn nor the whole party died, parse the AI
-	while not state.battle.iparty[state.battle.open] and #state.battle.iparty > 0 do
+	while not state.party[state.battle.participants[state.battle.open].name] and #state.battle.iparty > 0 do
 		ai(state.battle.participants[state.battle.open])
-		state.battle.open=state.battle.open+1
-		if state.battle.open>#state.battle.participants then state.battle.open=1 end
+		next()
 		--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 	end
 	--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")

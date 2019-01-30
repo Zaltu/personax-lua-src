@@ -13,8 +13,9 @@ state.date.day = 1
 state.date.time = 0
 state.slglobal = dofile(DATAPATH.."slglobal.lua")
 state.mc = dofile(DATAPATH.."chars/mc.lua")
-state.availablechars = {[state.mc.name]=state.mc}
-state.party = {[state.mc.name]=state.mc}
+state.sister = dofile(DATAPATH.."chars/sister.lua")
+state.availablechars = {[state.mc.name]=state.mc, [state.sister.name]=state.sister}
+state.party = {[state.mc.name]=state.mc, [state.sister.name]=state.sister}
 state.env = nil
 state.save = 0
 state.context = nil

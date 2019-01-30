@@ -67,12 +67,25 @@ local function damageSP(spell, target, caster)
     end
 end
 
-
-function attack(spell, target, caster)
+local function attacks(spell, target, caster)
     targeter = {HP=damageHP, SP=damageSP}
     if hitchance(spell, target) then
         targeter[spell.targetattribute](spell, target, caster)
     else
         table.insert(state.battle.turns, {target=target.name, caster=caster.name, miss=true})
+    end
+end
+
+
+function attack(spell, target, caster)
+    if target then
+        --Attack on single participant
+        table.insert(state.battle.turns, attacks(spell, target, caster))
+    else
+        --Attack on multiple participants
+        --By a party member
+        if state.party[caster.name] then
+            for i, 
+        
     end
 end

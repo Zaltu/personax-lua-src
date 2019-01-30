@@ -63,7 +63,7 @@ static void runBattle(lua_State *L){
     // Get update
     json update = getUpdate(L);
     int openindex;
-    while(update["iparty"].size() > 0){
+    while(update["iparty"].size() > 0 && update["ienemy"].size() > 0){
         // Adjust open index from Lua to anything else
         openindex = update["open"];
         openindex -= 1;
@@ -91,6 +91,7 @@ static void runBattle(lua_State *L){
         cout << "Choose which enemy " << update["participants"][openindex]["name"] << " should attack:" << endl;
         int targetindex;
         for (int i=0; i<update["ienemy"].size(); ++i){
+            cout << update["ienemy"] << endl;
             int enemyindex = update["ienemy"][i];
             cout << enemyindex << ":  " << update["participants"][enemyindex-1]["name"] << endl;
         };
