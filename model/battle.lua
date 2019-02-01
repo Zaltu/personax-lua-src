@@ -128,11 +128,16 @@ local function _load(powerlevel)
 end
 
 function battle.refresh(update)
-	state.update=json.encode(state.battle)
+	state.update = json.encode(state.battle)
 end
 
+function battle.exposeSpellData()
+	spellname = state.battle.participants[state.battle.open].persona.spellDeck[state.context.spellDataRequest]
+	state.update = json.encode(require("data/spells/"..spellname))
+end
 
 function battle.processinput()
+	if state.context.key == "battle.spellrequest" then exposeSpellData() return end
 	--Input in {spellindex=X, targetindex=Y} form
     turn()
 	battle.refresh()
