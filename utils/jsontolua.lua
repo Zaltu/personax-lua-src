@@ -49,7 +49,7 @@ function write(filepath)
 	]]--
 	local file = io.open(filepath, 'w')
 	if not file then
-		error("Can't write to "..data.path)
+		error("Can't write to "..filepath)
 	end
 	file:write(luastr)
 	file:close()
@@ -151,7 +151,12 @@ function converter.convertSpell(table, outpath)
 	STDNAME = "spell"
 	fileprep()
 	convert(table)
-	if type(table.numericalvalue)=='number' and type(table.cost)=='number' then
+	if table.target == "All Enemy" or table.target == "All Ally" then
+		luastr=luastr.."\nfunction spell.activate()\n"
+		luastr=luastr.."    state.context.cost(spell.costtype, spell.cost)\n"
+		luastr=luastr.."    state.context.attack(spell, nil, state.battle.participants[state.battle.open])\n"
+		luastr=luastr.."end\n\n"
+	elseif type(table.numericalvalue)=='number' and type(table.cost)=='number' then
 		luastr=luastr.."\nfunction spell.activate()\n"
 		luastr=luastr.."    state.context.cost(spell.costtype, spell.cost)\n"
 		luastr=luastr.."    state.context.attack(spell, state.battle.participants[state.battle.target], state.battle.participants[state.battle.open])\n"

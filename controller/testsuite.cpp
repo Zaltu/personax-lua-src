@@ -14,6 +14,7 @@ using namespace std;
 
 using json = nlohmann::json;
 
+
 static void runSocialLink(lua_State *L){
     const char* slContext = "link";
     const char* arcana = "Aeon";
@@ -25,7 +26,7 @@ static void runSocialLink(lua_State *L){
     json update = getUpdate(L);
     do{
         int index = 0;
-        if (string(update["key"]).rfind("link", 0) == 0){
+        if (update["key"].get<string>().rfind("link", 0) == 0){
             cout << update["text"] << endl;
             if (update["options"].size() > 0){
                 int i;
@@ -69,11 +70,13 @@ static void runBattle(lua_State *L){
         openindex -= 1;
         // Print full update
         for(int i=0; i < update["turns"].size(); ++i){
-            if (update["turns"][i]["miss"] != nullptr){
-                cout << update["turns"][i]["caster"] << " attacked " << update["turns"][i]["target"] << " but missed!" << endl;
-            }
-            else{
-                cout << update["turns"][i]["caster"] << " dealt " << update["turns"][i]["damage"] << " to " << update["turns"][i]["target"] << "'s " << update["turns"][i]["dmgType"] << "!" << endl;
+            for (int j=0; j < update["turns"][i].size(); ++j){
+                if (update["turns"][i][j]["miss"] != nullptr){
+                    cout << update["turns"][i][j]["caster"] << " attacked " << update["turns"][i][j]["target"] << " but missed!" << endl;
+                }
+                else{
+                    cout << update["turns"][i][j]["caster"] << " dealt " << update["turns"][i][j]["damage"] << " to " << update["turns"][i][j]["target"] << "'s " << update["turns"][i][j]["dmgType"] << "!" << endl;
+                }
             }
         }
         cout << update["participants"][openindex]["name"] << " has " << update["participants"][openindex]["hp"] << " HP " << endl;
@@ -91,7 +94,6 @@ static void runBattle(lua_State *L){
         cout << "Choose which enemy " << update["participants"][openindex]["name"] << " should attack:" << endl;
         int targetindex;
         for (int i=0; i<update["ienemy"].size(); ++i){
-            cout << update["ienemy"] << endl;
             int enemyindex = update["ienemy"][i];
             cout << enemyindex << ":  " << update["participants"][enemyindex-1]["name"] << endl;
         };
@@ -107,12 +109,19 @@ static void runBattle(lua_State *L){
     }
     openindex = update["open"];
     for(int i=0; i < update["turns"].size(); ++i){
-        cout << update["turns"][i]["caster"] << " dealt " << update["turns"][i]["damage"] << " to " << update["turns"][i]["target"] << "'s " << update["turns"][i]["dmgType"] << "!" << endl;
+        for (int j = 0; j < update["turns"][i].size(); ++j){
+            cout << update["turns"][i][j]["caster"] << " dealt " << update["turns"][i][j]["damage"] << " to " << update["turns"][i][j]["target"] << "'s " << update["turns"][i][j]["dmgType"] << "!" << endl;
+        }
     }
-    cout << "All of your party members have succumbed." << endl;
-    cout << "You is dead" << endl;
-    cout << "RIP" << endl;
-    cout << update << endl;
+    if (update["iparty"].size() == 0){
+        cout << "All of your party members have succumbed." << endl;
+        cout << "You is dead" << endl;
+        cout << "RIP" << endl;
+        cout << update << endl;
+    }
+    else{
+        cout << "You have crushed your enemies UwU" << endl;
+    }
 }
 
 int main() {

@@ -15,4 +15,10 @@ spell["status"] = [[Poison]]
 --a function: targetattribute
 --a function: numericalvalue
 spell["costtype"] = [[SP]]
+
+function spell.activate()
+    state.context.cost(spell.costtype, spell.cost)
+    state.context.attack(spell, nil, state.battle.participants[state.battle.open])
+end
+
 return spell

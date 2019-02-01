@@ -21,7 +21,7 @@ local function processEliminations()
 	for index, participant in pairs(state.battle.participants) do
 		if participant.hp < 0 then
 			if state.party[participant.name] then
-				print("Removing "..state.battle.participants[index].name)
+				--print("Removing "..state.battle.participants[index].name)
 				state.battle.participants[index]=nil
 				for i, partyindex in pairs(state.battle.iparty) do
 					if partyindex == index then
@@ -29,7 +29,7 @@ local function processEliminations()
 					end
 				end
 			else
-				print("Removing "..state.battle.participants[index].name)
+				--print("Removing "..state.battle.participants[index].name)
 				state.battle.participants[index]=nil
 				for i, enemyindex in pairs(state.battle.ienemy) do
 					if enemyindex == index then

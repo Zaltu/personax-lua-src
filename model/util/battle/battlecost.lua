@@ -8,6 +8,6 @@ local function SPcost(cost)
 end
 
 function cost(costtype, cost)
-    repoman = {HP=HPcost, SP=SPcost}
+    repoman = {["HP (%)"]=HPcost, SP=SPcost}
     repoman[costtype](cost)
 end

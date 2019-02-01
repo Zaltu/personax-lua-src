@@ -45,34 +45,40 @@ end
 
 
 local function damageHP(spell, target, caster)
-    damagetakentotal = damageValue(spell, target, caster)*spell.numberofhits
+    damagetakentotal = 0
+    damangeTable = {}
+    for hit=1, spell.numberofhits do
+        damage = damageValue(spell, target, caster)
+        damagetakentotal = damagetakentotal+damage
+        table.insert(damangeTable, damage)
+    end
     --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." damage!")
-    table.insert(state.battle.turns, {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType=spell.targetattribute})
     if spell.numericaltype == "Absolute Value" then
         target.hp = target.hp-damagetakentotal
     else
         target.hp = target.hp-target.hp*damagetakentotal/100
     end
+    return {caster=caster.name, target=target.name, damage=damangeTable, dmgType=spell.targetattribute}
 end
 
 
 local function damageSP(spell, target, caster)
     spdamagetakentotal = damagetaken*spell.numberofhits
     --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." SP damage!")
-    table.insert(state.battle.turns, {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType=spell.targetattribute})
     if spell.numericaltype == "Absolute Value" then
         target.sp = target.sp-damagetakentotal
     else
         target.sp = target.sp-target.sp*damagetakentotal/100
     end
+    return {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType=spell.targetattribute}
 end
 
 local function attacks(spell, target, caster)
     targeter = {HP=damageHP, SP=damageSP}
     if hitchance(spell, target) then
-        targeter[spell.targetattribute](spell, target, caster)
+        return targeter[spell.targetattribute](spell, target, caster)
     else
-        table.insert(state.battle.turns, {target=target.name, caster=caster.name, miss=true})
+        return {target=target.name, caster=caster.name, miss=true}
     end
 end
 
@@ -80,12 +86,18 @@ end
 function attack(spell, target, caster)
     if target then
         --Attack on single participant
-        table.insert(state.battle.turns, attacks(spell, target, caster))
+        table.insert(state.battle.turns, {attacks(spell, target, caster)})
     else
         --Attack on multiple participants
-        --By a party member
-        if state.party[caster.name] then
-            for i, 
-        
+        if state.party[caster.name] then --By a party member
+            targettable = state.battle.ienemy
+        else -- By an enemy
+            targettable = state.battle.iparty
+        end
+        totalturns = {}
+        for i, pindex in pairs(targettable) do
+            table.insert(totalturns, attacks(spell, state.battle.participants[pindex], caster))
+        end
+        table.insert(state.battle.turns, totalturns)
     end
 end
