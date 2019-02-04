@@ -1,10 +1,8 @@
 _G.DATAPATH = "model/data/"
 _G.json = require('json_reader')
-local luawriter = require('luawriter')
 _G.state = {}
 
 --Many imports are dofile'd throughout all of state.
---Probably mostly unnecessary, but better safe than sorry
 state.flags = {}
 state.Version = "0.0.0.0.2"
 state.cut = nil
@@ -30,6 +28,7 @@ end
 
 function state.savestate(savefile)
 	if savefile then savefile="PXS"..savefile..".json" state.evolve('save', savefile) else savefile='model/data/saves/savestate.lua' end
+	local luawriter = require('luawriter')
 	luawriter.convert(state, savefile)
 end
 

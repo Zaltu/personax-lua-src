@@ -32,7 +32,7 @@ static json getUpdate(lua_State *L){
 }
 
 
-static json sendStateEvent(lua_State *L, const char *event){
+static json sendStateEvent(lua_State *L, json event){
     /**
      * Used to send a valid event to the Lua state. Will return
      * the value of state.update that resulted from the event.
@@ -41,7 +41,7 @@ static json sendStateEvent(lua_State *L, const char *event){
      * :rtype: json
     */
     lua_getfield(L, -1, "event");
-    lua_pushstring(L, event);
+    lua_pushstring(L, event.dump().c_str());
     lua_pcall(L, 1, 1, 0);
     string returncode = lua_tostring(L, -1);
     if (returncode != "0"){

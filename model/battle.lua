@@ -12,7 +12,7 @@ function battle.attack(spell, target, caster) attack(spell, target, caster) end
 local function next()
 	repeat
 		state.battle.open = state.battle.open + 1
-		if state.battle.open>#state.battle.participants then state.battle.open=1 end
+		if state.battle.open>#state.battle.participants then state.battle.open=2 end
 	until 
 		state.battle.participants[state.battle.open]
 end
@@ -91,7 +91,7 @@ local function determineorder()
 	local done=false
 	while not done do
 		done=true
-		for i=1, #state.battle.participants-1 do
+		for i=2, #state.battle.participants-1 do
 			if tonumber(state.battle.participants[i].persona.stats[3])<tonumber(state.battle.participants[i+1].persona.stats[3]) then
 				temp=state.battle.participants[i]
 				state.battle.participants[i]=state.battle.participants[i+1]
@@ -114,7 +114,7 @@ end
 local function _load(powerlevel)
 	state.battle = {powerlevel=powerlevel}
 	spawnenemies()
-	state.battle.participants = {}
+	state.battle.participants = {[0]={"GIGAOOF"}} -- GIGAOOF
 	--Load party persona files
 	for i, person in pairs(state.party) do
 		state.battle.participants[#state.battle.participants+1] = person
@@ -124,20 +124,22 @@ local function _load(powerlevel)
 		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow.name), name=shadow.name, hp=shadow.hp, sp=shadow.sp}
 	end
 	determineorder()
-	state.battle.open=1
+	state.battle.open=2
 end
 
 function battle.refresh(update)
+	print(state.update)
 	state.update = json.encode(state.battle)
 end
 
 function battle.exposeSpellData()
 	spellname = state.battle.participants[state.battle.open].persona.spellDeck[state.context.spellDataRequest]
-	state.update = json.encode(require("data/spells/"..spellname))
+	spellData = {target=require("data/spells/"..spellname).target, key=state.context.key}
+	state.update = json.encode(spellData)
 end
 
 function battle.processinput()
-	if state.context.key == "battle.spellrequest" then exposeSpellData() return end
+	if state.context.key == "battle.spellrequest" then battle.exposeSpellData() return end
 	--Input in {spellindex=X, targetindex=Y} form
     turn()
 	battle.refresh()
@@ -146,6 +148,7 @@ end
 function battle.loadcontext(powerlevel)
 	math.randomseed(os.time())
 	_load(powerlevel)
+	print("loading")
 	turn()
 	battle.refresh()
 end

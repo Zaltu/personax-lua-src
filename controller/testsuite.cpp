@@ -43,8 +43,7 @@ static void runSocialLink(lua_State *L){
             {"key", "link.action"},
             {"index", index}
         };
-        const char *cevent = event.dump().c_str();
-        update = sendStateEvent(L, cevent);
+        update = sendStateEvent(L, event);
     }
     while(update["key"] != "USER FREE ROAM");//THIS WON'T EXIST IN REAL CODE ANYWAY
 }
@@ -63,6 +62,8 @@ static void runBattle(lua_State *L){
     lua_pcall(L, 2, 0, 0);
     // Get update
     json update = getUpdate(L);
+    cout << update << endl;
+    json event;
     int openindex;
     while(update["iparty"].size() > 0 && update["ienemy"].size() > 0){
         // Adjust open index from Lua to anything else
@@ -79,6 +80,9 @@ static void runBattle(lua_State *L){
                 }
             }
         }
+        cout << openindex << endl;
+        cout << update["participants"] << endl;
+        cout << update["participants"][openindex]["name"] << endl;
         cout << update["participants"][openindex]["name"] << " has " << update["participants"][openindex]["hp"] << " HP " << endl;
         cout << endl;
         cout << "Choose what spell " << update["participants"][openindex]["name"] << " should use:" << endl;
@@ -90,22 +94,39 @@ static void runBattle(lua_State *L){
         };
         cin >> spellindex;
 
-        cout << endl;
-        cout << "Choose which enemy " << update["participants"][openindex]["name"] << " should attack:" << endl;
+        event = {
+            {"key", "battle.spellrequest"},
+            {"spellDataRequest", spellindex}
+        };
+        json spelldata = sendStateEvent(L, event);
         int targetindex;
-        for (int i=0; i<update["ienemy"].size(); ++i){
-            int enemyindex = update["ienemy"][i];
-            cout << enemyindex << ":  " << update["participants"][enemyindex-1]["name"] << endl;
-        };
-        cin >> targetindex;
+        if (spelldata["target"] == "One Enemy"){
+            cout << endl;
+            cout << "Choose which enemy " << update["participants"][openindex]["name"] << " should attack:" << endl;
+            for (int i=0; i<update["ienemy"].size(); ++i){
+                int enemyindex = update["ienemy"][i];
+                cout << enemyindex << ":  " << update["participants"][enemyindex-1]["name"] << endl;
+            };
+            cin >> targetindex;
+            cin.ignore();
+            event = {
+                {"key", "battle.userinput"},
+                {"spellindex", spellindex},
+                {"targetindex", targetindex}
+            };
+        }
+        else{
+            cout << "Confirm your attack on all enemies" << endl;
+            cin.ignore();
+            cin.ignore();
+            
+            event = {
+                {"key", "battle.userinput"},
+                {"spellindex", spellindex},
+            };
+        }
 
-        json event = {
-            {"key", "battle.userinput"},
-            {"spellindex", spellindex},
-            {"targetindex", targetindex}
-        };
-        const char *cevent = event.dump().c_str();
-        update = sendStateEvent(L, cevent);
+        update = sendStateEvent(L, event);
     }
     openindex = update["open"];
     for(int i=0; i < update["turns"].size(); ++i){
