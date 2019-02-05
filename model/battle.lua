@@ -12,7 +12,7 @@ function battle.attack(spell, target, caster) attack(spell, target, caster) end
 local function next()
 	repeat
 		state.battle.open = state.battle.open + 1
-		if state.battle.open>#state.battle.participants then state.battle.open=2 end
+		if state.battle.open>#state.battle.participants then state.battle.open=1 end
 	until 
 		state.battle.participants[state.battle.open]
 end
@@ -22,14 +22,15 @@ local function processEliminations()
 		if participant.hp < 0 then
 			if state.party[participant.name] then
 				--print("Removing "..state.battle.participants[index].name)
-				state.battle.participants[index]=nil
+				--NEEDS DOC (__LEN ISSUE)
+				if index == #state.battle.participants then	table.remove(state.battle.participants, index) else state.battle.participants[index]=nil end
 				for i, partyindex in pairs(state.battle.iparty) do
 					if partyindex == index then
 						table.remove(state.battle.iparty, i)
 					end
 				end
 			else
-				--print("Removing "..state.battle.participants[index].name)
+				print("Removing "..state.battle.participants[index].name)
 				state.battle.participants[index]=nil
 				for i, enemyindex in pairs(state.battle.ienemy) do
 					if enemyindex == index then
@@ -39,6 +40,10 @@ local function processEliminations()
 			end
 		end
 	end
+	ins = require('inspect')
+	print(ins(state.battle.iparty))
+	print(ins(state.battle.ienemy))
+	print(ins(state.battle.participants))
 end
 
 local function spellitout(participant, spellindex)
@@ -91,7 +96,7 @@ local function determineorder()
 	local done=false
 	while not done do
 		done=true
-		for i=2, #state.battle.participants-1 do
+		for i=1, #state.battle.participants-1 do
 			if tonumber(state.battle.participants[i].persona.stats[3])<tonumber(state.battle.participants[i+1].persona.stats[3]) then
 				temp=state.battle.participants[i]
 				state.battle.participants[i]=state.battle.participants[i+1]
@@ -114,7 +119,7 @@ end
 local function _load(powerlevel)
 	state.battle = {powerlevel=powerlevel}
 	spawnenemies()
-	state.battle.participants = {[0]={"GIGAOOF"}} -- GIGAOOF
+	state.battle.participants = {} -- GIGAOOF
 	--Load party persona files
 	for i, person in pairs(state.party) do
 		state.battle.participants[#state.battle.participants+1] = person
@@ -124,11 +129,12 @@ local function _load(powerlevel)
 		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow.name), name=shadow.name, hp=shadow.hp, sp=shadow.sp}
 	end
 	determineorder()
-	state.battle.open=2
+	setmetatable(state.battle.participants, {__is_luajson_array=true})
+	state.battle.open=1
 end
 
 function battle.refresh(update)
-	print(state.update)
+	print(json.encode(state.battle.participants))
 	state.update = json.encode(state.battle)
 end
 

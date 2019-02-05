@@ -62,7 +62,6 @@ static void runBattle(lua_State *L){
     lua_pcall(L, 2, 0, 0);
     // Get update
     json update = getUpdate(L);
-    cout << update << endl;
     json event;
     int openindex;
     while(update["iparty"].size() > 0 && update["ienemy"].size() > 0){
@@ -80,9 +79,6 @@ static void runBattle(lua_State *L){
                 }
             }
         }
-        cout << openindex << endl;
-        cout << update["participants"] << endl;
-        cout << update["participants"][openindex]["name"] << endl;
         cout << update["participants"][openindex]["name"] << " has " << update["participants"][openindex]["hp"] << " HP " << endl;
         cout << endl;
         cout << "Choose what spell " << update["participants"][openindex]["name"] << " should use:" << endl;
@@ -105,7 +101,8 @@ static void runBattle(lua_State *L){
             cout << "Choose which enemy " << update["participants"][openindex]["name"] << " should attack:" << endl;
             for (int i=0; i<update["ienemy"].size(); ++i){
                 int enemyindex = update["ienemy"][i];
-                cout << enemyindex << ":  " << update["participants"][enemyindex-1]["name"] << endl;
+                cout << update["participants"] << endl;
+                cout << enemyindex << ":  " << update["participants"][enemyindex-1]["name"] << endl;// -1 because LUA TO C++ REEEEEEEEEEEEEEE
             };
             cin >> targetindex;
             cin.ignore();
@@ -128,7 +125,6 @@ static void runBattle(lua_State *L){
 
         update = sendStateEvent(L, event);
     }
-    openindex = update["open"];
     for(int i=0; i < update["turns"].size(); ++i){
         for (int j = 0; j < update["turns"][i].size(); ++j){
             cout << update["turns"][i][j]["caster"] << " dealt " << update["turns"][i][j]["damage"] << " to " << update["turns"][i][j]["target"] << "'s " << update["turns"][i][j]["dmgType"] << "!" << endl;
@@ -138,7 +134,6 @@ static void runBattle(lua_State *L){
         cout << "All of your party members have succumbed." << endl;
         cout << "You is dead" << endl;
         cout << "RIP" << endl;
-        cout << update << endl;
     }
     else{
         cout << "You have crushed your enemies UwU" << endl;
