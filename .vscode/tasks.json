@@ -6,8 +6,8 @@
         {
             "taskName": "buildEventProcessor",
             "type": "shell",
-            "command": "g++",
-            "args": ["-std=c++11", "-o", "processEvent.exe", "-I /usr/include/luajit-2.0", "controller/testsuite.cpp", "-llua", "-ldl"],
+            "command": "sudo g++",
+            "args": ["-std=c++11", "-o", "processEvent.exe", "-I/usr/local/include/luajit-2.0", "controller/testsuite.cpp", "-Wl,/usr/local/lib/libluajit-5.1.so -Wl,-rpath='/usr/local/lib/'", "-ldl"],
             "group": {
                 "kind": "build",
                 "isDefault": true

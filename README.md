@@ -118,10 +118,32 @@ Anyway, luckily UE has a function to exposed the path to the executable (`BaseDi
 - C++: `./processEvent.exe` where `processEvent.exe` is in the same directory as `model/`
 - Lua: `lua model/testsuite.lua` where `testsuite.lua` is in the same directory as `state.lua`
 
+# Building the Test Suites
+OH BOY HERE WE GO
+I can only half blame C++ for this since all these problems come more from using LuaJIT over Lua than any actual code issue. Note that this is all about just building the test suites, not the full program, since that part is largely more handled by UE and it's configuration. Provided in the repo are the vscode tasks required to build the program. The command being:
+`g++ -std=c++11 -o processEvent.exe -I/usr/local/include/luajit-2.0 controller/testsuite.cpp -Wl,/usr/local/lib/libluajit-5.1.so -Wl,-rpath='/usr/local/lib/' -ldl`
+- `std=c++11`: is required for stuff. It should probably be c++14 anyway (or whatever the latest is), but the "real" c++ dependencies are handled by the UE release, so this is purely to support the cobbled-together C++ parts of the tests, most of which will not be anything like the real game implementation.
+- `-I/usr/local/include/luajit-2.0`: Replace with the appropriate path, of course, but must point to the include files generated when building the required config of LuaJIT (as explained below)
+- `-Wl,/usr/local/lib/libluajit-5.1.so`: LuaJIT install does not necessarily put the libraries in the correct dynamic linked paths (check with `ldconfig -v`). For linking the dynamic library on compile time, we need to specify the exact path of the LuaJIT dynamic library generated when building with GCC.
+- `-Wl,-rpath='/usr/local/lib/'`: Set the required path to the libraries dynamically loaded by LuaJIT during runtime. I was under the impression that the so.2 and so.2.0.5 generated were all symlinks to each other, but apparently that can't be the case since nothing will run without access to all of them.
+
+AND DON'T FORGET
+Lua packages installed with Luarocks go to a default include that is probably not set correctly in the LuaJIT package path. Make sure that the LUA_PATH on runtime includes the Luarocks install directory or everything will panic.
+
 # Requirements
+
+## LuaJIT Build
+OH BOY HERE WE GO
+LuaJIT is based on the ostensibly more popular Lua 5.1 releases than the latest 5.4 releases. Unfortunately, there is at least one important feature that we need from Lua 5.2 that does not come by default with LuaJIT.
+Luckily for us, God-King Mike has a build key that allows certain 5.2 functionality (including the one we want) to be included in LuaJIT. This is not included in most standard releases of LuaJIT though, and so we compile it ourselves using an edited Makefile. Note that *both static and dynamic libraries need to be built*.
+
+The only change (for now) is adding the `-DLUAJIT_ENABLE_LUA52COMPAT` key.
+
+The edited Makefile for LuaJIT is included in this repo under `extlib/LuaJIT/src/`.
+
+## Packages
 This program was run and tested with the following utilities:
-- LuaJIT 2.0.4
-- luajit-devel 2.0.4
+- LuaJIT 2.0.5 (custom)
 - gcc 4.8.5
 
 C++

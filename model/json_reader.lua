@@ -1,5 +1,4 @@
 local json = require("json")
-
 local lfs = require("lfs")--LuaFileSystem
 local DEFAULT_RES_DIR = lfs.currentdir().."/../data/"--{root} needed for non-relative path
 

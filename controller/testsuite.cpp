@@ -101,7 +101,6 @@ static void runBattle(lua_State *L){
             cout << "Choose which enemy " << update["participants"][openindex]["name"] << " should attack:" << endl;
             for (int i=0; i<update["ienemy"].size(); ++i){
                 int enemyindex = update["ienemy"][i];
-                cout << update["participants"] << endl;
                 cout << enemyindex << ":  " << update["participants"][enemyindex-1]["name"] << endl;// -1 because LUA TO C++ REEEEEEEEEEEEEEE
             };
             cin >> targetindex;

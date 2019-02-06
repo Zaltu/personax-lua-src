@@ -17,20 +17,27 @@ local function next()
 		state.battle.participants[state.battle.open]
 end
 
+function participants_len(tab)
+    last = 0
+    for index, _ in pairs(tab) do
+        last = index
+    end
+    return last
+end
+
 local function processEliminations()
 	for index, participant in pairs(state.battle.participants) do
 		if participant.hp < 0 then
 			if state.party[participant.name] then
 				--print("Removing "..state.battle.participants[index].name)
-				--NEEDS DOC (__LEN ISSUE)
-				if index == #state.battle.participants then	table.remove(state.battle.participants, index) else state.battle.participants[index]=nil end
+				state.battle.participants[index]=nil
 				for i, partyindex in pairs(state.battle.iparty) do
 					if partyindex == index then
 						table.remove(state.battle.iparty, i)
 					end
 				end
 			else
-				print("Removing "..state.battle.participants[index].name)
+				--print("Removing "..state.battle.participants[index].name)
 				state.battle.participants[index]=nil
 				for i, enemyindex in pairs(state.battle.ienemy) do
 					if enemyindex == index then
@@ -40,10 +47,10 @@ local function processEliminations()
 			end
 		end
 	end
-	ins = require('inspect')
-	print(ins(state.battle.iparty))
-	print(ins(state.battle.ienemy))
-	print(ins(state.battle.participants))
+	--ins = require('inspect')
+	--print(ins(state.battle.iparty))
+	--print(ins(state.battle.ienemy))
+	--print(ins(state.battle.participants))
 end
 
 local function spellitout(participant, spellindex)
@@ -119,7 +126,7 @@ end
 local function _load(powerlevel)
 	state.battle = {powerlevel=powerlevel}
 	spawnenemies()
-	state.battle.participants = {} -- GIGAOOF
+	state.battle.participants = {}
 	--Load party persona files
 	for i, person in pairs(state.party) do
 		state.battle.participants[#state.battle.participants+1] = person
@@ -129,13 +136,14 @@ local function _load(powerlevel)
 		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow.name), name=shadow.name, hp=shadow.hp, sp=shadow.sp}
 	end
 	determineorder()
-	setmetatable(state.battle.participants, {__is_luajson_array=true})
 	state.battle.open=1
 end
 
 function battle.refresh(update)
-	print(json.encode(state.battle.participants))
+	--print(json.encode(state.battle.participants))
+	setmetatable(state.battle.participants, {__len=participants_len}) -- GIGAOOF
 	state.update = json.encode(state.battle)
+	setmetatable(state.battle.participants, nil) -- GIGAOOF
 end
 
 function battle.exposeSpellData()
@@ -154,7 +162,6 @@ end
 function battle.loadcontext(powerlevel)
 	math.randomseed(os.time())
 	_load(powerlevel)
-	print("loading")
 	turn()
 	battle.refresh()
 end
