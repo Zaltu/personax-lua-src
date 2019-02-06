@@ -118,6 +118,15 @@ Anyway, luckily UE has a function to exposed the path to the executable (`BaseDi
 - C++: `./processEvent.exe` where `processEvent.exe` is in the same directory as `model/`
 - Lua: `lua model/testsuite.lua` where `testsuite.lua` is in the same directory as `state.lua`
 
+### Notes on Lua Metatable and Length Management
+The Lua `#` operator is meant ot measure the length of a certain table when treated as an array. Since there's no functional difference between the two in "pure" Lua, it seems that it uses a system of "table must contain element at mapped index `int 1`" to determine if it can be treated as such. Moreover, it seems to use a condition in the vein of
+```if table[index] == nil and table[index+1] == nil then table_finished```
+to determine when to stop counting the length of the table.
+
+THAT'S REALLY FUCKING ANNOYING
+
+Particularly because we're oftentimes manuipulating tables by adding and removing things, and storing indexes in other tables to help ease the transition between C++ and Lua, we sometimes end up in situations where the runtime state of a list will have had two non-edge elements removed/nil-ed out. For that reason, when there *are* lists we need to vary we need to set the table's metatable to include a special `__len` key that will do the slightly heavier operation of fecthing the highest index present in the table. This makes the JSON behave in the expected way. Of course, for these tables, we shouldn't be mixing key types if avoidable. I don't want to deal with that shit yo. This single thing (so far) is the entire reason we need to build our own LuaJIT and make all the library linking changes detailed below.
+
 # Building the Test Suites
 OH BOY HERE WE GO
 I can only half blame C++ for this since all these problems come more from using LuaJIT over Lua than any actual code issue. Note that this is all about just building the test suites, not the full program, since that part is largely more handled by UE and it's configuration. Provided in the repo are the vscode tasks required to build the program. The command being:
@@ -150,6 +159,6 @@ C++
 - nlohmann/json 3.4
 
 Lua Rocks
-- luajson 1.3.4
+- luajson 1.3.4  ->  lpeg 1.0.1
 - inspect 3.1.1
 - luafilesystem 1.7.0
