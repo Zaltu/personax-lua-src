@@ -129,7 +129,7 @@ Particularly because we're oftentimes manuipulating tables by adding and removin
 
 # Building the Test Suites
 OH BOY HERE WE GO  
-I can only half blame C++ for this since all these problems come more from using LuaJIT over Lua than any actual code issue. Note that this is all about just building the test suites, not the full program, since that part is largely more handled by UE and it's configuration. Provided in the repo are the vscode tasks required to build the program. The command being:
+I can only half blame C++ for this since all these problems come more from using LuaJIT over Lua than any actual code issue. Note that this is all about just building the test suites, not the full program, since that part is largely more handled by UE and it's configuration. Provided in the repo are the vscode tasks required to build the program. The command being:  
 `g++ -std=c++11 -o processEvent.exe -I/usr/local/include/luajit-2.0 controller/testsuite.cpp -Wl,/usr/local/lib/libluajit-5.1.so -Wl,-rpath='/usr/local/lib/' -ldl`
 - `std=c++11`: is required for stuff. It should probably be c++14 anyway (or whatever the latest is), but the "real" c++ dependencies are handled by the UE release, so this is purely to support the cobbled-together C++ parts of the tests, most of which will not be anything like the real game implementation.
 - `-I/usr/local/include/luajit-2.0`: Replace with the appropriate path, of course, but must point to the include files generated when building the required config of LuaJIT (as explained below)
