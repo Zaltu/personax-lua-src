@@ -24,12 +24,16 @@ local function hitchance(spell, target)
 end
 
 local function parseResistance(element, target)
-    return RES_MULTIPLIER_LOOKUP[target.persona.resistance[ELEMENT_LOOKUP[element]]]
+    resint = target.persona.resistance[ELEMENT_LOOKUP[element]]
+    if resint == "Weak" then target.down = true end
+    return RES_MULTIPLIER_LOOKUP[resint]
 end
 
 local function damageValue(spell, target, caster)
     randomfactor = math.random(1, 15)
-    resistance = target.persona.stats[3]
+    if not target.down then
+        resistance = target.persona.stats[3]
+    end
     local phys = {"Slash", "Strike", "Pierce"}
     if phys[spell.element] then
         attackup = caster.persona.stats[1]
@@ -58,7 +62,7 @@ local function damageHP(spell, target, caster)
     else
         target.hp = target.hp-target.hp*damagetakentotal/100
     end
-    return {caster=caster.name, target=target.name, damage=damangeTable, dmgType=spell.targetattribute}
+    return {caster=caster.name, target=target.name, damage=damangeTable, dmgType=spell.targetattribute, down=target.down}
 end
 
 

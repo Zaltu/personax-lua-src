@@ -112,15 +112,17 @@ The other files found directly in the *data/* directory represent various consta
 ### Notes on Relative and Absolute File Paths
 The relative import paths set by each Lua `require` call are handled and parsed by the Lua interpreter. There is little to no reason to set absolute paths in those cases as they are long and generally unreadable.
 
-Unfortunately, `dofile` does not chare the same utility that `require` does for reasons that are beyond me. It will only accept absolute paths, or "absolute" relative paths (those being paths relative to the *process's* working directory). We must therefore rely on aquiring the absolute path to the `model/` directory  on runtime by getting the absolute path of state, since it is guarenteed to be `require`d. Unfortunately, Lua does not have this built in and C++, being it's usual shitty self, has no consistent way of doing so in the standard library. Seriously wtf is Python actually so good.
+Unfortunately, `dofile` does not chare the same utility that `require` does for reasons that are beyond me. It will only accept absolute paths, or "absolute" relative paths (those being paths relative to the *process's* working directory). We must therefore rely on aquiring the absolute path to the `model/` directory on runtime by getting the absolute path of state, since it is guarenteed to be `require`d. Unfortunately, Lua does not have this built in and C++, being it's usual shitty self, has no consistent way of doing so in the standard library. Seriously wtf is Python actually so good.
 
 Anyway, luckily UE has a function to exposed the path to the executable (`BaseDir`) which can be used for official builds. When compiling the testsuites however, there are rules to be followed because of this:
 - C++: `./processEvent.exe` where `processEvent.exe` is in the same directory as `model/`
 - Lua: `lua model/testsuite.lua` where `testsuite.lua` is in the same directory as `state.lua`
 
 ### Notes on Lua Metatable and Length Management
-The Lua `#` operator is meant ot measure the length of a certain table when treated as an array. Since there's no functional difference between the two in "pure" Lua, it seems that it uses a system of "table must contain element at mapped index `int 1`" to determine if it can be treated as such. Moreover, it seems to use a condition in the vein of  
-```if table[index] == nil and table[index+1] == nil then table_finished```  
+The Lua `#` operator is meant ot measure the length of a certain table when treated as an array. Since there's no functional difference between the two in "pure" Lua, it seems that it uses a system of "table must contain element at mapped index `int 1`" to determine if it can be treated as such. Moreover, it seems to use a condition in the vein of
+
+```if table[index] == nil and table[index+1] == nil then table_finished```
+
 to determine when to stop counting the length of the table.
 
 THAT'S REALLY FUCKING ANNOYING
@@ -129,7 +131,8 @@ Particularly because we're oftentimes manuipulating tables by adding and removin
 
 # Building the Test Suites
 OH BOY HERE WE GO  
-I can only half blame C++ for this since all these problems come more from using LuaJIT over Lua than any actual code issue. Note that this is all about just building the test suites, not the full program, since that part is largely more handled by UE and it's configuration. Provided in the repo are the vscode tasks required to build the program. The command being:  
+I can only half blame C++ for this since all these problems come more from using LuaJIT over Lua than any actual code issue. Note that this is all about just building the test suites, not the full program, since that part is largely more handled by UE and it's configuration. Provided in the repo are the vscode tasks required to build the program. The command being:
+
 `g++ -std=c++11 -o processEvent.exe -I/usr/local/include/luajit-2.0 controller/testsuite.cpp -Wl,/usr/local/lib/libluajit-5.1.so -Wl,-rpath='/usr/local/lib/' -ldl`
 - `std=c++11`: is required for stuff. It should probably be c++14 anyway (or whatever the latest is), but the "real" c++ dependencies are handled by the UE release, so this is purely to support the cobbled-together C++ parts of the tests, most of which will not be anything like the real game implementation.
 - `-I/usr/local/include/luajit-2.0`: Replace with the appropriate path, of course, but must point to the include files generated when building the required config of LuaJIT (as explained below)
@@ -143,7 +146,7 @@ Lua packages installed with Luarocks go to a default include that is probably no
 
 ## LuaJIT Build
 OH BOY HERE WE GO  
-LuaJIT is based on the ostensibly more popular Lua 5.1 releases than the latest 5.4 releases. Unfortunately, there is at least one important feature that we need from Lua 5.2 that does not come by default with LuaJIT.  
+LuaJIT is based on the ostensibly more popular Lua 5.1 releases than the latest 5.4 releases. Unfortunately, there is at least one important feature that we need from Lua 5.2 that does not come by default with LuaJIT.
 Luckily for us, God-King Mike has a build key that allows certain 5.2 functionality (including the one we want) to be included in LuaJIT. This is not included in most standard releases of LuaJIT though, and so we compile it ourselves using an edited Makefile. Note that *both static and dynamic libraries need to be built*.
 
 The only change (for now) is adding the `-DLUAJIT_ENABLE_LUA52COMPAT` key.

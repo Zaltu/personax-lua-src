@@ -74,8 +74,14 @@ static void runBattle(lua_State *L){
                 if (update["turns"][i][j]["miss"] != nullptr){
                     cout << update["turns"][i][j]["caster"] << " attacked " << update["turns"][i][j]["target"] << " but missed!" << endl;
                 }
-                else{
+                else if (update["turns"][i][j]["getup"] != nullptr){
+                    cout << update["turns"][i][j]["caster"] << " recovered from being knocked down..." << endl;
+                }
+                else {
                     cout << update["turns"][i][j]["caster"] << " dealt " << update["turns"][i][j]["damage"] << " to " << update["turns"][i][j]["target"] << "'s " << update["turns"][i][j]["dmgType"] << "!" << endl;
+                }
+                if(update["turns"][i][j]["down"] != nullptr){
+                    cout << update["turns"][i][j]["target"] << " has been knocked down!" << endl;
                 }
             }
         }

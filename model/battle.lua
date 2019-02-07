@@ -15,6 +15,11 @@ local function next()
 		if state.battle.open>#state.battle.participants then state.battle.open=1 end
 	until 
 		state.battle.participants[state.battle.open]
+
+	if state.battle.participants[state.battle.open].down then
+		state.battle.turns.append({caster=state.battle.participants[state.battle.open], getup=true})
+		next()
+	end
 end
 
 function participants_len(tab)
@@ -129,11 +134,11 @@ local function _load(powerlevel)
 	state.battle.participants = {}
 	--Load party persona files
 	for i, person in pairs(state.party) do
-		state.battle.participants[#state.battle.participants+1] = person
+		state.battle.participants[#state.battle.participants+1] = {persona=person.persona, name=person.name, hp=person.hp, sp=person.sp, turnstatus={}, battlestatus={}, endstatus={}}
 	end
 	--Load enemy persona files
 	for i, shadow in pairs(state.battle.enemies) do
-		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow.name), name=shadow.name, hp=shadow.hp, sp=shadow.sp}
+		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow.name), name=shadow.name, hp=shadow.hp, sp=shadow.sp, turnstatus={}, battlestatus={}}
 	end
 	determineorder()
 	state.battle.open=1
