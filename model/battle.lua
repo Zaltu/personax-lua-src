@@ -10,6 +10,11 @@ function battle.cost(costtype, pcost) cost(costtype, pcost) end
 function battle.attack(spell, target, caster) attack(spell, target, caster) end
 
 local function next()
+	if state.battle.participants[state.battle.open].oncemore then
+		table.insert(state.battle.turns, {{caster=state.battle.participants[state.battle.open], oncemore=true}})
+		state.battle.participants[state.battle.open].oncemore = nil
+		return
+	end
 	repeat
 		state.battle.open = state.battle.open + 1
 		if state.battle.open>#state.battle.participants then state.battle.open=1 end
@@ -17,7 +22,8 @@ local function next()
 		state.battle.participants[state.battle.open]
 
 	if state.battle.participants[state.battle.open].down then
-		state.battle.turns.append({caster=state.battle.participants[state.battle.open], getup=true})
+		table.insert(state.battle.turns, {{caster=state.battle.participants[state.battle.open], getup=true}})
+		state.battle.participants[state.battle.open].down = nil
 		next()
 	end
 end
@@ -94,6 +100,7 @@ local function turn(input)
 	while not state.party[state.battle.participants[state.battle.open].name] and #state.battle.iparty > 0 do
 		ai(state.battle.participants[state.battle.open])
 		next()
+		state.battle.oncemore = nil
 		--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 	end
 	--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")

@@ -77,6 +77,9 @@ static void runBattle(lua_State *L){
                 else if (update["turns"][i][j]["getup"] != nullptr){
                     cout << update["turns"][i][j]["caster"] << " recovered from being knocked down..." << endl;
                 }
+                else if (update["turns"][i][j]["oncemore"] != nullptr){
+                    cout << "1 More!" << endl;
+                }
                 else {
                     cout << update["turns"][i][j]["caster"] << " dealt " << update["turns"][i][j]["damage"] << " to " << update["turns"][i][j]["target"] << "'s " << update["turns"][i][j]["dmgType"] << "!" << endl;
                 }
@@ -131,8 +134,22 @@ static void runBattle(lua_State *L){
         update = sendStateEvent(L, event);
     }
     for(int i=0; i < update["turns"].size(); ++i){
-        for (int j = 0; j < update["turns"][i].size(); ++j){
-            cout << update["turns"][i][j]["caster"] << " dealt " << update["turns"][i][j]["damage"] << " to " << update["turns"][i][j]["target"] << "'s " << update["turns"][i][j]["dmgType"] << "!" << endl;
+        for (int j=0; j < update["turns"][i].size(); ++j){
+            if (update["turns"][i][j]["miss"] != nullptr){
+                cout << update["turns"][i][j]["caster"] << " attacked " << update["turns"][i][j]["target"] << " but missed!" << endl;
+            }
+            else if (update["turns"][i][j]["getup"] != nullptr){
+                cout << update["turns"][i][j]["caster"] << " recovered from being knocked down..." << endl;
+            }
+            else if (update["turns"][i][j]["oncemore"] != nullptr){
+                cout << "1 More!" << endl;
+            }
+            else {
+                cout << update["turns"][i][j]["caster"] << " dealt " << update["turns"][i][j]["damage"] << " to " << update["turns"][i][j]["target"] << "'s " << update["turns"][i][j]["dmgType"] << "!" << endl;
+            }
+            if(update["turns"][i][j]["down"] != nullptr){
+                cout << update["turns"][i][j]["target"] << " has been knocked down!" << endl;
+            }
         }
     }
     if (update["iparty"].size() == 0){

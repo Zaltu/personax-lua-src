@@ -23,9 +23,9 @@ local function hitchance(spell, target)
     if math.random(1, 100) < finalhitchance then return true else return false end
 end
 
-local function parseResistance(element, target)
+local function parseResistance(element, caster, target)
     resint = target.persona.resistance[ELEMENT_LOOKUP[element]]
-    if resint == "Weak" then target.down = true end
+    if resint == "Weak" then if not target.down then caster.oncemore = true end target.down = true end
     return RES_MULTIPLIER_LOOKUP[resint]
 end
 
@@ -44,7 +44,7 @@ local function damageValue(spell, target, caster)
     --print("Alteration value: "..alteration)
     --print("Random value: "..randomfactor)
     damage = spell.numericalvalue + randomfactor + spell.numericalvalue * alteration / 100
-    return damage * parseResistance(spell.element, target)
+    return damage * parseResistance(spell.element, caster, target)
 end
 
 
