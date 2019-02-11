@@ -34,16 +34,21 @@ local function damageValue(spell, target, caster)
     if not target.down then
         resistance = target.persona.stats[3]
     end
-    local phys = {"Slash", "Strike", "Pierce"}
+    local phys = {Slash=true, Strike=true, Pierce=true}
     if phys[spell.element] then
+        print("Physical damage detected")
         attackup = caster.persona.stats[1]
     else
+        print("Magical damage detected")
         attackup = caster.persona.stats[2]
     end
     alteration = attackup - resistance
     --print("Alteration value: "..alteration)
     --print("Random value: "..randomfactor)
     damage = spell.numericalvalue + randomfactor + spell.numericalvalue * alteration / 100
+    for passivename, _ in pairs(caster.attackstatus) do
+        damage = require("data/spells/"..passivename).process(spell, damage)
+    end
     return damage * parseResistance(spell.element, caster, target)
 end
 

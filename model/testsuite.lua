@@ -72,7 +72,7 @@ function test(feature)
 	pprint(state.update)
 end
 
---test(battle)
-test(link)
+test(battle)
+--test(link)
 --test(dayChange)
 --test(shop)

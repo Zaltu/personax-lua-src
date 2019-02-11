@@ -2,9 +2,9 @@ local spell = {}
 spell = {}
 spell["element"] = [[Support]]
 spell["cost"] = 6
-spell["desc"] = [[Boosts attack power of one ally]]
-spell["target"] = [[One Ally]]
-spell["name"] = [[Tarukaja]]
+spell["desc"] = [[Lowers attack power of one enemy]]
+spell["target"] = [[One Enemy]]
+spell["name"] = [[Tarunda]]
 spell["costtype"] = [[SP]]
 
 function spell.activate()
@@ -15,7 +15,7 @@ end
 function spell.process(uspell, damage)
     invalid = {"Dark", "Light", "Support"}
     if invalid[uspell.element] then return end
-    return damage * 1.5
+    return damage * 0.5
 end
 
 return spell

@@ -120,6 +120,31 @@ static void runBattle(lua_State *L){
                 {"targetindex", targetindex}
             };
         }
+        else if (spelldata["target"] == "One Ally"){
+            cout << endl;
+            cout << "Choose which ally " << update["participants"][openindex]["name"] << " should help:" << endl;
+            for (int i=0; i<update["iparty"].size(); ++i){
+                int partyindex = update["iparty"][i];
+                cout << partyindex << ":  " << update["participants"][partyindex-1]["name"] << endl;// -1 because LUA TO C++ REEEEEEEEEEEEEEE
+            };
+            cin >> targetindex;
+            cin.ignore();
+            event = {
+                {"key", "battle.userinput"},
+                {"spellindex", spellindex},
+                {"targetindex", targetindex}
+            };
+        }
+        else if (spelldata["target"] == "All Allies"){
+            cout << "Confirm your support on all allies" << endl;
+            cin.ignore();
+            cin.ignore();
+            
+            event = {
+                {"key", "battle.userinput"},
+                {"spellindex", spellindex},
+            };
+        }
         else{
             cout << "Confirm your attack on all enemies" << endl;
             cin.ignore();
@@ -164,7 +189,7 @@ static void runBattle(lua_State *L){
 
 int main() {
     lua_State *L = prepLuaState();
-    runSocialLink(L);
-    //runBattle(L);
+    //runSocialLink(L);
+    runBattle(L);
     lua_close(L);
 }

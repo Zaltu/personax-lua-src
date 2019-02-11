@@ -1,9 +1,13 @@
 local battle = {}
 require('util/battle/battlecost')
 require('util/battle/battleattack')
+require('util/battle/battlepassive')
 
 --Taken from util battlecost
 function battle.cost(costtype, pcost) cost(costtype, pcost) end
+
+--Taken from battlepassive
+function battle.passive(spell, target, caster) passive(spell, target, caster) end
 
 --We assume at the moment of attack that a target has already been established or isn't needed
 --Taken from util battleattack
@@ -14,6 +18,12 @@ local function next()
 		table.insert(state.battle.turns, {{caster=state.battle.participants[state.battle.open], oncemore=true}})
 		state.battle.participants[state.battle.open].oncemore = nil
 		return
+	end
+	for statname, turnsleft in pairs(state.battle.participants[state.battle.open].attackstatus) do
+		if turnsleft then
+			if turnsleft-1 < 0 then state.battle.participants[state.battle.open].attackstatus[statname] = nil
+			else state.battle.participants[state.battle.open].attackstatus[statname] = turnsleft-1 end
+		end
 	end
 	repeat
 		state.battle.open = state.battle.open + 1
