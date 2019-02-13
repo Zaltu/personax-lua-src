@@ -157,10 +157,9 @@ local function _load(powerlevel)
 			hp=person.hp,
 			sp=person.sp,
 			turnstatus={},
-			battlestatus={},
-			endstatus={},
 			attackstatus={},
-			defendstatus={}
+			defendstatus={},
+			endstatus={}
 		}
 	end
 	--Load enemy persona files
@@ -171,13 +170,14 @@ local function _load(powerlevel)
 			hp=shadow.hp,
 			sp=shadow.sp,
 			turnstatus={},
-			battlestatus={},
 			attackstatus={},
 			defendstatus={}
 		}
 	end
 	determineorder()
 	state.battle.open=1
+	--Taken from battlepassive
+	battlepassives()
 end
 
 function battle.refresh(update)
