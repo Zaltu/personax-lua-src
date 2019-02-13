@@ -2,6 +2,11 @@
 --to view comprehensive analysis of what the model is providing.
 --All calls to the model should respect the formats shown here.
 
+-- FOR WINDOWS TESTING
+package.path= package.path..";C:/LUA/lua/?.lua"
+package.cpath= package.cpath..";C:/LUA/lua/lib/lua/5.1/?.dll"
+
+
 --Set ./modal/ to the lua path for testing
 package.path = package.path..";./model/?.lua;"
 require('state')
