@@ -1,8 +1,8 @@
-function passive(spell, target, caster, turns)
-    if target.attackstatus[spell.name] then
-        target.attackstatus[spell.name].turns = target.attackstatus[spell.name].turns + 2
+function passive(spellname, target, caster, turns, statustype)
+    if target[statustype][spellname] then
+        target.[statustype][spellname].turns = target.[statustype][spellname].turns + (turns-1)
         return
     end
-    target.attackstatus[spell.name] = 3
+    target.[statustype][spellname] = turns
     --TODO add state.battle.turns info
 end

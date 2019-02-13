@@ -151,11 +151,30 @@ local function _load(powerlevel)
 	state.battle.participants = {}
 	--Load party persona files
 	for i, person in pairs(state.party) do
-		state.battle.participants[#state.battle.participants+1] = {persona=person.persona, name=person.name, hp=person.hp, sp=person.sp, turnstatus={}, battlestatus={}, endstatus={}, attackstatus={}}
+		state.battle.participants[#state.battle.participants+1] = {
+			persona=person.persona,
+			name=person.name,
+			hp=person.hp,
+			sp=person.sp,
+			turnstatus={},
+			battlestatus={},
+			endstatus={},
+			attackstatus={},
+			defendstatus={}
+		}
 	end
 	--Load enemy persona files
 	for i, shadow in pairs(state.battle.enemies) do
-		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow.name), name=shadow.name, hp=shadow.hp, sp=shadow.sp, turnstatus={}, battlestatus={}, attackstatus={}}
+		state.battle.participants[#state.battle.participants+1] = {
+			persona=require("data/pers/"..shadow.name),
+			name=shadow.name,
+			hp=shadow.hp,
+			sp=shadow.sp,
+			turnstatus={},
+			battlestatus={},
+			attackstatus={},
+			defendstatus={}
+		}
 	end
 	determineorder()
 	state.battle.open=1
