@@ -29,22 +29,43 @@ local function parseResistance(element, caster, target)
     return RES_MULTIPLIER_LOOKUP[resint]
 end
 
+local function calculateAttackBonus(damage, spell, caster, target)
+    for passivename, _ in pairs(caster.attackstatus) do
+        damage = require("data/spells/"..passivename).process(spell, damage)
+    end
+    return damage
+end
+
+local function calculateDefenseBonus(damage, spell, caster, target)
+    for passivename, _ in pairs(target.defendstatus) do
+        damage = require("data/spells/"..passivename).process(spell, damage)
+    end
+    if damage > 0 then
+        damage = damage * parseResistance(spell.element, caster, target)
+    end
+    return damage
+end
+
 local function damageValue(spell, target, caster)
     randomfactor = math.random(1, 15)
     if not target.down then
         resistance = target.persona.stats[3]
     end
-    local phys = {"Slash", "Strike", "Pierce"}
+    local phys = {Slash=true, Strike=true, Pierce=true}
     if phys[spell.element] then
+        print("Physical damage detected")
         attackup = caster.persona.stats[1]
     else
+        print("Magical damage detected")
         attackup = caster.persona.stats[2]
     end
     alteration = attackup - resistance
     --print("Alteration value: "..alteration)
     --print("Random value: "..randomfactor)
     damage = spell.numericalvalue + randomfactor + spell.numericalvalue * alteration / 100
-    return damage * parseResistance(spell.element, caster, target)
+    damage = calculateAttackBonus(damage, spell, caster, target)
+    damage = calculateDefenseBonus(damage, spell, caster, target)
+    return damage
 end
 
 

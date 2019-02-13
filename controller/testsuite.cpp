@@ -17,7 +17,7 @@ using json = nlohmann::json;
 
 static void runSocialLink(lua_State *L){
     const char* slContext = "link";
-    const char* arcana = "Aeon";
+    const char* arcana = "Temperance";
     lua_getfield(L, -1, "changecontext");
     lua_pushstring(L, slContext);
     lua_pushstring(L, arcana);
@@ -118,6 +118,31 @@ static void runBattle(lua_State *L){
                 {"key", "battle.userinput"},
                 {"spellindex", spellindex},
                 {"targetindex", targetindex}
+            };
+        }
+        else if (spelldata["target"] == "One Ally"){
+            cout << endl;
+            cout << "Choose which ally " << update["participants"][openindex]["name"] << " should help:" << endl;
+            for (int i=0; i<update["iparty"].size(); ++i){
+                int partyindex = update["iparty"][i];
+                cout << partyindex << ":  " << update["participants"][partyindex-1]["name"] << endl;// -1 because LUA TO C++ REEEEEEEEEEEEEEE
+            };
+            cin >> targetindex;
+            cin.ignore();
+            event = {
+                {"key", "battle.userinput"},
+                {"spellindex", spellindex},
+                {"targetindex", targetindex}
+            };
+        }
+        else if (spelldata["target"] == "All Allies"){
+            cout << "Confirm your support on all allies" << endl;
+            cin.ignore();
+            cin.ignore();
+            
+            event = {
+                {"key", "battle.userinput"},
+                {"spellindex", spellindex},
             };
         }
         else{

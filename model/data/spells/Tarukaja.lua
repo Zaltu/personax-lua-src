@@ -1,24 +1,24 @@
 local spell = {}
 spell = {}
-spell["numericaltype"] = [[Percentage]]
 spell["element"] = [[Support]]
 spell["cost"] = 6
 spell["desc"] = [[Boosts attack power of one ally]]
-spell["numberofhits"] = 1
---a function: conditional
-spell["hitchance"] = 100
 spell["target"] = [[One Ally]]
-spell["passive"] = false
---a function: statuschance
 spell["name"] = [[Tarukaja]]
-spell["status"] = [[None]]
-spell["targetattribute"] = [[Attack]]
-spell["numericalvalue"] = 50
 spell["costtype"] = [[SP]]
+spell["numericalvalue"] = 1.5
 
-function spell.activate()
-    state.context.cost(spell.costtype, spell.cost)
-    state.context.attack(spell, state.battle.participants[state.battle.target], state.battle.participants[state.battle.open])
+function spell.activate(free)
+    if not free then
+        state.context.cost(spell.costtype, spell.cost)
+    end
+    state.context.passive(spell.name, state.battle.participants[state.battle.target], state.battle.participants[state.battle.open], 3, "attackstatus")
+end
+
+function spell.process(uspell, damage)
+    invalid = {"Dark", "Light", "Support"}
+    if invalid[uspell.element] then return damage end
+    return damage * spell.numericalvalue
 end
 
 return spell

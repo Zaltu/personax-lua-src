@@ -1,9 +1,13 @@
 local battle = {}
 require('util/battle/battlecost')
 require('util/battle/battleattack')
+require('util/battle/battlepassive')
 
 --Taken from util battlecost
 function battle.cost(costtype, pcost) cost(costtype, pcost) end
+
+--Taken from battlepassive
+function battle.passive(spell, target, caster) passive(spell, target, caster) end
 
 --We assume at the moment of attack that a target has already been established or isn't needed
 --Taken from util battleattack
@@ -14,6 +18,12 @@ local function next()
 		table.insert(state.battle.turns, {{caster=state.battle.participants[state.battle.open], oncemore=true}})
 		state.battle.participants[state.battle.open].oncemore = nil
 		return
+	end
+	for statname, turnsleft in pairs(state.battle.participants[state.battle.open].attackstatus) do
+		if turnsleft then
+			if turnsleft-1 < 0 then state.battle.participants[state.battle.open].attackstatus[statname] = nil
+			else state.battle.participants[state.battle.open].attackstatus[statname] = turnsleft-1 end
+		end
 	end
 	repeat
 		state.battle.open = state.battle.open + 1
@@ -141,14 +151,33 @@ local function _load(powerlevel)
 	state.battle.participants = {}
 	--Load party persona files
 	for i, person in pairs(state.party) do
-		state.battle.participants[#state.battle.participants+1] = {persona=person.persona, name=person.name, hp=person.hp, sp=person.sp, turnstatus={}, battlestatus={}, endstatus={}}
+		state.battle.participants[#state.battle.participants+1] = {
+			persona=person.persona,
+			name=person.name,
+			hp=person.hp,
+			sp=person.sp,
+			turnstatus={},
+			attackstatus={},
+			defendstatus={},
+			endstatus={}
+		}
 	end
 	--Load enemy persona files
 	for i, shadow in pairs(state.battle.enemies) do
-		state.battle.participants[#state.battle.participants+1] = {persona=require("data/pers/"..shadow.name), name=shadow.name, hp=shadow.hp, sp=shadow.sp, turnstatus={}, battlestatus={}}
+		state.battle.participants[#state.battle.participants+1] = {
+			persona=require("data/pers/"..shadow.name),
+			name=shadow.name,
+			hp=shadow.hp,
+			sp=shadow.sp,
+			turnstatus={},
+			attackstatus={},
+			defendstatus={}
+		}
 	end
 	determineorder()
 	state.battle.open=1
+	--Taken from battlepassive
+	battlepassives()
 end
 
 function battle.refresh(update)
