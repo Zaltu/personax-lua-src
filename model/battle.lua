@@ -159,6 +159,7 @@ local function _load(powerlevel)
 			turnstatus={},
 			attackstatus={},
 			defendstatus={},
+			dodgestatus={},
 			endstatus={}
 		}
 	end
@@ -171,7 +172,8 @@ local function _load(powerlevel)
 			sp=shadow.sp,
 			turnstatus={},
 			attackstatus={},
-			defendstatus={}
+			defendstatus={},
+			dodgestatus={}
 		}
 	end
 	determineorder()
