@@ -1,5 +1,3 @@
-require('json_reader')
-
 function fuse(together, allpersonas)
 	local combos = require("data/fusion_combos")[#together.."way"]
 	local fusebetween = ""

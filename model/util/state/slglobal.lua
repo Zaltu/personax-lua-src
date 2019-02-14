@@ -16,7 +16,7 @@ slglobal.Death			= {level=1, angle=0}
 slglobal.Sun			= {level=1, angle=0}
 slglobal.Moon			= {level=1, angle=0}
 slglobal.Star			= {level=1, angle=0}
-slglobal.Temperance		= {level=10, angle=0}
+slglobal.Temperance		= {level=1, angle=0}
 slglobal.Devil			= {level=1, angle=0}
 slglobal.Tower			= {level=1, angle=0}
 slglobal.Judgement		= {level=1, angle=0}
