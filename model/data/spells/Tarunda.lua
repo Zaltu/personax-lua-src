@@ -7,6 +7,7 @@ spell["target"] = [[One Enemy]]
 spell["name"] = [[Tarunda]]
 spell["costtype"] = [[SP]]
 spell["numericalvalue"] = 0.5
+spell["blurb"] = [['s attack power has decreased!]]
 
 function spell.activate()
     state.context.cost(spell.costtype, spell.cost)

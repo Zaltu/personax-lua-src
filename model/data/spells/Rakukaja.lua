@@ -7,6 +7,7 @@ spell["target"] = [[One Ally]]
 spell["name"] = [[Rakukaja]]
 spell["costtype"] = [[SP]]
 spell["numericalvalue"] = 0.5
+spell["blurb"] = [['s defenses have increased!]]
 
 function spell.activate(free)
     if not free then

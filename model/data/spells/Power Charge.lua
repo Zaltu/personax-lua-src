@@ -7,6 +7,7 @@ spell["target"] = [[One Ally]]
 spell["name"] = [[Power Charge]]
 spell["numericalvalue"] = 2.5
 spell["costtype"] = [[SP]]
+spell["blurb"] = [['s physical attack power has greatly increased!]]
 
 function spell.activate()
     state.context.cost(spell.costtype, spell.cost)

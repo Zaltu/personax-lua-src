@@ -7,12 +7,13 @@ spell["target"] = [[One Ally]]
 spell["name"] = [[Tarukaja]]
 spell["costtype"] = [[SP]]
 spell["numericalvalue"] = 1.5
+spell["blurb"] = [['s attack power has increased!]]
 
 function spell.activate(free)
     if not free then
         state.context.cost(spell.costtype, spell.cost)
     end
-    state.context.passive(spell.name, state.battle.participants[state.battle.target], state.battle.participants[state.battle.open], 3, "attackstatus")
+    state.context.passive(spell, state.battle.participants[state.battle.target], state.battle.participants[state.battle.open], 3, "attackstatus")
 end
 
 function spell.process(uspell, damage)

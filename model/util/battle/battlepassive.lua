@@ -1,9 +1,10 @@
-function passive(spellname, target, caster, turns, statustype)
-    if target[statustype][spellname] then
-        target[statustype][spellname].turns = target[statustype][spellname].turns + (turns-1)
+function passive(spell, target, caster, turns, statustype)
+    if target[statustype][spell.name] then
+        target[statustype][spell.name].turns = target[statustype][spell.name].turns + (turns-1)
         return
     end
-    target[statustype][spellname] = turns
+    target[statustype][spell.name] = turns
+    table.insert(state.battle.turns, {{target=target.name, caster=caster.name, status=spellname, blurb=target.name..spell.blurb}})
     --TODO add state.battle.turns info
 end
 
