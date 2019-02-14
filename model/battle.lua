@@ -7,7 +7,7 @@ require('util/battle/battlepassive')
 function battle.cost(costtype, pcost) cost(costtype, pcost) end
 
 --Taken from battlepassive
-function battle.passive(spell, target, caster) passive(spell, target, caster) end
+function battle.passive(spell, target, caster, turns, statustype) passive(spell, target, caster, turns, statustype) end
 
 --We assume at the moment of attack that a target has already been established or isn't needed
 --Taken from util battleattack

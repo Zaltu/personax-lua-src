@@ -14,7 +14,7 @@ function spell.activate()
 end
 
 function spell.process(uspell, damage)
-    phys = {"Slash", "Strike", "Pierce"}
+    phys = {Slash=true, Strike=true, Pierce=true}
     if phys[uspell.element] then
         return damage * spell.numericalvalue
     end

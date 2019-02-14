@@ -53,10 +53,10 @@ local function damageValue(spell, target, caster)
     end
     local phys = {Slash=true, Strike=true, Pierce=true}
     if phys[spell.element] then
-        print("Physical damage detected")
+        --print("Physical damage detected")
         attackup = caster.persona.stats[1]
     else
-        print("Magical damage detected")
+        --print("Magical damage detected")
         attackup = caster.persona.stats[2]
     end
     alteration = attackup - resistance

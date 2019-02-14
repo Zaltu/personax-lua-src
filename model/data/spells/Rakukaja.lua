@@ -16,7 +16,7 @@ function spell.activate(free)
 end
 
 function spell.process(uspell, damage)
-    invalid = {"Dark", "Light", "Support"}
+    invalid = {Dark=true, Light=true, Support=true}
     if invalid[uspell.element] then return damage end
     return damage * spell.numericalvalue
 end
