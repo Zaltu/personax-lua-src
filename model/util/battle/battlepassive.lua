@@ -5,7 +5,6 @@ function passive(spell, target, caster, turns, statustype)
     end
     target[statustype][spell.name] = turns
     table.insert(state.battle.turns, {{target=target.name, caster=caster.name, status=spellname, blurb=target.name..spell.blurb}})
-    --TODO add state.battle.turns info
 end
 
 
