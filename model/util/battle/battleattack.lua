@@ -47,22 +47,26 @@ local function calculateDefenseBonus(damage, spell, caster, target)
 end
 
 local function damageValue(spell, target, caster)
-    randomfactor = math.random(1, 15)
-    if not target.down then
-        resistance = target.persona.stats[3]
-    end
-    local phys = {Slash=true, Strike=true, Pierce=true}
-    if phys[spell.element] then
-        --print("Physical damage detected")
-        attackup = caster.persona.stats[1]
+    if spell.numericaltype == "Percentage" then
+        damage = target.hp*damage/100
     else
-        --print("Magical damage detected")
-        attackup = caster.persona.stats[2]
+        randomfactor = math.random(1, 15)
+        if not target.down then
+            resistance = target.persona.stats[3]
+        end
+        local phys = {Slash=true, Strike=true, Pierce=true}
+        if phys[spell.element] then
+            --print("Physical damage detected")
+            attackup = caster.persona.stats[1]
+        else
+            --print("Magical damage detected")
+            attackup = caster.persona.stats[2]
+        end
+        alteration = attackup - resistance
+        --print("Alteration value: "..alteration)
+        --print("Random value: "..randomfactor)
+        damage = spell.numericalvalue + randomfactor + spell.numericalvalue * alteration / 100
     end
-    alteration = attackup - resistance
-    --print("Alteration value: "..alteration)
-    --print("Random value: "..randomfactor)
-    damage = spell.numericalvalue + randomfactor + spell.numericalvalue * alteration / 100
     damage = calculateAttackBonus(damage, spell, caster, target)
     damage = calculateDefenseBonus(damage, spell, caster, target)
     return damage
@@ -78,11 +82,7 @@ local function damageHP(spell, target, caster)
         table.insert(damangeTable, damage)
     end
     --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." damage!")
-    if spell.numericaltype == "Absolute Value" then
-        target.hp = target.hp-damagetakentotal
-    else
-        target.hp = target.hp-target.hp*damagetakentotal/100
-    end
+    target.hp = target.hp-damagetakentotal
     return {caster=caster.name, target=target.name, damage=damangeTable, dmgType=spell.targetattribute, down=target.down}
 end
 
@@ -100,7 +100,7 @@ end
 
 local function attacks(spell, target, caster)
     targeter = {HP=damageHP, SP=damageSP}
-    if hitchance(spell, target) then
+    if target.down or hitchance(spell, target) then
         return targeter[spell.targetattribute](spell, target, caster)
     else
         return {target=target.name, caster=caster.name, miss=true}
