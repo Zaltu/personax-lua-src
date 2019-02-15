@@ -79,7 +79,7 @@ static void runBattle(lua_State *L){
                 else if (update["turns"][i][j]["oncemore"] != nullptr){
                     cout << "1 More!" << endl;
                 }
-                else if (update["turns"][i][j]["status"] != nullptr){
+                else if (update["turns"][i][j]["status"] != nullptr && update["turns"][i][j]["blurb"] != nullptr){
                     cout << update["turns"][i][j]["blurb"] << endl;
                 }
                 else {

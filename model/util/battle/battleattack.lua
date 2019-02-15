@@ -96,7 +96,7 @@ local function damageHP(spell, target, caster)
     end
     --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." damage!")
     target.hp = target.hp-damagetakentotal
-    return {caster=caster.name, target=target.name, damage=damangeTable, dmgType=spell.targetattribute, down=target.down}
+    return {caster=caster.name, target=target.name, damage=damangeTable, dmgType="HP", down=target.down, element=spell.element}
 end
 
 
@@ -108,7 +108,7 @@ local function damageSP(spell, target, caster)
     else
         target.sp = target.sp-target.sp*damagetakentotal/100
     end
-    return {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType=spell.targetattribute}
+    return {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType="SP"}
 end
 
 local function attacks(spell, target, caster)
