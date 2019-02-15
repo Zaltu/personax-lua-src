@@ -68,7 +68,6 @@ local function setShowType()
 end
 
 function inline.processinput()
-	state.cut.index=2
 	if state.context.index then
 		state.cut.index = state.context.index+2
 		state.context.index=nil
