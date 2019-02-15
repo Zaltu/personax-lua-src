@@ -6,14 +6,13 @@ exposed functionalities: one to send an update to the model
 and one to fetch the update value. Under normal circumstances,
 sending the state a value will return the update that ensued.
 */
+#include <json.hpp>
+#include <iostream>
 extern "C"{
     #include <lua.h>
     #include <lauxlib.h>
     #include <lualib.h>
 }
-//For convenience. std is only used to print out an error return code here.
-using namespace std;
-
 using json = nlohmann::json;
 
 
@@ -43,9 +42,9 @@ static json sendStateEvent(lua_State *L, json event){
     lua_getfield(L, -1, "event");
     lua_pushstring(L, event.dump().c_str());
     lua_pcall(L, 1, 1, 0);
-    string returncode = lua_tostring(L, -1);
+    std::string returncode = lua_tostring(L, -1);
     if (returncode != "0"){
-        cout << returncode << endl;
+        std::cout << returncode << std::endl;
     }
     lua_pop(L, 1);
     return getUpdate(L);

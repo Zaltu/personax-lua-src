@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
-#include <string.h>
 #include <json.hpp>
 #include "setupState.cpp"
 #include "processEvent.cpp"

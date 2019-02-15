@@ -2,6 +2,7 @@
 Helper static funciton to set up the global game state. Should be called when loading into
 a save file.
 */
+#include <iostream>
 extern "C"{
     #include <lua.h>
     #include <lauxlib.h>
@@ -11,7 +12,7 @@ extern "C"{
 /*Defines runtime Lua import path, and imports the state, which instantiates the game state
 and sets it as global variable. Defined for explicit runtime. Executable MUST be one level
 above model with this current const value.*/
-const char* LUA_LOCAL_PREP = "package.path = package.path..';./model/?.lua' require('state')";
+const char * const LUA_LOCAL_PREP = "package.path = package.path..';C:/LUA/lua/?.lua;./model/?.lua;K:/Git Repos/personax-lua-src/model/?.lua' package.cpath = package.cpath..';C:/LUA/lua/lib/lua/5.1/?.dll' require('state')";
 
 static lua_State* prepLuaState(){
     /**
@@ -25,7 +26,7 @@ static lua_State* prepLuaState(){
     */
     lua_State *L = lua_open();
     luaL_openlibs(L);
-    luaL_dostring(L, LUA_LOCAL_PREP);
+	luaL_dostring(L, LUA_LOCAL_PREP);
     lua_getglobal(L, "state");
     return L;
 }
