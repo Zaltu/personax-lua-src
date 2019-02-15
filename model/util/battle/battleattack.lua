@@ -17,12 +17,6 @@ local RES_MULTIPLIER_LOOKUP = {
     Strong=0.5
 }
 
-local function hitchance(spell, target)
-    statdodge = target.persona.stats[4] / 10
-    finalhitchance = spell.hitchance - statdodge
-    if math.random(1, 100) < finalhitchance then return true else return false end
-end
-
 local function parseResistance(element, caster, target)
     resint = target.persona.resistance[ELEMENT_LOOKUP[element]]
     if resint == "Weak" then if not target.down then caster.oncemore = true end target.down = true end
@@ -44,6 +38,25 @@ local function calculateDefenseBonus(damage, spell, caster, target)
         damage = damage * parseResistance(spell.element, caster, target)
     end
     return damage
+end
+
+local function calculateEvasionBonus(spell, basehitchance, target, caster)
+    hitchance = basehitchance
+    for passivename, _ in pairs(target.dodgestatus) do
+        hitchance = hitchance + require("data/spells/"..passivename).process(spell, basehitchance, true)
+    end
+    for passivename, _ in pairs(target.dodgestatus) do
+        hitchance = hitchance + require("data/spells/"..passivename).process(spell, basehitchance)
+    end
+    return hitchance
+end
+
+local function hitchance(spell, target)
+    statdodge = target.persona.stats[4] / 10
+    realhitchance = calculateEvasionBonus(spell, spell.hitchance, target, caster)
+    finalhitchance = realhitchance - statdodge
+    print("agility="..target.persona.stats[4].."\nstatdodge="..statdodge.."\nspellhitchance="..spell.hitchance.."\nrealhitchance="..realhitchance.."\nfinalhitchance="..finalhitchance)
+    if math.random(1, 100) < finalhitchance then return true else return false end
 end
 
 local function damageValue(spell, target, caster)
@@ -100,7 +113,7 @@ end
 
 local function attacks(spell, target, caster)
     targeter = {HP=damageHP, SP=damageSP}
-    if target.down or hitchance(spell, target) then
+    if target.down or hitchance(spell, target, caster) then
         return targeter[spell.targetattribute](spell, target, caster)
     else
         return {target=target.name, caster=caster.name, miss=true}

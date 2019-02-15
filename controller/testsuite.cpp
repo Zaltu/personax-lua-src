@@ -191,7 +191,7 @@ static void runBattle(lua_State *L){
 
 int main() {
     lua_State *L = prepLuaState();
-    runSocialLink(L);
-    //runBattle(L);
+    //runSocialLink(L);
+    runBattle(L);
     lua_close(L);
 }
