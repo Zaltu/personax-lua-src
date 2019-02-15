@@ -19,12 +19,8 @@ local function next()
 		state.battle.participants[state.battle.open].oncemore = nil
 		return
 	end
-	for statname, turnsleft in pairs(state.battle.participants[state.battle.open].attackstatus) do
-		if turnsleft then
-			if turnsleft-1 < 0 then state.battle.participants[state.battle.open].attackstatus[statname] = nil
-			else state.battle.participants[state.battle.open].attackstatus[statname] = turnsleft-1 end
-		end
-	end
+	--Taken from battlepassive
+	countdownpassives()
 	repeat
 		state.battle.open = state.battle.open + 1
 		if state.battle.open>#state.battle.participants then state.battle.open=1 end

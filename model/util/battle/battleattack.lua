@@ -55,7 +55,7 @@ local function hitchance(spell, target)
     statdodge = target.persona.stats[4] / 10
     realhitchance = calculateEvasionBonus(spell, spell.hitchance, target, caster)
     finalhitchance = realhitchance - statdodge
-    print("agility="..target.persona.stats[4].."\nstatdodge="..statdodge.."\nspellhitchance="..spell.hitchance.."\nrealhitchance="..realhitchance.."\nfinalhitchance="..finalhitchance)
+    --print("agility="..target.persona.stats[4].."\nstatdodge="..statdodge.."\nspellhitchance="..spell.hitchance.."\nrealhitchance="..realhitchance.."\nfinalhitchance="..finalhitchance)
     if math.random(1, 100) < finalhitchance then return true else return false end
 end
 

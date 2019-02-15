@@ -23,3 +23,16 @@ function battlepassives()
         state.battle.open > #state.battle.participants
     state.battle.open = 1
 end
+
+
+function countdownpassives()
+    countablepassives = {"attackstatus", "defendstatus", "dodgestatus"}
+    for _, passivetype in pairs(countablepassives) do
+        for statname, turnsleft in pairs(state.battle.participants[state.battle.open][passivetype]) do
+            if turnsleft then
+                if turnsleft-1 < 0 then state.battle.participants[state.battle.open][passivetype][statname] = nil
+                else state.battle.participants[state.battle.open][passivetype][statname] = turnsleft-1 end
+            end
+        end
+    end
+end
