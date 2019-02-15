@@ -1,7 +1,7 @@
 # Overview
 There's technically 22 arcanas in a standard tarot deck. Persona historically also includes one arcana from the Aelph deck as well, that being Aeon, and P4G also included "Jester" or something idk.
 
-While that would normally mean there are 23 social links to write, there are a number of arcanas that are generally reserved for story progression. These always include Fool, Judgement and World, and sometimes a smattering of others.
+While that would normally mean there are 23 social links to write, there are a number of arcanas that are generally reserved for story progression. These always include Fool, Judgement and World, and sometimes a smattering of others. As much extra work as it will be to write more links, I'd much rather have as few story-driven links as possible, to add more content to the game.
 
 There are a few other special social links in the form of the links established between the player and his teamates. These are not forced progession like the story-driven ones, but are important none-the-less as they must tie in to the main plot and the purpose of each character within it.
 

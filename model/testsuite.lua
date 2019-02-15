@@ -36,7 +36,7 @@ function shop()
 end
 
 function link()
-	state.changecontext('link', 'Temperance')
+	state.changecontext('link', 'Aeon')
 
 	state.event(json.encode({key="link.action", index=0}))
 	state.event(json.encode({key="link.action", index=0}))
@@ -77,7 +77,7 @@ function test(feature)
 	pprint(state.update)
 end
 
-test(battle)
---test(link)
+--test(battle)
+test(link)
 --test(dayChange)
 --test(shop)

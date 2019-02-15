@@ -16,7 +16,7 @@ using json = nlohmann::json;
 
 static void runSocialLink(lua_State *L){
     const char* slContext = "link";
-    const char* arcana = "Temperance";
+    const char* arcana = "Aeon";
     lua_getfield(L, -1, "changecontext");
     lua_pushstring(L, slContext);
     lua_pushstring(L, arcana);
@@ -191,7 +191,7 @@ static void runBattle(lua_State *L){
 
 int main() {
     lua_State *L = prepLuaState();
-    //runSocialLink(L);
-    runBattle(L);
+    runSocialLink(L);
+    //runBattle(L);
     lua_close(L);
 }

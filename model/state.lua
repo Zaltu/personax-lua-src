@@ -4,7 +4,7 @@ _G.state = {}
 
 --Many imports are dofile'd throughout all of state.
 state.flags = {}
-state.Version = "0.0.0.0.2"
+state.Version = "0.0.0.0.3"
 state.cut = nil
 state.date = {}
 state.date.day = 1

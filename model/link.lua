@@ -1,8 +1,10 @@
+rankup = require('util/link/rankup')
 local link = {}
 
 local function _load(arcana)
-	local level = state.slglobal[arcana].level
-	local angle = state.slglobal[arcana].angle
+	state.context.arcana = arcana
+	state.context.level = state.slglobal[arcana].level
+	state.context.angle = state.slglobal[arcana].angle
 	local link = require("data/links/"..arcana.."_link")
 	local angleladder = {angle=nil}
 	local ladderdown = nil
@@ -13,20 +15,20 @@ local function _load(arcana)
 		if angleladder.angle then
 			ladder = tonumber(string.sub(angleladder.angle, string.find(angleladder.angle, '_')+1, -1))
 		end
-		if (string.find(key, level..'_') and loopangle<=angle and ( (ladder and loopangle>ladder) or not angleladder.angle)) then
+		if (string.find(key, state.context.level..'_') and loopangle<=state.context.angle and ( (ladder and loopangle>ladder) or not angleladder.angle)) then
 			angleladder.cutscene=value
 			angleladder.angle=key
 		end
-		if string.find(key, level..'_') and (ladderdown==nil or loopangle>ladderdown) then ladderdown=loopangle end
-		if string.find(key, level..'_') and (ladderup==nil or loopangle<ladderup) then ladderup=loopangle end
+		if string.find(key, state.context.level..'_') and (ladderdown==nil or loopangle>ladderdown) then ladderdown=loopangle end
+		if string.find(key, state.context.level..'_') and (ladderup==nil or loopangle<ladderup) then ladderup=loopangle end
 	end
 	if angleladder.angle==nil then
-		if angle>ladderdown then
-			angleladder.angle=level..'_'..ladderdown
-			angleladder.cutscene=link.cutscenes[level..'_'..ladderdown]
+		if state.context.angle>ladderdown then
+			angleladder.angle=state.context.level..'_'..ladderdown
+			angleladder.cutscene=link.cutscenes[state.context.level..'_'..ladderdown]
 		else
-			angleladder.angle=level..'_'..ladderup
-			angleladder.cutscene=link.cutscenes[level..'_'..ladderup]
+			angleladder.angle=state.context.level..'_'..ladderup
+			angleladder.cutscene=link.cutscenes[state.context.level..'_'..ladderup]
 		end
 	end
 	state.cut = angleladder
@@ -85,7 +87,10 @@ function link.refresh()--Send update to graphic view
 end
 
 local function setShowType()
-	if state.cut.open[1].points then
+	if state.cut.open.rankup then
+		rankup.hijack()
+		link.rankedup = true
+	elseif state.cut.open[1].points then
 		state.cut.open.show=showSpeak()
 	elseif state.cut.open[1].place then
 		state.cut.open.show=showCam()
@@ -95,6 +100,7 @@ local function setShowType()
 end
 
 function link.processinput()
+	--TODO change this pls only exists to check if SL is starting
 	state.cut.index=2
 	if state.context.index then
 		state.cut.index = state.context.index+2
@@ -103,7 +109,11 @@ function link.processinput()
 	if state.cut.open[state.cut.index] then
 		state.cut.open = state.cut.cutscene.items[state.cut.open[state.cut.index]+1]
 		setShowType()
-	else-- SL Cutscene over
+	else--SL Cutscene over
+		if not link.rankedup then rankup.hijack() link.rankedup = true return end
+		--We don't dofile link, so reset for next time
+		link.rankedup = false
+		--SLs force calendar change
 		state.changecontext("calendar")
 		return
 	end
