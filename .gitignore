@@ -1,0 +1,13 @@
+# Ignore Visual Studio config files
+.vs/
+
+# Ignore Visual Studio debug location
+x64/
+
+# Ignore Visual Studio Solutions
+*.sln
+
+# Ignore Visual Studio Project Setup
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
