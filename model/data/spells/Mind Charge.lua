@@ -2,12 +2,12 @@ local spell = {}
 spell = {}
 spell["element"] = [[Support]]
 spell["cost"] = 15
-spell["desc"] = [[Greatly boost damage of physical attack on next turn]]
+spell["desc"] = [[Greatly boost damage of magic attack on next turn]]
 spell["target"] = [[One Ally]]
-spell["name"] = [[Power Charge]]
+spell["name"] = [[Mind Charge]]
 spell["numericalvalue"] = 2.5
 spell["costtype"] = [[SP]]
-spell["blurb"] = [['s physical attack power has greatly increased!]]
+spell["blurb"] = [['s magical attack power has greatly increased!]]
 
 function spell.activate()
     state.context.cost(spell.costtype, spell.cost)
@@ -15,7 +15,7 @@ function spell.activate()
 end
 
 function spell.process(uspell, damage)
-    phys = {Slash=true, Strike=true, Pierce=true}
+    phys = {Fire=true, Ice=true, Elec=true, Wind=true}
     if phys[uspell.element] then
         return damage * spell.numericalvalue
     end
