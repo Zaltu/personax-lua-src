@@ -1,0 +1,2 @@
+# Overview
+Nothing happens in freeroam. There are no events to be processed. Any changes are meant to be processed through baked-in Lua code calls within UE actors prompting various context changes, mostly through ENV manipulation.
