@@ -5,6 +5,10 @@ calendar.time = 0
 calendar.now = nil
 
 function calendar.passTime()
+	--[[
+	Advance the timeslot to the next available one in the current day.
+	If no more timeslots exist within the day, advance to the next existing day.
+	]]--
 	calendar.time = calendar.time + 1
 	calendar.now = calendar.day[calendar.time]
 	if not calendar.now then
@@ -20,6 +24,9 @@ function calendar.passTime()
 end
 
 function calendar.passDay()
+	--[[
+	Advance to the next day and process it.
+	]]--
 	state.date.day = state.date.day + 1
 	calendar.time = 0
 	calendar.day = require("data/days/day_"..state.date.day)
@@ -29,6 +36,12 @@ function calendar.passDay()
 end
 
 function calendar.loadcontext(hardset)
+	--[[
+	Lock the state and prepare the context switch towards the one that will be defined in the next valid day.
+	If the hardset parameter is set, change directly to the specified day regardless of current timeslot or day.
+
+	:param int hardset: day index value to GOTO
+	]]--
 	state.lock()
 	if not hardset then calendar.passTime() state.unlock() return end
 	--We increment state.date.day later...
