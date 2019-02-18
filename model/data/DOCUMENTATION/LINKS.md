@@ -38,4 +38,13 @@ This idea was built around rank 10 of the reverse route, being that you get a te
 
 
 ### Aeon
+Aeon is actually the Aelph version of Judgement, which kind of fucks this, but...  
 Aeon being the Aelph version of World, I thought it would be fitting for it to be about someone deciding to follow their own path. Since a lot needs to build up to this, so it doesn't seem rushed, it would have had to either be a character we interact with throughout the game like a teammate (as was the case for Aigis in P3FES), or someone we already knew. Since Persona X was meant to be set between the events of P3 and P4, Elizabeth being the person to decide to leave the Velvet Room and persue a way of freeing P3MC, as she is known to have done though P4A, etc, seemed fitting. It does mean that another Velvet Room assistant will have to be designed, and may end up not being as fleshed out as they perhaps should. We will see.
+
+
+### Moon
+The misunderstood artist
+
+
+### Judgement vs Aeon
+I think I want entities generally associated with Death for the Judgement arcana, and entities generally associated with forgiveness for the Aeon arcana.

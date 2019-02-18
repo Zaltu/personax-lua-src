@@ -15,7 +15,9 @@ One of the better, earlier ideas I had about the plot twist was that the main ch
 
 This could go either way. In reality, that's not the case as demonstrated by the fact that he can wield the Personas of those arcanas well, meaning that they are a facet of his _true_ self. The player could either "admit" to the allegations, effectively making them true (and potentially breaking or de-evolving teammate social links?) and leading to a bad ending, or denying the allegations leading to the support of the team and confronting Legion.
 
+
 ## (True) Final Boss
+MARK 1  
 In the vein of having multiple faces being a good/bad thing, the initial Final Boss was meant to be Legion, for he is many. Using Satan/Lucifer as the boss of hell is kind of overdone anyway, and with the vague idea in mind that both God and the Devil are suppose to be "neutral" entities judging people fairly, there's perhaps no real reason to bring them into this.
 Having Legion impersonate Lucifer in the circle of Fraud would also be potentially kino.
 
@@ -27,3 +29,12 @@ Maybe even the party members themselves? Who felt they were judged unfairly? If 
 
 Legion couldn't be the True Final Boss, since the team would be pulled into this world and this fight because of something they deemed unfair in the first place. With that in mind though, DO NO MAKE THE PARTY RESPONSIBLE FOR EVERYTHING, that's just shit storytelling and will make the player feel annoyed if they see it coming.
 
+
+MARK 2  
+I realize that the setting of the dungeons of the game isn't actually meant to be "real" hell, just a metaphorical representation of the good and evil people see in each other based on the limited interactions most people have with each other. In that vein, the idea that legion poses an arbitrary evil entity like Lucifer as the Fraud boss, while himself being the Treachery boss is perhaps possible.
+
+Then the big brain mind games come in. if we are trying to set up Legion as being the "secret true final boss", then we don't want the player to notice that there's still another boss/more story left. Unfortunatly, presenting each dungeon as a circle of hell makes it glaringly obvious to anyone with half a brain. On the other hand, if we pose (not)Lucifer as the final boss, it could ostensibly make sense to have designed the *7 deadly sins* as dungeons, then placed Lucifer at the end because why not. And then the jebait with dungeons 8 and 9 revealing the true nature of the place.
+
+There are a number of problematic things with that though, both since the deadly sins and the circles of hell don't actually match... It would be extremely difficult to design each dungeon in such a way that it could be interpreted as both. It may be an interesting challenge though. I would also have to remove the whole "abandon all hope yee who enter here" premise in the dungeon hub.
+
+Overall, I think Legion as the True Final Boss is a great idea. I just need to figure out how to set it up.

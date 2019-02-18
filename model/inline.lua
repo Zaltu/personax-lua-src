@@ -3,7 +3,7 @@ require("cutscene")
 local inline = {}
 
 local function _load(inlinename)
-	loadedinline = require("data/inline/"..inlinename)
+	loadedinline = dofile(DATAPATH.."inline/"..inlinename..".lua")
 	state.cut = loadedinline
 	state.cut.open = loadedinline.items[1]
 	state.cut.index = 2
