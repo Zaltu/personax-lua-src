@@ -18,7 +18,10 @@ function processinput()
 		state.cut.open = state.cut.items[state.cut.open[state.cut.index]+1]
 		setShowType("inline")
 	else
-		state.context.processinput = inline.hijacked
+		--Inline done. Revert and continue previous action
+		state.context.processinput = inline.jackedprocessinput
+		state.context.index = inline.jackedindex
+		state.cut = inline.jackedcut
 		state.context.processinput()
 		return
 	end
@@ -26,7 +29,9 @@ function processinput()
 end
 
 function loadinline(inlinename)
-	inline.hijacked = state.context.processinput
+	inline.jackedprocessinput = state.context.processinput
+	inline.jackedindex = state.context.index
+	inline.jackedcut = state.cut
 	state.context.processinput = processinput
 	_load(inlinename)
 	setShowType("inline")
