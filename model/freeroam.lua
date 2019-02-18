@@ -17,11 +17,11 @@ end
 
 function freeroam.loadcontext()
 	--[[
-	Load the "context" freeroam. Since this is mostly a user movement mode, there is nearly nothing to keep track of.
-	The ENV is used to determine what UE level to use, and UE objects will hold the state.env functions to call, so this context clears the state.
+	Load the "context" freeroam. Since this is mostly a
+	user movement mode, there is nearly nothing to keep
+	track of.
 	]]--
 	print("Loaded into "..state.env.name)
-	state.context = {}
 	freeroam.refresh()
 end
 
