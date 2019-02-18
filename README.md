@@ -92,7 +92,6 @@ Lua files represent the "model" of the game from a classic MVC standpoint. As su
 
 On top of these contexts, there are a couple other important functionality scripts that exist within the top level:
 - state: The "main" file of the GSV. While technically not a context, manages everything and lives on the highest level.
-- json_reader: Lua JSON module. As previously stated, this is also actually a global variable loaded when resolving state.lua.
 - luawriter: Utility to write a Lua table to an importable Lua file. Mainly used for saving games and may move.
 - testsuite: Testing utility for Lua code. Not built.
 

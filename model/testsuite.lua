@@ -10,7 +10,6 @@ package.cpath= package.cpath..";C:/LUA/lua/lib/lua/5.1/?.dll"
 --Set ./modal/ to the lua path for testing
 package.path = package.path..";./model/?.lua;"
 require('state')
-local json = require('json_reader')
 local pprint = function (value) local inspect = require("inspect") print(inspect(value)) end
 
 function setState()
@@ -77,7 +76,7 @@ function test(feature)
 	pprint(state.update)
 end
 
-test(battle)
---test(link)
+--test(battle)
+test(link)
 --test(dayChange)
 --test(shop)

@@ -1,5 +1,5 @@
 _G.DATAPATH = "model/data/"
-_G.json = require('json_reader')
+_G.json = require('json')
 _G.state = {}
 
 --Many imports are dofile'd throughout all of state.

@@ -25,19 +25,17 @@ static void runSocialLink(lua_State *L){
     json update = getUpdate(L);
     do{
         int index = 0;
-        if (update["key"].get<string>().rfind("link", 0) == 0){
-            cout << update["text"] << endl;
-            if (update["options"].size() > 0){
-                int i;
-                for (i=0; i<update["options"].size(); ++i){
-                    cout << i << ":  " << update["options"][i] << endl;
-                };
-                cin >> index;
-            }
-            else{
-                cin.ignore();
+        cout << update["text"] << endl;
+        if (update["options"].size() > 0){
+            int i;
+            for (i=0; i<update["options"].size(); ++i){
+                cout << i << ":  " << update["options"][i] << endl;
             };
+            cin >> index;
         }
+        else{
+            cin.ignore();
+        };
         json event = {
             {"key", "link.action"},
             {"index", index}
@@ -191,7 +189,7 @@ static void runBattle(lua_State *L){
 
 int main() {
     lua_State *L = prepLuaState();
-    //runSocialLink(L);
-    runBattle(L);
+    runSocialLink(L);
+    //runBattle(L);
     lua_close(L);
 }

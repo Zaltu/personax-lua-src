@@ -1,3 +1,4 @@
+require("inline")
 local rankup = {}
 
 function rankup.refresh()
@@ -12,9 +13,14 @@ function rankup.processinput()
     if rankup.cut[rankup.open] then
         --If there is another string to display in the rank up scene, do so.
         rankup.refresh()
+    elseif not rankup.inlinedone then
+        rankup.inlinedone = true
+        loadinline("test")
     else
         --Else revert back to the social link mode.
         rankup.revert()
+        --since we do not dofile rankup, reset value for next time
+        rankup.inlinedone = false
     end
 end
 
