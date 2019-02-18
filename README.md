@@ -69,6 +69,7 @@ The contexts that are available by default are symbolically fixed. That meaning 
 - dungeon
 - inline (in-line text handling)
 - velvet (special shop)
+- cutscene (parent of link and inline)
 
 ### Lua Data Files
 While JSON is a useful tool to pass recognizable data through the shared stack, it it not particularly efficient. Based on some tests run (see some of the info in zaltu/luawriter), requiring a Lua file is up to over 10,000 times faster to load than parsing JSON. Obviously, this is somewhat expected, but it is still a remarkable difference.
@@ -84,6 +85,10 @@ In general, we really really don't care. Each file imported very much more so re
 That being said, there are times when we *want* to import and edit a file, generally to then save it as a separate entity (when the MC levels up a Persona, for example). Again, since we are working with the concept of a "game state", we won't be saving those changes out to individual files, but to our more general "state" freeze, which are our save files. Still, we need a way to deep copy the table returned in the simplest, most direct form. Lua does not offer such functionality in it's standard library. While there are a number of relatively simple snippets and modules designed to have the same effect, it was decided instead to use a small workaround that invalidates the issue.
 
 The Lua `dofile` function compiles the code of the specified filepath and executes it immediately, returning the value returned by the file. This means that the value is *not* stored in the `package.loaded` table and is a completely unique data structure, no matter how many times you execute it. We can therefore safely assume that any tables imported using this method will get garbage collected once the scope ends.
+
+There is something moderately to severly important to note about this concerning performance as well. Since `require` calls are stored in a Lua-controller global `package.loaded` variable, it *will not get garbage collected*! Adding on to that, we *never reset the Lua state in C++*. This means that every time a package is `require`'d, it is *loaded into memory until the game is closed*! This means that there is technically something very similar to a memory leak present throughout the game. I'm not worried about that for a couple main reasons.
+
+First of all, this is more of a "fixed" memory leak. In that there is maximum amount of data that can be in memory "unnecessarily", that corresponding to the enirety of the Lua codebase. This means that, while the game *will* likely take more and more memory as it runs, it will eventually level out and nothing more will be loaded. Second, agregating to the first, the "entirety of the lua codebase", even including all the eventual cutscene files (many of which are `dofile`'d anyway), Personas, spells, etc, is all just lightweight text. Any kind of heavy lifting for textures, models, shaders, etc, is handled by UE and is flushed as the level progresses. So even accounting for "all the Lua codebase" probably shouldn't pass a couple MB at most. And of course, memory is cheap. Depending on the final state of this situation, I may set `dofile`s in more places to limit package load. TBD.
 
 Not taking these points into account can and will lead to very bizarre, inconsistent and difficult to pinpoint bugs as the consequences are highly dependent on the specific runtime Lua state. Be vigilent.
 
