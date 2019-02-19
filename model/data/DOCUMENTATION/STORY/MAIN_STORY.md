@@ -3,6 +3,7 @@ God knows there's a long was to go on this yet.
 
 A few major important plot points to start off:
 - Awakening/Discovery of first dungeon
+- Velvet Room design
 - Plot twist
 - Final Boss
 - True Final Boss

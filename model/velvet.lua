@@ -9,24 +9,19 @@ velvet.Quests       = {[0]="top", "Unimplemented"}
 velvet.Leave        = trainer.exit
 
 
-local function _load(shopinquestion)
-	shop.menu = require("data/shops/"..shopinquestion)
-end
-
 function velvet.refresh()
 	state.update = json.encode(current)
 end
 
 function velvet.processinput()
 	current = shop.menu[current[state.context.shopindex]]
-	--Handle exit nodes
+	--Handle function nodes
 	if type(current) == "function" then current() return end
 	velvet.refresh()
 end
 
-function velvet.loadcontext(shopinquestion)
-	_load(shopinquestion)
-	current = shop.menu.top
+function velvet.loadcontext()
+	current = velvet.top
 	velvet.refresh()
 end
 
