@@ -10,6 +10,10 @@ A few major important plot points to start off:
 - What do with Sister character?
 
 
+## Party Member SL Evolution
+Unlike P4 and P5, I'm not fixed on having every party member have their own Social Link if not necessary, or having the evolution or their Persona be linked to the completion of the Social Link. Notably, the Fool social link is generally the party as a whole's social link, meaning that further social links pertaining to the main story directly are definitely redundant. I enjoyed the self-realization arcs the characters had in P3 for the evolution of their persona as a representation of the change in their "valor" based on the realignment of their reason for fighting. That being said, I'm not in any way *against* party member social links, so long as they represent bonds completely independant of the main story line.
+
+
 ## Plot twist
 One of the better, earlier ideas I had about the plot twist was that the main character in fact is acused of going from Limbo to the sin of treachery based on the fact that his interactions with each social link are often "chosen" by the player to reflect what they think the person wants to hear (so as to gain points and progress).
 
