@@ -1,5 +1,4 @@
 local entity = {}
-entity = {}
 entity["arcana"] = [[Aeon]]
 entity["cutscenes"] = {}
 entity["cutscenes"]["2_0"] = {}

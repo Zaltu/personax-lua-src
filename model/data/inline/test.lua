@@ -1,5 +1,4 @@
 local entity = {}
-entity = {}
 entity["items"] = {}
 entity["items"][1] = {}
 entity["items"][1][1] = {}

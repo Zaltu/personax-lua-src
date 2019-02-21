@@ -1,5 +1,4 @@
 local entity = {}
-entity = {}
 entity["requiredPoints"] = {}
 entity["info"] = [[]]
 entity["finalpersona"] = {}

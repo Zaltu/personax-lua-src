@@ -1,5 +1,4 @@
 local entity = {}
-entity = {}
 entity["sister"] = {}
 entity["sister"]["lastname"] = [[Chan]]
 entity["sister"]["persona"] = {}
