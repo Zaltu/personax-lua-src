@@ -15,7 +15,7 @@ function write(filepath)
 end
 
 local function fileprep()
-	luastr = "local entity = {}\n"
+	luastr = "local "
 end
 
 local function filefinish()

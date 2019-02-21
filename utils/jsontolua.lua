@@ -59,7 +59,7 @@ local function fileprep()
 	--[[
 	Set output string to header. Defines the module table.
 	]]--
-	luastr = "local "..STDNAME.." = {}\n"
+	luastr = "local "
 end
 
 local function filefinish()

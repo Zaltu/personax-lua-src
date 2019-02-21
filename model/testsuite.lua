@@ -13,8 +13,6 @@ require('state')
 local pprint = function (value) local inspect = require("inspect") print(inspect(value)) end
 
 function setState()
-	state.evolve('Version', '0.0.0.0.5')
-	state.evolve('mc', {name='Chaos'})
 	state.evolve('date', {day=1, time=0})
 	state.savestate(nil)
 end
