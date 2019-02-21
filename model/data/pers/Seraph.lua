@@ -1,13 +1,12 @@
 local entity = {}
-entity = {}
 entity["arcana"] = [[Justice]]
 entity["spellDeck"] = {}
 entity["spellDeck"][1] = [[Agi]]
 entity["spellDeck"][2] = [[Maragi]]
 entity["spellDeck"][3] = [[Tempest Slash]]
 entity["spellDeck"][4] = [[Tarukaja]]
-entity["spellDeck"][5] = [[]]
-entity["spellDeck"][6] = [[]]
+entity["spellDeck"][5] = [[Dia]]
+entity["spellDeck"][6] = [[Media]]
 entity["desc"] = [[Seraphim (singular "Seraph") are the highest angelic class and serve as the caretakers of God's throne and continuously shout praises: "Holy, holy, holy is the Lord of hosts; the whole earth is full of his glory!" According to Christian religious texts, the Seraphim have six wings: two to covered their face, two to covered their feet and two to fly.]]
 entity["heritage"] = {}
 entity["heritage"][1] = [[Light]]

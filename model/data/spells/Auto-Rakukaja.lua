@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["element"] = [[Support]]
 spell["desc"] = [[Start the battle with heightened defences]]
 spell["passive"] = true

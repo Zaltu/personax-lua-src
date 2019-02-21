@@ -1,5 +1,4 @@
 local entity = {}
-entity = {}
 entity["arcana"] = [[Strength]]
 entity["spellDeck"] = {}
 entity["spellDeck"][1] = [[Maragidyne]]

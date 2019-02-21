@@ -80,6 +80,9 @@ static void runBattle(lua_State *L){
                 else if (update["turns"][i][j]["status"] != nullptr && update["turns"][i][j]["blurb"] != nullptr){
                     cout << update["turns"][i][j]["blurb"] << endl;
                 }
+                else if (update["turns"][i][j]["heals"] != nullptr){
+                    cout << update["turns"][i][j]["caster"] << " healed " << update["turns"][i][j]["target"] << " for " << update["turns"][i][j]["heals"] << update["turns"][i][j]["dmgType"] << "!" << endl;
+                }
                 else {
                     cout << update["turns"][i][j]["caster"] << " dealt " << update["turns"][i][j]["damage"] << " to " << update["turns"][i][j]["target"] << "'s " << update["turns"][i][j]["dmgType"] << "!" << endl;
                 }
@@ -135,7 +138,7 @@ static void runBattle(lua_State *L){
                 {"targetindex", targetindex}
             };
         }
-        else if (spelldata["target"] == "All Allies"){
+        else if (spelldata["target"] == "All Ally"){
             cout << "Confirm your support on all allies" << endl;
             cin.ignore();
             cin.ignore();
@@ -189,7 +192,7 @@ static void runBattle(lua_State *L){
 
 int main() {
     lua_State *L = prepLuaState();
-    runSocialLink(L);
-    //runBattle(L);
+    //runSocialLink(L);
+    runBattle(L);
     lua_close(L);
 }
