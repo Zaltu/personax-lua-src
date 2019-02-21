@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["element"] = [[Strike]]
 spell["desc"] = [[Improves evasion against strike attacks]]
 spell["passive"] = true

@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["element"] = [[Dark]]
 spell["desc"] = [[Survive Dark attacks with 1 HP]]
 spell["passive"] = true

@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["element"] = [[Ice]]
 spell["desc"] = [[Large evasion boost against ice attacks]]
 spell["passive"] = true

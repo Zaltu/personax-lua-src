@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["element"] = [[Support]]
 spell["cost"] = 15
 spell["desc"] = [[Removes all stat buffs from all foes]]
