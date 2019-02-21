@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["element"] = [[Wind]]
 spell["desc"] = [[Raise resistance to wind damage to Null]]
 spell["passive"] = true

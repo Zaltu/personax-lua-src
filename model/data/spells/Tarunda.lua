@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["element"] = [[Support]]
 spell["cost"] = 6
 spell["desc"] = [[Lowers attack power of one enemy]]

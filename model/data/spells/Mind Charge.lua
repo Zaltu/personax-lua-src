@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["element"] = [[Support]]
 spell["cost"] = 15
 spell["desc"] = [[Greatly boost damage of magic attack on next turn]]

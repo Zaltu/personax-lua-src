@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["numericaltype"] = [[Absolute Value]]
 spell["element"] = [[Elec]]
 spell["cost"] = 16

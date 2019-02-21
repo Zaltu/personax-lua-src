@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["element"] = [[Support]]
 spell["cost"] = 6
 spell["desc"] = [[Boosts attack power of one ally]]

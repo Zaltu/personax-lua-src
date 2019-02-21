@@ -1,5 +1,4 @@
 local spell = {}
-spell = {}
 spell["element"] = [[Fire]]
 spell["desc"] = [[Raise resistance to fire damage to Null]]
 spell["passive"] = true
