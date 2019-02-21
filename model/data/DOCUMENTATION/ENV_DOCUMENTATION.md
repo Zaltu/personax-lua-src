@@ -7,6 +7,18 @@ TODO: Move to state doc
 The changing of ENVs is one of the only situations in which Lua calls C++, to inform UE to change the level the player is in. This can be done independantly of the current context. That being said, an ENV change should not be called directly by C++ either, since we absolutely must lock the state in order to prevent off-hand inputs from causing strange behavior.
 
 ## Cells
+TODO: flag definitions and handling
 
 ## Dungeons
-Dungeons themselves to not necessarily require flag handling, as they normally are fairly immutable aside from perhaps mini-boss floors, depending on how those will be handled (TBD).
+Dungeons themselves to not necessarily require flag handling, as they normally are fairly immutable aside from perhaps mini-boss floors, depending on how those will be handled (TBD). They still differ from normal cells though, as they need to contain the "powerlevel" information used to construct the battle context. The powerlevel information is previded as follows:
+```
+--In dungeon A, first half:
+1 = [{small small small}] (same weaknesses)
+2 = [{big}]
+3 = [{small small}] (different weaknesses)
+--In dungeon A, second half with levels ++:
+4 = [{small small small}] (same weaknesses)
+5 = [{big}]
+6 = [{small small}] (different weaknesses)
+```
+Where the indexes correspond to the powerlevels defined in the dungeon. Normally, the dungeon should never recieve a powerlevel that it does not define.
