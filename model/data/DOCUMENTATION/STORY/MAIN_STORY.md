@@ -10,6 +10,8 @@ A few major important plot points to start off:
 - 
 - What do with Sister character?
 
+## Dungeon Design and Presentation
+It may be cool, instead of having the single gate at the entrance with the reference to Dante's Inferno, to have individual biblical quotes refering to each of the sins at their dungeon entrance. EG. Hell hath no fury like a woman scorned; Though I walk in the valley of the shadow of death I shall fear no evil; etc...
 
 ## Party Member SL Evolution
 Unlike P4 and P5, I'm not fixed on having every party member have their own Social Link if not necessary, or having the evolution or their Persona be linked to the completion of the Social Link. Notably, the Fool social link is generally the party as a whole's social link, meaning that further social links pertaining to the main story directly are definitely redundant. I enjoyed the self-realization arcs the characters had in P3 for the evolution of their persona as a representation of the change in their "valor" based on the realignment of their reason for fighting. That being said, I'm not in any way *against* party member social links, so long as they represent bonds completely independant of the main story line.
@@ -43,3 +45,6 @@ Then the big brain mind games come in. if we are trying to set up Legion as bein
 There are a number of problematic things with that though, both since the deadly sins and the circles of hell don't actually match... It would be extremely difficult to design each dungeon in such a way that it could be interpreted as both. It may be an interesting challenge though. I would also have to remove the whole "abandon all hope yee who enter here" premise in the dungeon hub.
 
 Overall, I think Legion as the True Final Boss is a great idea. I just need to figure out how to set it up.
+
+MARK 3  
+I should remind myself of this since it already slipped my mind: There are *two* main plotlines in mind for the game: the "plot twist" where it turns out the MC is the sinner of treachery and the main initial plot where people are being judged harshly by someone/something the party feels does not have the authority to do so.
