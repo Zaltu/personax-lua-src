@@ -1,4 +1,4 @@
-_G.DATAPATH = "model/data/"
+if not DATAPATH then _G.DATAPATH = "model/data/" end
 _G.json = require('json')
 _G.state = {}
 
@@ -9,7 +9,7 @@ state.cut = nil
 state.date = {}
 state.date.day = 1
 state.date.time = 0
-state.slglobal = dofile("model/util/state/slglobal.lua")
+state.slglobal = dofile(DATAPATH.."slglobal.lua")
 state.mc = dofile(DATAPATH.."chars/mc.lua")
 state.sister = dofile(DATAPATH.."chars/sister.lua")
 state.availablechars = {[state.mc.name]=state.mc, [state.sister.name]=state.sister}
