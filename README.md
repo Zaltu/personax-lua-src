@@ -154,7 +154,8 @@ LuaJIT is based on the ostensibly more popular Lua 5.1 releases than the latest 
 
 The only change (for now) is adding the `-DLUAJIT_ENABLE_LUA52COMPAT` key.
 
-The edited Makefile for LuaJIT is included in this repo under `extlib/LuaJIT/src/`.
+But it's not even that simple. For a number of reasons explained in another repo, the final compilation of LuaJIT is inordinately complex and requires a decent amount of setup. For the extended documentation on just setting up the LuaJIT library, see  
+https://github.com/zaltu/luajit205-52-libdll
 
 ## Packages
 This program was run and tested with the following utilities:
