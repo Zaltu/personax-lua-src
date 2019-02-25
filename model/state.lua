@@ -1,50 +1,74 @@
+--DATAPATH is set during Lua initialization is C++ normally. This is for the testsuites.
 if not DATAPATH then _G.DATAPATH = "model/data/" end
+--JSON and state itself are both accessed in every possible call made to the GSV,
+--so I set them as global variables.
 _G.json = require('json')
 _G.state = {}
 
---Many imports are dofile'd throughout all of state.
+--Initial setup of state variables, only basic setup is done here.
 state.flags = {}
-state.Version = "0.0.0.0.3"
-state.cut = nil
-state.date = {}
-state.date.day = 1
-state.date.time = 0
+state.Version = "0.0.0.0.5"
+state.date = {day=1, time=0}
 state.slglobal = dofile(DATAPATH.."slglobal.lua")
 state.mc = dofile(DATAPATH.."chars/mc.lua")
 state.sister = dofile(DATAPATH.."chars/sister.lua")
 state.availablechars = {[state.mc.name]=state.mc, [state.sister.name]=state.sister}
 state.party = {[state.mc.name]=state.mc, [state.sister.name]=state.sister}
-state.env = nil
 state.save = 0
+--Not actually necessary because Lua, but a reminder.
+state.env = nil
 state.context = nil
+state.cut = nil
 
 
+--TODO rewrite
 function state.loadstate(savefile)
 	if savefile then savefile="PXS"..savefile..".lua" else savefile='model/data/saves/savestate.lua' end
 	loadedstate = dofile(savefile)
 	for key, value in pairs(loadedstate) do state[key]=value end
 end
 
-
+--TODO rewrite
 function state.savestate(savefile)
 	if savefile then savefile="PXS"..savefile..".json" state.evolve('save', savefile) else savefile='model/data/saves/savestate.lua' end
 	local luawriter = require('luawriter')
 	luawriter.convert(state, savefile)
 end
 
+--[[
+AFAIK unused helper function to set the value of a certain key of state. Might be
+removed, or might be used on state initialization. This function was initially
+designed for when state was not a global variable. TBD.
 
+:param str key: state[key] to be updated
+:param any value: value to be set
+]]--
 function state.evolve(key, value)
 	state[key] = value
 end
 
+--[[
+Raises a flag. Flags are used mainly when changing contexts and when determining what
+to load when changing envs. Currently, flags are absolute binary values. Meaning that
+raising a flag sets it to true permanently (for that save)
 
-function state.flag(f)
-	state.flags[#state.flags] = f
+:param str flag: the key of the flag to raise
+]]--
+function state.flag(flag)
+	state.flags[flag] = true
 end
 
+--[[
+The Big E itself. Recieves a JSON-formatted string as an event, breaks down each key
+as a state.context value and notifies the current context that an event needs to be
+processed.
 
+:param str event: JSON-formatted event string
+:returns: 0 if processed normally, "State is locked" message if the state is not in a state :^) hon hon to process the event.
+:rtype: str *in both cases*
+]]--
 function state.event(event)
-	if state.locked==true then state.eventcallerror="State is locked" return "State is locked" end
+	if state.locked==true then return "State is locked" end
 	state.lock()
 	local map = json.decode(event)
 	for key, value in pairs(map) do state.context[key]=value end
@@ -53,16 +77,29 @@ function state.event(event)
 	return "0"
 end
 
+--[[
+The big C itself. Loads up a new context in which to process events. This is a major runtime
+change and should probably be considered where most errors are likely to come from, despite
+only being a 3-line function. This should never be called directly by Unreal, only indirectly
+from an event call.
 
---There is no state.lock here as we assume that any call to changecontext will be effected
---through a state.event processinput call
+There is no state.lock here as we assume that any call to changecontext will be effected
+through a state.event processinput call
+]]--
 function state.changecontext(newc, ...)
 	state.update = {}
 	state.context = require(newc)
 	state.context.loadcontext(...)
 end
 
+--[[
+The second big E itself. Loads a new Unreal level and contains the flag handling and loading
+requests as well as capsule collision action context switching. This should be the single Lua
+function that calls C++, in order to request resource loading. It should be considered the second
+most likely function to cause errors.
 
+:param str env: the env to load
+]]--
 function state.loadenv(env)
 	state.loading(true, env)
 	state.env = require("data/envs/"..env)
@@ -72,7 +109,7 @@ function state.loadenv(env)
 	state.loading(false, env)
 end
 
-
+--TODO rewrite
 function state.loading(start, contextname)
 	if not start then state.isloading=true print("Loading "..contextname.." complete") return end--Loading complete
 	state.isloading=nil
@@ -80,41 +117,11 @@ function state.loading(start, contextname)
 end
 
 
---Having two functions is a bit redundant but idgaf
+--[[
+Lock and unlock the state. This prevents events from being processed.
+Having two functions is a bit redundant but idgaf
+]]--
 function state.lock() state.locked=true end
 function state.unlock()	state.locked=false end
 
---This file defines all global variables that are callable from the controller or that need
---to be cached for further use. The following are all know values that can be contextually
---found within state and their significance.
-
---Version: Game version. Currently 0.0.0.0.X
---cut: The current cutscene being played.
---date: Current day's id (~1-365) and time (Early Morning, After School, etc...)
---slglobal: Current level and angle of each social link in the game
---availablechars: Names of characters that can be in the party
---party: Characters other than MC that are in the party (and all their data)
---mc: All data about the Main Character
---env: Current environment/place.
---flags: List of all flags that have been raised as of now. (perform "need in flags" for dependancy check)
---save: The save number (1-inf)
---context: What the player is doing now and the input processor for that context
---backlog: The last key pressed. No inputs are saved unless this value is nil LEGACY?
-
-
---Current Existing contexts:
---link: Any cutscene (Social Link, Story or Event)
---shop: any kind of shop in the game
---calendar: date/time change
---freeroam
---dungeon
-
---Possible contexts:
---link: Social Link
---inline: any other cutscene
---freeroam: Overworld (Separated into ENVs)
---dungeon: Dungeon
---battle: Battle
---velvet: Velvet Room
---shop: any kind of shop in the game
---calendar: date/time change
+--Note that no return is needed as state sets itself as a global variable.
