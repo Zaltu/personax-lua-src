@@ -47,4 +47,8 @@ The misunderstood artist
 
 
 ### Judgement vs Aeon
-I think I want entities generally associated with Death for the Judgement arcana, and entities generally associated with forgiveness for the Aeon arcana.
+I think I want entities generally associated with punishment for the Judgement arcana, and entities generally associated with forgiveness for the Aeon arcana.
+
+
+### Lovers
+I have an idea about someone approaching the MC as "revenge" for someone else dumping them. The whole original aspect of the arcana pertaining to "crossroads" I feel may also pertain to parting ways as oppose to coming together, and knowing when roads must part again. The reverse actually being that the MC and this person stay together, just to spite the other person (who has already made their peace, and probably did nothing wrong per say).
