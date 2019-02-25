@@ -9,9 +9,9 @@ end
 
 function freeroam.processinput()
 	--[[
-	Freeroam context has no valid inputs that need processing
 	]]--
-	print("Ignore input, user in free-roam")
+	print("Searching for valid actor reference")
+	state.env[state.context.actor]()
 	freeroam.refresh()
 end
 

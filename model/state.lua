@@ -5,22 +5,6 @@ if not DATAPATH then _G.DATAPATH = "model/data/" end
 _G.json = require('json')
 _G.state = {}
 
---Initial setup of state variables, only basic setup is done here.
-state.flags = {}
-state.Version = "0.0.0.0.5"
-state.date = {day=1, time=0}
-state.slglobal = dofile(DATAPATH.."slglobal.lua")
-state.mc = dofile(DATAPATH.."chars/mc.lua")
-state.sister = dofile(DATAPATH.."chars/sister.lua")
-state.availablechars = {[state.mc.name]=state.mc, [state.sister.name]=state.sister}
-state.party = {[state.mc.name]=state.mc, [state.sister.name]=state.sister}
-state.save = 0
---Not actually necessary because Lua, but a reminder.
-state.env = nil
-state.context = nil
-state.cut = nil
-
-
 --TODO rewrite
 function state.loadstate(savefile)
 	if savefile then savefile="PXS"..savefile..".lua" else savefile='model/data/saves/savestate.lua' end
