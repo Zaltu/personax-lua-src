@@ -1,5 +1,5 @@
 # Overview
-ENVs are an important data set, as they symbolize each physical environment it is possible to go to in the game. Unlike contexts, envs do not change the "game mode" of the game, simple the environment that the player should see, i.e. it does not affect gameplay.
+ENVs are an important data set, as they symbolize each physical environment it is possible to go to in the game. Unlike contexts, envs do not change the "game mode" of the game, simply the environment that the player should see, i.e. it does not affect gameplay.
 
 There are two different types of ENVs: cells and dungeons. These are not separated by any obvious folder structure, but both have different requirements on how they must be defined.
 
