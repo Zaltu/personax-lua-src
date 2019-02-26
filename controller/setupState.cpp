@@ -12,7 +12,7 @@ extern "C"{
 /*Defines runtime Lua import path, and imports the state, which instantiates the game state
 and sets it as global variable. Defined for explicit runtime. Executable MUST be one level
 above model with this current const value.*/
-const char * const LUA_LOCAL_PREP = "package.path = package.path..';./extlib/lua_path/?.lua;./model/?.lua;' package.cpath = package.cpath..';./extlib/lua_cpath/?.dll' require('state')";
+const char * const LUA_LOCAL_PREP = "package.path = package.path..';./extlib/lua_path/?.lua;./model/?.lua;' package.cpath = package.cpath..';./extlib/lua_cpath/?.dll' require('state') require('util/state/start_game')";
 
 static lua_State* prepLuaState(){
     /**
