@@ -13,8 +13,7 @@ require('state')
 local pprint = function (value) local inspect = require("inspect") print(inspect(value)) end
 
 function setState()
-	state.evolve('date', {day=1, time=0})
-	state.savestate(nil)
+	require('util/state/start_game')
 end
 
 
@@ -60,7 +59,6 @@ end
 
 function test(feature)
 	setState()
-	state.changecontext("calendar")
 	feature()
 	print("\nState")
 	--pprint(state)
