@@ -15,7 +15,7 @@ function battle.passive(spell, target, caster, turns, statustype) passive(spell,
 function battle.attack(spell, target, caster) attack(spell, target, caster) end
 
 local function next()
-	if state.battle.participants[state.battle.open].oncemore then
+	if state.battle.participants[state.battle.open] and state.battle.participants[state.battle.open].oncemore then
 		table.insert(state.battle.turns, {{caster=state.battle.participants[state.battle.open], oncemore=true}})
 		state.battle.participants[state.battle.open].oncemore = nil
 		return
@@ -129,6 +129,7 @@ local function _load(powerlevel)
 	end
 	determineorder()
 	state.battle.open=1
+	state.battle.turns = {}
 	--Taken from battlepassive
 	battlepassives()
 end

@@ -94,7 +94,9 @@ local function damageHP(spell, target, caster)
         damagetakentotal = damagetakentotal+damage
         table.insert(damangeTable, damage)
     end
-    --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." damage!")
+    --Recalculate the target in case the attack was repeled TODO make this less stupid
+    target = state.battle.participants[state.battle.target]
+    print(caster.name.." hits "..target.name.." for "..damagetakentotal.." damage!")
     target.hp = target.hp-damagetakentotal
     return {caster=caster.name, target=target.name, damage=damangeTable, dmgType="HP", down=target.down, element=spell.element}
 end

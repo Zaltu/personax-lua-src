@@ -4,6 +4,7 @@ function passive(spell, target, caster, turns, statustype)
         return
     end
     target[statustype][spell.name] = turns
+    if not spell.blurb then spell.blurb = "" end
     table.insert(state.battle.turns, {{target=target.name, caster=caster.name, status=spell.name, blurb=target.name..spell.blurb}})
 end
 

@@ -1,8 +1,8 @@
 local spell = {}
-spell["element"] = [[Elec]]
-spell["desc"] = [[Raise resistance against electric attacks to 'Repel']]
+spell["element"] = [[Fire]]
+spell["desc"] = [[Raise resistance against fire attacks to 'Repel']]
 spell["passive"] = true
-spell["name"] = [[Repel Elec]]
+spell["name"] = [[Repel Fire]]
 
 function spell.activate()
     state.context.passive(spell, state.battle.participants[state.battle.open], state.battle.participants[state.battle.open], 99, "defendstatus")
