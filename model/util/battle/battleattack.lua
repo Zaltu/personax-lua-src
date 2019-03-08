@@ -45,13 +45,13 @@ local function calculateEvasionBonus(spell, basehitchance, target, caster)
     for passivename, _ in pairs(target.dodgestatus) do
         hitchance = hitchance + require("data/spells/"..passivename).process(spell, basehitchance, true)
     end
-    for passivename, _ in pairs(target.dodgestatus) do
+    for passivename, _ in pairs(caster.dodgestatus) do
         hitchance = hitchance + require("data/spells/"..passivename).process(spell, basehitchance)
     end
     return hitchance
 end
 
-local function hitchance(spell, target)
+local function hitchance(spell, target, caster)
     statdodge = target.persona.stats[4] / 10
     realhitchance = calculateEvasionBonus(spell, spell.hitchance, target, caster)
     finalhitchance = realhitchance - statdodge

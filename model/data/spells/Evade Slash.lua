@@ -11,13 +11,13 @@ function spell.activate()
 end
 
 function spell.process(uspell, basehitchance, istarget)
-    if not spell.element==uspell.element or not istarget then return basehitchance end
+    if not spell.element==uspell.element or not istarget then return 0 end
     if istarget then
         --if effect is on spell target, hitchance goes down
-        return basehitchance * (1 - spell.numericalvalue)
+        return -(basehitchance * spell.numericalvalue)
     end
     --if effect is on spell caster, hitchance is not affected
-    return basehitchance
+    return 0
 end
 
 return spell

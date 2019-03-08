@@ -87,7 +87,7 @@ most likely function to cause errors.
 function state.loadenv(env)
 	state.loading(true, env)
 	--dofile'd so flags are rechecked every time an environment is entered.
-	state.env = dofile(DATAPATH.."envs/"..env)
+	state.env = dofile(DATAPATH.."envs/"..env..".lua")
 	for flag, action in pairs(state.env) do
 		if state.flags[flag] then action() end
 	end

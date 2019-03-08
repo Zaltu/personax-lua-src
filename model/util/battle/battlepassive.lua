@@ -4,7 +4,7 @@ function passive(spell, target, caster, turns, statustype)
         return
     end
     target[statustype][spell.name] = turns
-    table.insert(state.battle.turns, {{target=target.name, caster=caster.name, status=spellname, blurb=target.name..spell.blurb}})
+    table.insert(state.battle.turns, {{target=target.name, caster=caster.name, status=spell.name, blurb=target.name..spell.blurb}})
 end
 
 
@@ -26,11 +26,13 @@ end
 
 
 function countdownpassives()
-    countablepassives = {"attackstatus", "defendstatus", "dodgestatus"}
+    countablepassives = {"attackstatus", "defendstatus", "dodgestatus", "turnstatus"}
     for _, passivetype in pairs(countablepassives) do
         for statname, turnsleft in pairs(state.battle.participants[state.battle.open][passivetype]) do
             if turnsleft then
-                if turnsleft-1 < 0 then state.battle.participants[state.battle.open][passivetype][statname] = nil
+                if turnsleft-1 < 0 then
+                    state.battle.participants[state.battle.open][passivetype][statname] = nil
+                    if passivetype == "turnstatus" then state.battle.participants[state.battle.open].status = nil end
                 else state.battle.participants[state.battle.open][passivetype][statname] = turnsleft-1 end
             end
         end

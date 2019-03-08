@@ -2,6 +2,7 @@ local battle = {}
 require('util/battle/battlecost')
 require('util/battle/battleattack')
 require('util/battle/battlepassive')
+require('util/battle/battleturn')
 
 --Taken from util battlecost
 function battle.cost(costtype, pcost) cost(costtype, pcost) end
@@ -42,74 +43,24 @@ function participants_len(tab)
     return last
 end
 
-local function processEliminations()
-	for index, participant in pairs(state.battle.participants) do
-		if participant.hp < 0 then
-			if state.party[participant.name] then
-				--print("Removing "..state.battle.participants[index].name)
-				state.battle.participants[index]=nil
-				for i, partyindex in pairs(state.battle.iparty) do
-					if partyindex == index then
-						table.remove(state.battle.iparty, i)
-					end
-				end
-			else
-				--print("Removing "..state.battle.participants[index].name)
-				state.battle.participants[index]=nil
-				for i, enemyindex in pairs(state.battle.ienemy) do
-					if enemyindex == index then
-						table.remove(state.battle.ienemy, i)
-					end
-				end
-			end
-		end
-	end
-	--ins = require('inspect')
-	--print(ins(state.battle.iparty))
-	--print(ins(state.battle.ienemy))
-	--print(ins(state.battle.participants))
-end
 
-local function spellitout(participant, spellindex)
-	--Acquire spell
-	spell = require("data/spells/"..participant.persona.spellDeck[spellindex])
-	--print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
-	--Tree powers activate
-	spell.activate()
-	processEliminations()
-end
-
-local function ai(shadow)
-	local spelli = 0
-	repeat
-		spelli = math.random(8)
-	until
-		shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli]
-
-	state.battle.target=state.battle.iparty[math.random(1, #state.battle.iparty)]
-
-	spellitout(shadow, spelli)
-end
-
-local function turn(input)
+local function turn()
 	state.battle.turns = {}
-	if state.context.key == "battle.userinput" then
-		--print("Processing user input")
-		state.battle.target = state.context.targetindex
-		spellitout(state.battle.participants[state.battle.open], state.context.spellindex)
+	while #state.battle.iparty>0 and #state.battle.ienemy>0 do
+		if state.battle.participants[state.battle.open].status then
+			code = require("data/spells/status/"..state.battle.participants[state.battle.open].status).turn(state.battle.participants[state.battle.open])
+		else
+			--Taken from battleturn
+			code = normalturn()
+		end
+		--Make sure spellindex isn't carried over accross participant turns
+		state.context.spellindex = nil
+		if code == 1 then
+			--Require input
+			break
+		end
 		next()
 	end
-	--While it is not guarenteed that it is an AI's turn, we know that Lua will not process
-	--a player turn until next input, which wil reset the key
-	state.context.key = "battle.ai"
-	--While it is neither the player's turn nor the whole party died, parse the AI
-	while not state.party[state.battle.participants[state.battle.open].name] and #state.battle.iparty > 0 do
-		ai(state.battle.participants[state.battle.open])
-		next()
-		state.battle.oncemore = nil
-		--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
-	end
-	--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 end
 
 local function spawnenemies()
@@ -220,7 +171,7 @@ return battle
 - parse spell
 - if targeted, request target
 - else activate
-- ene turn
+- end turn
 - auto-select spell/target
 - activate spell
 ]]
