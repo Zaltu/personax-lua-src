@@ -1,8 +1,8 @@
 local spell = {}
-spell["element"] = [[Strike]]
-spell["desc"] = [[Raise resistance to strike damage to Null]]
+spell["element"] = [[Dark]]
+spell["desc"] = [[Raise resistance to dark damage to Null]]
 spell["passive"] = true
-spell["name"] = [[Null Strike]]
+spell["name"] = [[Null Dark]]
 
 function spell.activate()
     state.context.passive(spell, state.battle.participants[state.battle.open], state.battle.participants[state.battle.open], 99, "defendstatus")
@@ -14,5 +14,6 @@ function spell.process(uspell, damage)
     end
     return damage
 end
+
 
 return spell
