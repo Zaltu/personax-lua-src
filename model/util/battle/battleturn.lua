@@ -36,24 +36,37 @@ function spellitout(participant, spellindex)
 end
 
 function ai(shadow)
+	--TODO change based on spell targeting and passive spells
 	local spelli = 0
 	repeat
 		spelli = math.random(8)
 	until
-		shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli]
+		shadow.persona.spellDeck[spelli] ~= "" and not require(shadow.persona.spellDeck[spelli]).passive
 
-	state.battle.target=state.battle.iparty[math.random(1, #state.battle.iparty)]
+	spell = require(shadow.persona.spellDeck[spelli])
+	if spell.target == "One Enemy" then
+		state.battle.target=state.battle.iparty[math.random(1, #state.battle.iparty)]
+	elseif spell.target == "One Ally" then
+		state.battle.target=state.battle.iparty[math.random(1, #state.battle.ienemy)]
+	end
+
 
 	spellitout(shadow, spelli)
 end
 
 function normalturn()
-	if state.battle.iparty[state.battle.open] then
+	ins = require('inspect')
+	--print(ins(state.battle.iparty))
+	--print("Open: "..state.battle.open)
+	--print("Spellindex: ", state.context.spellindex)
+	if state.party[state.battle.participants[state.battle.open].name] then
 		--print("Processing user input")
 		--If we don't have a valid input for this participant, break the cycle.
 		if not state.context.spellindex then return 1 end
 		state.battle.target = state.context.targetindex
 		spellitout(state.battle.participants[state.battle.open], state.context.spellindex)
+		--Reset battle target so it's not reused in following All <Side> spells
+		state.context.targetindex = nil
 	else
 		ai(state.battle.participants[state.battle.open])
 		state.battle.oncemore = nil

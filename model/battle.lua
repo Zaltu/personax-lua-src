@@ -15,19 +15,21 @@ function battle.passive(spell, target, caster, turns, statustype) passive(spell,
 function battle.attack(spell, target, caster) attack(spell, target, caster) end
 
 local function next()
-	if state.battle.participants[state.battle.open] and state.battle.participants[state.battle.open].oncemore then
-		table.insert(state.battle.turns, {{caster=state.battle.participants[state.battle.open], oncemore=true}})
-		state.battle.participants[state.battle.open].oncemore = nil
-		return
+	if state.battle.participants[state.battle.open] then
+		if state.battle.participants[state.battle.open].oncemore then
+			table.insert(state.battle.turns, {{caster=state.battle.participants[state.battle.open], oncemore=true}})
+			state.battle.participants[state.battle.open].oncemore = nil
+			return
+		end
 	end
-	--Taken from battlepassive
-	countdownpassives()
 	repeat
 		state.battle.open = state.battle.open + 1
 		if state.battle.open>#state.battle.participants then state.battle.open=1 end
 	until 
 		state.battle.participants[state.battle.open]
 
+	--Taken from battlepassive
+	countdownpassives()
 	if state.battle.participants[state.battle.open].down then
 		table.insert(state.battle.turns, {{caster=state.battle.participants[state.battle.open], getup=true}})
 		state.battle.participants[state.battle.open].down = nil

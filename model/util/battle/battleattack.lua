@@ -17,32 +17,37 @@ local RES_MULTIPLIER_LOOKUP = {
     Strong=0.5
 }
 
-local function parseResistance(element, caster, target)
-    resint = target.persona.resistance[ELEMENT_LOOKUP[element]]
-    if resint == "Weak" then if not target.down then caster.oncemore = true end target.down = true end
+local function parseResistance(element, caster)
+    resint = state.battle.participants[state.battle.target].persona.resistance[ELEMENT_LOOKUP[element]]
+    if resint == "Weak" then
+        if not state.battle.participants[state.battle.target].down then
+            caster.oncemore = true
+        end
+        state.battle.participants[state.battle.target].down = true
+    end
     return RES_MULTIPLIER_LOOKUP[resint]
 end
 
-local function calculateAttackBonus(damage, spell, caster, target)
+local function calculateAttackBonus(damage, spell, caster)
     for passivename, _ in pairs(caster.attackstatus) do
         damage = require("data/spells/"..passivename).process(spell, damage)
     end
     return damage
 end
 
-local function calculateDefenseBonus(damage, spell, caster, target)
-    for passivename, _ in pairs(target.defendstatus) do
+local function calculateDefenseBonus(damage, spell, caster)
+    for passivename, _ in pairs(state.battle.participants[state.battle.target].defendstatus) do
         damage = require("data/spells/"..passivename).process(spell, damage)
     end
     if damage > 0 then
-        damage = damage * parseResistance(spell.element, caster, target)
+        damage = damage * parseResistance(spell.element, caster)
     end
     return damage
 end
 
-local function calculateEvasionBonus(spell, basehitchance, target, caster)
+local function calculateEvasionBonus(spell, basehitchance, caster)
     hitchance = basehitchance
-    for passivename, _ in pairs(target.dodgestatus) do
+    for passivename, _ in pairs(state.battle.participants[state.battle.target].dodgestatus) do
         hitchance = hitchance + require("data/spells/"..passivename).process(spell, basehitchance, true)
     end
     for passivename, _ in pairs(caster.dodgestatus) do
@@ -51,21 +56,21 @@ local function calculateEvasionBonus(spell, basehitchance, target, caster)
     return hitchance
 end
 
-local function hitchance(spell, target, caster)
-    statdodge = target.persona.stats[4] / 10
-    realhitchance = calculateEvasionBonus(spell, spell.hitchance, target, caster)
+local function hitchance(spell, caster)
+    statdodge = state.battle.participants[state.battle.target].persona.stats[4] / 10
+    realhitchance = calculateEvasionBonus(spell, spell.hitchance, caster)
     finalhitchance = realhitchance - statdodge
     --print("agility="..target.persona.stats[4].."\nstatdodge="..statdodge.."\nspellhitchance="..spell.hitchance.."\nrealhitchance="..realhitchance.."\nfinalhitchance="..finalhitchance)
     if math.random(1, 100) < finalhitchance then return true else return false end
 end
 
-local function damageValue(spell, target, caster)
+local function damageValue(spell, caster)
     if spell.numericaltype == "Percentage" then
-        damage = target.hp*damage/100
+        damage = state.battle.participants[state.battle.target].hp*damage/100
     else
         randomfactor = math.random(1, 15)
-        if not target.down then
-            resistance = target.persona.stats[3]
+        if not state.battle.participants[state.battle.target].down then
+            resistance = state.battle.participants[state.battle.target].persona.stats[3]
         end
         local phys = {Slash=true, Strike=true, Pierce=true}
         if phys[spell.element] then
@@ -80,53 +85,67 @@ local function damageValue(spell, target, caster)
         --print("Random value: "..randomfactor)
         damage = spell.numericalvalue + randomfactor + spell.numericalvalue * alteration / 100
     end
-    damage = calculateAttackBonus(damage, spell, caster, target)
-    damage = calculateDefenseBonus(damage, spell, caster, target)
+    damage = calculateAttackBonus(damage, spell, caster)
+    damage = calculateDefenseBonus(damage, spell, caster)
     return damage
 end
 
 
-local function damageHP(spell, target, caster)
+local function damageHP(spell, caster)
     damagetakentotal = 0
     damangeTable = {}
     for hit=1, spell.numberofhits do
-        damage = damageValue(spell, target, caster)
+        damage = damageValue(spell, caster)
         damagetakentotal = damagetakentotal+damage
         table.insert(damangeTable, damage)
     end
-    --Recalculate the target in case the attack was repeled TODO make this less stupid
-    target = state.battle.participants[state.battle.target]
-    print(caster.name.." hits "..target.name.." for "..damagetakentotal.." damage!")
-    target.hp = target.hp-damagetakentotal
-    return {caster=caster.name, target=target.name, damage=damangeTable, dmgType="HP", down=target.down, element=spell.element}
+    --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." damage!")
+    state.battle.participants[state.battle.target].hp = state.battle.participants[state.battle.target].hp-damagetakentotal
+    return {
+        caster=caster.name,
+        target=state.battle.participants[state.battle.target].name,
+        damage=damangeTable,
+        dmgType="HP",
+        down=state.battle.participants[state.battle.target].down,
+        element=spell.element
+    }
 end
 
 
-local function damageSP(spell, target, caster)
+local function damageSP(spell, caster)
     spdamagetakentotal = damagetaken*spell.numberofhits
     --print(caster.name.." hits "..target.name.." for "..damagetakentotal.." SP damage!")
     if spell.numericaltype == "Absolute Value" then
-        target.sp = target.sp-damagetakentotal
+        state.battle.participants[state.battle.target].sp = state.battle.participants[state.battle.target].sp-damagetakentotal
     else
-        target.sp = target.sp-target.sp*damagetakentotal/100
+        state.battle.participants[state.battle.target].sp = state.battle.participants[state.battle.target].sp-state.battle.participants[state.battle.target].sp*damagetakentotal/100
     end
-    return {caster=caster.name, target=target.name, damage=damagetakentotal, dmgType="SP"}
+    return {
+        caster=caster.name,
+        target=state.battle.participants[state.battle.target].name,
+        damage=damagetakentotal,
+        dmgType="SP"
+    }
 end
 
-local function attacks(spell, target, caster)
+local function attacks(spell, caster)
     targeter = {HP=damageHP, SP=damageSP}
-    if target.down or hitchance(spell, target, caster) then
-        return targeter[spell.targetattribute](spell, target, caster)
+    if state.battle.participants[state.battle.target].down or hitchance(spell, caster) then
+        return targeter[spell.targetattribute](spell, caster)
     else
-        return {target=target.name, caster=caster.name, miss=true}
+        return {
+            target=state.battle.participants[state.battle.target].name,
+            caster=caster.name,
+            miss=true
+        }
     end
 end
 
 
-function attack(spell, target, caster)
-    if target then
+function attack(spell, caster)
+    if state.battle.target then
         --Attack on single participant
-        table.insert(state.battle.turns, {attacks(spell, target, caster)})
+        table.insert(state.battle.turns, {attacks(spell, caster)})
     else
         --Attack on multiple participants
         if state.party[caster.name] then --By a party member
@@ -136,7 +155,9 @@ function attack(spell, target, caster)
         end
         totalturns = {}
         for i, pindex in pairs(targettable) do
-            table.insert(totalturns, attacks(spell, state.battle.participants[pindex], caster))
+            --For generic case handling in following functionality
+            state.battle.target = pindex
+            table.insert(totalturns, attacks(spell, caster))
         end
         table.insert(state.battle.turns, totalturns)
     end
