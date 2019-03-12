@@ -17,10 +17,10 @@ end
 
 function spell.process(uspell, basehitchance, istarget)
     invalid = {Light=true, Dark=true}
-    if invalid[spell.element] then return 0 end
+    if invalid[uspell.element] then return 0 end
     if istarget then
         --if effect is on spell target, hitchance goes up
-        return basehitchance * spell.numericalvalue)
+        return basehitchance * spell.numericalvalue
     else
         --if effect is on spell caster, hitchance goes down
         return -(basehitchance * spell.numericalvalue)
