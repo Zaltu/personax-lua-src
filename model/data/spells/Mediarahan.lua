@@ -20,7 +20,7 @@ function spell.activate()
         table.insert(turntable, {
             caster=state.battle.participants[state.battle.open].name,
             target=state.battle.participants[index].name,
-            heals=heals,
+            damage=-heals,
             dmgType="HP",
             element=spell.element
         })

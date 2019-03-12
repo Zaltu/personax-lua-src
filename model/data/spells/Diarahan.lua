@@ -15,7 +15,7 @@ function spell.activate()
     table.insert(state.battle.turns, {{
         caster=state.battle.participants[state.battle.open].name,
         target=state.battle.participants[state.battle.target].name,
-        heals=heals,
+        damage=-heals,
         dmgType="HP",
         element=spell.element
     }})
