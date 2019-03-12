@@ -1,10 +1,10 @@
 local spell = {}
 spell["element"] = [[Status]]
-spell["desc"] = [[Raises chance to charm to the enemy]]
+spell["desc"] = [[Raises chance to inflict fear to the enemy]]
 spell["passive"] = true
 spell["numericalvalue"] = 0.25
-spell["name"] = [[Charm Boost]]
-spell["status"] = "Charm"
+spell["name"] = [[Fear Boost]]
+spell["status"] = [[Fear]]
 
 function spell.activate()
     state.context.passive(spell, state.battle.participants[state.battle.open], state.battle.participants[state.battle.open], 99, "dodgestatus")
