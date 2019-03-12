@@ -1,15 +1,15 @@
 local spell = {}
 spell["element"] = [[Support]]
-spell["cost"] = 5
-spell["desc"] = [[Cures charm in one ally]]
+spell["cost"] = 3
+spell["desc"] = [[Cures panic, fear and distress in one ally]]
 spell["target"] = [[One Ally]]
-spell["name"] = [[Charmdi]]
+spell["name"] = [[Patra]]
 spell["costtype"] = [[SP]]
-spell["status"] = "Charm"
-spell["blurb"] = " is no longer charmed!"
+spell["blurb"] = [[ has been cured!]]
 
 function spell.activate()
-    if state.battle.participants[state.battle.target].status == spell.status then
+    validStatuses = {"Distress", "Panic", "Fear"}
+    if validStatuses[state.battle.participants[state.battle.target].status] then
         state.battle.participants[state.battle.target].status = nil
         table.insert(state.battle.turns, {{
             target=state.battle.participants[state.battle.target].name,

@@ -1,12 +1,12 @@
 local spell = {}
 spell["element"] = [[Support]]
 spell["cost"] = 5
-spell["desc"] = [[Cures charm in one ally]]
+spell["desc"] = [[Cures rage on one ally]]
 spell["target"] = [[One Ally]]
-spell["name"] = [[Charmdi]]
+spell["name"] = [[Enradi]]
+spell["status"] = [[Rage]]
 spell["costtype"] = [[SP]]
-spell["status"] = "Charm"
-spell["blurb"] = " is no longer charmed!"
+spell["blurb"] = " is no longer enraged!"
 
 function spell.activate()
     if state.battle.participants[state.battle.target].status == spell.status then
