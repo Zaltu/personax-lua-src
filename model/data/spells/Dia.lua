@@ -9,12 +9,17 @@ spell["costtype"] = [[SP]]
 
 function spell.activate()
     state.context.cost(spell.costtype, spell.cost)
+
+    --All this just for Divine Grace luigihands
+    require("util/battle/battlealter")
+    heals = calculateAttackBonus(spell.numericalvalue, spell, state.battle.participants[state.battle.open])
+    
     randomfactor = math.random(1, 15)
-    heals = spell.numericalvalue + randomfactor
+    heals = heals + randomfactor
     state.battle.participants[state.battle.target].hp = state.battle.participants[state.battle.target].hp + heals
     -- Overheal is definitely not a thing
     if state.battle.participants[state.battle.target].hp > state.battle.participants[state.battle.target].maxhp then
-        heals = state.battle.participants[state.battle.target].maxhp - (state.battle.participants[state.battle.target].hp - heals)
+        --heals = state.battle.participants[state.battle.target].maxhp - (state.battle.participants[state.battle.target].hp - heals)
         state.battle.participants[state.battle.target].hp = state.battle.participants[state.battle.target].maxhp
     end
     table.insert(state.battle.turns, {{

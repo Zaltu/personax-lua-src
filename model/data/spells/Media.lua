@@ -15,13 +15,16 @@ function spell.activate()
     else
         targets = state.battle.ienemy
     end
+    require("util/battle/battlealter")
     for _, index in pairs(targets) do
+        heals = calculateAttackBonus(spell.numericalvalue, spell, state.battle.participants[state.battle.open])
+
         randomfactor = math.random(1, 15)
-        heals = spell.numericalvalue + randomfactor
+        heals = heals + randomfactor
         state.battle.participants[index].hp = state.battle.participants[index].hp + heals
         -- Overheal is definitely not a thing
         if state.battle.participants[index].hp > state.battle.participants[index].maxhp then
-            heals = state.battle.participants[index].maxhp - (state.battle.participants[index].hp - heals)
+            --heals = state.battle.participants[index].maxhp - (state.battle.participants[index].hp - heals)
             state.battle.participants[index].hp = state.battle.participants[index].maxhp
         end
         table.insert(turntable, {

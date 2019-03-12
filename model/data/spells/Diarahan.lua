@@ -9,6 +9,7 @@ spell["costtype"] = [[SP]]
 
 function spell.activate()
     state.context.cost(spell.costtype, spell.cost)
+
     -- Overheal is definitely not a thing
     heals = state.battle.participants[state.battle.target].maxhp - state.battle.participants[state.battle.target].hp
     state.battle.participants[state.battle.target].hp = state.battle.participants[state.battle.target].maxhp
