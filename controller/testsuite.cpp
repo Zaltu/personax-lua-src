@@ -80,11 +80,13 @@ static void runBattle(lua_State *L){
                 else if (update["turns"][i][j]["status"] != nullptr && update["turns"][i][j]["blurb"] != nullptr){
                     cout << update["turns"][i][j]["blurb"] << endl;
                 }
-                else if (update["turns"][i][j]["heals"] != nullptr){
-                    cout << update["turns"][i][j]["caster"] << " healed " << update["turns"][i][j]["target"] << " for " << update["turns"][i][j]["heals"] << update["turns"][i][j]["dmgType"] << "!" << endl;
-                }
                 else {
-                    cout << update["turns"][i][j]["caster"] << " dealt " << update["turns"][i][j]["damage"] << " to " << update["turns"][i][j]["target"] << "'s " << update["turns"][i][j]["dmgType"] << "!" << endl;
+                    if (update["turns"][i][j]["damage"] < 0){
+                        cout << update["turns"][i][j]["caster"] << " healed " << update["turns"][i][j]["target"] << " for " << -(int)(update["turns"][i][j]["damage"]) << update["turns"][i][j]["dmgType"] << "!" << endl;
+                    }
+                    else {
+                        cout << update["turns"][i][j]["caster"] << " dealt " << update["turns"][i][j]["damage"] << " to " << update["turns"][i][j]["target"] << "'s " << update["turns"][i][j]["dmgType"] << "!" << endl;
+                    }
                 }
                 if(update["turns"][i][j]["down"] != nullptr){
                     cout << update["turns"][i][j]["target"] << " has been knocked down!" << endl;

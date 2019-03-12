@@ -41,9 +41,9 @@ function ai(shadow)
 	repeat
 		spelli = math.random(8)
 	until
-		shadow.persona.spellDeck[spelli] ~= "" and not require(shadow.persona.spellDeck[spelli]).passive
+		shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli] and not require("data/spells/"..shadow.persona.spellDeck[spelli]).passive
 
-	spell = require(shadow.persona.spellDeck[spelli])
+	spell = require("data/spells/"..shadow.persona.spellDeck[spelli])
 	if spell.target == "One Enemy" then
 		state.battle.target=state.battle.iparty[math.random(1, #state.battle.iparty)]
 	elseif spell.target == "One Ally" then
