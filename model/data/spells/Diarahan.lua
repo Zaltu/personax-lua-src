@@ -1,5 +1,5 @@
 local spell = {}
-spell["element"] = [[Support]]
+spell["element"] = [[Heal]]
 spell["cost"] = 20
 spell["desc"] = [[Full heal for one ally]]
 spell["target"] = [[One Ally]]
