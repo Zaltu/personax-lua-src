@@ -38,4 +38,8 @@ function countdownpassives()
             end
         end
     end
+    for spellname, _ in pairs(state.battle.participants[state.battle.open]["turnstatus"]) do
+        spell = require("data/spells/"..spellname)
+        if spell.process then spell.process() end
+    end
 end

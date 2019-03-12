@@ -55,7 +55,7 @@ function ai(shadow)
 end
 
 function normalturn()
-	ins = require('inspect')
+	--ins = require('inspect')
 	--print(ins(state.battle.iparty))
 	--print("Open: "..state.battle.open)
 	--print("Spellindex: ", state.context.spellindex)
