@@ -21,6 +21,7 @@ local function calculateEvasionBonus()
 end
 
 function spell.activate()
+    state.context.cost(spell.costtype, spell.cost)
     --Checking for hit
     finalhitchance = calculateEvasionBonus(require("data/spells/"..uspellname))
     if math.random(1, 100) > finalhitchance then

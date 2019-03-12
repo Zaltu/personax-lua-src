@@ -21,6 +21,7 @@ local function calculateEvasionBonus()
 end
 
 function spell.activate()
+    state.context.cost(spell.costtype, spell.cost)
     if state.battle.iparty[state.battle.open] then targets = state.battle.iparty else targets = state.battle.ienemy end
     for _, index in targets do
         --Checking for hit

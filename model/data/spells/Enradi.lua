@@ -9,6 +9,7 @@ spell["costtype"] = [[SP]]
 spell["blurb"] = " is no longer enraged!"
 
 function spell.activate()
+    state.context.cost(spell.costtype, spell.cost)
     if state.battle.participants[state.battle.target].status == spell.status then
         state.battle.participants[state.battle.target].status = nil
         table.insert(state.battle.turns, {{

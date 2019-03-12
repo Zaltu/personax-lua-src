@@ -7,6 +7,7 @@ spell["name"] = [[Ghastly Wail]]
 spell["costtype"] = [[SP]]
 
 function spell.activate()
+    state.context.cost(spell.costtype, spell.cost)
     turntable = {}
     for name, participant in pairs(state.battle.participants) do
         if participant.status == "Fear" then

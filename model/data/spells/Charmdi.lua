@@ -9,6 +9,7 @@ spell["status"] = "Charm"
 spell["blurb"] = " is no longer charmed!"
 
 function spell.activate()
+    state.context.cost(spell.costtype, spell.cost)
     if state.battle.participants[state.battle.target].status == spell.status then
         state.battle.participants[state.battle.target].status = nil
         table.insert(state.battle.turns, {{

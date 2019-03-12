@@ -7,6 +7,7 @@ spell["name"] = [[Me Patra]]
 spell["costtype"] = [[SP]]
 
 function spell.activate()
+    state.context.cost(spell.costtype, spell.cost)
     if state.party[state.battle.participants[state.battle.open].name] then
         targets = state.battle.iparty
     else

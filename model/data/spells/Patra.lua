@@ -8,6 +8,7 @@ spell["costtype"] = [[SP]]
 spell["blurb"] = [[ has been cured!]]
 
 function spell.activate()
+    state.context.cost(spell.costtype, spell.cost)
     validStatuses = {"Distress", "Panic", "Fear"}
     if validStatuses[state.battle.participants[state.battle.target].status] then
         state.battle.participants[state.battle.target].status = nil
