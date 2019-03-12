@@ -1,9 +1,9 @@
 local spell = {}
 spell["element"] = [[Status]]
-spell["desc"] = [[Prevents the status 'Charm']]
+spell["desc"] = [[Prevents the status 'Distress']]
 spell["passive"] = true
-spell["name"] = [[Null Charm]]
-spell["status"] = [[Charm]]
+spell["name"] = [[Null Distress]]
+spell["status"] = [[Distress]]
 
 function spell.activate()
     state.context.passive(spell, state.battle.participants[state.battle.open], state.battle.participants[state.battle.open], 99, "dodgestatus")
