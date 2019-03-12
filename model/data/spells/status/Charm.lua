@@ -1,7 +1,7 @@
 require('util/battle/battleturn')
 function turn(open)
     --Actual Charm logic
-    if state.battle.iparty[state.battle.open] then
+    if state.party[state.battle.participants[state.battle.open].name] then
         state.battle.iparty[state.battle.open] = nil
         table.insert(state.battle.ienemy, state.battle.open)
     else
@@ -13,12 +13,12 @@ function turn(open)
     ai(open)
 
     --Once this turn has been processed, revert the iindex change
-    if state.battle.iparty[state.battle.open] then
-        state.battle.iparty[state.battle.open] = nil
-        table.insert(state.battle.ienemy, state.battle.open)
-    else
+    if state.party[state.battle.participants[state.battle.open].name] then
         state.battle.ienemy[state.battle.open] = nil
         table.insert(state.battle.iparty, state.battle.open)
+    else
+        state.battle.iparty[state.battle.open] = nil
+        table.insert(state.battle.ienemy, state.battle.open)
     end
 	return 0
 end
