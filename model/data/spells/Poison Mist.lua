@@ -1,21 +1,27 @@
 local spell = {}
 spell["element"] = [[Status]]
 spell["cost"] = 10
-spell["desc"] = [[Chance to charm all foes]]
+spell["desc"] = [[Chance to poison all foes]]
 spell["target"] = [[All Enemy]]
 spell["statuschance"] = 25
-spell["name"] = [[Sexy Dance]]
-spell["status"] = [[Charm]]
+spell["name"] = [[Poison Mist]]
+spell["status"] = [[Poison]]
 spell["costtype"] = [[SP]]
-spell["blurb"] = " has been charmed!"
+spell["blurb"] = " has been poisoned!"
 
-function spell.activate()
-    state.context.cost(spell.costtype, spell.cost)
+--alteredchance is for when normal attacks have a chance (generally lessered) to cause a status
+function spell.activate(alteredchance)
+    if alteredchance then
+        hitchance = alteredchance
+    else
+        state.context.cost(spell.costtype, spell.cost)
+        hitchance = spell.statuschance
+    end
     if state.battle.iparty[state.battle.open] then targets = state.battle.iparty else targets = state.battle.ienemy end
     require("util/battle/battlealter")
     for _, index in targets do
         --Checking for hit
-        finalhitchance = calculateEvasionBonus(spell, spell.statuschance, state.battle.participants[state.battle.open])
+        finalhitchance = calculateEvasionBonus(spell, hitchance, state.battle.participants[state.battle.open])
         if math.random(1, 100) > finalhitchance then
             table.insert(state.battle.turns, {{target=state.battle.participants[index].name, caster=state.battle.participants[state.battle.open].name, miss=true}})
         else

@@ -9,11 +9,17 @@ spell["status"] = [[Poison]]
 spell["costtype"] = [[SP]]
 spell["blurb"] = " has been poisoned!"
 
-function spell.activate()
+function spell.activate(alteredchance)
+    if alteredchance then
+        hitchance = alteredchance
+    else
+        state.context.cost(spell.costtype, spell.cost)
+        hitchance = spell.statuschance
+    end
     state.context.cost(spell.costtype, spell.cost)
     require("util/battle/battlealter")
     --Checking for hit
-    finalhitchance = calculateEvasionBonus(spell, spell.statuschance, state.battle.participants[state.battle.open]))
+    finalhitchance = calculateEvasionBonus(spell, hitchance, state.battle.participants[state.battle.open]))
     if math.random(1, 100) > finalhitchance then
         table.insert(state.battle.turns, {{target=state.battle.participants[state.battle.target].name, caster=state.battle.participants[state.battle.open].name, miss=true}})
         return
