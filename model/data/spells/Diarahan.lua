@@ -7,8 +7,8 @@ spell["status"] = [[None]]
 spell["numericalvalue"] = 100
 spell["costtype"] = [[SP]]
 
-function spell.activate()
-    state.context.cost(spell.costtype, spell.cost)
+function spell.activate(free)
+    if not free then state.context.cost(spell.costtype, spell.cost) end
 
     -- Overheal is definitely not a thing
     heals = state.battle.participants[state.battle.target].maxhp - state.battle.participants[state.battle.target].hp
