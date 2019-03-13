@@ -39,13 +39,22 @@ function spellitout(participant, spellindex)
 	processEliminations()
 end
 
+function beatitout(participant)
+	--Acquire phys attack pseudo-spell
+	weapon = require("data/equip/weapon/"..participant.weapon)
+	--print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
+	--Tree powers activate
+	weapon.activate()
+	processEliminations()
+end
+
 function ai(shadow)
 	--TODO change based on spell targeting and passive spells
 	local spelli = 0
 	repeat
-		spelli = math.random(8)
+		spelli = math.random(9)
 	until
-		shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli] and not require("data/spells/"..shadow.persona.spellDeck[spelli]).passive
+		(shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli] and not require("data/spells/"..shadow.persona.spellDeck[spelli]).passive) or spelli == 9
 
 	--For when a party member is ai-controlled
 	if state.party[state.battle.participants[state.battle.open].name] then
@@ -56,14 +65,18 @@ function ai(shadow)
 		allies = state.battle.ienemy
 	end
 
-	spell = require("data/spells/"..shadow.persona.spellDeck[spelli])
-	if spell.target == "One Enemy" then
-		state.battle.target=targets[math.random(1, #targets)]
-	elseif spell.target == "One Ally" then
-		state.battle.target=allies[math.random(1, #allies)]
+	--Omegaoof
+	if spelli == 9 then
+		beatitout(shadow)
+	else
+		spell = require("data/spells/"..shadow.persona.spellDeck[spelli])
+		if spell.target == "One Enemy" then
+			state.battle.target=targets[math.random(1, #targets)]
+		elseif spell.target == "One Ally" then
+			state.battle.target=allies[math.random(1, #allies)]
+		end
+		spellitout(shadow, spelli)
 	end
-
-	spellitout(shadow, spelli)
 end
 
 function normalturn()
@@ -74,9 +87,13 @@ function normalturn()
 	if state.party[state.battle.participants[state.battle.open].name] then
 		--print("Processing user input")
 		--If we don't have a valid input for this participant, break the cycle.
-		if not state.context.spellindex then return 1 end
+		if not state.context.spellindex and not state.context.hitindex then return 1 end
 		state.battle.target = state.context.targetindex
-		spellitout(state.battle.participants[state.battle.open], state.context.spellindex)
+		if state.context.spellindex then
+			spellitout(state.battle.participants[state.battle.open], state.context.spellindex)
+		else
+			beatitout(state.battle.participants[state.battle.open])
+		end
 		--Reset battle target so it's not reused in following All <Side> spells
 		state.context.targetindex = nil
 	else
