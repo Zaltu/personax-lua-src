@@ -16,7 +16,6 @@ function spell.activate(alteredchance)
         state.context.cost(spell.costtype, spell.cost)
         hitchance = spell.statuschance
     end
-    state.context.cost(spell.costtype, spell.cost)
     require("util/battle/battlealter")
     --Checking for hit
     finalhitchance = calculateEvasionBonus(spell, hitchance, state.battle.participants[state.battle.open]))

@@ -1,15 +1,14 @@
 local spell = {}
 spell["element"] = [[Status]]
 spell["cost"] = 5
-spell["desc"] = [[Chance to charm one foe]]
+spell["desc"] = [[Chance to instill fear in one foe]]
 spell["target"] = [[One Enemy]]
 spell["statuschance"] = 25
-spell["name"] = [[Marin Karin]]
-spell["status"] = [[Charm]]
+spell["name"] = [[Evil Touch]]
+spell["status"] = [[Fear]]
 spell["costtype"] = [[SP]]
-spell["blurb"] = " has been charmed!"
 
-function spell.activate()
+function spell.activate(alteredchance)
     if alteredchance then
         hitchance = alteredchance
     else
