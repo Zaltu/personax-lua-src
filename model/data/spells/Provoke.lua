@@ -1,13 +1,13 @@
 local spell = {}
 spell["element"] = [[Status]]
 spell["cost"] = 5
-spell["desc"] = [[Chance to instill fear in one foe]]
+spell["desc"] = [[Chance to instill rage in one foe]]
 spell["target"] = [[One Enemy]]
 spell["statuschance"] = 25
-spell["name"] = [[Evil Touch]]
-spell["status"] = [[Fear]]
+spell["name"] = [[Provoke]]
+spell["status"] = [[Rage]]
 spell["costtype"] = [[SP]]
-spell["blurb"] = [[ is shaking in fear!]]
+spell["blurb"] = [[ is enraged!]]
 
 function spell.activate(alteredchance)
     if alteredchance then
@@ -30,5 +30,6 @@ function spell.activate(alteredchance)
     --Set participant turn status value
     state.battle.participants[state.battle.target].status = spell.status
 end
+
 
 return spell

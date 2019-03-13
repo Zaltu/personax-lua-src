@@ -1,13 +1,13 @@
 local spell = {}
 spell["element"] = [[Status]]
 spell["cost"] = 10
-spell["desc"] = [[Chance to instill fear in all foes]]
+spell["desc"] = [[Chance to instill rage in all foes]]
 spell["target"] = [[All Enemy]]
 spell["statuschance"] = 25
-spell["name"] = [[Evil Smile]]
-spell["status"] = [[Fear]]
+spell["name"] = [[Infuriate]]
+spell["status"] = [[Rage]]
 spell["costtype"] = [[SP]]
-spell["blurb"] = [[ is shaking in fear!]]
+spell["blurb"] = [[ is enraged!]]
 
 --alteredchance is for when normal attacks have a chance (generally lessered) to cause a status
 function spell.activate(alteredchance)

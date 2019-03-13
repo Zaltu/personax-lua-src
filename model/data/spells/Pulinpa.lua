@@ -1,13 +1,13 @@
 local spell = {}
 spell["element"] = [[Status]]
 spell["cost"] = 5
-spell["desc"] = [[Chance to instill fear in one foe]]
+spell["desc"] = [[Chance to instill panic in one foe]]
 spell["target"] = [[One Enemy]]
 spell["statuschance"] = 25
-spell["name"] = [[Evil Touch]]
-spell["status"] = [[Fear]]
+spell["name"] = [[Pulinpa]]
+spell["status"] = [[Panic]]
 spell["costtype"] = [[SP]]
-spell["blurb"] = [[ is shaking in fear!]]
+spell["blurb"] = " is panicking!"
 
 function spell.activate(alteredchance)
     if alteredchance then

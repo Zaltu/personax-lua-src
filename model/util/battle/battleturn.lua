@@ -1,23 +1,27 @@
+function removeParticipant(index, name)
+	if state.party[name] then
+		--print("Removing "..state.battle.participants[index].name)
+		state.battle.participants[index]=nil
+		for i, partyindex in pairs(state.battle.iparty) do
+			if partyindex == index then
+				table.remove(state.battle.iparty, i)
+			end
+		end
+	else
+		--print("Removing "..state.battle.participants[index].name)
+		state.battle.participants[index]=nil
+		for i, enemyindex in pairs(state.battle.ienemy) do
+			if enemyindex == index then
+				table.remove(state.battle.ienemy, i)
+			end
+		end
+	end
+end
+
 function processEliminations()
 	for index, participant in pairs(state.battle.participants) do
 		if participant.hp < 0 then
-			if state.party[participant.name] then
-				--print("Removing "..state.battle.participants[index].name)
-				state.battle.participants[index]=nil
-				for i, partyindex in pairs(state.battle.iparty) do
-					if partyindex == index then
-						table.remove(state.battle.iparty, i)
-					end
-				end
-			else
-				--print("Removing "..state.battle.participants[index].name)
-				state.battle.participants[index]=nil
-				for i, enemyindex in pairs(state.battle.ienemy) do
-					if enemyindex == index then
-						table.remove(state.battle.ienemy, i)
-					end
-				end
-			end
+			removeParticipant(index, participant.name)
 		end
 	end
 	--ins = require('inspect')
@@ -43,13 +47,21 @@ function ai(shadow)
 	until
 		shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli] and not require("data/spells/"..shadow.persona.spellDeck[spelli]).passive
 
-	spell = require("data/spells/"..shadow.persona.spellDeck[spelli])
-	if spell.target == "One Enemy" then
-		state.battle.target=state.battle.iparty[math.random(1, #state.battle.iparty)]
-	elseif spell.target == "One Ally" then
-		state.battle.target=state.battle.iparty[math.random(1, #state.battle.ienemy)]
+	--For when a party member is ai-controlled
+	if state.party[state.battle.participants[state.battle.open].name] then
+		targets = state.battle.ienemy
+		allies = state.battle.iparty
+	else
+		targets = state.battle.iparty
+		allies = state.battle.ienemy
 	end
 
+	spell = require("data/spells/"..shadow.persona.spellDeck[spelli])
+	if spell.target == "One Enemy" then
+		state.battle.target=targets[math.random(1, #targets)]
+	elseif spell.target == "One Ally" then
+		state.battle.target=allies[math.random(1, #allies)]
+	end
 
 	spellitout(shadow, spelli)
 end

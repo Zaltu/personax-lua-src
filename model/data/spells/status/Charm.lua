@@ -9,7 +9,7 @@ function turn(open)
         table.insert(state.battle.iparty, state.battle.open)
     end
     
-    --Charm always processes as thought the open participant is an AI
+    --Charm always processes as though the open participant is an AI
     ai(open)
 
     --Once this turn has been processed, revert the iindex change
