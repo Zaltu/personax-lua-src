@@ -9,7 +9,7 @@ For simplicity, let's break this down into a couple main sections:
 - Spell type breakdown
 - Status effect logic
 
-
+---
 ## Central Battle Context
 The battle context is by far the most complex, code-wise. It controls all aspects of battle, each spell, each status, every possible move, equipement parsing, and so on and so forth. One thing that the battle context does *not* do is set the ENV in which the battle takes place. This is handled in Unreal as it is tied to the dungeon ENV. Upon entering a battle, participants are moved/apparated in a separate area within the same dungeon cell and then the battle context is called.
 
@@ -51,7 +51,7 @@ While this is the logistic separation, in reality the view should interpret each
 
 Other important `state.battle` values include `state.battle.participants`, `state.battle.iparty` and `state.battle.ienemy`.
 
-
+---
 ## Battle Turn Logic
 The battleturn util holds all the repeating general logic needed to process a single turn. This includes the standard turn logic when unaffected by any status, the AI logic for (randomly) choosing a spell and target, process handlers for activating spells and attacking physically, checking for eliminations and removing eliminated participants. 
 
@@ -67,7 +67,7 @@ In this case, we're exceptionally refering to *normal, weapon and equipement bas
 Both of these are processed nearly identically, simply taken from different config file paths.
 - Spells are loaded from `data/spells/`
 - Physical attacks are loaded from the weapon files in `data/equip/weapons/`
-The data files are expected to contain an `activate` function, which is then called.
+The data files are expected to contain an `activate` function, which is then called. Once the spells have been parsed, a generic check on all participants is performed to see if they are still alive.
 
 ### Elimination Processing
 There are two utility functions available to process the removal of a participant from the battle:
@@ -75,8 +75,30 @@ There are two utility functions available to process the removal of a participan
 - removeParticipant: contains the logic necessary to remove a single participant from the appropriate iindex list and the participants table
 For safety reasons, processEliminations should only be run at the end of a particular turn, to avoid nullptrs. While removing a single participant is also potentially dangerous, it is significantly more controlable and is used in certain situations, like the Panic status.
 
-
+---
 ## Battle Attack and Cost Logic
 The battleattack util is a giant helper module for the the most common spell format processing. That format being a generic, non-passive spell applying HP or SP damage to one or all enemies based on an element. While the implementation is somewhat complex, any spell matching those conditions (or base yourself off Agi or another simple standard spell) can be passed to the `attack` function with expected results.
 
 It is worth noting that battleattack *does not handle reducing the caster's HP or SP*. That process requires a call to battlecost's single function `cost` and does not apply a specific event in `state.battle.turns`, since there is no visible effect on-screen. The participant's icon is simply modified on caster turn if there has been a change. This is up to unreal to handle and is pulled from `state.battle.participants`.
+
+It is also worth noting that the target participant is always fetched directly from the participant list, while the caster is expected to be passed in parameter. Initially both were passed in parameter, but the change was made to accomodate "Repel" actions. It is likely that caster will eventually get the same treatment.
+
+---
+## Battle Alter Logic
+This module serves as an even more generic helper for spells, particularly those not activated through the `battleattack` wrapper. It holds the generic implementation of processing the different status groups that a participant can have for configuring the effects of a spell. These are mainly:
+- Calculating an attack bonus
+- Calculating a defense bonus
+- Calculating a hit/evasion bonus
+- Parsing a Persona's resistances
+Attack and Defense bonuses are each attibuted to a single participant in an exchange. In other words, parsing the Attack bonus will only verify if the *caster* has anything that would alter his attack power and parsing the Defense bonus will only verify if the target has anything that would alter their defensive value. It is also important to note, that parsing the Defense bonus *will also include parsing the resistances*, so no need to call it separately.
+
+Hit/Evasion, as the name suggests, goes both ways. For example, Sukukaja both improves your chances to hit an enemy, but also to dodge incoming attacks. As such, parsing the Hit/Evasion bonus runs through both the caster and the target `dodgestatus` lists.
+
+It is also important to note that the Attack and Defense parsers expect to be given *the current expected damage dealt* and return, likewise, a *modified absolute damage value with the statuses taken into account*. The Hit/Evasion parser, on the other hand, takes the *base chance for a spell to hit* and returns *the amount to add (or substract) to that value*.
+
+The Resistance parser works a little differently, and isn't really called outside of the Defense bonus parser, but returns the *multiplier* to apply to the damage being dealt. The function also handles knocking enemies `down` and flagging `oncemore`.
+
+As above, it is also worth noting that the target participant is always fetched directly from the participant list, while the caster is expected to be passed in parameter. Initially both were passed in parameter, but the change was made to accomodate "Repel" actions. It is likely that caster will eventually get the same treatment.
+
+---
+## Battle Passive Logic
