@@ -49,7 +49,7 @@ function beatitout(participant)
 end
 
 function ai(shadow)
-	--TODO change based on spell targeting and passive spells
+	--TODO change based passive spells
 	local spelli = 0
 	repeat
 		spelli = math.random(9)
@@ -98,7 +98,6 @@ function normalturn()
 		state.context.targetindex = nil
 	else
 		ai(state.battle.participants[state.battle.open])
-		state.battle.oncemore = nil
 		--print("Next participant: "..state.battle.participants[state.battle.open].name.."\n")
 	end
 	return 0
