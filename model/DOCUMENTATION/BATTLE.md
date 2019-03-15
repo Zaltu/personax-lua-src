@@ -3,11 +3,12 @@ HA HA HA BOY OH BOY ARE YOU IN FOR A WILD RIDE, KID
 For simplicity, let's break this down into a couple main sections:
 - Central battle context logic
 - Battle turn logic
-- Battle attack logic
+- Battle attack/cost logic
 - Battle alter logic
 - Battle passive logic
 - Spell type breakdown
 - Status effect logic
+
 
 ## Central Battle Context
 The battle context is by far the most complex, code-wise. It controls all aspects of battle, each spell, each status, every possible move, equipement parsing, and so on and so forth. One thing that the battle context does *not* do is set the ENV in which the battle takes place. This is handled in Unreal as it is tied to the dungeon ENV. Upon entering a battle, participants are moved/apparated in a separate area within the same dungeon cell and then the battle context is called.
@@ -50,6 +51,7 @@ While this is the logistic separation, in reality the view should interpret each
 
 Other important `state.battle` values include `state.battle.participants`, `state.battle.iparty` and `state.battle.ienemy`.
 
+
 ## Battle Turn Logic
 The battleturn util holds all the repeating general logic needed to process a single turn. This includes the standard turn logic when unaffected by any status, the AI logic for (randomly) choosing a spell and target, process handlers for activating spells and attacking physically, checking for eliminations and removing eliminated participants. 
 
@@ -72,3 +74,9 @@ There are two utility functions available to process the removal of a participan
 - processEliminations: is run after every attack, wether by spell or physical and removes every participant 0 or less HP
 - removeParticipant: contains the logic necessary to remove a single participant from the appropriate iindex list and the participants table
 For safety reasons, processEliminations should only be run at the end of a particular turn, to avoid nullptrs. While removing a single participant is also potentially dangerous, it is significantly more controlable and is used in certain situations, like the Panic status.
+
+
+## Battle Attack and Cost Logic
+The battleattack util is a giant helper module for the the most common spell format processing. That format being a generic, non-passive spell applying HP or SP damage to one or all enemies based on an element. While the implementation is somewhat complex, any spell matching those conditions (or base yourself off Agi or another simple standard spell) can be passed to the `attack` function with expected results.
+
+It is worth noting that battleattack *does not handle reducing the caster's HP or SP*. That process requires a call to battlecost's single function `cost` and does not apply a specific event in `state.battle.turns`, since there is no visible effect on-screen. The participant's icon is simply modified on caster turn if there has been a change. This is up to unreal to handle and is pulled from `state.battle.participants`.
