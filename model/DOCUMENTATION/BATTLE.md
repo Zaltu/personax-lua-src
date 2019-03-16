@@ -8,6 +8,7 @@ For simplicity, let's break this down into a couple main sections:
 - Battle passive logic
 - Spell type breakdown
 - Status effect logic
+- Glossary
 
 ---
 ## Central Battle Context
@@ -146,3 +147,43 @@ Status Effects are another poorly reused name that means something else. While s
 - Distress: Cannot summon Persona
 
 Statuses are defined under `data/spells/status/`, and each file contains a `turn` function. Should a participant have a `status` key defined, that status will be loaded, and that turn function will be called instead of the standard `normalturn` found in `battleturn`. They must each therefore handle the full stack of the turn on their own, including returning the appropriate code if player input is required and not applying the status' effect twice, should it need to call the turn a second time with the user input.
+
+---
+# Glossary
+Collected here are a few terms and variables that pop up very often both in doc and code that are important to know
+
+- __Participant__  
+A participant in the battle, on either side.
+
+- __Enemy__  
+For readability's sake, I generally only refer to enemies in the doc when I'm speaking of the "opposing team". The party's enemy are the shadows and vice versa.
+
+- __Passive__  
+Generally refers to any spell with an extended effect, but is also used as a key in spell files to indicate that a spell should be activated on battle start.
+
+- __Status__  
+Sometimes refers to spells with an extended effect, and is also used to refer to "Status Effects", as they are more commonly understood.
+
+- __`state.battle.participants`__  
+List holding all participants in the battle, including HP, SP, status, etc, in the order of their turns
+
+- __`state.battle.open`__  
+Index of the currently playing participant
+
+- __`state.battle.participants[state.battle.open]`__  
+The currently playing participant
+
+- __`state.battle.target`__  
+Index of the spell target. If the spell affects multiple people, is it null. If the spell is a Revive spell, it is the `str` name of the target
+
+- __`state.battle.participants[state.battle.target]`__  
+The target participant
+
+- __`state.battle.iparty`__  
+List of all indexes that lead to a party member's entry in `state.battle.participants`
+
+- __`state.battle.ienemy`__  
+List of all indexes that lead to a shadow's entry in `state.battle.participants`
+
+- __`state.party`__  
+Not a battle context value per say, but stores the MC's allies that are currently set to be in the party, indexed by name
