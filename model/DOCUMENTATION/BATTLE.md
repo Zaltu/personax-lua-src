@@ -134,3 +134,15 @@ Akarn Series | Makarakarn, Tetrakarn | Adds a repel-like spell to defense passiv
 Re Patra | Re Patra | Removes `down` key from target
 Drain Series | Life Drain, Spirit Drain | Removes value from target and adds it to caster directly
 Special Series | Recarmdra, Salvation | Other spells are combinations of existing spells. They are generally locally implemented however.
+
+---
+## Status Effect Logic
+Status Effects are another poorly reused name that means something else. While statuses are refered to as passives in the case of each status list (attackstatus, defendstatus, etc...), in this case I'm refering to "status effects" as described as such in most RPGs. Persona X by default implements
+- Charm: Play turn as an enemy
+- Rage: Forced to physically attack, but get two attacks and a small damage boost
+- Poison: Take an HP% amount of damage at the start of each turn
+- Panic: Player loses control of party member. Chance they will flee the battle.
+- Fear: Guaranteed critical hits and chance of losing turn
+- Distress: Cannot summon Persona
+
+Statuses are defined under `data/spells/status/`, and each file contains a `turn` function. Should a participant have a `status` key defined, that status will be loaded, and that turn function will be called instead of the standard `normalturn` found in `battleturn`. They must each therefore handle the full stack of the turn on their own, including returning the appropriate code if player input is required and not applying the status' effect twice, should it need to call the turn a second time with the user input.
