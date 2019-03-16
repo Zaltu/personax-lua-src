@@ -102,3 +102,34 @@ As above, it is also worth noting that the target participant is always fetched 
 
 ---
 ## Battle Passive Logic
+Passive spells, sometimes counterintuitively, refers in this case to any spell whose *effect lasts longer than 1 turn*. It is refered to for two different logical separations in the codebase because I didn't think my shit through. This `battlepassive` module is responsible for:
+- Adding new passives to participants' status lists.
+- Counting down each passive's remaining turns
+- Loading a participant's initial passive abilities at the start of a battle.
+
+When a passive is added, the `passive` function will handle adding a usable entry into the participant's appropriate status list. It will also append an entry into the `state.battle.turns` list for the application of that status. To point out that, as I mentioned earlier, since it adds a brand new list element it is always understood that the status will be shown independantly of any other action that might happen during that turn.
+
+At the start of each turn (in the `next` function from earlier), the `countdownpassives` function is called. This will decrement each entry in each status list of the open participant and remove those who have reached 0. There is a special case for the `turnstatus` list. Those statuses refer to repeating actions that should be processed at the start of every turn, independantly of what the participant chooses to do (for example, the Reguvenate series). For these statuses, it is this function that will process them.
+
+At the start of every battle, each participant's spell list is gone over once, and any spells loaded that include the `passive` key will be automatically activated. These activated spells are parsed the same way as normal passive spells, but are removed from `state.battle.turns` list and as such *will never be displayed*. This is the second, completely different meaning for the term "passive spell".
+
+---
+## Spell Type Breakdown
+There are a grand total of a whole fucking lot of spells that are configured for use in Persona X, including most of the spells available in Persona 3. Most of these spells fall into a destinctive category and are treated relatively similarly to other spells of that category. Here posted is a breakdown of those categories and a brief explanation of their implementation. Note that this is not a limitation on what spells could be capable of doing, simply how the default spells are set up.
+Series Name | Spell Examples | Implementation
+---|---|---
+Generic Damage Series | Agi, Maragi, Bash, Hama, etc... | Call the generic attack module.
+Heals Series | Dia, Diarahan, Media | Compute the additional HP to add within the spell. Negative damage should be considered healing. Overheal is not a thing
+Evasion Boost Series | Dodge Fire, Evade Fire, Sukukaja | Call passive module. Process function edits hit/evasion rate
+Damage Alter Series | Fire Boost, Null Fire, Power Charge, Rakunda | Call passive module. Process function edits damage
+Repel Series | Repel Fire, Counterstrike | Considered a defense status. Process function switches `state.battle.target` for `state.battle.open`
+Drain Series | Drain Fire, Drain Slash | Reversed the sign of the damage done. The engine considers negative damage to be healing.
+Status Effect Series | Marin Karin, Tentarafoo | Checks for status hit/miss and appends the status to the participant's turnstatus. Also sets the participant's status to the status in question for turn processing.
+Status Boost Series | Charm Boost, Rage Boost | Functions the same as Damage Alter series, but refers to spell statuses in process function
+Status Cure Series | Charmdi, Enradi, Patra | Removes the participant's status key and removes the corresponding entry from the turnstatus list.
+Regen Series | Regenerate, Invigorate, Spring of Life | Passive turnstatuses. Heal an attibute for a certain amount on process.
+Recarm Series | Recarm, Samarecarm | These special cases assume the `targetindex` received from Unreal is a former participant's name. Re-adds them to `iparty` and the participants list.
+Akarn Series | Makarakarn, Tetrakarn | Adds a repel-like spell to defense passives. Upon valid activation, removes itself.
+Re Patra | Re Patra | Removes `down` key from target
+Drain Series | Life Drain, Spirit Drain | Removes value from target and adds it to caster directly
+Special Series | Recarmdra, Salvation | Other spells are combinations of existing spells. They are generally locally implemented however.
