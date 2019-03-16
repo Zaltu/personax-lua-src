@@ -116,6 +116,7 @@ At the start of every battle, each participant's spell list is gone over once, a
 ---
 ## Spell Type Breakdown
 There are a grand total of a whole fucking lot of spells that are configured for use in Persona X, including most of the spells available in Persona 3. Most of these spells fall into a destinctive category and are treated relatively similarly to other spells of that category. Here posted is a breakdown of those categories and a brief explanation of their implementation. Note that this is not a limitation on what spells could be capable of doing, simply how the default spells are set up.
+
 Series Name | Spell Examples | Implementation
 ---|---|---
 Generic Damage Series | Agi, Maragi, Bash, Hama, etc... | Call the generic attack module.
