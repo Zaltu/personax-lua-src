@@ -48,3 +48,22 @@ Overall, I think Legion as the True Final Boss is a great idea. I just need to f
 
 MARK 3  
 I should remind myself of this since it already slipped my mind: There are *two* main plotlines in mind for the game: the "plot twist" where it turns out the MC is the sinner of treachery and the main initial plot where people are being judged harshly by someone/something the party feels does not have the authority to do so.
+
+MARK 4  
+We don't want to over-emphesize *any* of the sins, especially at the start and especially since erotisism is such a powerful theme.
+
+In the same vein, we really don't want to separate each party member into joining for "their" sin (though some could), since too many would end up joining too late in the story.
+
+We also don't want anyone to be overly linked with multiple sins, or cause ludo-narrative dissonance between Social Links and the main story and since the MC is accused of treachery, he probably shouldn't be the representative of Limbo.
+
+AND SO, the sister is actually the representative of Limbo, though you're *both* dragged to the *sorting* area, but get saved by your starting members.
+
+These starting members would be the first sinners of the next dungeons, but we don't need to present them as much, as we're entering these dungeons *not* for their sake, but to save *others*.
+
+-> P3 starts with MC, Junpei Yukari and Mitsuru on Nav  
+-> P4 starts with MC, Yosuke, Chie and Teddy on Nav  
+-> P5 starts with MC, Ryuji and Morgana(+Nav), though Ann joins very quickly  
+So each with ~3 chars + Nav, which would equate to  
+-> PX starts with MC, Sister, Lust and Gluttony on Nave where __sister is Limbo__
+
+With this detachment in mond, while most party members would have to be "sinful" in some way, they actually do not *need* to be explicitelty linked to any one circle. Which means the starting party doesn't *need* to include Lust and Gluttony.
