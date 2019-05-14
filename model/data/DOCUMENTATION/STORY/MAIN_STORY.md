@@ -60,6 +60,6 @@ AND SO, the sister is actually the representative of Limbo, though you're *both*
 -> P4 starts with MC, Yosuke, Chie and Teddy on Nav  
 -> P5 starts with MC, Ryuji and Morgana(+Nav), though Ann joins very quickly  
 So each with ~3 chars + Nav, which would equate to  
--> PX starts with MC, Sister, Lust and Gluttony on Nave where __sister is Limbo__
+-> PX starts with MC, Sister, Lust and Gluttony on Nav where __sister is Limbo__
 
 With this detachment in mond, while most party members would have to be "sinful" in some way, they actually do not *need* to be explicitelty linked to any one circle. Which means the starting party doesn't *need* to include Lust and Gluttony.

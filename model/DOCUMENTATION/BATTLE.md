@@ -73,7 +73,7 @@ The data files are expected to contain an `activate` function, which is then cal
 
 ### Elimination Processing
 There are two utility functions available to process the removal of a participant from the battle:
-- `processEliminations`: is run after every attack, wether by spell or physical and removes every participant 0 or less HP
+- `processEliminations`: is run after every attack, whether by spell or physical and removes every participant 0 or less HP
 - `removeParticipant`: contains the logic necessary to remove a single participant from the appropriate iindex list and the participants table
 
 For safety reasons, processEliminations should only be run at the end of a particular turn, to avoid nullptrs. While removing a single participant is also potentially dangerous, it is significantly more controlable and is used in certain situations, like the Panic status.
