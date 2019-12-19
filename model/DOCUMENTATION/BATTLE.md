@@ -12,7 +12,7 @@ For simplicity, let's break this down into a couple main sections:
 
 ---
 ## Central Battle Context
-The battle context is by far the most complex, code-wise. It controls all aspects of battle, each spell, each status, every possible move, equipement parsing, and so on and so forth. One thing that the battle context does *not* do is set the ENV in which the battle takes place. This is handled in Unreal as it is tied to the dungeon ENV. Upon entering a battle, participants are moved/apparated in a separate area within the same dungeon cell and then the battle context is called.
+The battle context is by far the most complex, code-wise. It controls all aspects of battle, each spell, each status, every possible move, equipement parsing, and so on and so forth. One thing that the battle context does *not* do is set the ENV in which the battle takes place. This is handled in the engine as it is tied to the dungeon ENV. Upon entering a battle, participants are moved/apparated in a separate area within the same dungeon cell and then the battle context is called.
 
 ### Context Load
 The battle context load logic does quite a bit of preparation in order for all values to be set up. It needs to prepare both the player's party as well as all the enemies and define their default behavior. *In order*, loading the battle context:
@@ -54,7 +54,7 @@ Other important `state.battle` values include `state.battle.participants`, `stat
 
 ---
 ## Battle Turn Logic
-The `battleturn` util holds all the repeating general logic needed to process a single turn. This includes the standard turn logic when unaffected by any status, the AI logic for (randomly) choosing a spell and target, process handlers for activating spells and attacking physically, checking for eliminations and removing eliminated participants. 
+The `battleturn` util holds all the repeating general logic needed to process a single turn. This includes the standard turn logic when unaffected by any status, the AI logic for (randomly) choosing a spell and target, process handlers for activating spells and attacking physically, checking for eliminations and removing eliminated participants.
 
 ### Standard Turn Logic | normalturn
 When the participant is an AI, simply activate the AI section and return 0, meaning the turn has been processed. If the participant is player-controlled, check if we were given a spell index. If we were not, it means we've come to a new player-controlled participant and we need the player to input something, so we break out of the turn loop in battle by returning 1. If we *are* given a spell index, it means we have a valid input from the player, so we process the spell and wipe the input, finally returning 0 and continuing to the next participant.
@@ -82,7 +82,7 @@ For safety reasons, processEliminations should only be run at the end of a parti
 ## Battle Attack and Cost Logic
 The battleattack util is a giant helper module for the the most common spell format processing. That format being a generic, non-passive spell applying HP or SP damage to one or all enemies based on an element. While the implementation is somewhat complex, any spell matching those conditions (or base yourself off Agi or another simple standard spell) can be passed to the `attack` function with expected results.
 
-It is worth noting that battleattack does not handle reducing the *caster's* HP or SP. That process requires a call to battlecost's single function `cost` and does not apply a specific event in `state.battle.turns`, since there is no visible effect on-screen. The participant's icon is simply modified on caster turn if there has been a change. This is up to unreal to handle and is pulled from `state.battle.participants`.
+It is worth noting that battleattack does not handle reducing the *caster's* HP or SP. That process requires a call to battlecost's single function `cost` and does not apply a specific event in `state.battle.turns`, since there is no visible effect on-screen. The participant's icon is simply modified on caster turn if there has been a change. This is up to the engine to handle and is pulled from `state.battle.participants`.
 
 It is also worth noting that the target participant is always fetched directly from the participant list, while the caster is expected to be passed in parameter. Initially both were passed in parameter, but the change was made to accomodate "Repel" actions. It is likely that caster will eventually get the same treatment.
 
@@ -133,7 +133,7 @@ Status Effect Series | Marin Karin, Tentarafoo | Checks for status hit/miss and 
 Status Boost Series | Charm Boost, Rage Boost | Functions the same as Damage Alter series, but refers to spell statuses in process function
 Status Cure Series | Charmdi, Enradi, Patra | Removes the participant's status key and removes the corresponding entry from the turnstatus list.
 Regen Series | Regenerate, Invigorate, Spring of Life | Passive turnstatuses. Heal an attibute for a certain amount on process.
-Recarm Series | Recarm, Samarecarm | These special cases assume the `targetindex` received from Unreal is a former participant's name. Re-adds them to `iparty` and the participants list.
+Recarm Series | Recarm, Samarecarm | These special cases assume the `targetindex` received from the engine is a former participant's name. Re-adds them to `iparty` and the participants list.
 Akarn Series | Makarakarn, Tetrakarn | Adds a repel-like spell to defense passives. Upon valid activation, removes itself.
 Re Patra | Re Patra | Removes `down` key from target
 Drain Series | Life Drain, Spirit Drain | Removes value from target and adds it to caster directly

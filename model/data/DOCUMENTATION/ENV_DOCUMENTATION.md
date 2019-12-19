@@ -4,7 +4,7 @@ ENVs are an important data set, as they symbolize each physical environment it i
 There are two different types of ENVs: cells and dungeons. These are not separated by any obvious folder structure, but both have different requirements on how they must be defined.
 
 TODO: Move to state doc  
-The changing of ENVs is one of the only situations in which Lua calls C++, to inform UE to change the level the player is in. This can be done independantly of the current context. That being said, an ENV change should not be called directly by C++ either, since we absolutely must lock the state in order to prevent off-hand inputs from causing strange behavior.
+The changing of ENVs is one of the only situations in which Lua calls C++, to inform the engine to change the level the player is in. This can be done independantly of the current context. That being said, an ENV change should not be called directly by C++ either, since we absolutely must lock the state in order to prevent off-hand inputs from causing strange behavior.
 
 ## Cells
 TODO: flag definitions and handling
