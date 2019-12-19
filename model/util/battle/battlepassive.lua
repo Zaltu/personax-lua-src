@@ -23,7 +23,7 @@ function battlepassives()
     until
         state.battle.open > #state.battle.participants
     state.battle.open = 1
-    state.battle.turns = []
+    state.battle.turns = {}
 end
 
 
