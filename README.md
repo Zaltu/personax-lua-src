@@ -12,7 +12,7 @@ The PX C++ API offers two built-in ways of interacting with the Lua stack.
 These functions are balanced, meaning they will always leave the stack in the state it started, making them safe to use. It is possible to interact with the stack in other ways, but due to the difficulty in tracing potential segfaults and the general unstability of the shared stack, it is highly recommended not to do so.
 
 ### C++ Reponsibility
-In a general, overhead sense, the C++ code is used to translate user input in a graphical environment (UE4) to the logical model that the GSV represents. It is C++'s responsibility to send appropriately formatted events to the GSV and to interpret the resulting state.update in the correct manner within the current context.
+In a general, overhead sense, the C++ code is used to translate user input in a graphical environment (game engine) to the logical model that the GSV represents. It is C++'s responsibility to send appropriately formatted events to the GSV and to interpret the resulting state.update in the correct manner within the current context.
 
 There are certain, very specific circumstances in which Lua will call C++. Mainly, to request loading of some form of resources including context switches, UI elements, animations and models, and so on. While many things should be possible, the main use of this is to change contexts. The idea being that C++ will interpret state.update once the event it sent has returned. Since context changes should only be possible through events in the first place, there will never be a time where C++ must request a context switch on it's own. User input is therefore limited in effect (in the scope of C++) to firing an event in the GSV.
 
@@ -21,13 +21,13 @@ The intented flow goes:
 - - C++ translates input into GSV event
 - - C++ fires event
 - - - GSV processes event, determines a context change is required
-- - - GSV sends request to C++ to load new UE level, graphic context, etc...
+- - - GSV sends request to C++ to load new engine level, graphic context, etc...
 - - - GSV finishes processing the event, and configures state.update to correctly in the new context
 - - C++ recieves the state.update
 - - C++ interprets the context of state.update based on the JSON template recieved
 - User sees results of their actions
 
-It is important to note that this is obviously *not done on a frame-by-frame basis*. This is done based on the triggers residing in the UE level that correspond to firing a Lua event and that from my currently limited understanding is run asynchroneously to the frame refresh.
+It is important to note that this is obviously *not done on a frame-by-frame basis*. This is done based on the triggers residing in the game engine level that correspond to firing a Lua event and that from my currently limited understanding is run asynchroneously to the frame refresh.
 
 ### Exposed C++ Functions
 Currently, none. This is a WIP pre-alpha alpha early access and there are no graphics. The functionality required for a finished product along the currently intended design are
@@ -37,7 +37,7 @@ Currently, none. This is a WIP pre-alpha alpha early access and there are no gra
 
 ## Lua
 ### Initialize Game State
-The entirety of the Lua code is built around the gobdal state variable (GSV). It contains all information required to identify the current state of the game on load. The bulk of the GSV callable code is stored as a global variable initialized when resolving the state.lua file. The functionality exposed in the GSV is:
+The entirety of the Lua code is built around the global state variable (GSV). It contains all information required to identify the current state of the game on load. The bulk of the GSV callable code is stored as a global variable initialized when resolving the state.lua file. The functionality exposed in the GSV is:
 - loadstate: load a save file
 - savestate: save the game
 - event: process a given event
@@ -88,7 +88,7 @@ The Lua `dofile` function compiles the code of the specified filepath and execut
 
 There is something moderately to severly important to note about this concerning performance as well. Since `require` calls are stored in a Lua-controller global `package.loaded` variable, it *will not get garbage collected*! Adding on to that, we *never reset the Lua state in C++*. This means that every time a package is `require`'d, it is *loaded into memory until the game is closed*! This means that there is technically something very similar to a memory leak present throughout the game. I'm not worried about that for a couple main reasons.
 
-First of all, this is more of a "fixed" memory leak. In that there is maximum amount of data that can be in memory "unnecessarily", that corresponding to the enirety of the Lua codebase. This means that, while the game *will* likely take more and more memory as it runs, it will eventually level out and nothing more will be loaded. Second, agregating to the first, the "entirety of the lua codebase", even including all the eventual cutscene files (many of which are `dofile`'d anyway), Personas, spells, etc, is all just lightweight text. Any kind of heavy lifting for textures, models, shaders, etc, is handled by UE and is flushed as the level progresses. So even accounting for "all the Lua codebase" probably shouldn't pass a couple MB at most. And of course, memory is cheap. Depending on the final state of this situation, I may set `dofile`s in more places to limit package load. TBD.
+First of all, this is more of a "fixed" memory leak. In that there is maximum amount of data that can be in memory "unnecessarily", that corresponding to the enirety of the Lua codebase. This means that, while the game *will* likely take more and more memory as it runs, it will eventually level out and nothing more will be loaded. Second, agregating to the first, the "entirety of the lua codebase", even including all the eventual cutscene files (many of which are `dofile`'d anyway), Personas, spells, etc, is all just lightweight text. Any kind of heavy lifting for textures, models, shaders, etc, is handled by the game engine and is flushed as the level progresses. So even accounting for "all the Lua codebase" probably shouldn't pass a couple MB at most. And of course, memory is cheap. Depending on the final state of this situation, I may set `dofile`s in more places to limit package load. TBD.
 
 Not taking these points into account can and will lead to very bizarre, inconsistent and difficult to pinpoint bugs as the consequences are highly dependent on the specific runtime Lua state. Be vigilent.
 
@@ -103,7 +103,7 @@ On top of these contexts, there are a couple other important functionality scrip
 The text data of the game is found under the model as well, since only the model accesses it. The `model/data/` directory is organized as such:
 - *data/chars/*: (Main) Characters and their stats.
 - *data/days/*: All ~365 days to be played. More documentation on their definition within.
-- *data/envs/*: Definitions of flags and other that are associated with each "env", corresponding more or less to a UE level.
+- *data/envs/*: Definitions of flags and other that are associated with each "env", corresponding more or less to an engine level.
 - *data/inline/*: Defines all non-Social Link cutscenes.
 - *data/links/*: Definitions of all Social Links. One file per link for now.
 - *data/pers/*: Definitions of all Personas (spoilers, shadows are Personas).
@@ -118,7 +118,7 @@ The relative import paths set by each Lua `require` call are handled and parsed 
 
 Unfortunately, `dofile` does not chare the same utility that `require` does for reasons that are beyond me. It will only accept absolute paths, or "absolute" relative paths (those being paths relative to the *process's* working directory). We must therefore rely on aquiring the absolute path to the `model/` directory on runtime by getting the absolute path of state, since it is guarenteed to be `require`d. Unfortunately, Lua does not have this built in and C++, being it's usual shitty self, has no consistent way of doing so in the standard library. Seriously wtf is Python actually so good.
 
-Anyway, luckily UE has a function to exposed the path to the executable (`BaseDir`) which can be used for official builds. When compiling the testsuites however, there are rules to be followed because of this:
+Anyway, luckily most game engines have a function to exposed the path to the executable "base directory" which can be used for official builds. When compiling the testsuites however, there are rules to be followed because of this:
 - C++: `./processEvent.exe` where `processEvent.exe` is in the same directory as `model/`
 - Lua: `lua model/testsuite.lua` where `testsuite.lua` is in the same directory as `state.lua`
 
@@ -135,10 +135,10 @@ Particularly because we're oftentimes manuipulating tables by adding and removin
 
 # Building the Test Suites
 OH BOY HERE WE GO  
-I can only half blame C++ for this since all these problems come more from using LuaJIT over Lua than any actual code issue. Note that this is all about just building the test suites, not the full program, since that part is largely more handled by UE and it's configuration. Provided in the repo are the vscode tasks required to build the program. The command being:
+I can only half blame C++ for this since all these problems come more from using LuaJIT over Lua than any actual code issue. Note that this is all about just building the test suites, not the full program, since that part is largely more handled by the game engine and it's configuration. Provided in the repo are the vscode tasks required to build the program. The command being:
 
 `g++ -std=c++11 -o processEvent.exe -I/usr/local/include/luajit-2.0 controller/testsuite.cpp -Wl,/usr/local/lib/libluajit-5.1.so -Wl,-rpath='/usr/local/lib/' -ldl`
-- `std=c++11`: is required for stuff. It should probably be C++17 anyway (or whatever the latest is), but the "real" c++ dependencies are handled by the UE release, so this is purely to support the cobbled-together C++ parts of the tests, most of which will not be anything like the real game implementation.
+- `std=c++11`: is required for stuff. It should probably be C++17 anyway (or whatever the latest is), but the "real" c++ dependencies are handled by the game engine release, so this is purely to support the cobbled-together C++ parts of the tests, most of which will not be anything like the real game implementation.
 - `-I/usr/local/include/luajit-2.0`: Replace with the appropriate path, of course, but must point to the include files generated when building the required config of LuaJIT (as explained below)
 - `-Wl,/usr/local/lib/libluajit-5.1.so`: LuaJIT install does not necessarily put the libraries in the correct dynamic linked paths (check with `ldconfig -v`). For linking the dynamic library on compile time, we need to specify the exact path of the LuaJIT dynamic library generated when building with GCC.
 - `-Wl,-rpath='/usr/local/lib/'`: Set the required path to the libraries dynamically loaded by LuaJIT during runtime. I was under the impression that the so.2 and so.2.0.5 generated were all symlinks to each other, but apparently that can't be the case since nothing will run without access to all of them.
