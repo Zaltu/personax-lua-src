@@ -20,11 +20,11 @@ For Persona X, the current list of STORY-DRIVEN arcanas is:
 Most teammates are associated with a certain Circle of Hell in Persona X, and each circle is tied in to an arcana. This is a breakdown of the current link between circles, arcanas and teammates:
 - Limbo     - Fool          - MC (NA)
 - Lust      - Empress       - TBD
-- Gluttony  - Chariot       - TBD
+- Gluttony  - Magician      - TBD
 - Greed     - Emperor       - TBD
 - Anger     - Hermit        - TBD
 - Heresy    - Hierophant    - TBD
-- Violence  - Magician      - TBD
+- Violence  - Chariot       - TBD
 - Fraud     - Priestess     - TBD
 - Treachery - Judgement     - MC (NA)
 
@@ -52,3 +52,10 @@ I think I want entities generally associated with punishment for the Judgement a
 
 ### Lovers
 I have an idea about someone approaching the MC as "revenge" for someone else dumping them. The whole original aspect of the arcana pertaining to "crossroads" I feel may also pertain to parting ways as oppose to coming together, and knowing when roads must part again. The reverse actually being that the MC and this person stay together, just to spite the other person (who has already made their peace, and probably did nothing wrong per say).
+
+I think that in order for the "random" approaching the MC to make somewhat sense, this is a character that would have to have appeared in the past. It could be another social link which, as a side element, invloves a breakup. It could be a social link that's unlocked by repeatedly talking to certain NPCs while wandering around the maps. The characters would have to speak to each other at some point, one way or another.
+
+Following is the first draft of the progression of the 0angle route of the link.
+Meet -> Date1: no one around  -> Date2: Awkward flirting in front of other dude -> Date3: same principle as 2, but confronted by dude ->
+Confesses her circumstance (but lies) -> Causes scene about you breaking up with her -> confesses her lies in her confession -> convince her to let go of dude ->
+Maybe we should stick together? -> No, we should part ways properly

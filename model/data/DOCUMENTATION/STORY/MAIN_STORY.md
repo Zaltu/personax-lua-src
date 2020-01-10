@@ -63,3 +63,8 @@ So each with ~3 chars + Nav, which would equate to
 -> PX starts with MC, Sister, Lust and Gluttony on Nav where __sister is Limbo__
 
 With this detachment in mond, while most party members would have to be "sinful" in some way, they actually do not *need* to be explicitelty linked to any one circle. Which means the starting party doesn't *need* to include Lust and Gluttony.
+
+
+MARK 5
+BUT WAIT! The Hierophant arcana I associated with Heresy, and Virgil, the persona I want as the Nav persona, is Hierophant, not Gluttony.
+He/She will be charged later on with Heresy (Hierophant) because big bad thinks he/she's too beneficial to the party and wants him gone.
