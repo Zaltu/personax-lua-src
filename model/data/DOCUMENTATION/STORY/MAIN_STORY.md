@@ -10,6 +10,21 @@ A few major important plot points to start off:
 - 
 - What do with Sister character?
 
+
+## Awakening
+Finally got a nice idea for the introduction of the Velvet room and the contract, all tying into judgement. For reference, the Velvet room intro goes:
+```
+Welcome to the Velvet Room
+My name is Igor
+I am delighted to make your aquaintance
+This place exists between dream and reality
+Mind and matter
+Only those who have forged some form of contract may enter.
+```
+In Persona 3, that contract was the dorm document, signing off his arrival, and "choosing this fate of his own free will". In this case, I also want to display a "real" contract along with the metaphorical one. The idea is that Sister and MC are moving into an apartment in the city on their own, because of "circumstances" (TBD). Sister and (depending on the dialog choice) MC are a bit hesistant though. So sister makes up a fake contract for them to sign, which essentially binds them to not judging things too quickly/without giving it a chance. This all purely on the grounds of "trying to make us feel better about it" ("or at least do it for me" if the player doesn't want to). This has the quadruple purpose of serving as the Velvet Room contract, a tie-in to the main judgement theme, foreshadowing that Sister is, in fact, Limbo, and having the player set the MC's name.
+
+
+
 ## Dungeon Design and Presentation
 It may be cool, instead of having the single gate at the entrance with the reference to Dante's Inferno, to have individual biblical quotes refering to each of the sins at their dungeon entrance. EG. Hell hath no fury like a woman scorned; Though I walk in the valley of the shadow of death I shall fear no evil; etc...
 

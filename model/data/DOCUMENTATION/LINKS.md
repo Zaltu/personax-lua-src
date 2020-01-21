@@ -59,3 +59,9 @@ Following is the first draft of the progression of the 0angle route of the link.
 Meet -> Date1: no one around  -> Date2: Awkward flirting in front of other dude -> Date3: same principle as 2, but confronted by dude ->
 Confesses her circumstance (but lies) -> Causes scene about you breaking up with her -> confesses her lies in her confession -> convince her to let go of dude ->
 Maybe we should stick together? -> No, we should part ways properly
+
+
+for #9:
+Are you sure that's what you really want
+vs
+If that's what you really want
