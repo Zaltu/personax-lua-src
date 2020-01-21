@@ -65,3 +65,8 @@ for #9:
 Are you sure that's what you really want
 vs
 If that's what you really want
+
+
+### Sun or Hanged Man
+Not sure which yet, but the idea is like a war veteran or something. Someone in deep pain, both physically and mentally, but who presses onward.
+"This is life. The struggle is what remind us to draw breath."
