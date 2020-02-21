@@ -77,9 +77,13 @@ AND SO, the sister is actually the representative of Limbo, though you're *both*
 So each with ~3 chars + Nav, which would equate to  
 -> PX starts with MC, Sister, Lust and Gluttony on Nav where __sister is Limbo__
 
-With this detachment in mond, while most party members would have to be "sinful" in some way, they actually do not *need* to be explicitelty linked to any one circle. Which means the starting party doesn't *need* to include Lust and Gluttony.
+With this detachment in mind, while most party members would have to be "sinful" in some way, they actually do not *need* to be explicitelty linked to any one circle. Which means the starting party doesn't *need* to include Lust and Gluttony.
 
+MARK 5 (deleted, it was all dumb)
 
-MARK 5
-BUT WAIT! The Hierophant arcana I associated with Heresy, and Virgil, the persona I want as the Nav persona, is Hierophant, not Gluttony.
-He/She will be charged later on with Heresy (Hierophant) because big bad thinks he/she's too beneficial to the party and wants him gone.
+MARK 6
+Essentially, Legion should be the boss of fraud or treachery, not the secret final boss. He makes too much sense for that position to put him anywhere else.
+Unless...
+"You thought you defeated them, but we are merely aspects of myself. And together, we are strong. We are Legion. We are many. And you will see our vengeance upon those who cast us out."
+So Legion impersonates Lucifer in fraud, but he is also in fact "impersonating" all the bosses (leading to the possibility of a Nyx-like fight).
+But what if he didn't impersonate Lucifer? It could be the MC's starting persona he impersonates, or something to that effect. TBD.
