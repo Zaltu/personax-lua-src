@@ -1,0 +1,42 @@
+{
+    "name": "Mephistopheles",
+    "arcana": "Devil",
+    "level": "52",
+    "desc": "When someone wishes for riches and power over all else, Mephistopheles may appear, and offer a deal. Everything that could ever be wanted, in exchange for the eternal soul.",
+    "spellDeck": [
+        "Matarukaja",
+        "",
+        "Masukukaja",
+        "",
+        "Agidyne",
+        ""
+    ],
+    "spellLearn": {
+        "Vile Assault": "54",
+        "Evade Ice": "55",
+        "Mind Charge": "58"
+    },
+    "stats": [
+        "34",
+        "41",
+        "31",
+        "36",
+        "34"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Drain",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong"
+    ],
+    "heritage": [
+        "Ice",
+        ""
+    ],
+    "evolveName": null
+}

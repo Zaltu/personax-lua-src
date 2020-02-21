@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[29]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Magaru]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Garula]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Re Patra]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Wind]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Strong]]
+entity["resistance"][7] = [[Null]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Weak]]
+entity["desc"] = [[One of the four aspects of Shinto thought, it uses its power to bring good omens. It is said to aid in one's wisdom, observation, and skill, and can mend fractured paths.]]
+--a function: evolveName
+entity["arcana"] = [[Fortune]]
+entity["stats"] = {}
+entity["stats"][1] = [[16]]
+entity["stats"][2] = [[23]]
+entity["stats"][3] = [[20]]
+entity["stats"][4] = [[11]]
+entity["stats"][5] = [[24]]
+entity["name"] = [[Kusi Mitama]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Auto-Rakukaja"] = [[30]]
+entity["spellLearn"]["Wind Boost"] = [[34]]
+entity["spellLearn"]["Recarm"] = [[31]]
+return entity

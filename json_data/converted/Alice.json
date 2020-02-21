@@ -1,0 +1,43 @@
+{
+    "name": "Alice",
+    "arcana": "Death",
+    "level": "56",
+    "desc": "A ghost who appears as a young blonde girl. She seems young, but has formidable magic powers. Some say she's the ghost of a poor English girl who died an unfortunate death.",
+    "spellDeck": [
+        "Evil Touch",
+        "",
+        "Spirit Drain",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Mudo Boost": "62",
+        "Repel Dark": "61",
+        "Marakunda": "60",
+        "Die for Me!": "59"
+    },
+    "stats": [
+        "31",
+        "50",
+        "27",
+        "42",
+        "39"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Repel"
+    ],
+    "heritage": [
+        "Dark",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,42 @@
+{
+    "name": "Valkyrie",
+    "arcana": "Judgement",
+    "level": "11",
+    "desc": "Choosers of the slain\" in Norse lore. Armed with shining armor and swords, they look for brave warriors to take to Valhalla, so that they may fight in Ragnarok.",
+    "spellDeck": [
+        "Cleave",
+        "",
+        "Dodge Slash",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Mabufu": "13",
+        "Auto-Sukukaja": "14",
+        "Power Slash": "15"
+    },
+    "stats": [
+        "10",
+        "7",
+        "8",
+        "8",
+        "7"
+    ],
+    "resistance": [
+        "Strong",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Slash",
+        ""
+    ],
+    "evolveName": null
+}

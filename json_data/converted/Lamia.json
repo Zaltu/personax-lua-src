@@ -1,0 +1,42 @@
+{
+    "name": "Lamia",
+    "arcana": "Devil",
+    "level": "25",
+    "desc": "A serpentine woman of Greek myth, she was the queen of Libya. It has a beautiful woman's torso, and the tail of a snake. It feeds on the blood of young men.",
+    "spellDeck": [
+        "Bewilder",
+        "",
+        "Agilao",
+        "",
+        "Raging Tiger",
+        ""
+    ],
+    "spellLearn": {
+        "Mamudo": "26",
+        "Poison Mist": "28",
+        "Stagnant Air": "29"
+    },
+    "stats": [
+        "16",
+        "20",
+        "12",
+        "18",
+        "17"
+    ],
+    "resistance": [
+        "Normal",
+        "Weak",
+        "Normal",
+        "Null",
+        "Strong",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Null"
+    ],
+    "heritage": [
+        "Dark",
+        ""
+    ],
+    "evolveName": null
+}

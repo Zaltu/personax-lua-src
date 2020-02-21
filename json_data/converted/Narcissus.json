@@ -1,0 +1,42 @@
+{
+    "name": "Narcissus",
+    "arcana": "Lovers",
+    "level": "20",
+    "desc": "A young man of Greek myth. He rejected the nymph Echo, who faded to a whisper out of despair. Cursed by Nemesis, he fell in love with his own reflection and wasted away.",
+    "spellDeck": [
+        "Marin Karin",
+        "",
+        "Charm Boost",
+        "",
+        "Magaru",
+        ""
+    ],
+    "spellLearn": {
+        "Sexy Dance": "21",
+        "Charmdi": "22",
+        "Dekunda": "24"
+    },
+    "stats": [
+        "12",
+        "18",
+        "9",
+        "13",
+        "20"
+    ],
+    "resistance": [
+        "Weak",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Strong",
+        "Strong",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,42 @@
+{
+    "name": "Berith",
+    "arcana": "Judgement",
+    "level": "13",
+    "desc": "One of the 72 demons of the Goetia. He rides a gigantic horse and burns those without manners. He is the duke of Hell.",
+    "spellDeck": [
+        "Agi",
+        "",
+        "Tarukaja",
+        "",
+        "Double Fangs",
+        ""
+    ],
+    "spellLearn": {
+        "Auto-Tarukaja": "15",
+        "Maragi": "16",
+        "Rebellion": "17"
+    },
+    "stats": [
+        "11",
+        "10",
+        "9",
+        "7",
+        "9"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Fire",
+        ""
+    ],
+    "evolveName": null
+}

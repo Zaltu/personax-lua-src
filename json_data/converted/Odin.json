@@ -1,0 +1,42 @@
+{
+    "name": "Odin",
+    "arcana": "Emperor",
+    "level": "57",
+    "desc": "The father of all gods in Norse legend. He willingly sacrificed one eye to gain wisdom. In preparation for Ragnarok, he gathers the souls of fallen warriors to his hall, Valhalla.",
+    "spellDeck": [
+        "Ziodyne",
+        "",
+        "Vile Assault",
+        "",
+        "Maziodyne",
+        ""
+    ],
+    "spellLearn": {
+        "Elec Amp": "60",
+        "Thunder Reign": "63",
+        "Spell Master": "65"
+    },
+    "stats": [
+        "39",
+        "52",
+        "33",
+        "36",
+        "39"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Drain",
+        "Weak",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Elec",
+        ""
+    ],
+    "evolveName": null
+}

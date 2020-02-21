@@ -1,0 +1,42 @@
+{
+    "name": "Lachesis",
+    "arcana": "Fortune",
+    "level": "45",
+    "desc": "The middle sister of the three Moirae Sisters of Greek legend. She is the apportioner, measuring the thread which determines each person's lifespan.",
+    "spellDeck": [
+        "Recarm",
+        "",
+        "Garula",
+        "",
+        "Masukukaja",
+        ""
+    ],
+    "spellLearn": {
+        "Dodge Elec": "47",
+        "Magarula": "50",
+        "Evade Elec": "51"
+    },
+    "stats": [
+        "26",
+        "36",
+        "19",
+        "31",
+        "30"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Null",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Wind",
+        ""
+    ],
+    "evolveName": null
+}

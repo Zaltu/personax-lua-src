@@ -1,0 +1,42 @@
+{
+    "name": "Succubus",
+    "arcana": "Moon",
+    "level": "43",
+    "desc": "A female demon of European lore in medieval times. They visit sleeping men and have sexual intercourse with them. The victims don't wake up but may dream of the encounter.",
+    "spellDeck": [
+        "Sexy Dance",
+        "",
+        "Mudoon",
+        "",
+        "Agidyne",
+        ""
+    ],
+    "spellLearn": {
+        "Fire Break": "45",
+        "Ailment Boost": "46",
+        "Null Light": "48"
+    },
+    "stats": [
+        "24",
+        "36",
+        "27",
+        "32",
+        "27"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Null"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

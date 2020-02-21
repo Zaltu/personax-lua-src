@@ -1,0 +1,42 @@
+{
+    "stats": [
+        "8",
+        "8",
+        "8",
+        "7",
+        "6"
+    ],
+    "name": "Archangel",
+    "level": "10",
+    "spellDeck": [
+        "Hama",
+        "",
+        "Cleave",
+        "",
+        "Sukukaja",
+        ""
+    ],
+    "resistance": [
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Strong",
+        "Weak"
+    ],
+    "arcana": "Justice",
+    "heritage": [
+        "Light",
+        ""
+    ],
+    "spellLearn": {
+        "Mazio": "13",
+        "Patra": "11",
+        "Sharp Student": "14",
+        "Holy Arrow": "12"
+    },
+    "desc": "In the nine orders of angels in Christian teachings, archangels are among the eighth, making them second in the third hierarchy. Archangels are one of the few bodies of angels that contact those on the material plane directly and are the ministers and messengers between God and mankind. Some of the most famous archangels include Michael and Gabriel who both appear in the Bible, although only Michael was named expressly as an archangel. The Jewish name for it is rav-mal'akh."
+}

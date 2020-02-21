@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[41]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Blade of Fury]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Mamudo]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Mudo Boost]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Slash]]
+entity["heritage"][2] = [[Strike]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Strong]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Weak]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Null]]
+entity["resistance"][9] = [[Null]]
+entity["desc"] = [[When He broke the second seal, I heard the second living creature saying, "Come." And another, a red horse, went out; and to him who sat on it, it was granted to take peace from the earth, and that men would slay one another; and a great sword was given to him.]]
+--a function: evolveName
+entity["arcana"] = [[Chariot]]
+entity["stats"] = {}
+entity["stats"][1] = [[26]]
+entity["stats"][2] = [[27]]
+entity["stats"][3] = [[25]]
+entity["stats"][4] = [[29]]
+entity["stats"][5] = [[23]]
+entity["name"] = [[Red Rider]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Auto-Sukukaja"] = [[44]]
+entity["spellLearn"]["Null Fear"] = [[42]]
+entity["spellLearn"]["Heaven's Blade"] = [[47]]
+return entity

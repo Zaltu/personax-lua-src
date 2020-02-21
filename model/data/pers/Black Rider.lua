@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[60]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Mamudoon]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Heat Wave]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Revolution]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Dark]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Weak]]
+entity["resistance"][5] = [[Drain]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Null]]
+entity["resistance"][9] = [[Null]]
+entity["desc"] = [[When He broke the third seal, I heard the third living creature saying, "Come." I looked, and behold, a black horse; and he who sat on it had a pair of scales in his hand. And I heard something like a voice in the center of the four living creatures saying, "A quart of wheat for a denarius, and three quarts of barley for a denarius; but do not damage the oil and the wine."]]
+--a function: evolveName
+entity["arcana"] = [[Fortune]]
+entity["stats"] = {}
+entity["stats"][1] = [[38]]
+entity["stats"][2] = [[43]]
+entity["stats"][3] = [[37]]
+entity["stats"][4] = [[45]]
+entity["stats"][5] = [[30]]
+entity["name"] = [[Black Rider]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Ghastly Wail"] = [[62]]
+entity["spellLearn"]["Megidola"] = [[64]]
+entity["spellLearn"]["Deathbound"] = [[65]]
+return entity

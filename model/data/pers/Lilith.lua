@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[48]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Mazionga]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Mudoon]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Infuriate]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Support]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Strong]]
+entity["resistance"][8] = [[Weak]]
+entity["resistance"][9] = [[Null]]
+entity["desc"] = [[Said to have been Adam's first wife. She refused to obey him, leaving Eden to become a demon of the night. All theories of her fall depict her as unfaithful.]]
+--a function: evolveName
+entity["arcana"] = [[Devil]]
+entity["stats"] = {}
+entity["stats"][1] = [[19]]
+entity["stats"][2] = [[39]]
+entity["stats"][3] = [[23]]
+entity["stats"][4] = [[31]]
+entity["stats"][5] = [[39]]
+entity["name"] = [[Lilith]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Bufudyne"] = [[50]]
+entity["spellLearn"]["Evil Smile"] = [[49]]
+entity["spellLearn"]["Rage Boost"] = [[52]]
+return entity

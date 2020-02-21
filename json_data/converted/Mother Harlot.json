@@ -1,0 +1,43 @@
+{
+    "name": "Mother Harlot",
+    "arcana": "Empress",
+    "level": "74",
+    "desc": "The fiend known as the \"Whore of Babylon,\" riding a beast with seven heads and ten horns, she carries a golden cup of abominations and the filth of her acts.",
+    "spellDeck": [
+        "Mamudoon",
+        "",
+        "Ziodyne",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Mudo Boost": "76",
+        "Sexy Dance": "77",
+        "Ailment Boost": "78",
+        "Null Fire": "80"
+    },
+    "stats": [
+        "48",
+        "55",
+        "50",
+        "43",
+        "51"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Repel",
+        "Normal",
+        "Normal",
+        "Repel"
+    ],
+    "heritage": [
+        "Dark",
+        ""
+    ],
+    "evolveName": null
+}

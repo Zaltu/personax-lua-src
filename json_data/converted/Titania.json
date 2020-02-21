@@ -1,0 +1,43 @@
+{
+    "name": "Titania",
+    "arcana": "Empress",
+    "level": "48",
+    "desc": "The queen of the fairies and Oberon's wife. She is derived from the Roman goddess Diana. She was later immortalized in Shakespeare's play \"A Midsummer Night's Dream.\"",
+    "spellDeck": [
+        "Mediarama",
+        "",
+        "Mind Charge",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Magarula": "49",
+        "Mabufula": "51",
+        "Divine Grace": "52",
+        "Ice Amp": "54"
+    },
+    "stats": [
+        "19",
+        "39",
+        "23",
+        "31",
+        "39"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Weak",
+        "Strong",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,43 @@
+{
+    "name": "Loki",
+    "arcana": "Fool",
+    "level": "58",
+    "desc": "A major Norse deity, known as a trickster who clashes with the other gods. Blood brothers with Odin, but was later punished for his role in Balder's death.",
+    "spellDeck": [
+        "Apt Pupil",
+        "",
+        "Garudyne",
+        "",
+        "Bufudyne",
+        ""
+    ],
+    "spellLearn": {
+        "Megidola": "60",
+        "Stagnant Air": "61",
+        "Null Fire": "63",
+        "Repel Fire": "65"
+    },
+    "stats": [
+        "41",
+        "47",
+        "30",
+        "42",
+        "21"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Strong",
+        "Normal",
+        "Drain",
+        "Normal",
+        "Strong"
+    ],
+    "heritage": [
+        "",
+        ""
+    ],
+    "evolveName": null
+}

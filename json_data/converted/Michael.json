@@ -1,0 +1,42 @@
+{
+    "name": "Michael",
+    "arcana": "Chariot",
+    "level": "72",
+    "desc": "One of the four major archangels, he is at the top of the angelic hierarchy. He carries a long spear that can cut through anything, and his name means \"one who is like God.\"",
+    "spellDeck": [
+        "Maziodyne",
+        "",
+        "Mediarahan",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Mabufudyne": "74",
+        "Repel Dark": "75",
+        "Heaven's Blade": "77"
+    },
+    "stats": [
+        "51",
+        "47",
+        "46",
+        "50",
+        "51"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Strong",
+        "Normal",
+        "Repel",
+        "Weak"
+    ],
+    "heritage": [
+        "Light",
+        ""
+    ],
+    "evolveName": null
+}

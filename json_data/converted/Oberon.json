@@ -1,0 +1,43 @@
+{
+    "name": "Oberon",
+    "arcana": "Emperor",
+    "level": "15",
+    "desc": "The king of the fairies and Titania's husband. He is quite old, but due to a curse, his looks are that of a young boy. He often flirts with human women, ending in a scolding from his wife.",
+    "spellDeck": [
+        "Zio",
+        "",
+        "Media",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Survive Dark": "16",
+        "Mazio": "17",
+        "Zan-ei": "18",
+        "Zionga": "20"
+    },
+    "stats": [
+        "12",
+        "15",
+        "9",
+        "8",
+        "8"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Null",
+        "Normal",
+        "Strong",
+        "Strong"
+    ],
+    "heritage": [
+        "Elec",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[85]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Agidyne]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Akasha Arts]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Unshaken Will]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Fire]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Drain]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Repel]]
+entity["resistance"][9] = [[Weak]]
+entity["desc"] = [[The king of Asura in Hindu myth. His name is Maha Vairocana (One Who Shines On All). In Buddhism, he is known as Dainichi Nyorai.]]
+--a function: evolveName
+entity["arcana"] = [[Sun]]
+entity["stats"] = {}
+entity["stats"][1] = [[62]]
+entity["stats"][2] = [[60]]
+entity["stats"][3] = [[58]]
+entity["stats"][4] = [[56]]
+entity["stats"][5] = [[57]]
+entity["name"] = [[Asura]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Spell Master"] = [[91]]
+entity["spellLearn"]["Tetrakarn"] = [[87]]
+entity["spellLearn"]["Megidolaon"] = [[88]]
+return entity

@@ -1,0 +1,42 @@
+{
+    "name": "Norn",
+    "arcana": "Fortune",
+    "level": "62",
+    "desc": "Goddesses of fate in Norse lore. They live below the roots of Yggdrasil and weave the threads of fate, which even the gods are bound by.",
+    "spellDeck": [
+        "Magarudyne",
+        "",
+        "Wind Amp",
+        "",
+        "Panta Rhei",
+        ""
+    ],
+    "spellLearn": {
+        "Regenerate 3": "66",
+        "Invigorate 3": "67",
+        "Drain Elec": "69"
+    },
+    "stats": [
+        "40",
+        "54",
+        "32",
+        "46",
+        "44"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Drain",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Wind",
+        ""
+    ],
+    "evolveName": null
+}

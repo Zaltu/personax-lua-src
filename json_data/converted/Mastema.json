@@ -1,0 +1,43 @@
+{
+    "name": "Mastema",
+    "arcana": "Devil",
+    "level": "58",
+    "desc": "The chief of the Nephilim, Mastema is said to the the angel of disaster and the father of all evil. He tempts mortals to go against the will of God and punishes them if they fall.",
+    "spellDeck": [
+        "Infuriate",
+        "",
+        "Bufudyne",
+        "",
+        "Rage Boost",
+        ""
+    ],
+    "spellLearn": {
+        "Mahamaon": "59",
+        "Hama Boost": "60",
+        "Ailment Boost": "62",
+        "Mabufudyne": "63"
+    },
+    "stats": [
+        "31",
+        "49",
+        "37",
+        "40",
+        "24"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Strong",
+        "Strong"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

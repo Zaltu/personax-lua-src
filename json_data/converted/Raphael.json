@@ -1,0 +1,42 @@
+{
+    "name": "Raphael",
+    "arcana": "Star",
+    "level": "61",
+    "desc": "One of the four major archangels, his name means \"healer.\" He recites the history of the fallen angels and the creation of Adam and Eve.",
+    "spellDeck": [
+        "Deathbound",
+        "",
+        "Auto-Marakukaja",
+        "",
+        "Null Charm",
+        ""
+    ],
+    "spellLearn": {
+        "Mediarahan": "63",
+        "Matarukaja": "64",
+        "Tempest Slash": "67"
+    },
+    "stats": [
+        "44",
+        "42",
+        "31",
+        "31",
+        "42"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Repel",
+        "Weak"
+    ],
+    "heritage": [
+        "Slash",
+        ""
+    ],
+    "evolveName": null
+}

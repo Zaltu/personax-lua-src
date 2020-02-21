@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[8]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Garu]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Pulinpa]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Re Patra]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Wind]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Weak]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Null]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[A diminutive, folkloric fairy, Fae are a mistical and secretive species. Some believe them to be the children of Eve, while others believe they are of a separate species, older than humans.]]
+--a function: evolveName
+entity["arcana"] = [[Magician]]
+entity["stats"] = {}
+entity["stats"][1] = [[5]]
+entity["stats"][2] = [[8]]
+entity["stats"][3] = [[8]]
+entity["stats"][4] = [[4]]
+entity["stats"][5] = [[6]]
+entity["name"] = [[Fae]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Agi"] = [[10]]
+entity["spellLearn"]["Magaru"] = [[13]]
+entity["spellLearn"]["Wind Boost"] = [[11]]
+return entity

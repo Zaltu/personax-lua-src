@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[63]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Mahamaon]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Maragidyne]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Deathbound]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Light]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Drain]]
+entity["resistance"][5] = [[Weak]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Null]]
+entity["resistance"][9] = [[Weak]]
+entity["desc"] = [[One of the four major archangels. His name means "Flame of God", and he knows all celestial phenomena. He is the first angel Satan met on earth.]]
+--a function: evolveName
+entity["arcana"] = [[Aeon]]
+entity["stats"] = {}
+entity["stats"][1] = [[44]]
+entity["stats"][2] = [[51]]
+entity["stats"][3] = [[41]]
+entity["stats"][4] = [[41]]
+entity["stats"][5] = [[38]]
+entity["name"] = [[Uriel]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Fire Amp"] = [[65]]
+entity["spellLearn"]["High Counter"] = [[67]]
+entity["spellLearn"]["Tempest Slash"] = [[66]]
+return entity

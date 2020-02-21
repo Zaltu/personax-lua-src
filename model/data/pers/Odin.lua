@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[57]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Ziodyne]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Vile Assault]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Maziodyne]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Elec]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Drain]]
+entity["resistance"][7] = [[Weak]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[The father of all gods in Norse legend. He willingly sacrificed one eye to gain wisdom. In preparation for Ragnarok, he gathers the souls of fallen warriors to his hall, Valhalla.]]
+--a function: evolveName
+entity["arcana"] = [[Emperor]]
+entity["stats"] = {}
+entity["stats"][1] = [[39]]
+entity["stats"][2] = [[52]]
+entity["stats"][3] = [[33]]
+entity["stats"][4] = [[36]]
+entity["stats"][5] = [[39]]
+entity["name"] = [[Odin]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Spell Master"] = [[65]]
+entity["spellLearn"]["Thunder Reign"] = [[63]]
+entity["spellLearn"]["Elec Amp"] = [[60]]
+return entity

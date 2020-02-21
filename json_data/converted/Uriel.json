@@ -1,0 +1,42 @@
+{
+    "name": "Uriel",
+    "arcana": "Aeon",
+    "level": "63",
+    "desc": "One of the four major archangels. His name means \"Flame of God\", and he knows all celestial phenomena. He is the first angel Satan met on earth.",
+    "spellDeck": [
+        "Mahamaon",
+        "",
+        "Maragidyne",
+        "",
+        "Deathbound",
+        ""
+    ],
+    "spellLearn": {
+        "Fire Amp": "65",
+        "Tempest Slash": "66",
+        "High Counter": "67"
+    },
+    "stats": [
+        "44",
+        "51",
+        "41",
+        "41",
+        "38"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Drain",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Null",
+        "Weak"
+    ],
+    "heritage": [
+        "Light",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[2]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Dia]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Support]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Strong]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[In English myth, they are fairies of the forest that love to play tricks on people. They can also be hard workers when necessary.]]
+--a function: evolveName
+entity["arcana"] = [[Lovers]]
+entity["stats"] = {}
+entity["stats"][1] = [[2]]
+entity["stats"][2] = [[3]]
+entity["stats"][3] = [[2]]
+entity["stats"][4] = [[3]]
+entity["stats"][5] = [[3]]
+entity["name"] = [[Pixie]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Rakunda"] = [[3]]
+entity["spellLearn"]["Trafuri"] = [[8]]
+entity["spellLearn"]["Pulinpa"] = [[4]]
+return entity

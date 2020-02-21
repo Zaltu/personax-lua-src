@@ -1,0 +1,42 @@
+{
+    "name": "Gabriel",
+    "arcana": "Temperance",
+    "level": "69",
+    "desc": "One of the four major archangels. She is also the only female angel at this rank. Her name comes from the Sumerian word for \"governor.\" She is the angel who told Mary of her pregnancy.",
+    "spellDeck": [
+        "Bufudyne",
+        "",
+        "Mahamaon",
+        "",
+        "Hama Boost",
+        ""
+    ],
+    "spellLearn": {
+        "Mabufudyne": "71",
+        "Repel Dark": "73",
+        "Myriad Arrows": "75"
+    },
+    "stats": [
+        "43",
+        "49",
+        "35",
+        "45",
+        "42"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Repel",
+        "Normal",
+        "Normal",
+        "Repel",
+        "Weak"
+    ],
+    "heritage": [
+        "Ice",
+        ""
+    ],
+    "evolveName": null
+}

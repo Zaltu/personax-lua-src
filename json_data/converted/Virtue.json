@@ -1,0 +1,42 @@
+{
+    "stats": [
+        "22",
+        "23",
+        "15",
+        "20",
+        "23"
+    ],
+    "name": "Virtue",
+    "level": "32",
+    "spellDeck": [
+        "Mahama",
+        "",
+        "Infuriate",
+        "",
+        "",
+        ""
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Null",
+        "Weak"
+    ],
+    "arcana": "Justice",
+    "heritage": [
+        "Light",
+        ""
+    ],
+    "spellLearn": {
+        "Rage Boost": "37",
+        "Survive Dark": "34",
+        "Endure Dark": "39",
+        "Hamaon": "36"
+    },
+    "desc": "In the Christian hierarchy of angels, Virtues are part of the second sphere and watch over the movement of the heavenly bodies so that order is maintained. They are also said to be the fifth rank of angel (possibly referring to Maimonides' hierarchy, where they would be equivalent to the Jewish definition of Seraphim), and apparently are responsible for the distribution of miracles. "
+}

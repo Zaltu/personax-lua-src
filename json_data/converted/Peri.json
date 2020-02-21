@@ -1,0 +1,42 @@
+{
+    "name": "Peri",
+    "arcana": "Magician",
+    "level": "21",
+    "desc": "A supernatural being in Persian folklore descended from fallen angels and excluded from paradise until penance is accomplished.",
+    "spellDeck": [
+        "Sexy Dance",
+        "",
+        "Maragi",
+        "",
+        "Mudo",
+        ""
+    ],
+    "spellLearn": {
+        "Agilao": "23",
+        "Charm Boost": "24",
+        "Mamudo": "26"
+    },
+    "stats": [
+        "11",
+        "20",
+        "12",
+        "15",
+        "14"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,42 @@
+{
+    "name": "Yomotsu-Shikome",
+    "arcana": "Hermit",
+    "level": "9",
+    "desc": "In Japanese lore, they are hideous demonesses of Yomi, the land of the dead, and serve the gods there. Izanagi came down to Yomi to take back his dead wife Izanami, but when he saw her ugly form, he tried to escape from her. Enraged, Izanami sent the Shikome after him. As he ran, Izanagi threw his hair and comb to the ground. His hair became grapes and his comb bamboo sprouts that the Shikome started eating, forgetting their duty.",
+    "spellDeck": [
+        "Evil Touch",
+        "",
+        "Tarunda",
+        "",
+        "Bufu",
+        ""
+    ],
+    "spellLearn": {
+        "Auto-Tarukaja": "11",
+        "Magaru": "14",
+        "Mudo": "13"
+    },
+    "stats": [
+        "3",
+        "8",
+        "9",
+        "10",
+        "4"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong"
+    ],
+    "heritage": [
+        "Dark",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,42 @@
+{
+    "name": "Parvati",
+    "arcana": "Priestess",
+    "level": "47",
+    "desc": "This beautiful goddess of love is one of Shiva's wives in Hindu mythology. She won Shiva's love, overcoming his asceticism.",
+    "spellDeck": [
+        "Bufula",
+        "",
+        "Diarama",
+        "",
+        "Marakukaja",
+        ""
+    ],
+    "spellLearn": {
+        "Mabufula": "49",
+        "Dodge Fire": "51",
+        "Bufudyne": "52"
+    },
+    "stats": [
+        "24",
+        "38",
+        "25",
+        "30",
+        "31"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Null",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Ice",
+        ""
+    ],
+    "evolveName": null
+}

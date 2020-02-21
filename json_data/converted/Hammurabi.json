@@ -1,0 +1,43 @@
+{
+    "name": "Hammurabi",
+    "arcana": "Justice",
+    "level": "76",
+    "desc": "One of the greatest and wisest kings of old, he ruled over one of the first kingdoms to ever exist. It is said that the rule of law he imposed may have inspired the law dictated in many religious thereafter.",
+    "spellDeck": [
+        "Mahamaon",
+        "",
+        "Auto-Marakukaja",
+        "",
+        "God's Hand",
+        ""
+    ],
+    "spellLearn": {
+        "Hama Boost": "77",
+        "Power Charge": "78",
+        "Megidolaon": "80",
+        "Unshaken Will": "81"
+    },
+    "stats": [
+        "60",
+        "36",
+        "44",
+        "62",
+        "33"
+    ],
+    "resistance": [
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Null"
+    ],
+    "heritage": [
+        "Light",
+        "Strike"
+    ],
+    "evolveName": null
+}

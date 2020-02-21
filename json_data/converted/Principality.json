@@ -1,0 +1,41 @@
+{
+    "stats": [
+        "12",
+        "13",
+        "7",
+        "11",
+        "12"
+    ],
+    "name": "Principality",
+    "level": "16",
+    "spellDeck": [
+        "Hama",
+        "",
+        "Holy Arrow",
+        "",
+        "Dodge Elec",
+        ""
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak"
+    ],
+    "arcana": "Justice",
+    "heritage": [
+        "Light",
+        ""
+    ],
+    "spellLearn": {
+        "Media": "18",
+        "Recarm": "20",
+        "Mahama": "21"
+    },
+    "desc": "Their duty also is said to be to carry out the orders given to them by the Dominions and bequeath blessings to the material world. Their task is to oversee groups of people. As beings related to the world of the germinal ideas, they are said to inspire living things to many things such as art or science."
+}

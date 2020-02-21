@@ -1,0 +1,42 @@
+{
+    "name": "Black Rider",
+    "arcana": "Fortune",
+    "level": "60",
+    "desc": "When He broke the third seal, I heard the third living creature saying, \"Come.\" I looked, and behold, a black horse; and he who sat on it had a pair of scales in his hand. And I heard something like a voice in the center of the four living creatures saying, \"A quart of wheat for a denarius, and three quarts of barley for a denarius; but do not damage the oil and the wine.\"",
+    "spellDeck": [
+        "Mamudoon",
+        "",
+        "Heat Wave",
+        "",
+        "Revolution",
+        ""
+    ],
+    "spellLearn": {
+        "Ghastly Wail": "62",
+        "Megidola": "64",
+        "Deathbound": "65"
+    },
+    "stats": [
+        "38",
+        "43",
+        "37",
+        "45",
+        "30"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Drain",
+        "Normal",
+        "Normal",
+        "Null",
+        "Null"
+    ],
+    "heritage": [
+        "Dark",
+        ""
+    ],
+    "evolveName": null
+}

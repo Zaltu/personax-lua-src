@@ -1,0 +1,42 @@
+{
+    "name": "Vishnu",
+    "arcana": "Sun",
+    "level": "78",
+    "desc": "One of the major gods in Hindu myth, he is the preserver of the universe. It is believed that he will descend to earth ten times to maintain the balance of power.",
+    "spellDeck": [
+        "Akasha Arts",
+        "",
+        "Ziodyne",
+        "",
+        "Bufudyne",
+        ""
+    ],
+    "spellLearn": {
+        "Mind Charge": "80",
+        "God's Hand": "82",
+        "Salvation": "86"
+    },
+    "stats": [
+        "53",
+        "58",
+        "47",
+        "56",
+        "51"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Null",
+        "Normal",
+        "Repel",
+        "Weak"
+    ],
+    "heritage": [
+        "Strike",
+        ""
+    ],
+    "evolveName": null
+}

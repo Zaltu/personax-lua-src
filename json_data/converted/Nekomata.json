@@ -1,0 +1,42 @@
+{
+    "name": "Nekomata",
+    "arcana": "Magician",
+    "level": "5",
+    "desc": "Incarnations of long-lived cats in Japanese mythology. They have various powers, including human speech and control over the dead.",
+    "spellDeck": [
+        "Agi",
+        "",
+        "Cleave",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Re Patra": "7",
+        "Maragi": "10",
+        "Provoke": "6"
+    },
+    "stats": [
+        "4",
+        "6",
+        "5",
+        "3",
+        "4"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Fire",
+        ""
+    ],
+    "evolveName": null
+}

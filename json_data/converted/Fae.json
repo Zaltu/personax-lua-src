@@ -1,0 +1,42 @@
+{
+    "name": "Fae",
+    "arcana": "Magician",
+    "level": "8",
+    "desc": "A diminutive, folkloric fairy, Fae are a mistical and secretive species. Some believe them to be the children of Eve, while others believe they are of a separate species, older than humans.",
+    "spellDeck": [
+        "Garu",
+        "",
+        "Pulinpa",
+        "",
+        "Re Patra",
+        ""
+    ],
+    "spellLearn": {
+        "Agi": "10",
+        "Wind Boost": "11",
+        "Magaru": "13"
+    },
+    "stats": [
+        "5",
+        "8",
+        "8",
+        "4",
+        "6"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Null",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Wind",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,43 @@
+{
+    "name": "Mara",
+    "arcana": "Tower",
+    "level": "77",
+    "desc": "An Eastern demon lord who tempted Buddha during his training. He is a master of fear, and his immense power reaches to every part of the globe. His distant offspring include Mare and Mora.",
+    "spellDeck": [
+        "Myriad Arrows",
+        "",
+        "Maralagidyne",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Primal Force": "79",
+        "Power Charge": "80",
+        "Drain Ice": "84",
+        "Tetrakarn": "82"
+    },
+    "stats": [
+        "60",
+        "50",
+        "52",
+        "48",
+        "51"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Drain",
+        "Repel",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Pierce",
+        ""
+    ],
+    "evolveName": null
+}

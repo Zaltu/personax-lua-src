@@ -1,0 +1,42 @@
+{
+    "name": "Daisoujou",
+    "arcana": "Hierophant",
+    "level": "53",
+    "desc": "A monk who died while fasting. His spiritual power allows his body to continue to exist without rotting. It is said that he will appear before people on the day of salvation.",
+    "spellDeck": [
+        "Hamaon",
+        "",
+        "Diarahan",
+        "",
+        "Growth 3",
+        ""
+    ],
+    "spellLearn": {
+        "Samsara": "56",
+        "Null Dark": "58",
+        "Hama Boost": "59"
+    },
+    "stats": [
+        "32",
+        "44",
+        "36",
+        "29",
+        "38"
+    ],
+    "resistance": [
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Weak"
+    ],
+    "heritage": [
+        "Light",
+        ""
+    ],
+    "evolveName": null
+}

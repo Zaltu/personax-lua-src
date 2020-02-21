@@ -1,0 +1,42 @@
+{
+    "name": "Lilim",
+    "arcana": "Devil",
+    "level": "8",
+    "desc": "Lilith's children. Like their mother, they have sex with men at night. Their legend spread to Greece where they are known as the 'Empusa'.",
+    "spellDeck": [
+        "Marin Karin",
+        "",
+        "Agi",
+        "",
+        "Zio",
+        ""
+    ],
+    "spellLearn": {
+        "Rakukaja": "9",
+        "Mazio": "12",
+        "Mudo": "11"
+    },
+    "stats": [
+        "4",
+        "10",
+        "6",
+        "6",
+        "7"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Strong"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,43 @@
+{
+    "name": "Baphomet",
+    "arcana": "Devil",
+    "level": "36",
+    "desc": "A goat-headed demon that is worshiped in Black Sabbaths. Some of the most powerful heretical groups would worship him.",
+    "spellDeck": [
+        "Agilao",
+        "",
+        "Fire Boost",
+        "",
+        "Maragion",
+        ""
+    ],
+    "spellLearn": {
+        "Zionga": "37",
+        "Bufula": "38",
+        "Elec Boost": "40",
+        "Ice Boost": "41"
+    },
+    "stats": [
+        "24",
+        "29",
+        "25",
+        "19",
+        "18"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal"
+    ],
+    "heritage": [
+        "",
+        ""
+    ],
+    "evolveName": null
+}

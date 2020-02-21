@@ -1,0 +1,41 @@
+{
+    "stats": [
+        "35",
+        "32",
+        "26",
+        "34",
+        "33"
+    ],
+    "name": "Throne",
+    "level": "51",
+    "spellDeck": [
+        "Hamaon",
+        "",
+        "Mahamaon",
+        "",
+        "Hama Boost",
+        ""
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Weak"
+    ],
+    "arcana": "Justice",
+    "heritage": [
+        "Light",
+        ""
+    ],
+    "spellLearn": {
+        "Recarmdra": "53",
+        "Endure Dark": "57",
+        "Mediarahan": "55"
+    },
+    "desc": "The third of nine classes of angels, they are angels of knowledge. The Thrones or Elders, also known as the Erelim or Ophanim, are a class of celestial beings mentioned by Paul of Tarsus in Colossians 1:16 (New Testament) and related to the throne of God. They are living symbols of God's justice and authority. They come the closest of all Angels to spiritual perfection and emanate the light of God with mirror-like goodness. They, despite their greatness, are intensely humble, an attribute that allows them to dispense justice with perfect objectivity and without fear of pride or ambition."
+}

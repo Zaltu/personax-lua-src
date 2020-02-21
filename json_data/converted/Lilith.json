@@ -1,0 +1,42 @@
+{
+    "name": "Lilith",
+    "arcana": "Devil",
+    "level": "48",
+    "desc": "Said to have been Adam's first wife. She refused to obey him, leaving Eden to become a demon of the night. All theories of her fall depict her as unfaithful.",
+    "spellDeck": [
+        "Mazionga",
+        "",
+        "Mudoon",
+        "",
+        "Infuriate",
+        ""
+    ],
+    "spellLearn": {
+        "Evil Smile": "49",
+        "Bufudyne": "50",
+        "Rage Boost": "52"
+    },
+    "stats": [
+        "19",
+        "39",
+        "23",
+        "31",
+        "39"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Weak",
+        "Null"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,42 @@
+{
+    "name": "Leanan Sidhe",
+    "arcana": "Lovers",
+    "level": "33",
+    "desc": "A beautiful fairy of Irish lore that yearns for the love of a human man. If the man falls for her, he becomes her slave, however if the man resists her wiles, she will be under his control instead.",
+    "spellDeck": [
+        "Media",
+        "",
+        "Me Patra",
+        "",
+        "Diarama",
+        ""
+    ],
+    "spellLearn": {
+        "Sexy Dance": "34",
+        "Charm Boost": "35",
+        "Mediarama": "38"
+    },
+    "stats": [
+        "19",
+        "29",
+        "20",
+        "24",
+        "22"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

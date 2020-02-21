@@ -1,0 +1,43 @@
+{
+    "name": "Suzaku",
+    "arcana": "Sun",
+    "level": "51",
+    "desc": "One of the Ssu-Ling, celestial creatures in Chinese myth. It represents the direction south, the season of summer and the element fire.",
+    "spellDeck": [
+        "Maragion",
+        "",
+        "Masukukaja",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Agidyne": "53",
+        "Mediarama": "54",
+        "Growth 3": "55",
+        "Resist Ice": "57"
+    },
+    "stats": [
+        "32",
+        "39",
+        "32",
+        "40",
+        "29"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Fire",
+        ""
+    ],
+    "evolveName": null
+}

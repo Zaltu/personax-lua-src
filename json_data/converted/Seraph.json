@@ -1,1 +1,41 @@
-{"stats": ["49", "57", "48", "64", "53"], "name": "Seraph", "level": "70", "spellDeck": ["Mahamaon", "", "Megidola", "", "Garudyne", ""], "resistance": ["Normal", "Null", "Weak", "Strong", "Normal", "Normal", "Normal", "Null", "Weak"], "arcana": "Justice", "heritage": ["Light", "Wind"], "spellLearn": {"Mediarahan": "72", "Repel Dark": "76", "Mind Charge": "71"}, "desc": "Seraphim (singular \"Seraph\") are the highest angelic class and serve as the caretakers of God's throne and continuously shout praises: \"Holy, holy, holy is the Lord of hosts; the whole earth is full of his glory!\" According to Christian religious texts, the Seraphim have six wings: two to covered their face, two to covered their feet and two to fly."}
+{
+    "stats": [
+        "49",
+        "57",
+        "48",
+        "64",
+        "53"
+    ],
+    "name": "Seraph",
+    "level": "70",
+    "spellDeck": [
+        "Mahamaon",
+        "",
+        "Megidola",
+        "",
+        "Garudyne",
+        ""
+    ],
+    "resistance": [
+        "Normal",
+        "Null",
+        "Weak",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Weak"
+    ],
+    "arcana": "Justice",
+    "heritage": [
+        "Light",
+        "Wind"
+    ],
+    "spellLearn": {
+        "Mediarahan": "72",
+        "Repel Dark": "76",
+        "Mind Charge": "71"
+    },
+    "desc": "Seraphim (singular \"Seraph\") are the highest angelic class and serve as the caretakers of God's throne and continuously shout praises: \"Holy, holy, holy is the Lord of hosts; the whole earth is full of his glory!\" According to Christian religious texts, the Seraphim have six wings: two to covered their face, two to covered their feet and two to fly."
+}

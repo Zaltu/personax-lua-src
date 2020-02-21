@@ -1,0 +1,43 @@
+{
+    "name": "Saki Mitama",
+    "arcana": "Lovers",
+    "level": "39",
+    "desc": "One of the four aspects of Shinto thought, it brings great bounty from the hunt. It is said to aid in love, profit, and growth, and can create new paths.",
+    "spellDeck": [
+        "Diarama",
+        "",
+        "Zionga",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Mediarama": "42",
+        "Dekunda": "43",
+        "Null Charm": "44",
+        "Divine Grace": "45"
+    },
+    "stats": [
+        "20",
+        "32",
+        "20",
+        "22",
+        "30"
+    ],
+    "resistance": [
+        "Normal",
+        "Weak",
+        "Normal",
+        "Strong",
+        "Strong",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

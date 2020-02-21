@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[82]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Maziodyne]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Enduring Soul]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Sexy Dance]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Elec]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Null]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Weak]]
+entity["resistance"][6] = [[Drain]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Null]]
+entity["resistance"][9] = [[Strong]]
+entity["desc"] = [[One of the triad of main deities in Hindu myth. He is known as the destroyer, but is also related to regeneration. His wife is Parvati.]]
+--a function: evolveName
+entity["arcana"] = [[Tower]]
+entity["stats"] = {}
+entity["stats"][1] = [[60]]
+entity["stats"][2] = [[55]]
+entity["stats"][3] = [[48]]
+entity["stats"][4] = [[59]]
+entity["stats"][5] = [[56]]
+entity["name"] = [[Shiva]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Victory Cry"] = [[88]]
+entity["spellLearn"]["Invigorate 3"] = [[86]]
+entity["spellLearn"]["Pralaya"] = [[85]]
+return entity

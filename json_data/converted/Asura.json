@@ -1,0 +1,42 @@
+{
+    "name": "Asura",
+    "arcana": "Sun",
+    "level": "85",
+    "desc": "The king of Asura in Hindu myth. His name is Maha Vairocana (One Who Shines On All). In Buddhism, he is known as Dainichi Nyorai.",
+    "spellDeck": [
+        "Agidyne",
+        "",
+        "Akasha Arts",
+        "",
+        "Unshaken Will",
+        ""
+    ],
+    "spellLearn": {
+        "Tetrakarn": "87",
+        "Megidolaon": "88",
+        "Spell Master": "91"
+    },
+    "stats": [
+        "62",
+        "60",
+        "58",
+        "56",
+        "57"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Drain",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Repel",
+        "Weak"
+    ],
+    "heritage": [
+        "Fire",
+        ""
+    ],
+    "evolveName": null
+}

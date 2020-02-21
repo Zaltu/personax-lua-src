@@ -1,0 +1,43 @@
+{
+    "name": "Atropos",
+    "arcana": "Fortune",
+    "level": "54",
+    "desc": "The eldest of the three Moirae Sisters of Greek mythology. She cuts the threads of life for those whose time has come.",
+    "spellDeck": [
+        "Magarula",
+        "",
+        "Wind Boost",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Mind Charge": "57",
+        "Garudyne": "58",
+        "Resist Elec": "59",
+        "Wind Amp": "60"
+    },
+    "stats": [
+        "26",
+        "45",
+        "27",
+        "31",
+        "40"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Null",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Wind",
+        ""
+    ],
+    "evolveName": null
+}

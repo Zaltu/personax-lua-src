@@ -1,0 +1,43 @@
+{
+    "name": "Scathatch",
+    "arcana": "Priestess",
+    "level": "64",
+    "desc": "A warrior woman of the Land of Shadows in Celtic lore. She taught the hero, Cu Chulainn, the art of war and gave him the spear, Gae Bolg.",
+    "spellDeck": [
+        "Myriad Arrows",
+        "",
+        "Mabufudyne",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Amrita": "66",
+        "Magarudyne": "67",
+        "Power Charge": "69",
+        "Invigorate 3": "72"
+    },
+    "stats": [
+        "51",
+        "53",
+        "29",
+        "49",
+        "40"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Strong",
+        "Weak",
+        "Strong",
+        "Normal",
+        "Strong",
+        "Strong",
+        "Normal"
+    ],
+    "heritage": [
+        "Pierce",
+        ""
+    ],
+    "evolveName": null
+}

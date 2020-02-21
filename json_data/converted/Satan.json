@@ -1,0 +1,42 @@
+{
+    "stats": [
+        "51",
+        "60",
+        "52",
+        "47",
+        "58"
+    ],
+    "name": "Satan",
+    "level": "79",
+    "spellDeck": [
+        "Megidola",
+        "",
+        "Maragidyne",
+        "",
+        "",
+        ""
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Repel",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Repel"
+    ],
+    "arcana": "Judgement",
+    "heritage": [
+        "Light",
+        "Dark"
+    ],
+    "spellLearn": {
+        "Repel Light": "83",
+        "Black Viper": "86",
+        "Regenerate 3": "81",
+        "Invigorate 3": "82"
+    },
+    "desc": "The prince of darkness in Judeo-Christian lore, know for his role in the snake that tempted Adam and Eve at Eden. It is also said he is sent by God to test man's piety."
+}

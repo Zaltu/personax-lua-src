@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[25]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Bewilder]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Agilao]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Raging Tiger]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Dark]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Weak]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Null]]
+entity["resistance"][5] = [[Strong]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Strong]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Null]]
+entity["desc"] = [[A serpentine woman of Greek myth, she was the queen of Libya. It has a beautiful woman's torso, and the tail of a snake. It feeds on the blood of young men.]]
+--a function: evolveName
+entity["arcana"] = [[Devil]]
+entity["stats"] = {}
+entity["stats"][1] = [[16]]
+entity["stats"][2] = [[20]]
+entity["stats"][3] = [[12]]
+entity["stats"][4] = [[18]]
+entity["stats"][5] = [[17]]
+entity["name"] = [[Lamia]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Poison Mist"] = [[28]]
+entity["spellLearn"]["Mamudo"] = [[26]]
+entity["spellLearn"]["Stagnant Air"] = [[29]]
+return entity

@@ -1,0 +1,43 @@
+{
+    "name": "Nosferatu",
+    "arcana": "Devil",
+    "level": "12",
+    "desc": "Nosferatu are creatures who dwell only in the darkness. They feed on the blood of the living to sustain themselves, which gives them many mystical powers such as longevity and improved agility.",
+    "spellDeck": [
+        "Life Drain",
+        "",
+        "Mudo",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Evil Smile": "18",
+        "Mabufu": "13",
+        "Raging Tiger": "14",
+        "Sukukaja": "16"
+    },
+    "stats": [
+        "9",
+        "8",
+        "10",
+        "9",
+        "7"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Strong"
+    ],
+    "heritage": [
+        "Dark",
+        ""
+    ],
+    "evolveName": null
+}

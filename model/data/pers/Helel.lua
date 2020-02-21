@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[88]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Primal Force]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Maragidyne]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Mind Charge]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Strike]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Strong]]
+entity["resistance"][2] = [[Strong]]
+entity["resistance"][3] = [[Strong]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Weak]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Null]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[A fallen angel in Judeo-Christian lore whose name signifies "Morning Star." Primarily known for defying God, but also worshiped as a bringer of light to mankind.]]
+--a function: evolveName
+entity["arcana"] = [[Star]]
+entity["stats"] = {}
+entity["stats"][1] = [[64]]
+entity["stats"][2] = [[63]]
+entity["stats"][3] = [[61]]
+entity["stats"][4] = [[57]]
+entity["stats"][5] = [[58]]
+entity["name"] = [[Helel]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Salvation"] = [[94]]
+entity["spellLearn"]["Morning Star"] = [[91]]
+entity["spellLearn"]["Drain Slash"] = [[92]]
+return entity

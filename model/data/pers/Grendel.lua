@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[31]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Matarukaja]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Raging Tiger]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Fatal End]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Strike]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Strong]]
+entity["resistance"][2] = [[Strong]]
+entity["resistance"][3] = [[Strong]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Weak]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[Anglo-saxons warriors made merry in their halls, feasting over their glories. Then, from the moors of the misty cliffs came Grendel. He bore god's anger, and filled men's hearts with fear.]]
+--a function: evolveName
+entity["arcana"] = [[Devil]]
+entity["stats"] = {}
+entity["stats"][1] = [[25]]
+entity["stats"][2] = [[17]]
+entity["stats"][3] = [[23]]
+entity["stats"][4] = [[17]]
+entity["stats"][5] = [[20]]
+entity["name"] = [[Grendel]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Dodge Elec"] = [[36]]
+entity["spellLearn"]["Counterstrike"] = [[34]]
+entity["spellLearn"]["Rebellion"] = [[33]]
+return entity

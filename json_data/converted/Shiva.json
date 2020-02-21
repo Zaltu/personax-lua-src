@@ -1,0 +1,42 @@
+{
+    "name": "Shiva",
+    "arcana": "Tower",
+    "level": "82",
+    "desc": "One of the triad of main deities in Hindu myth. He is known as the destroyer, but is also related to regeneration. His wife is Parvati.",
+    "spellDeck": [
+        "Maziodyne",
+        "",
+        "Enduring Soul",
+        "",
+        "Sexy Dance",
+        ""
+    ],
+    "spellLearn": {
+        "Pralaya": "85",
+        "Invigorate 3": "86",
+        "Victory Cry": "88"
+    },
+    "stats": [
+        "60",
+        "55",
+        "48",
+        "59",
+        "56"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Null",
+        "Normal",
+        "Weak",
+        "Drain",
+        "Normal",
+        "Null",
+        "Strong"
+    ],
+    "heritage": [
+        "Elec",
+        ""
+    ],
+    "evolveName": null
+}

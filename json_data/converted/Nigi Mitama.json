@@ -1,0 +1,42 @@
+{
+    "name": "Nigi Mitama",
+    "arcana": "Temperance",
+    "level": "12",
+    "desc": "One of the four aspects of Shinto thought, it works gently to help maintain a calm mind. It is said to aid in one's relations and sociability, and can lead one in a positive direction.",
+    "spellDeck": [
+        "Garu",
+        "",
+        "Patra",
+        "",
+        "Posumudi",
+        ""
+    ],
+    "spellLearn": {
+        "Media": "14",
+        "Magaru": "16",
+        "Recarm": "18"
+    },
+    "stats": [
+        "9",
+        "8",
+        "10",
+        "9",
+        "10"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Strong",
+        "Strong"
+    ],
+    "heritage": [
+        "Wind",
+        ""
+    ],
+    "evolveName": null
+}

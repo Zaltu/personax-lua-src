@@ -1,0 +1,41 @@
+{
+    "stats": [
+        "20",
+        "19",
+        "15",
+        "16",
+        "12"
+    ],
+    "name": "Power",
+    "level": "25",
+    "spellDeck": [
+        "Hama",
+        "",
+        "Mahama",
+        "",
+        "Magaru",
+        ""
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Null",
+        "Weak"
+    ],
+    "arcana": "Justice",
+    "heritage": [
+        "Light",
+        ""
+    ],
+    "spellLearn": {
+        "Me Patra": "28",
+        "Revolution": "30",
+        "Zan-ei": "27"
+    },
+    "desc": "The sixth of the nine orders of angels, also said to be called Authorities. It is said that they were the first order to be created. The Powers are the bearers of conscience and the keepers of history. They are academically driven and are concerned with ideology, philosophy, theology, religion, and documents pertaining to those studies. Powers are the brain trusts; a group of experts who serve as advisers and policy planners. They are also the warrior angels created to be completely loyal to God. Some believe that no Power has ever fallen from grace, but another theory states that Satan was the Chief of the Powers before he Fell."
+}

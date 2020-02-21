@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[13]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Agi]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Tarukaja]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Double Fangs]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Fire]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Strong]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Weak]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[One of the 72 demons of the Goetia. He rides a gigantic horse and burns those without manners. He is the duke of Hell.]]
+--a function: evolveName
+entity["arcana"] = [[Judgement]]
+entity["stats"] = {}
+entity["stats"][1] = [[11]]
+entity["stats"][2] = [[10]]
+entity["stats"][3] = [[9]]
+entity["stats"][4] = [[7]]
+entity["stats"][5] = [[9]]
+entity["name"] = [[Berith]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Auto-Tarukaja"] = [[15]]
+entity["spellLearn"]["Maragi"] = [[16]]
+entity["spellLearn"]["Rebellion"] = [[17]]
+return entity

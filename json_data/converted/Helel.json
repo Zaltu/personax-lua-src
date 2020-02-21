@@ -1,0 +1,42 @@
+{
+    "name": "Helel",
+    "arcana": "Star",
+    "level": "88",
+    "desc": "A fallen angel in Judeo-Christian lore whose name signifies \"Morning Star.\" Primarily known for defying God, but also worshiped as a bringer of light to mankind.",
+    "spellDeck": [
+        "Primal Force",
+        "",
+        "Maragidyne",
+        "",
+        "Mind Charge",
+        ""
+    ],
+    "spellLearn": {
+        "Morning Star": "91",
+        "Drain Slash": "92",
+        "Salvation": "94"
+    },
+    "stats": [
+        "64",
+        "63",
+        "61",
+        "57",
+        "58"
+    ],
+    "resistance": [
+        "Strong",
+        "Strong",
+        "Strong",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Null",
+        "Normal"
+    ],
+    "heritage": [
+        "Strike",
+        ""
+    ],
+    "evolveName": null
+}

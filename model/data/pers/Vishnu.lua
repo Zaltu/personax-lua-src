@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[78]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Akasha Arts]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Ziodyne]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Bufudyne]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Strike]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Null]]
+entity["resistance"][6] = [[Null]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Repel]]
+entity["resistance"][9] = [[Weak]]
+entity["desc"] = [[One of the major gods in Hindu myth, he is the preserver of the universe. It is believed that he will descend to earth ten times to maintain the balance of power.]]
+--a function: evolveName
+entity["arcana"] = [[Sun]]
+entity["stats"] = {}
+entity["stats"][1] = [[53]]
+entity["stats"][2] = [[58]]
+entity["stats"][3] = [[47]]
+entity["stats"][4] = [[56]]
+entity["stats"][5] = [[51]]
+entity["name"] = [[Vishnu]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Mind Charge"] = [[80]]
+entity["spellLearn"]["God's Hand"] = [[82]]
+entity["spellLearn"]["Salvation"] = [[86]]
+return entity

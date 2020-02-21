@@ -1,0 +1,41 @@
+{
+    "stats": [
+        "4",
+        "5",
+        "3",
+        "4",
+        "3"
+    ],
+    "name": "Angel",
+    "level": "4",
+    "spellDeck": [
+        "Garu",
+        "",
+        "Patra",
+        "",
+        "",
+        ""
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Weak"
+    ],
+    "arcana": "Justice",
+    "heritage": [
+        "Wind",
+        ""
+    ],
+    "spellLearn": {
+        "Charmdi": "8",
+        "Hama": "7",
+        "Sukukaja": "5"
+    },
+    "desc": "Angels have been recorded in various religious lore as celestial beings who faithfully serve God."
+}

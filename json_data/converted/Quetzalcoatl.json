@@ -1,0 +1,43 @@
+{
+    "name": "Quetzalcoatl",
+    "arcana": "Sun",
+    "level": "43",
+    "desc": "An Aztec deity known as the Feathered Serpent. He created humans with his own blood and taught them how to sustain themselves.",
+    "spellDeck": [
+        "Magarula",
+        "",
+        "Marakukaja",
+        "",
+        "Growth 2",
+        ""
+    ],
+    "spellLearn": {
+        "Garudyne": "44",
+        "Heat Wave": "46",
+        "Mahamaon": "47",
+        "Wind Boost": "48"
+    },
+    "stats": [
+        "28",
+        "29",
+        "30",
+        "32",
+        "30"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Null",
+        "Weak"
+    ],
+    "heritage": [
+        "Wind",
+        ""
+    ],
+    "evolveName": null
+}

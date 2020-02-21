@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[74]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Mahamaon]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Hama Boost]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Makarakarn]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Light]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Null]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Repel]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[Metatron's twin brother in Judeo-Christian lore, he is the master of heavenly songs. Sandalphon is said to be responsible for determining the gender of a person in one's embryonic state, and in other accounts said to be a guardian angel who delivers prayers to God.]]
+--a function: evolveName
+entity["arcana"] = [[Fortune]]
+entity["stats"] = {}
+entity["stats"][1] = [[54]]
+entity["stats"][2] = [[54]]
+entity["stats"][3] = [[50]]
+entity["stats"][4] = [[47]]
+entity["stats"][5] = [[51]]
+entity["name"] = [[Sandalphon]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Salvation"] = [[83]]
+entity["spellLearn"]["Regenerate 3"] = [[78]]
+entity["spellLearn"]["Akasha Arts"] = [[76]]
+return entity

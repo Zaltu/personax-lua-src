@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[52]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Matarukaja]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Masukukaja]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Agidyne]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Ice]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Drain]]
+entity["resistance"][5] = [[Weak]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Strong]]
+entity["desc"] = [[When someone wishes for riches and power over all else, Mephistopheles may appear, and offer a deal. Everything that could ever be wanted, in exchange for the eternal soul.]]
+--a function: evolveName
+entity["arcana"] = [[Devil]]
+entity["stats"] = {}
+entity["stats"][1] = [[34]]
+entity["stats"][2] = [[41]]
+entity["stats"][3] = [[31]]
+entity["stats"][4] = [[36]]
+entity["stats"][5] = [[34]]
+entity["name"] = [[Mephistopheles]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Mind Charge"] = [[58]]
+entity["spellLearn"]["Evade Ice"] = [[55]]
+entity["spellLearn"]["Vile Assault"] = [[54]]
+return entity

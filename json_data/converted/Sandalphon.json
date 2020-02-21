@@ -1,0 +1,42 @@
+{
+    "name": "Sandalphon",
+    "arcana": "Fortune",
+    "level": "74",
+    "desc": "Metatron's twin brother in Judeo-Christian lore, he is the master of heavenly songs. Sandalphon is said to be responsible for determining the gender of a person in one's embryonic state, and in other accounts said to be a guardian angel who delivers prayers to God.",
+    "spellDeck": [
+        "Mahamaon",
+        "",
+        "Hama Boost",
+        "",
+        "Makarakarn",
+        ""
+    ],
+    "spellLearn": {
+        "Akasha Arts": "76",
+        "Regenerate 3": "78",
+        "Salvation": "83"
+    },
+    "stats": [
+        "54",
+        "54",
+        "50",
+        "47",
+        "51"
+    ],
+    "resistance": [
+        "Normal",
+        "Null",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Repel",
+        "Normal"
+    ],
+    "heritage": [
+        "Light",
+        ""
+    ],
+    "evolveName": null
+}

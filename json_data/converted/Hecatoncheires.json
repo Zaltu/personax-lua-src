@@ -1,0 +1,43 @@
+{
+    "name": "Hecatoncheires",
+    "arcana": "Hanged Man",
+    "level": "54",
+    "desc": "Giants born from Uranus and Gaia. The name means \"those with a hundred arms.\" During the war of the Titans, Zeus freed them from the Underworld to help him obtain victory.",
+    "spellDeck": [
+        "Gigantic Fist",
+        "",
+        "Evade Strike",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Vicious Strike": "56",
+        "Endure Light": "57",
+        "Mamudoon": "58",
+        "Recarmdra": "59"
+    },
+    "stats": [
+        "37",
+        "32",
+        "45",
+        "20",
+        "35"
+    ],
+    "resistance": [
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Null"
+    ],
+    "heritage": [
+        "Strike",
+        ""
+    ],
+    "evolveName": null
+}

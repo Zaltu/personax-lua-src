@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[53]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Hamaon]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Diarahan]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Growth 3]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Light]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Strong]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Null]]
+entity["resistance"][9] = [[Weak]]
+entity["desc"] = [[A monk who died while fasting. His spiritual power allows his body to continue to exist without rotting. It is said that he will appear before people on the day of salvation.]]
+--a function: evolveName
+entity["arcana"] = [[Hierophant]]
+entity["stats"] = {}
+entity["stats"][1] = [[32]]
+entity["stats"][2] = [[44]]
+entity["stats"][3] = [[36]]
+entity["stats"][4] = [[29]]
+entity["stats"][5] = [[38]]
+entity["name"] = [[Daisoujou]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Hama Boost"] = [[59]]
+entity["spellLearn"]["Samsara"] = [[56]]
+entity["spellLearn"]["Null Dark"] = [[58]]
+return entity

@@ -1,0 +1,42 @@
+{
+    "name": "Sarasvati",
+    "arcana": "Priestess",
+    "level": "27",
+    "desc": "In Hindu myth, she is the goddess of rivers and patron of speech, writing, learning, and the arts and sciences. Brahma is her husband.",
+    "spellDeck": [
+        "Mabufu",
+        "",
+        "Posumudi",
+        "",
+        "Bufula",
+        ""
+    ],
+    "spellLearn": {
+        "Me Patra": "28",
+        "Ice Boost": "29",
+        "Dekaja": "31"
+    },
+    "stats": [
+        "13",
+        "23",
+        "14",
+        "20",
+        "18"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Ice",
+        ""
+    ],
+    "evolveName": null
+}

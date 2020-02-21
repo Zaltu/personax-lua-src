@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[72]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Maziodyne]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Mediarahan]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Light]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Strong]]
+entity["resistance"][6] = [[Strong]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Repel]]
+entity["resistance"][9] = [[Weak]]
+entity["desc"] = [[One of the four major archangels, he is at the top of the angelic hierarchy. He carries a long spear that can cut through anything, and his name means "one who is like God."]]
+--a function: evolveName
+entity["arcana"] = [[Chariot]]
+entity["stats"] = {}
+entity["stats"][1] = [[51]]
+entity["stats"][2] = [[47]]
+entity["stats"][3] = [[46]]
+entity["stats"][4] = [[50]]
+entity["stats"][5] = [[51]]
+entity["name"] = [[Michael]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Mabufudyne"] = [[74]]
+entity["spellLearn"]["Heaven's Blade"] = [[77]]
+entity["spellLearn"]["Repel Dark"] = [[75]]
+return entity

@@ -1,0 +1,43 @@
+{
+    "name": "Ame-no-Uzume",
+    "arcana": "Aeon",
+    "level": "18",
+    "desc": "The Japanese goddess of entertainment. She governs many sacred dances. Famous for her dance used to lure out Amaterasu, who had barricaded herself inside a cave.",
+    "spellDeck": [
+        "Media",
+        "",
+        "Magaru",
+        "",
+        "Hama",
+        ""
+    ],
+    "spellLearn": {
+        "Invigorate 1": "20",
+        "Re Patra": "21",
+        "Auto-Rakukaja": "23",
+        "Trafuri": "24"
+    },
+    "stats": [
+        "9",
+        "15",
+        "12",
+        "10",
+        "15"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Null",
+        "Null",
+        "Normal"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

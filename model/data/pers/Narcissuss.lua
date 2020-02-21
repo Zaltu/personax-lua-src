@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[20]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Marin Karin]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Charm Boost]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Magaru]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Support]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Weak]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Strong]]
+entity["resistance"][6] = [[Strong]]
+entity["resistance"][7] = [[Strong]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[A young man of Greek myth. He rejected the nymph Echo, who faded to a whisper out of despair. Cursed by Nemesis, he fell in love with his own reflection and wasted away.]]
+--a function: evolveName
+entity["arcana"] = [[Lovers]]
+entity["stats"] = {}
+entity["stats"][1] = [[12]]
+entity["stats"][2] = [[18]]
+entity["stats"][3] = [[9]]
+entity["stats"][4] = [[13]]
+entity["stats"][5] = [[20]]
+entity["name"] = [[Narcissus]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Dekunda"] = [[24]]
+entity["spellLearn"]["Sexy Dance"] = [[21]]
+entity["spellLearn"]["Charmdi"] = [[22]]
+return entity

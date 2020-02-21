@@ -1,0 +1,43 @@
+{
+    "name": "Siegfried",
+    "arcana": "Strength",
+    "level": "59",
+    "desc": "The German name of the hero in the epic poem of the Nibelungenlied. The dragon Fafnir's blood made him invincible, but a single leaf on his back resulted in a weak spot.",
+    "spellDeck": [
+        "Tempest Slash",
+        "",
+        "Power Charge",
+        "",
+        "Auto-Masukukaja",
+        ""
+    ],
+    "spellLearn": {
+        "High Counter": "62",
+        "Vorpal Blade": "63",
+        "Arms Master": "65",
+        "2h Swd Master": "66"
+    },
+    "stats": [
+        "50",
+        "43",
+        "40",
+        "41",
+        "32"
+    ],
+    "resistance": [
+        "Null",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Weak"
+    ],
+    "heritage": [
+        "Slash",
+        ""
+    ],
+    "evolveName": null
+}

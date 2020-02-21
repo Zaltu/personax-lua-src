@@ -1,0 +1,43 @@
+{
+    "name": "Lakshmi",
+    "arcana": "Fortune",
+    "level": "57",
+    "desc": "The Hindu goddess of beauty and good fortune, Vishnu's wife and Kama's mother. She is the goddess of love, believed to have been born from an ocean of milk.",
+    "spellDeck": [
+        "Mabufula",
+        "",
+        "Bufudyne",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Ice Break": "59",
+        "Null Dark": "61",
+        "Resist Fire": "62",
+        "Amrita": "63"
+    },
+    "stats": [
+        "31",
+        "45",
+        "32",
+        "33",
+        "37"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal"
+    ],
+    "heritage": [
+        "Ice",
+        ""
+    ],
+    "evolveName": null
+}

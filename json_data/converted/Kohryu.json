@@ -1,0 +1,43 @@
+{
+    "name": "Kohryu",
+    "arcana": "Hierophant",
+    "level": "66",
+    "desc": "Known as the Gold Dragon, it reigns over the Ssu-Ling, celestial creatures of Chinese lore. It is located at the center of the four beasts.",
+    "spellDeck": [
+        "Samarecarm",
+        "",
+        "Mediarahan",
+        "",
+        "Weary Thrust",
+        ""
+    ],
+    "spellLearn": {
+        "Invigorate 3": "68",
+        "Makarakarn": "70",
+        "Null Strike": "71",
+        "Null Pierce": "73"
+    },
+    "stats": [
+        "49",
+        "51",
+        "58",
+        "30",
+        "41"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Normal"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,43 @@
+{
+    "name": "Ifrit",
+    "arcana": "Devil",
+    "level": "19",
+    "desc": "Ifrit are ruthless and wicked spirits that inhabit the layers of the seven earths in Islamic folklore. Formed of smoke and fire, they are bounded to obligations of vengeance and murder, though good ifrit have also been known to exist.",
+    "spellDeck": [
+        "Maragi",
+        "",
+        "Pulinpa",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Agilao": "20",
+        "Panic Boost": "21",
+        "Fire Break": "23",
+        "Null Panic": "24"
+    },
+    "stats": [
+        "10",
+        "17",
+        "14",
+        "12",
+        "11"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Strong"
+    ],
+    "heritage": [
+        "Fire",
+        ""
+    ],
+    "evolveName": null
+}

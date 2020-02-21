@@ -1,0 +1,42 @@
+{
+    "name": "Ara Mitama",
+    "arcana": "Chariot",
+    "level": "6",
+    "desc": "One of the four aspects of Shinto thought, it has the power to grant ferocity. It is said to aid in one's bravery, growth, and endeavors, though it can lead in a negative direction.",
+    "spellDeck": [
+        "Bash",
+        "",
+        "Rakukaja",
+        "",
+        "Agi",
+        ""
+    ],
+    "spellLearn": {
+        "Rakunda": "7",
+        "Sukukaja": "8",
+        "Sharp Student": "12"
+    },
+    "stats": [
+        "6",
+        "4",
+        "6",
+        "4",
+        "5"
+    ],
+    "resistance": [
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Strike",
+        ""
+    ],
+    "evolveName": null
+}

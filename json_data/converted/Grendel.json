@@ -1,0 +1,42 @@
+{
+    "name": "Grendel",
+    "arcana": "Devil",
+    "level": "31",
+    "desc": "Anglo-saxons warriors made merry in their halls, feasting over their glories. Then, from the moors of the misty cliffs came Grendel. He bore god's anger, and filled men's hearts with fear.",
+    "spellDeck": [
+        "Matarukaja",
+        "",
+        "Raging Tiger",
+        "",
+        "Fatal End",
+        ""
+    ],
+    "spellLearn": {
+        "Rebellion": "33",
+        "Counterstrike": "34",
+        "Dodge Elec": "36"
+    },
+    "stats": [
+        "25",
+        "17",
+        "23",
+        "17",
+        "20"
+    ],
+    "resistance": [
+        "Strong",
+        "Strong",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Strike",
+        ""
+    ],
+    "evolveName": null
+}

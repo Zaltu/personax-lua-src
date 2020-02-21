@@ -1,0 +1,42 @@
+{
+    "name": "Pale Rider",
+    "arcana": "Death",
+    "level": "24",
+    "desc": "When the Lamb broke the fourth seal, I heard the voice of the fourth living creature saying, \"Come.\" I looked, and behold, an ashen horse; and he who sat on it had the name Death; and Hades was following with him. Authority was given to them over a fourth of the earth, to kill with sword and with famine and with pestilence and by the wild beasts of the earth.",
+    "spellDeck": [
+        "Mudo",
+        "",
+        "Zan-ei",
+        "",
+        "Mamudo",
+        ""
+    ],
+    "spellLearn": {
+        "Garula": "25",
+        "Counter": "27",
+        "Survive Light": "29"
+    },
+    "stats": [
+        "20",
+        "19",
+        "15",
+        "19",
+        "12"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Weak",
+        "Strong"
+    ],
+    "heritage": [
+        "Dark",
+        ""
+    ],
+    "evolveName": null
+}

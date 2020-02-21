@@ -1,0 +1,43 @@
+{
+    "name": "Cu Chulainn",
+    "arcana": "Hanged Man",
+    "level": "40",
+    "desc": "A hero in Celtic folklore. He was called Setanta until he earned the name, \"Culann's Hound.\" There are many tales of his adventures. He received his spear, Gae Bolg, from his mentor, Scathach.",
+    "spellDeck": [
+        "Torrent Shot",
+        "",
+        "Matarukaja",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Mazionga": "41",
+        "Power Charge": "43",
+        "Survive Dark": "44",
+        "Vile Assault": "45"
+    },
+    "stats": [
+        "33",
+        "28",
+        "30",
+        "23",
+        "25"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Weak"
+    ],
+    "heritage": [
+        "Pierce",
+        ""
+    ],
+    "evolveName": null
+}

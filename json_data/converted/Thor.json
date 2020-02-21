@@ -1,0 +1,42 @@
+{
+    "name": "Thor",
+    "arcana": "Chariot",
+    "level": "53",
+    "desc": "The Norse thunder god and son of Odin, Thor owns the power enhancing belt, Megingjard, and wields Mjolnir, a hammer that causes lightning to strike and returns to its owner after thrown.",
+    "spellDeck": [
+        "Ziodyne",
+        "",
+        "Vicious Strike",
+        "",
+        "High Counter",
+        ""
+    ],
+    "spellLearn": {
+        "Auto-Matarukaja": "55",
+        "Elec Amp": "59",
+        "Heavy Master": "60"
+    },
+    "stats": [
+        "42",
+        "45",
+        "34",
+        "30",
+        "34"
+    ],
+    "resistance": [
+        "Normal",
+        "Null",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Weak",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Elec",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[62]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Magarudyne]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Wind Amp]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Panta Rhei]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Wind]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Weak]]
+entity["resistance"][7] = [[Drain]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[Goddesses of fate in Norse lore. They live below the roots of Yggdrasil and weave the threads of fate, which even the gods are bound by.]]
+--a function: evolveName
+entity["arcana"] = [[Fortune]]
+entity["stats"] = {}
+entity["stats"][1] = [[40]]
+entity["stats"][2] = [[54]]
+entity["stats"][3] = [[32]]
+entity["stats"][4] = [[46]]
+entity["stats"][5] = [[44]]
+entity["name"] = [[Norn]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Drain Elec"] = [[69]]
+entity["spellLearn"]["Regenerate 3"] = [[66]]
+entity["spellLearn"]["Invigorate 3"] = [[67]]
+return entity

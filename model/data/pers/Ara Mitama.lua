@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[6]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Bash]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Rakukaja]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Agi]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Strike]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Strong]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Weak]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[One of the four aspects of Shinto thought, it has the power to grant ferocity. It is said to aid in one's bravery, growth, and endeavors, though it can lead in a negative direction.]]
+--a function: evolveName
+entity["arcana"] = [[Chariot]]
+entity["stats"] = {}
+entity["stats"][1] = [[6]]
+entity["stats"][2] = [[4]]
+entity["stats"][3] = [[6]]
+entity["stats"][4] = [[4]]
+entity["stats"][5] = [[5]]
+entity["name"] = [[Ara Mitama]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Sukukaja"] = [[8]]
+entity["spellLearn"]["Rakunda"] = [[7]]
+entity["spellLearn"]["Sharp Student"] = [[12]]
+return entity

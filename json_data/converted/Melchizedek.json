@@ -1,0 +1,43 @@
+{
+    "name": "Melchizedek",
+    "arcana": "Aeon",
+    "level": "59",
+    "desc": "An angel of Gnosticism, governing over peace and righteousness. Though said to be the savior of the angels, he used to be a human, the king of Salem.",
+    "spellDeck": [
+        "Vicious Strike",
+        "",
+        "Mediarahan",
+        "",
+        "Auto-Matarukaja",
+        ""
+    ],
+    "spellLearn": {
+        "Fist Master": "60",
+        "Akasha Arts": "64",
+        "Repel Dark": "65",
+        "God's Hand": "69"
+    },
+    "stats": [
+        "50",
+        "46",
+        "43",
+        "36",
+        "31"
+    ],
+    "resistance": [
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Repel",
+        "Weak"
+    ],
+    "heritage": [
+        "Strike",
+        ""
+    ],
+    "evolveName": null
+}

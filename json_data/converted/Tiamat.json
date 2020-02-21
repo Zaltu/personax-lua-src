@@ -1,0 +1,43 @@
+{
+    "name": "Tiamat",
+    "arcana": "Devil",
+    "level": "42",
+    "desc": "There are two parts to the Tiamat mythos. In the first, she is a creator goddess, peacefully creating the cosmos through successive generations. In the second, she is considered the monstrous embodiment of primordial chaos.",
+    "spellDeck": [
+        "Mabufula",
+        "",
+        "Marakukaja",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Bufudyne": "44",
+        "Evil Smile": "45",
+        "Ailment Boost": "47",
+        "Cool Breeze": "48"
+    },
+    "stats": [
+        "24",
+        "35",
+        "27",
+        "30",
+        "27"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Repel",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal"
+    ],
+    "heritage": [
+        "Ice",
+        ""
+    ],
+    "evolveName": null
+}

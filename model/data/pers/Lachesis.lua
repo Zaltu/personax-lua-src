@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[45]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Recarm]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Garula]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Masukukaja]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Wind]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Weak]]
+entity["resistance"][7] = [[Null]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[The middle sister of the three Moirae Sisters of Greek legend. She is the apportioner, measuring the thread which determines each person's lifespan.]]
+--a function: evolveName
+entity["arcana"] = [[Fortune]]
+entity["stats"] = {}
+entity["stats"][1] = [[26]]
+entity["stats"][2] = [[36]]
+entity["stats"][3] = [[19]]
+entity["stats"][4] = [[31]]
+entity["stats"][5] = [[30]]
+entity["name"] = [[Lachesis]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Dodge Elec"] = [[47]]
+entity["spellLearn"]["Magarula"] = [[50]]
+entity["spellLearn"]["Evade Elec"] = [[51]]
+return entity

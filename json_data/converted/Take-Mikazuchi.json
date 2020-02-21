@@ -1,0 +1,43 @@
+{
+    "name": "Take-Mikazuchi",
+    "arcana": "Emperor",
+    "level": "24",
+    "desc": "The Japanese god of thunder. He carries the divine sword Totsuka-no-Tsurugi and is said to be the founder of ancient sumo wrestling.",
+    "spellDeck": [
+        "Mazio",
+        "",
+        "Pulinpa",
+        "",
+        "Auto-Tarukaja",
+        ""
+    ],
+    "spellLearn": {
+        "Elec Boost": "30",
+        "Zionga": "26",
+        "Elec Break": "29",
+        "Getsu-ei": "27"
+    },
+    "stats": [
+        "19",
+        "18",
+        "13",
+        "15",
+        "14"
+    ],
+    "resistance": [
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Null",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Elec",
+        ""
+    ],
+    "evolveName": null
+}

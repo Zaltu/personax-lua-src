@@ -1,0 +1,42 @@
+{
+    "name": "Pixie",
+    "arcana": "Lovers",
+    "level": "2",
+    "desc": "In English myth, they are fairies of the forest that love to play tricks on people. They can also be hard workers when necessary.",
+    "spellDeck": [
+        "Dia",
+        "",
+        "",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Rakunda": "3",
+        "Pulinpa": "4",
+        "Trafuri": "8"
+    },
+    "stats": [
+        "2",
+        "3",
+        "2",
+        "3",
+        "3"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Support",
+        ""
+    ],
+    "evolveName": null
+}

@@ -1,1 +1,41 @@
-{"stats": ["38", "34", "27", "36", "33"], "name": "Cherub", "level": "55", "spellDeck": ["Mahamaon", "", "Masukukaja", "", "Hama Boost", ""], "resistance": ["Normal", "Normal", "Normal", "Null", "Normal", "Normal", "Normal", "Null", "Weak"], "arcana": "Justice", "heritage": ["Light", "Slash"], "spellLearn": {"Fatal End": "58", "Mediarahan": "56", "Repel Light": "59"}, "desc": "Cherubim have four faces: one of each a man, an ox, a lion, and an eagle. They have four conjoined wings covered with eyes, a lion's body figure, and they have ox's feet. Cherubim guard the way to the tree of life in the Garden of Eden and the throne of God. Modern usage has blurred the distinction between cherubim and putti, the winged human baby/toddler-like beings traditionally used in figurative art."}
+{
+    "stats": [
+        "38",
+        "34",
+        "27",
+        "36",
+        "33"
+    ],
+    "name": "Cherub",
+    "level": "55",
+    "spellDeck": [
+        "Mahamaon",
+        "",
+        "Masukukaja",
+        "",
+        "Hama Boost",
+        ""
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Null",
+        "Weak"
+    ],
+    "arcana": "Justice",
+    "heritage": [
+        "Light",
+        "Slash"
+    ],
+    "spellLearn": {
+        "Fatal End": "58",
+        "Mediarahan": "56",
+        "Repel Light": "59"
+    },
+    "desc": "Cherubim have four faces: one of each a man, an ox, a lion, and an eagle. They have four conjoined wings covered with eyes, a lion's body figure, and they have ox's feet. Cherubim guard the way to the tree of life in the Garden of Eden and the throne of God. Modern usage has blurred the distinction between cherubim and putti, the winged human baby/toddler-like beings traditionally used in figurative art."
+}

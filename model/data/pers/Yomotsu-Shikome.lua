@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[9]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Evil Touch]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Tarunda]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Bufu]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Dark]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Strong]]
+entity["desc"] = [[In Japanese lore, they are hideous demonesses of Yomi, the land of the dead, and serve the gods there. Izanagi came down to Yomi to take back his dead wife Izanami, but when he saw her ugly form, he tried to escape from her. Enraged, Izanami sent the Shikome after him. As he ran, Izanagi threw his hair and comb to the ground. His hair became grapes and his comb bamboo sprouts that the Shikome started eating, forgetting their duty.]]
+--a function: evolveName
+entity["arcana"] = [[Hermit]]
+entity["stats"] = {}
+entity["stats"][1] = [[3]]
+entity["stats"][2] = [[8]]
+entity["stats"][3] = [[9]]
+entity["stats"][4] = [[10]]
+entity["stats"][5] = [[4]]
+entity["name"] = [[Yomotsu-Shikome]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Auto-Tarukaja"] = [[11]]
+entity["spellLearn"]["Magaru"] = [[14]]
+entity["spellLearn"]["Mudo"] = [[13]]
+return entity

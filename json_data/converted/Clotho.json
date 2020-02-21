@@ -1,0 +1,43 @@
+{
+    "name": "Clotho",
+    "arcana": "Fortune",
+    "level": "38",
+    "desc": "The youngest of the three Moirae Sisters of Greek legend. She spins the threads of life with her spindle.",
+    "spellDeck": [
+        "Garula",
+        "",
+        "Charmdi",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Wind Boost": "40",
+        "Null Distress": "41",
+        "Me Patra": "42",
+        "Magarula": "44"
+    },
+    "stats": [
+        "20",
+        "29",
+        "22",
+        "21",
+        "29"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Null",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Wind",
+        ""
+    ],
+    "evolveName": null
+}

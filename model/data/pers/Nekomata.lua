@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[5]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Agi]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Cleave]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Fire]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Strong]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Normal]]
+entity["resistance"][9] = [[Normal]]
+entity["desc"] = [[Incarnations of long-lived cats in Japanese mythology. They have various powers, including human speech and control over the dead.]]
+--a function: evolveName
+entity["arcana"] = [[Magician]]
+entity["stats"] = {}
+entity["stats"][1] = [[4]]
+entity["stats"][2] = [[6]]
+entity["stats"][3] = [[5]]
+entity["stats"][4] = [[3]]
+entity["stats"][5] = [[4]]
+entity["name"] = [[Nekomata]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Re Patra"] = [[7]]
+entity["spellLearn"]["Maragi"] = [[10]]
+entity["spellLearn"]["Provoke"] = [[6]]
+return entity

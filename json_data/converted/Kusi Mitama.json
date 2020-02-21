@@ -1,0 +1,42 @@
+{
+    "name": "Kusi Mitama",
+    "arcana": "Fortune",
+    "level": "29",
+    "desc": "One of the four aspects of Shinto thought, it uses its power to bring good omens. It is said to aid in one's wisdom, observation, and skill, and can mend fractured paths.",
+    "spellDeck": [
+        "Magaru",
+        "",
+        "Garula",
+        "",
+        "Re Patra",
+        ""
+    ],
+    "spellLearn": {
+        "Auto-Rakukaja": "30",
+        "Recarm": "31",
+        "Wind Boost": "34"
+    },
+    "stats": [
+        "16",
+        "23",
+        "20",
+        "11",
+        "24"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Null",
+        "Normal",
+        "Weak"
+    ],
+    "heritage": [
+        "Wind",
+        ""
+    ],
+    "evolveName": null
+}

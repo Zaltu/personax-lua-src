@@ -1,0 +1,43 @@
+{
+    "name": "Anubis",
+    "arcana": "Judgement",
+    "level": "59",
+    "desc": "The jackal-headed god of Egyptian myth. He weighs the hearts of the dead to determine their final destination. He is also associated with embalming.",
+    "spellDeck": [
+        "Mahamaon",
+        "",
+        "Mamudoon",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Makarakarn": "61",
+        "Null Ice": "62",
+        "Null Elec": "64",
+        "Regenerate 3": "66"
+    },
+    "stats": [
+        "41",
+        "50",
+        "38",
+        "37",
+        "36"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Strong",
+        "Strong"
+    ],
+    "heritage": [
+        "Light",
+        "Dark"
+    ],
+    "evolveName": null
+}

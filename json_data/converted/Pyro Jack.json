@@ -1,0 +1,43 @@
+{
+    "name": "Pyro Jack",
+    "arcana": "Magician",
+    "level": "32",
+    "desc": "Also known as Jack O`Lantern, he was an Irish farmer who persuaded Satan not to take him to hell. When he was refused entry into heaven, he wandered earth as a pumpkin-headed soul.",
+    "spellDeck": [
+        "Agilao",
+        "",
+        "Tarunda",
+        "",
+        "",
+        ""
+    ],
+    "spellLearn": {
+        "Marakukaja": "34",
+        "Maragion": "36",
+        "Auto-Rakukaja": "37",
+        "Resist Ice": "38"
+    },
+    "stats": [
+        "16",
+        "26",
+        "19",
+        "22",
+        "20"
+    ],
+    "resistance": [
+        "Normal",
+        "Normal",
+        "Normal",
+        "Drain",
+        "Weak",
+        "Normal",
+        "Normal",
+        "Normal",
+        "Normal"
+    ],
+    "heritage": [
+        "Fire",
+        ""
+    ],
+    "evolveName": null
+}

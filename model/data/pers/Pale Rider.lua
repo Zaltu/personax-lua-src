@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[24]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Mudo]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Zan-ei]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Mamudo]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Dark]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Normal]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Strong]]
+entity["resistance"][8] = [[Weak]]
+entity["resistance"][9] = [[Strong]]
+entity["desc"] = [[When the Lamb broke the fourth seal, I heard the voice of the fourth living creature saying, "Come." I looked, and behold, an ashen horse; and he who sat on it had the name Death; and Hades was following with him. Authority was given to them over a fourth of the earth, to kill with sword and with famine and with pestilence and by the wild beasts of the earth.]]
+--a function: evolveName
+entity["arcana"] = [[Death]]
+entity["stats"] = {}
+entity["stats"][1] = [[20]]
+entity["stats"][2] = [[19]]
+entity["stats"][3] = [[15]]
+entity["stats"][4] = [[19]]
+entity["stats"][5] = [[12]]
+entity["name"] = [[Pale Rider]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Survive Light"] = [[29]]
+entity["spellLearn"]["Garula"] = [[25]]
+entity["spellLearn"]["Counter"] = [[27]]
+return entity

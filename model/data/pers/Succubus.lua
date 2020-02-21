@@ -1,0 +1,37 @@
+local entity = {}
+entity["level"] = [[43]]
+entity["spellDeck"] = {}
+entity["spellDeck"][1] = [[Sexy Dance]]
+entity["spellDeck"][2] = [[]]
+entity["spellDeck"][3] = [[Mudoon]]
+entity["spellDeck"][4] = [[]]
+entity["spellDeck"][5] = [[Agidyne]]
+entity["spellDeck"][6] = [[]]
+entity["heritage"] = {}
+entity["heritage"][1] = [[Support]]
+entity["heritage"][2] = [[]]
+entity["resistance"] = {}
+entity["resistance"][1] = [[Normal]]
+entity["resistance"][2] = [[Normal]]
+entity["resistance"][3] = [[Normal]]
+entity["resistance"][4] = [[Strong]]
+entity["resistance"][5] = [[Normal]]
+entity["resistance"][6] = [[Normal]]
+entity["resistance"][7] = [[Normal]]
+entity["resistance"][8] = [[Weak]]
+entity["resistance"][9] = [[Null]]
+entity["desc"] = [[A female demon of European lore in medieval times. They visit sleeping men and have sexual intercourse with them. The victims don't wake up but may dream of the encounter.]]
+--a function: evolveName
+entity["arcana"] = [[Moon]]
+entity["stats"] = {}
+entity["stats"][1] = [[24]]
+entity["stats"][2] = [[36]]
+entity["stats"][3] = [[27]]
+entity["stats"][4] = [[32]]
+entity["stats"][5] = [[27]]
+entity["name"] = [[Succubus]]
+entity["spellLearn"] = {}
+entity["spellLearn"]["Fire Break"] = [[45]]
+entity["spellLearn"]["Null Light"] = [[48]]
+entity["spellLearn"]["Ailment Boost"] = [[46]]
+return entity
