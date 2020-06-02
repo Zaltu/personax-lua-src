@@ -12,7 +12,8 @@ local function showSpeak(caller)
 	return {
 		key=caller..".show.speak",
 		text=state.cut.open[1].text,
-		speaker="sprite_"..state.cut.open[1].speaker.."_emotion",
+		speaker=state.cut.open[1].speaker,
+		emotion=state.cut.open[1].emotion.upper(),
 		options=choices
 		--Need emotion (domo arigatou, Mr. Roboto)
 	}

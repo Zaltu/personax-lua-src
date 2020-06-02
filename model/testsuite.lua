@@ -41,7 +41,7 @@ function link()
 	state.event(json.encode({key="link.action", index=0}))
 	state.event(json.encode({key="link.action", index=1}))
 
-	state.changecontext("calendar")
+	--state.changecontext("calendar")
 end
 
 function battle()
@@ -72,7 +72,7 @@ function test(feature)
 	pprint(state.update)
 end
 
-test(battle)
---test(link)
+--test(battle)
+test(link)
 --test(dayChange)
 --test(shop)
