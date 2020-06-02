@@ -7,7 +7,7 @@ package.path= package.path..";C:/LUA/lua/?.lua"
 package.cpath= package.cpath..";C:/LUA/lua/lib/lua/5.1/?.dll"
 
 
---Set ./modal/ to the lua path for testing
+--Set ./model/ to the lua path for testing
 package.path = package.path..";./model/?.lua;"
 require('state')
 local pprint = function (value) local inspect = require("inspect") print(inspect(value)) end

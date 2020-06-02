@@ -1,5 +1,6 @@
 # Ignore Visual Studio config files
 .vs/
+.vscode/ipch/
 
 # Ignore Visual Studio debug location
 x64/
