@@ -87,3 +87,9 @@ Unless...
 "You thought you defeated them, but we are merely aspects of myself. And together, we are strong. We are Legion. We are many. And you will see our vengeance upon those who cast us out."
 So Legion impersonates Lucifer in fraud, but he is also in fact "impersonating" all the bosses (leading to the possibility of a Nyx-like fight).
 But what if he didn't impersonate Lucifer? It could be the MC's starting persona he impersonates, or something to that effect. TBD.
+
+MARK 7
+To believe yourself above the hatred of others. That is the sin of Pride!
+I FUCKING DID IT THE ABSOLUTE MADLAD
+
+Legion is an amassed mass of souls that were sent to hell. These were people with minor sins, like the party members, who accepted them as part of themselves. Unlike the party members, those who form Legion did not accept those sins as sins per say. They resented people judging them rather than accepting that not everyone will like you, and that some people hating you simply for who you are is inevitable. As such, they committed the sin of pride, believing that they were special, or above others and should not be disliked.

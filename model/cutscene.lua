@@ -56,6 +56,7 @@ function cutscene.processinput()
 		setShowType("cutscene")
 	else
 		state.changecontext("calendar")
+		return
 	end
 	refresh()
 end

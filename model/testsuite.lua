@@ -44,6 +44,26 @@ function link()
 	--state.changecontext("calendar")
 end
 
+function cutscene()
+	state.changecontext('cutscene', 'velvet_demo')
+
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+	state.event(json.encode({key="cutscene.action", index=0}))
+
+	--state.changecontext("calendar")
+end
+
 function battle()
 	state.loadenv("barbariccia")
 	state.changecontext('battle', 1)
@@ -73,6 +93,7 @@ function test(feature)
 end
 
 --test(battle)
-test(link)
+--test(link)
+test(cutscene)
 --test(dayChange)
 --test(shop)

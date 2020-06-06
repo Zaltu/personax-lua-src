@@ -4,7 +4,7 @@ function freeroam.refresh()
 	--[[
 	Freeroam context does not cause a view update
 	]]--
-	state.update = json.encode({key="USER FREE ROAM"})
+	state.update = json.encode({key="FREEROAM"})
 end
 
 function freeroam.processinput()

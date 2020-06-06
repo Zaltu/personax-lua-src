@@ -1,0 +1,133 @@
+{
+    "items": [
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "My name is Igor."
+            },
+            1
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "I am delighted to make your acquaintance."
+            },
+            2
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "This is Elizabeth. She is a resident here, like myself."
+            },
+            3
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Elizabeth",
+                "text": "Pleased to meet you."
+            },
+            4
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "This place exists between dream and reality."
+            },
+            5
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "Mind and matter."
+            },
+            6
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "Only those who have forged some form of contract may enter."
+            },
+            7
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "Do not be alarmed."
+            },
+            8
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "This contract is no different than any other that mankind is burdened with every day."
+            },
+            9
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "It confers only a single duty upon you."
+            },
+            10
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "That you must take full resposibility for your actions."
+            },
+            11
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "Henceforth, you shall be welcome here in the Velvet Room."
+            },
+            12
+        ],
+        [
+            {
+                "angle": {},
+                "emotion": "Normal",
+                "points": {},
+                "speaker": "Igor",
+                "text": "Until we meet again..."
+            }
+        ]
+    ]
+}

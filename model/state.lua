@@ -71,7 +71,9 @@ There is no state.lock here as we assume that any call to changecontext will be 
 through a state.event processinput call
 ]]--
 function state.changecontext(newc, ...)
-	state.update = {}
+	state.update = nil
+	print("state update now:")
+	print(state.update)
 	state.context = require(newc)
 	state.context.loadcontext(...)
 end
