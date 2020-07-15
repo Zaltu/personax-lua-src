@@ -58,8 +58,8 @@ function cutscene()
 	state.event(json.encode({key="cutscene.action", index=0}))
 	state.event(json.encode({key="cutscene.action", index=0}))
 	state.event(json.encode({key="cutscene.action", index=0}))
-	state.event(json.encode({key="cutscene.action", index=0}))
-	state.event(json.encode({key="cutscene.action", index=0}))
+	--state.event(json.encode({key="cutscene.action", index=0}))
+	--state.event(json.encode({key="cutscene.action", index=0}))
 
 	--state.changecontext("calendar")
 end

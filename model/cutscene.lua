@@ -52,6 +52,7 @@ function cutscene.processinput()
 		state.context.index=nil
 	end
 	if state.cut.open[state.cut.index] then
+		state.cut.currentindex = state.cut.open[state.cut.index]+1
 		state.cut.open = state.cut.items[state.cut.open[state.cut.index]+1]
 		setShowType("cutscene")
 	else
@@ -63,6 +64,8 @@ end
 
 function cutscene.loadcontext(inlinename)
 	_load(inlinename)
+	--Uh-oh
+	state.cut.name = inlinename
 	setShowType("cutscene")
 	refresh()
 end
@@ -76,6 +79,10 @@ function setShowType(caller)
 	elseif state.cut.open[1].animation then
 		state.cut.open.show=showMove(caller)
 	end
+	print("Setting cut index ")
+	print(state.cut.currentindex)
+	state.cut.open.show.cutid = state.cut.name
+	state.cut.open.show.index = state.cut.currentindex
 end
 
 --This is a PUBLIC STATIC UPDATE FUNCTION so inline and link can use it without changing contexts
