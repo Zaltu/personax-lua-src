@@ -1,11 +1,11 @@
 local entity = {}
 entity["level"] = [[25]]
 entity["spellDeck"] = {}
-entity["spellDeck"][1] = [[Bewilder]]
+entity["spellDeck"][1] = [[]] -- Bewilder
 entity["spellDeck"][2] = [[]]
 entity["spellDeck"][3] = [[Agilao]]
 entity["spellDeck"][4] = [[]]
-entity["spellDeck"][5] = [[Raging Tiger]]
+entity["spellDeck"][5] = [[]] -- Raging Tiger
 entity["spellDeck"][6] = [[]]
 entity["heritage"] = {}
 entity["heritage"][1] = [[Dark]]

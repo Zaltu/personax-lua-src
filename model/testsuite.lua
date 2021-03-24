@@ -68,7 +68,7 @@ function battle()
 	state.loadenv("barbariccia")
 	state.changecontext('battle', 1)
 
-	state.event(json.encode({key="battle.userinput", targetindex=5, spellindex=1}))
+	--state.event(json.encode({key="battle.userinput", targetindex=5, spellindex=1}))
 end
 
 function dayChange()
@@ -92,8 +92,9 @@ function test(feature)
 	pprint(state.update)
 end
 
+test(print)
 --test(battle)
 --test(link)
-test(cutscene)
+--test(cutscene)
 --test(dayChange)
 --test(shop)

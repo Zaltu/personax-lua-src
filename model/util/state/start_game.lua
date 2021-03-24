@@ -13,4 +13,8 @@ state.context = nil
 state.cut = nil
 
 --state.changecontext("calendar")
-state.changecontext('cutscene', 'velvet_demo')
+--To start velvet room demo
+--state.changecontext('cutscene', 'velvet_demo')
+--To start battle demo
+state.loadenv("barbariccia")
+state.changecontext('battle', 1)

@@ -15,9 +15,9 @@ bar.name="Barbariccia"
 bar.enemies = {
     [1]={
         {
-            {name="Cherub", hp=100, sp=100},
-            {name="Dominion", hp=100, sp=100},
-            {name="Seraph", hp=100, sp=100}
+            {name="Lamia", hp=100, sp=100},
+            {name="Lamia", hp=100, sp=100},
+            {name="Lamia", hp=100, sp=100}
         }
     },
     [2]={
