@@ -13,6 +13,7 @@ state.context = nil
 state.cut = nil
 
 --state.changecontext("calendar")
+
 --To start velvet room demo
 --state.changecontext('cutscene', 'velvet_demo')
 --To start battle demo
