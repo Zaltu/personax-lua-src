@@ -102,6 +102,7 @@ local function _load(powerlevel)
 	for i, person in pairs(state.party) do
 		state.battle.participants[#state.battle.participants+1] = {
 			persona=person.persona,
+			personadeck=person.personadeck,  -- Primarily for MC, as he is the only one with persona options.
 			name=person.name,
 			hp=person.hp,
 			maxhp=person.maxhp,
@@ -160,6 +161,7 @@ function battle.loadcontext(powerlevel)
 	math.randomseed(os.time())
 	_load(powerlevel)
 	turn()
+	state.battle.key = "battle"
 	battle.refresh()
 end
 
