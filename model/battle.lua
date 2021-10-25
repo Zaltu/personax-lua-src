@@ -145,7 +145,7 @@ function battle.refresh(update)
 end
 
 function battle.exposeSpellData()
-	spellname = state.battle.participants[state.battle.open].persona.spellDeck[state.context.spellDataRequest]
+	spellname = state.context.spellDataRequest--state.battle.participants[state.battle.open].persona.spellDeck[state.context.spellDataRequest]
 	spellData = {target=require("data/spells/"..spellname).target, key=state.context.key}
 	state.update = json.encode(spellData)
 end
