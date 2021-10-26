@@ -102,7 +102,7 @@ local function _load(powerlevel)
 	for i, person in pairs(state.party) do
 		state.battle.participants[#state.battle.participants+1] = {
 			persona=person.persona,
-			personadeck=person.personadeck,  -- Primarily for MC, as he is the only one with persona options.
+			personadeck=person.personadeck,  -- Primarily for MC, as he is the only one with persona options. NO LONGER THE CASE, USED FOR PERSONA GUI PRE-LOAD
 			name=person.name,
 			hp=person.hp,
 			maxhp=person.maxhp,
@@ -150,8 +150,15 @@ function battle.exposeSpellData()
 	state.update = json.encode(spellData)
 end
 
+
+function battle.setNewPersona()
+	state.battle.participants[state.context.personachangeIndex].persona = state.battle.participants[state.context.personachangeIndex].personadeck[state.context.personachangeNewPersona]
+	battle.refresh()
+end
+
 function battle.processinput()
 	if state.context.key == "battle.spellrequest" then battle.exposeSpellData() return end
+	if state.context.key == "battle.personachange" then battle.setNewPersona() return end
 	--Input in {spellindex=X, targetindex=Y} form
     turn()
 	battle.refresh()

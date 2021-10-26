@@ -18,7 +18,7 @@ function spell.activate(alteredchance)
     end
     require("util/battle/battlealter")
     --Checking for hit
-    finalhitchance = calculateEvasionBonus(spell, hitchance, state.battle.participants[state.battle.open]))
+    finalhitchance = calculateEvasionBonus(spell, hitchance, state.battle.participants[state.battle.open])
     if math.random(1, 100) > finalhitchance then
         table.insert(state.battle.turns, {{target=state.battle.participants[state.battle.target].name, caster=state.battle.participants[state.battle.open].name, miss=true}})
         return
