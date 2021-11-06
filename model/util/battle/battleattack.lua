@@ -47,7 +47,9 @@ local function damageHP(spell, caster)
     state.battle.participants[state.battle.target].hp = state.battle.participants[state.battle.target].hp-damagetakentotal
     return {
         caster=caster.name,
+        casterparticipantindex=state.battle.open,
         target=state.battle.participants[state.battle.target].name,
+        targetparticipantindex=state.battle.target,
         damage=damangeTable,
         dmgType="HP",
         down=state.battle.participants[state.battle.target].down,
@@ -66,7 +68,9 @@ local function damageSP(spell, caster)
     end
     return {
         caster=caster.name,
+        casterparticipantindex=state.battle.open,
         target=state.battle.participants[state.battle.target].name,
+        targetparticipantindex=state.battle.target,
         damage=damagetakentotal,
         dmgType="SP"
     }
@@ -79,7 +83,9 @@ local function attacks(spell, caster)
     else
         return {
             target=state.battle.participants[state.battle.target].name,
+            targetparticipantindex=state.battle.target,
             caster=caster.name,
+            casterparticipantindex=state.battle.open,
             miss=true
         }
     end

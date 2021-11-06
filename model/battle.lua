@@ -55,8 +55,8 @@ local function turn()
 			--Taken from battleturn
 			code = normalturn()
 		end
-		--Make sure spellindex isn't carried over accross participant turns
-		state.context.spellindex = nil
+		--Make sure spellname isn't carried over accross participant turns
+		state.context.spellname = nil
 		if code == 1 then
 			--Require input
 			break
@@ -159,7 +159,7 @@ end
 function battle.processinput()
 	if state.context.key == "battle.spellrequest" then battle.exposeSpellData() return end
 	if state.context.key == "battle.personachange" then battle.setNewPersona() return end
-	--Input in {spellindex=X, targetindex=Y} form
+	--Input in {spellname=X, targetindex=Y} form
     turn()
 	battle.refresh()
 end

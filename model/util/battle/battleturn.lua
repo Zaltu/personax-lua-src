@@ -30,9 +30,9 @@ function processEliminations()
 	--print(ins(state.battle.participants))
 end
 
-function spellitout(participant, spellindex)
+function spellitout(participant, spellname)
 	--Acquire spell
-	spell = require("data/spells/"..participant.persona.spellDeck[spellindex])
+	spell = require("data/spells/"..spellname)
 	--print(shadow.persona.name.." used "..shadow.persona.spellDeck[spelli])
 	--Tree powers activate
 	spell.activate()
@@ -83,14 +83,16 @@ function normalturn()
 	--ins = require('inspect')
 	--print(ins(state.battle.iparty))
 	--print("Open: "..state.battle.open)
-	--print("Spellindex: ", state.context.spellindex)
+	--print("Spellname: ", state.context.spellname)
 	if state.party[state.battle.participants[state.battle.open].name] then
 		--print("Processing user input")
 		--If we don't have a valid input for this participant, break the cycle.
-		if not state.context.spellindex and not state.context.hitindex then return 1 end
-		state.battle.target = state.context.targetindex
-		if state.context.spellindex then
-			spellitout(state.battle.participants[state.battle.open], state.context.spellindex)
+		if not state.context.spellname and not state.context.hitindex then return 1 end
+		if state.context.targetindex ~= -1 then  -- Passing nullptr over C/Lua acts weird. Set -1 as convention
+			state.battle.target = state.context.targetindex
+		end
+		if state.context.spellname then
+			spellitout(state.battle.participants[state.battle.open], state.context.spellname)
 		else
 			beatitout(state.battle.participants[state.battle.open])
 		end
