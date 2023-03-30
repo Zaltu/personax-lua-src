@@ -24,6 +24,7 @@ function spell.process(uspell, basehitchance, istarget)
     else
         --if effect is on spell caster, hitchance goes up
         return basehitchance * spell.numericalvalue
+    end
 end
 
 return spell

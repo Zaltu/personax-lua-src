@@ -52,7 +52,7 @@ function ai(shadow)
 	--TODO change based passive spells
 	local spelli = 0
 	repeat
-		spelli = math.random(9)
+		spelli = math.random(8)
 	until
 		(shadow.persona.spellDeck[spelli] ~= "" and shadow.persona.spellDeck[spelli] and not require("data/spells/"..shadow.persona.spellDeck[spelli]).passive) or spelli == 9
 
@@ -75,7 +75,7 @@ function ai(shadow)
 		elseif spell.target == "One Ally" then
 			state.battle.target=allies[math.random(1, #allies)]
 		end
-		spellitout(shadow, spelli)
+		spellitout(shadow, shadow.persona.spellDeck[spelli])
 	end
 end
 

@@ -1,4 +1,7 @@
 function passive(spell, target, caster, turns, statustype)
+    print(target)
+    print(statustype)
+    print(spell.name)
     if target[statustype][spell.name] then
         target[statustype][spell.name].turns = target[statustype][spell.name].turns + (turns-1)
         return
